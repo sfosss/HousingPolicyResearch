@@ -178,12 +178,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          # Avoid unrelated research paths that Windows cannot check out.
-          sparse-checkout: |
-            /capstone/scripts/
-            /tests/test_preflight.py
-          sparse-checkout-cone-mode: false
       
       - name: Set up Python
         uses: actions/setup-python@v5
