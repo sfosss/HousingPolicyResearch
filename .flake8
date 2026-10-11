@@ -1,0 +1,6 @@
+[flake8]
+# These recovered files follow Black's 88-column formatting.
+# Other files retain flake8's default line-length policy.
+per-file-ignores =
+    capstone/scripts/preflight_check.py: E501
+    tests/test_preflight.py: E501

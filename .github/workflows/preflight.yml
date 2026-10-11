@@ -29,6 +29,9 @@ jobs:
         with:
           python-version: '3.11'
       
+      - name: Run preflight regression tests
+        run: python -m unittest discover -s tests -p test_preflight.py -v
+
       - name: Display system information
         run: |
           echo "=== System Information ==="
@@ -121,6 +124,9 @@ jobs:
         with:
           python-version: '3.11'
       
+      - name: Run preflight regression tests
+        run: python -m unittest discover -s tests -p test_preflight.py -v
+
       - name: Display system information
         run: |
           echo "=== System Information ==="
@@ -178,6 +184,9 @@ jobs:
         with:
           python-version: '3.11'
       
+      - name: Run preflight regression tests
+        run: python -m unittest discover -s tests -p test_preflight.py -v
+
       - name: Display system information
         run: |
           Write-Host "=== System Information ==="
@@ -214,3 +223,4 @@ jobs:
           path: capstone/reports/*.md
           retention-days: 30
           if-no-files-found: warn
+
