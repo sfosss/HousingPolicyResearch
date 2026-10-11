@@ -13,7 +13,7 @@ Features:
 - GitHub API connectivity test
 - Generates JSON and Markdown reports
 
-This script is dry-run safe: it only produces local reports and does not modify system state.
+This script only produces local reports and does not modify system state.
 """
 
 import os
@@ -64,7 +64,11 @@ class PreflightChecker:
                 check=check,
             )
             return result
-        except (subprocess.TimeoutExpired, subprocess.CalledProcessError, OSError):
+        except (
+            subprocess.TimeoutExpired,
+            subprocess.CalledProcessError,
+            OSError,
+        ):
             return None
 
     def check_python_environment(self) -> Dict[str, Any]:
@@ -78,9 +82,14 @@ class PreflightChecker:
 
         # Check Python version (require 3.8+)
         version_info = sys.version_info
-        if version_info.major < 3 or (version_info.major == 3 and version_info.minor < 8):
+        if version_info.major < 3 or (
+            version_info.major == 3 and version_info.minor < 8
+        ):
             check_result["status"] = "fail"
-            self.errors.append(f"Python 3.8+ required, found {sys.version_info.major}.{sys.version_info.minor}")
+            self.errors.append(
+                "Python 3.8+ required, found "
+                f"{version_info.major}.{version_info.minor}"
+            )
 
         return check_result
 
@@ -114,8 +123,16 @@ class PreflightChecker:
 
         # Simple connectivity test using curl
         result = self.run_command(
-            ["curl", "-s", "-o", os.devnull, "-w", "%{http_code}", "https://api.github.com"],
-            timeout=15
+            [
+                "curl",
+                "-s",
+                "-o",
+                os.devnull,
+                "-w",
+                "%{http_code}",
+                "https://api.github.com",
+            ],
+            timeout=15,
         )
 
         if result and result.returncode == 0:
@@ -150,10 +167,14 @@ class PreflightChecker:
             check_result["homebrew_path"] = brew_path
             brew_version = self.run_command(["brew", "--version"])
             if brew_version and brew_version.returncode == 0:
-                check_result["homebrew_version"] = brew_version.stdout.strip().split("\n")[0]
+                check_result["homebrew_version"] = brew_version.stdout.strip().split(
+                    "\n"
+                )[0]
         else:
             check_result["status"] = "warn"
-            self.warnings.append("Homebrew not found (recommended for macOS development)")
+            self.warnings.append(
+                "Homebrew not found (recommended for macOS development)"
+            )
 
         # Check Xcode Command Line Tools
         xcode_select = self.run_command(["xcode-select", "-p"])
@@ -169,9 +190,11 @@ class PreflightChecker:
             rosetta_check = self.run_command(["pgrep", "-q", "oahd"])
             # Alternative check via sysctl
             rosetta_sysctl = self.run_command(["sysctl", "-n", "kern.proc_translated"])
-            if (rosetta_check and rosetta_check.returncode == 0) or \
-               (rosetta_sysctl and rosetta_sysctl.returncode == 0
-                and rosetta_sysctl.stdout.strip() == "1"):
+            if (rosetta_check and rosetta_check.returncode == 0) or (
+                rosetta_sysctl
+                and rosetta_sysctl.returncode == 0
+                and rosetta_sysctl.stdout.strip() == "1"
+            ):
                 check_result["rosetta2"] = True
             else:
                 # Rosetta may not be running if no x86 apps are active
@@ -190,7 +213,9 @@ class PreflightChecker:
         # Check if smartctl is available
         smartctl_path = shutil.which("smartctl")
         if not smartctl_path:
-            check_result["message"] = "smartctl not available (install via: brew install smartmontools)"
+            check_result["message"] = (
+                "smartctl not available (install via: brew install smartmontools)"
+            )
             return check_result
 
         check_result["smartctl_available"] = True
@@ -222,7 +247,9 @@ class PreflightChecker:
                 if health_check is None:
                     if check_result["status"] != "fail":
                         check_result["status"] = "warn"
-                    self.warnings.append(f"SMART health check unavailable for {disk_device}")
+                    self.warnings.append(
+                        f"SMART health check unavailable for {disk_device}"
+                    )
                 elif "FAILED" in health_check.stdout or health_check.returncode & 8:
                     disk_info["health"] = "FAILED"
                     check_result["status"] = "fail"
@@ -232,7 +259,9 @@ class PreflightChecker:
                 else:
                     if check_result["status"] != "fail":
                         check_result["status"] = "warn"
-                    self.warnings.append(f"SMART health check inconclusive for {disk_device}")
+                    self.warnings.append(
+                        f"SMART health check inconclusive for {disk_device}"
+                    )
 
                 check_result["disks"].append(disk_info)
 
@@ -307,11 +336,13 @@ class PreflightChecker:
 
         # Add macOS-specific checks
         if platform.system() == "Darwin":
-            checks.extend([
-                ("macos_specific", self.check_macos_specific),
-                ("smart_health", self.check_smart_health),
-                ("icloud_sync", self.check_icloud_sync),
-            ])
+            checks.extend(
+                [
+                    ("macos_specific", self.check_macos_specific),
+                    ("smart_health", self.check_smart_health),
+                    ("icloud_sync", self.check_icloud_sync),
+                ]
+            )
 
         for check_name, check_func in checks:
             print(f"Checking {check_name}...", end=" ")
@@ -330,7 +361,7 @@ class PreflightChecker:
                 print(f"{status_symbol} {status}")
 
             except Exception as e:
-                print(f"✗ error")
+                print("✗ error")
                 self.results["checks"][check_name] = {
                     "status": "error",
                     "error": str(e),
@@ -357,16 +388,19 @@ class PreflightChecker:
 
     def save_markdown_report(self, output_path: Path):
         """Save results as Markdown."""
+        system = self.results["platform"]["system"]
+        release = self.results["platform"]["release"]
+        machine = self.results["platform"]["machine"]
         lines = [
-            f"# Preflight Check Report",
-            f"",
+            "# Preflight Check Report",
+            "",
             f"**Version:** {VERSION}  ",
             f"**Timestamp:** {self.results['timestamp']}  ",
-            f"**Platform:** {self.results['platform']['system']} {self.results['platform']['release']} ({self.results['platform']['machine']})  ",
+            f"**Platform:** {system} {release} ({machine})  ",
             f"**Overall Status:** {self.results['overall_status'].upper()}",
-            f"",
-            f"## Check Results",
-            f"",
+            "",
+            "## Check Results",
+            "",
         ]
 
         for check_name, check_result in self.results["checks"].items():
@@ -380,38 +414,38 @@ class PreflightChecker:
             }.get(status, "❓")
 
             lines.append(f"### {status_emoji} {check_name.replace('_', ' ').title()}")
-            lines.append(f"")
+            lines.append("")
             lines.append(f"**Status:** {status}")
-            lines.append(f"")
+            lines.append("")
 
             # Add relevant details
             for key, value in check_result.items():
                 if key != "status" and value is not None:
                     if isinstance(value, (dict, list)):
                         lines.append(f"**{key}:**")
-                        lines.append(f"```json")
+                        lines.append("```json")
                         lines.append(json.dumps(value, indent=2))
-                        lines.append(f"```")
+                        lines.append("```")
                     else:
                         lines.append(f"**{key}:** {value}  ")
 
-            lines.append(f"")
+            lines.append("")
 
         # Add warnings section
         if self.warnings:
             lines.append(f"## ⚠️ Warnings ({len(self.warnings)})")
-            lines.append(f"")
+            lines.append("")
             for warning in self.warnings:
                 lines.append(f"- {warning}")
-            lines.append(f"")
+            lines.append("")
 
         # Add errors section
         if self.errors:
             lines.append(f"## ❌ Errors ({len(self.errors)})")
-            lines.append(f"")
+            lines.append("")
             for error in self.errors:
                 lines.append(f"- {error}")
-            lines.append(f"")
+            lines.append("")
 
         with open(output_path, "w", encoding="utf-8") as f:
             f.write("\n".join(lines))
@@ -441,7 +475,7 @@ def main():
 
     # Print summary
     print(f"\n{'='*60}")
-    print(f"Preflight Check Summary")
+    print("Preflight Check Summary")
     print(f"{'='*60}")
     print(f"Overall Status: {checker.results['overall_status'].upper()}")
     print(f"Warnings: {len(checker.warnings)}")
@@ -459,4 +493,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

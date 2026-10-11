@@ -29,6 +29,9 @@ jobs:
         with:
           python-version: '3.11'
       
+      - name: Run preflight regression tests
+        run: python -m unittest discover -s tests -p test_preflight.py -v
+
       - name: Display system information
         run: |
           echo "=== System Information ==="
@@ -121,6 +124,9 @@ jobs:
         with:
           python-version: '3.11'
       
+      - name: Run preflight regression tests
+        run: python -m unittest discover -s tests -p test_preflight.py -v
+
       - name: Display system information
         run: |
           echo "=== System Information ==="
@@ -172,12 +178,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Avoid unrelated research paths that Windows cannot check out.
+          sparse-checkout: |
+            /capstone/scripts/
+            /tests/test_preflight.py
+          sparse-checkout-cone-mode: false
       
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       
+      - name: Run preflight regression tests
+        run: python -m unittest discover -s tests -p test_preflight.py -v
+
       - name: Display system information
         run: |
           Write-Host "=== System Information ==="
@@ -214,3 +229,4 @@ jobs:
           path: capstone/reports/*.md
           retention-days: 30
           if-no-files-found: warn
+

@@ -45,6 +45,10 @@ Run focused regression tests without additional packages:
 python3 -m unittest discover -s tests -p 'test_preflight.py' -v
 ```
 
+The workflow runs the regression tests on all three platforms. Windows uses a
+sparse checkout of the scripts and test because unrelated research paths include
+a trailing-space directory name that Windows cannot check out.
+
 The existing workflow uses `continue-on-error: true` for the checker.
 Inspect the preflight step outcome and report `overall_status`; a green job
 alone does not prove every diagnostic passed. Workflow policy is unchanged.
