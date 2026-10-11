@@ -1,21 +1,30 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+## Supported versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+This repository is a research workspace rather than a versioned service. Security
+fixes are applied only to the current default branch. Snapshots, exports, and
+archived materials are not independently supported.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| \< 4.0  | :x:                |
+## Report a vulnerability
 
-## Reporting a Vulnerability
+Do **not** open a public issue or include credentials, personal data, or exploit
+details in a pull request. Use GitHub's **Report a vulnerability** button under
+the repository Security tab to submit a private report. If private reporting is
+unavailable, contact the repository owner through their GitHub profile and ask
+for a private disclosure channel without including the sensitive details.
 
-Use this section to tell people how to report a vulnerability.
+Please include the affected path and revision, impact, reproduction steps, and a
+suggested mitigation when possible. Expect acknowledgement within seven days and
+a status update within fourteen days. Timelines for a fix depend on severity and
+whether a credential owner or third-party service must act.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+## Secrets and local configuration
+
+* Store secrets only in an ignored `.env` file or the GitHub Actions secrets
+  store; committed configuration must contain environment-variable references.
+* Treat every credential ever committed as compromised. Removing its text from
+  the current branch is not revocation: rotate it at the provider and purge it
+  from reachable Git history before publishing rewritten refs.
+* Run `pre-commit run --all-files` before submitting changes. The configured
+  `detect-secrets` hook blocks newly detected credentials.

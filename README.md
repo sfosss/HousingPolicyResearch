@@ -38,6 +38,8 @@ This repository centralizes documentation, tooling plans, and integration guidel
 ## Documentation
 
 - [Environment Integrations and Documentation](docs/environment-integrations.md): describes the end-to-end setup for secure, bidirectional connections between OpenAI API, Notion, GitHub, and Zotero, and outlines follow-up tasks for the project workspace.
+- [Collaborative AI and Box Data Intake](docs/COLLABORATIVE_DATA_INTAKE.md): defines how Box shared folders, ChatGPT project exports, and Claude workspace data are inventoried, reviewed, and curated without becoming competing working roots.
+- [Repository Security Permissions](docs/REPOSITORY_SECURITY_PERMISSIONS.md): separates read-only assessment access from implementation, security-remediation, and repository-administration access.
 - [Workspace Readiness and Outstanding Setup](docs/workspace-readiness.md): actionable checklist for finishing the Raycast extension build, Quarto/APA installation, secrets configuration, and shortcut automation.
 - `SECURITY.md`: organization-wide security policies.
 

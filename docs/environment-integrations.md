@@ -1,13 +1,15 @@
 # Environment Integrations and Documentation
 
-This document captures the current integration points that support the Housing Policy Research project and provides guidance for maintaining secure, bidirectional data flows between ChatGPT, Codex-based automations, Notion, GitHub, and Zotero.
+This document captures the current integration points that support the Housing Policy Research project. Data flows are directional and reviewed; cloud drives and AI workspaces are not bidirectional replicas of the repository. Box, ChatGPT exports, and Claude workspace intake follow [`COLLABORATIVE_DATA_INTAKE.md`](COLLABORATIVE_DATA_INTAKE.md).
 
 ## 1. System Overview
 
 | Platform                   | Purpose                                                                       | Direction of Sync                                    | Primary Artifacts                     |
 | -------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------- |
 | ChatGPT / OpenAI workspace | Conversational research assistance, code review, and task planning            | ChatGPT → GitHub, GitHub → ChatGPT (through prompts) | Task instructions, generated analyses |
+| Claude workspace           | Collaborative drafting and project instructions                              | Claude export → isolated staging → reviewed GitHub PR | Curated decisions and drafts           |
 | Codex automations          | Scripted agents that perform file moves, commit updates, or generate analyses | Codex ↔ GitHub                                       | Automation scripts, commit messages   |
+| Box shared folders         | Human collaboration, exchange, and retention                                  | Box → isolated staging; reviewed release → dedicated Box destination | Source packages and release artifacts |
 | Notion workspace           | Project management, literature summaries, meeting notes                       | Notion ↔ GitHub (manual exports or API scripts)      | Kanban boards, research briefs        |
 | GitHub repository          | Source of truth for datasets, documentation, scripts                          | GitHub ↔ All                                         | Code, data, documentation             |
 | Zotero group library       | Reference manager with citation metadata                                      | Zotero → Notion / GitHub (via exports)               | Bibliographies, PDF annotations       |
@@ -31,9 +33,9 @@ This document captures the current integration points that support the Housing P
 
 ### 3.1 ChatGPT / Codex → GitHub
 
-1. Clone this repository locally and create a dedicated OpenAI API key for automation scripts.
-1. Configure the provided automation script (see [`scripts/cross-chat-sync.sh`](../scripts/cross-chat-sync.sh)) with the correct source and target directories.
-1. Use GitHub Personal Access Tokens (PAT) with the minimum scopes required (`repo`, `workflow` if Actions are used).
+1. Clone this repository into the approved active root, never inside a Box/iCloud sync tree, and create a dedicated OpenAI API key only when an automation requires API access.
+1. Inventory ChatGPT, Claude, or Box sources with an ignored local collaboration manifest before selecting anything for staged import.
+1. Prefer the run-scoped `GITHUB_TOKEN`; when a human token is required, use a fine-grained, repository-scoped, expiring token with only the operation-specific permissions documented in [`REPOSITORY_SECURITY_PERMISSIONS.md`](REPOSITORY_SECURITY_PERMISSIONS.md).
 1. Run automations inside a hardened environment (container or VM) with read/write access only to the repository workspace.
 
 ### 3.2 GitHub ↔ Notion

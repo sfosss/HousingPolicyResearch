@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      python-security-and-maintenance:
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /raycast-extension
+    schedule:
+      interval: weekly
+    groups:
+      raycast-security-and-maintenance:
+        patterns: ["*"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions-security-and-maintenance:
+        patterns: ["*"]
