@@ -1,0 +1,77 @@
+name: Adaptive Housing Policy Loop
+
+on:
+  workflow_dispatch:
+    inputs:
+      web_packet:
+        description: "Optional normalized JSON from Perplexity Web research"
+        required: false
+        type: string
+      midpage_packet:
+        description: "Optional normalized JSON from Midpage legal research (analyzed opinions only)"
+        required: false
+        type: string
+      strict:
+        description: "Fail on connector or QA errors"
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: "15 12 * * 1-5" # 8:15 a.m. ET during daylight saving time
+
+concurrency:
+  group: adaptive-policy-loop
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  research-update:
+    runs-on: ubuntu-latest
+    env:
+      WEB_RESEARCH_JSON: ${{ inputs.web_packet || secrets.WEB_RESEARCH_JSON }}
+      MIDPAGE_RESEARCH_JSON: ${{ inputs.midpage_packet || secrets.MIDPAGE_RESEARCH_JSON }}
+      BOX_ACCESS_TOKEN: ${{ secrets.BOX_ACCESS_TOKEN }}
+      BOX_INBOX_FOLDER_ID: ${{ secrets.BOX_INBOX_FOLDER_ID }}
+      BOX_OUTPUT_FOLDER_ID: ${{ secrets.BOX_OUTPUT_FOLDER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install runtime dependencies
+        run: pip install requests pytest
+      - name: Run tests
+        run: pytest -q tests/test_adaptive_policy_loop.py
+      - name: Run adaptive intake, mapping, redlines, QA and exports
+        run: |
+          FLAGS=""
+          if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_INBOX_FOLDER_ID" ]; then FLAGS="$FLAGS --box-pull"; fi
+          if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_OUTPUT_FOLDER_ID" ]; then FLAGS="$FLAGS --box-push"; fi
+          if [ "${{ inputs.strict }}" = "true" ]; then FLAGS="$FLAGS --strict"; fi
+          python scripts/adaptive_policy_loop.py $FLAGS
+      - name: Open a review issue for Critical items
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TODAY=$(date -u +%Y%m%d)
+          ALERT="policy-research/$TODAY/CRITICAL_ALERT.md"
+          if [ -f "$ALERT" ] && grep -q '^-' "$ALERT"; then
+            EXISTING=$(gh issue list --state open --search "Critical PETF/TCAP policy alerts $TODAY in:title" --json number --jq 'length')
+            if [ "$EXISTING" = "0" ]; then
+              gh issue create --title "Critical PETF/TCAP policy alerts $TODAY" --body-file "$ALERT" --label "policy-review" || gh issue create --title "Critical PETF/TCAP policy alerts $TODAY" --body-file "$ALERT"
+            fi
+          fi
+      - name: Commit generated research artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv indexes/SOURCE_INDEX.csv indexes/SOURCE_INDEX.md policy-research exports-for-chatgpt
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(policy): daily adaptive research update $(date -u +%F)"
+            git push
+          else
+            echo "No policy research changes"
+          fi
