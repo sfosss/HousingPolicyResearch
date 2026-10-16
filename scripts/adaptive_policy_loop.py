@@ -17,11 +17,13 @@ import os
 import re
 import sys
 import tempfile
+import time
 from dataclasses import dataclass, asdict
 from datetime import date, datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Iterable
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, unquote, urlencode, urlsplit, urlunsplit
 from xml.etree import ElementTree
 
 import requests
@@ -64,6 +66,9 @@ FIELDS = [
     "disposition_notes",
     "content_hash",
     "supersedes_event_id",
+    "source_updated_at",
+    "target_document",
+    "opinion_analysis",
 ]
 
 NYC_TERMS = {
@@ -85,6 +90,21 @@ NYC_TERMS = {
     "cooperative",
     "eviction",
     "civil rights",
+}
+NYC_SIGNALS = {
+    "new york city",
+    "nyc",
+    "hpd",
+    "hra",
+    "nycha",
+    "cityfheps",
+    "brooklyn",
+    "bronx",
+    "queens",
+    "manhattan",
+    "staten island",
+    "public equity transfer framework",
+    "tenant co-op acquisition program",
 }
 TRACKING_PARAMS = {
     "utm_source",
@@ -126,6 +146,9 @@ class Record:
     disposition_notes: str = ""
     content_hash: str = ""
     supersedes_event_id: str = ""
+    source_updated_at: str = ""
+    target_document: str = ""
+    opinion_analysis: str = ""
 
 
 def clean_text(value: Any, limit: int = 5000) -> str:
@@ -133,10 +156,157 @@ def clean_text(value: Any, limit: int = 5000) -> str:
     return re.sub(r"\s+", " ", text).strip()[:limit]
 
 
+SENSITIVE_QUERY_NAMES = {
+    "key",
+    "apikey",
+    "xapikey",
+    "auth",
+    "authorization",
+    "password",
+    "passwd",
+    "secret",
+    "clientsecret",
+    "token",
+    "accesstoken",
+    "refreshtoken",
+    "securitytoken",
+    "signature",
+    "sig",
+    "credential",
+    "credentials",
+    "jwt",
+    "accesskey",
+    "subscriptionkey",
+    "ocpapimsubscriptionkey",
+}
+URL_TEXT = re.compile(r"https?(?:://|%[0-9a-f]{2})[^\s<>\"']+", re.I)
+
+
+def decoded_parameter(value: str) -> str | None:
+    for _ in range(8):
+        decoded = unquote(value)
+        if decoded == value:
+            return value
+        value = decoded
+    # Reject ambiguous names rather than retaining hidden credentials.
+    return None if re.search(r"%[0-9a-f]{2}", value, re.I) else value
+
+
+def nested_value(value: str) -> str | None:
+    for _ in range(8):
+        if re.search(r"https?://", value, re.I) or re.match(
+            r"^[\w.%-]+=", value
+        ):
+            return value
+        decoded = unquote(value)
+        if decoded == value:
+            return value
+        value = decoded
+    return None
+
+
+def sanitized_text(value: str, depth: int = 0) -> str:
+    def replace(match: re.Match) -> str:
+        nested = nested_value(match.group())
+        return sanitize_source_url(nested, depth + 1) if nested else ""
+
+    return URL_TEXT.sub(replace, value)
+
+
+def sanitized_query(query: str, depth: int = 0) -> str:
+    if depth > 4:
+        return ""
+    pairs = []
+    for pair in re.split(r"[&;]", query):
+        for key, value in parse_qsl(pair, keep_blank_values=True):
+            decoded_key = decoded_parameter(key)
+            if decoded_key is None:
+                continue
+            name = re.sub(r"[^a-z0-9]", "", decoded_key.lower())
+            if (
+                not name
+                or name in SENSITIVE_QUERY_NAMES
+                or name.startswith("xamz")
+                or name.endswith(
+                    (
+                        "token",
+                        "secret",
+                        "password",
+                        "signature",
+                        "apikey",
+                        "accesskey",
+                        "subscriptionkey",
+                    )
+                )
+            ):
+                continue
+            decoded_value = nested_value(value)
+            if decoded_value is None:
+                continue
+            if re.search(r"https?://", decoded_value, re.I):
+                value = sanitized_text(decoded_value, depth)
+            elif re.match(r"^[\w.%-]+=", decoded_value):
+                value = sanitized_query(decoded_value, depth + 1)
+            pairs.append((key, value))
+    return urlencode(pairs)
+
+
+def sanitize_source_url(url: str, depth: int = 0) -> str:
+    if not isinstance(url, str) or depth > 4:
+        return ""
+    try:
+        parts = urlsplit(url)
+        netloc = parts.netloc.rsplit("@", 1)[-1]
+        fragment = parts.fragment
+        decoded_fragment = decoded_parameter(fragment)
+        if decoded_fragment is None:
+            fragment = ""
+        elif "?" in decoded_fragment:
+            route, query = decoded_fragment.split("?", 1)
+            query = sanitized_query(query, depth)
+            fragment = route + ("?" + query if query else "")
+        elif "=" in decoded_fragment:
+            fragment = sanitized_query(decoded_fragment, depth)
+        safe = urlunsplit(
+            (
+                parts.scheme,
+                netloc,
+                parts.path,
+                sanitized_query(parts.query, depth),
+                fragment,
+            )
+        )
+        return safe if valid_source_url(safe) else ""
+    except (ValueError, UnicodeError):
+        return ""
+
+
+def sanitize_row(row: dict[str, str]) -> dict[str, str]:
+    original = row.get("canonical_url", "")
+    expected = digest(
+        row.get("headline", "").lower(),
+        row.get("summary", "").lower(),
+        original,
+    )
+    safe = {
+        key: sanitized_text(value) if isinstance(value, str) else value
+        for key, value in row.items()
+    }
+    safe["source_url"] = sanitize_source_url(row.get("source_url", ""))
+    safe["canonical_url"] = canonicalize_url(original)
+    if row.get("content_hash") == expected:
+        safe["content_hash"] = digest(
+            safe.get("headline", "").lower(),
+            safe.get("summary", "").lower(),
+            safe["canonical_url"],
+        )
+    return safe
+
+
 def canonicalize_url(url: str) -> str:
     if not valid_source_url(url):
         return ""
-    parts = urlsplit(url.strip())
+    parts = urlsplit(sanitize_source_url(url))
     query = urlencode(
         sorted(
             (k, v)
@@ -197,6 +367,10 @@ def parse_date(value: str) -> str:
             return datetime.strptime(value, fmt).date().isoformat()
         except ValueError:
             pass
+    try:
+        return parsedate_to_datetime(value).date().isoformat()
+    except (TypeError, ValueError, OverflowError):
+        pass
     match = re.search(r"\d{4}-\d{2}-\d{2}", value)
     if match:
         try:
@@ -210,6 +384,71 @@ def load_json(path: Path, default: Any) -> Any:
     if not path.exists():
         return default
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def parse_timestamp(value: Any) -> str:
+    if not isinstance(value, str) or not value:
+        return ""
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            return ""
+        return parsed.astimezone(timezone.utc).isoformat()
+    except ValueError:
+        return ""
+
+
+def analyzed_opinion(item: dict[str, Any]) -> bool:
+    analysis = item.get("opinion_analysis")
+    if not isinstance(analysis, dict):
+        return False
+    return bool(
+        analysis.get("tool") == "analyzeOpinion"
+        and analysis.get("status") == "completed"
+        and clean_text(analysis.get("analysis_id"))
+        and clean_text(analysis.get("proposition"))
+        and clean_text(analysis.get("scope_limit"))
+        and parse_timestamp(analysis.get("analyzed_at"))
+        and canonicalize_url(analysis.get("opinion_url", ""))
+        == canonicalize_url(item.get("source_url") or item.get("url") or "")
+        and valid_source_url(analysis.get("opinion_url", ""))
+    )
+
+
+def valid_mapping_target(document: str, section: str, paragraph: str) -> bool:
+    try:
+        path = (ROOT / document).resolve()
+        if not document or not path.is_relative_to(ROOT) or not path.is_file():
+            return False
+        text = path.read_text(encoding="utf-8")
+        heading = re.search(
+            r"^\*\*" + re.escape(section) + r"\*\*", text, re.M
+        )
+        if heading is None:
+            return False
+        start = heading.end()
+        body = text[start:].split("\n**§", 1)[0]
+        return bool(re.search(r"^" + re.escape(paragraph) + r"\s", body, re.M))
+    except (OSError, ValueError):
+        return False
+
+
+def validated_rules(
+    rules: list[dict[str, Any]], errors: list[str]
+) -> list[dict[str, Any]]:
+    valid = []
+    for position, rule in enumerate(rules, 1):
+        if valid_mapping_target(
+            rule.get("target_document", ""),
+            rule.get("section", ""),
+            rule.get("paragraph", ""),
+        ):
+            valid.append(rule)
+        else:
+            errors.append(
+                f"Policy map rule {position}: canonical target not found"
+            )
+    return valid
 
 
 def packet_items(
@@ -243,14 +482,49 @@ def packet_items(
                 "source URL required"
             )
             continue
+        if clean_text(item.get("jurisdiction", "")).lower() not in {
+            "nyc",
+            "new york city",
+            "ny",
+            "new york",
+            "federal",
+        }:
+            errors.append(
+                f"{label} item {position}: allowed jurisdiction required"
+            )
+            continue
         primary = item.get("primary_source", False)
         if not isinstance(primary, bool) and primary not in ("true", "false"):
             errors.append(
                 f"{label} item {position}: primary_source must be a boolean"
             )
             continue
+        updated = item.get("source_updated_at") or item.get("updated_at")
+        if updated and not parse_timestamp(updated):
+            errors.append(
+                f"{label} item {position}: timezone-aware "
+                "source_updated_at required"
+            )
+            continue
+        midpage = (
+            source_type == "midpage"
+            or clean_text(item.get("source_type", "")).lower() == "midpage"
+        )
+        if midpage and not analyzed_opinion(item):
+            errors.append(
+                f"{label} item {position}: completed "
+                "analyzeOpinion evidence required"
+            )
+            continue
         normalized = dict(item)
         normalized.setdefault("source_type", source_type)
+        if midpage:
+            analysis = item["opinion_analysis"]
+            normalized["source_type"] = "midpage"
+            normalized["summary"] = (
+                f"{analysis['proposition']} "
+                f"Scope limit: {analysis['scope_limit']}"
+            )
         result.append(normalized)
     return result
 
@@ -297,11 +571,14 @@ def fetch_feed(source: dict[str, Any]) -> list[dict[str, Any]]:
     )
     response.raise_for_status()
     root = ElementTree.fromstring(response.content)
-    entries = list(root.findall(".//item")) or list(
+    entries = list(root.findall(".//{*}item")) or list(
         root.findall(".//{*}entry")
     )
+    if not entries:
+        raise ValueError("Feed contains no supported RSS/Atom entries")
     output = []
-    for entry in entries[: source.get("max_items", 25)]:
+    # Process the full available feed so the per-poll cap cannot lose entries.
+    for entry in entries:
 
         def first(names: Iterable[str]) -> str:
             for name in names:
@@ -334,13 +611,34 @@ def fetch_feed(source: dict[str, Any]) -> list[dict[str, Any]]:
 
 def fetch_configured_sources() -> tuple[list[dict[str, Any]], list[str]]:
     items, errors = [], []
-    for source in load_json(SOURCES, {}).get("sources", []):
+    for position, source in enumerate(
+        load_json(SOURCES, {}).get("sources", []), 1
+    ):
         if not source.get("enabled", True) or source.get("type") != "feed":
             continue
-        try:
-            items.extend(fetch_feed(source))
-        except Exception as exc:
-            errors.append(f"{source.get('name', source.get('url'))}: {exc}")
+        for attempt in range(3):
+            try:
+                if not valid_source_url(source.get("url", "")):
+                    raise ValueError("Invalid feed URL")
+                safe_source = dict(
+                    source, url=sanitize_source_url(source["url"])
+                )
+                items.extend(fetch_feed(safe_source))
+                break
+            except Exception as exc:
+                response = getattr(exc, "response", None)
+                status = getattr(response, "status_code", None)
+                transient = isinstance(
+                    exc, (requests.Timeout, requests.ConnectionError)
+                ) or status in {429, 500, 502, 503, 504}
+                if transient and attempt < 2:
+                    time.sleep(2**attempt)
+                    continue
+                # Exceptions can contain credentials in redirect URLs.
+                errors.append(
+                    f"Official feed {position}: {type(exc).__name__}"
+                )
+                break
     return items, errors
 
 
@@ -378,9 +676,17 @@ def box_pull() -> tuple[list[dict[str, Any]], list[str]]:
             KeyError,
             TypeError,
         ) as exc:
-            errors.append(f"Box inbox listing: {exc}")
+            errors.append(f"Box inbox listing: {type(exc).__name__}")
             break
         for entry in entries:
+            if (
+                not isinstance(entry.get("name"), str)
+                or not str(entry.get("id", "")).isdigit()
+            ):
+                errors.append(
+                    "Box inbox entry: valid name and file ID required"
+                )
+                continue
             if entry.get("type") != "file" or not entry.get(
                 "name", ""
             ).lower().endswith(".json"):
@@ -401,27 +707,51 @@ def box_pull() -> tuple[list[dict[str, Any]], list[str]]:
                     )
                 )
             except Exception as exc:
-                errors.append(f"Box file {entry.get('name')}: {exc}")
+                errors.append(
+                    f"Box file {entry.get('name')}: {type(exc).__name__}"
+                )
         offset += len(entries)
         if offset >= total_count or not entries:
             break
     return items, errors
 
 
+def matches_term(text: str, term: str) -> bool:
+    return bool(
+        re.search(
+            r"(?<!\w)" + re.escape(term.lower()) + r"(?!\w)", text.lower()
+        )
+    )
+
+
 def in_scope(item: dict[str, Any]) -> bool:
     jurisdiction = clean_text(item.get("jurisdiction", "")).lower()
     text = " ".join(
-        str(item.get(field, "")) for field in ("headline", "summary", "agency")
+        str(item.get(field, "")) for field in ("headline", "summary")
     ).lower()
-    return jurisdiction in {
+    allowed = jurisdiction in {
         "nyc",
         "new york city",
         "ny",
         "new york",
         "federal",
-    } and any(
-        re.search(r"(?<!\w)" + re.escape(term) + r"(?!\w)", text)
-        for term in NYC_TERMS
+    }
+    relevant = any(matches_term(text, term) for term in NYC_TERMS)
+    local = jurisdiction in {"nyc", "new york city"}
+    city_signal = any(matches_term(text, term) for term in NYC_SIGNALS)
+    target_agency = clean_text(item.get("agency", "")).lower() in {
+        "hpd",
+        "hra",
+        "nycha",
+        "nyc hpd",
+        "nyc hra",
+        "nyc housing authority",
+    }
+    explicit = item.get("applies_to_nyc") is True
+    return (
+        allowed
+        and relevant
+        and (local or city_signal or target_agency or explicit)
     )
 
 
@@ -430,6 +760,7 @@ def normalize(item: dict[str, Any], today: str) -> Record | None:
     url = item.get("source_url") or item.get("url") or ""
     if not headline or not valid_source_url(url):
         return None
+    url = sanitize_source_url(url)
     canonical = canonicalize_url(url)
     published = parse_date(
         str(item.get("date_published") or item.get("published_at") or "")
@@ -459,6 +790,14 @@ def normalize(item: dict[str, Any], today: str) -> Record | None:
         ),
         primary_source=str(item.get("primary_source", False)).lower(),
         content_hash=content_hash,
+        source_updated_at=parse_timestamp(
+            item.get("source_updated_at") or item.get("updated_at")
+        ),
+        opinion_analysis=(
+            json.dumps(item["opinion_analysis"], sort_keys=True)
+            if isinstance(item.get("opinion_analysis"), dict)
+            else ""
+        ),
     )
 
 
@@ -468,11 +807,14 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
     ).lower()
     best, best_hits = None, []
     for rule in rules:
-        hits = [kw for kw in rule.get("keywords", []) if kw.lower() in text]
+        hits = [
+            kw for kw in rule.get("keywords", []) if matches_term(text, kw)
+        ]
         if len(hits) > len(best_hits):
             best, best_hits = rule, hits
     if best and best_hits:
         record.policy = best["policy"]
+        record.target_document = best.get("target_document", "")
         record.section = best["section"]
         record.paragraph = best.get("paragraph", "Section-wide")
         record.impact_area = best.get("impact_area", "Implementation")
@@ -486,7 +828,7 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
         status_bonus = (
             20
             if any(
-                x in text
+                matches_term(text, x)
                 for x in (
                     "enacted",
                     "effective",
@@ -497,7 +839,10 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
             )
             else (
                 10
-                if any(x in text for x in ("passed", "adopted", "approved"))
+                if any(
+                    matches_term(text, x)
+                    for x in ("passed", "adopted", "approved")
+                )
                 else 0
             )
         )
@@ -505,7 +850,7 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
         rights_bonus = (
             10
             if any(
-                x in text
+                matches_term(text, x)
                 for x in (
                     "civil rights",
                     "discrimination",
@@ -543,7 +888,8 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
             "Add a conforming safeguard responsive to this authority.",
         )
         record.proposed_redline = (
-            f"[PROPOSED—HUMAN REVIEW REQUIRED] {record.policy}, "
+            "[PROPOSED—HUMAN REVIEW REQUIRED] "
+            f"{record.target_document}: {record.policy}, "
             f"{record.section}, {record.paragraph}: {action} "
             f"Source: {record.canonical_url}"
         )
@@ -555,8 +901,29 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
 def read_tracker() -> list[dict[str, str]]:
     if not TRACKER.exists():
         return []
-    with TRACKER.open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
+    with TRACKER.open(newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        headers = reader.fieldnames or []
+        required = set(FIELDS) - {
+            "source_updated_at",
+            "target_document",
+            "opinion_analysis",
+        }
+        if not required.issubset(headers):
+            raise ValueError("Tracker missing required columns")
+        if len(headers) != len(set(headers)):
+            raise ValueError("Tracker contains duplicate column headers")
+        rows = list(reader)
+        if any(
+            None in row
+            or not row.get("event_id")
+            or any(value is None for value in row.values())
+            for row in rows
+        ):
+            raise ValueError(
+                "Tracker contains malformed rows or empty event IDs"
+            )
+        return rows
 
 
 def write_csv(
@@ -587,10 +954,14 @@ def write_csv(
 
 
 def upsert(
-    existing: list[dict[str, str]], incoming: list[Record]
+    existing: list[dict[str, str]],
+    incoming: list[Record],
+    errors: list[str] | None = None,
 ) -> tuple[list[dict[str, str]], int]:
     by_id = {
-        row.get("event_id", ""): row for row in existing if row.get("event_id")
+        row.get("event_id", ""): sanitize_row(row)
+        for row in existing
+        if row.get("event_id")
     }
     by_url = {
         url: key
@@ -604,7 +975,10 @@ def upsert(
     }
     added = 0
     for record in incoming:
-        row = {key: str(value) for key, value in asdict(record).items()}
+        row = sanitize_row(
+            {key: str(value) for key, value in asdict(record).items()}
+        )
+        record = Record(**{key: row[key] for key in FIELDS})
         key = (
             record.event_id
             if record.event_id in by_id
@@ -618,6 +992,21 @@ def upsert(
         else:
             previous = by_id[key]
             if previous.get("content_hash") != record.content_hash:
+                old_version = parse_timestamp(
+                    previous.get("source_updated_at")
+                )
+                new_version = parse_timestamp(record.source_updated_at)
+                if (
+                    not old_version
+                    or not new_version
+                    or new_version <= old_version
+                ):
+                    if errors is not None:
+                        errors.append(
+                            f"Event {key}: conflicting evidence needs a newer "
+                            "source_updated_at; retained stored evidence"
+                        )
+                    continue
                 # Keep the ledger identity; revisions need fresh review.
                 row["event_id"] = key
                 by_id[key] = row
@@ -625,13 +1014,24 @@ def upsert(
                 if by_hash.get(old_hash) == key:
                     by_hash.pop(old_hash)
             else:
-                if record.date_published:
+                old_version = parse_timestamp(
+                    previous.get("source_updated_at")
+                )
+                new_version = parse_timestamp(record.source_updated_at)
+                if record.date_published and (
+                    not old_version or new_version >= old_version
+                ):
                     previous["date_published"] = record.date_published
+                if new_version and (
+                    not old_version or new_version > old_version
+                ):
+                    previous["source_updated_at"] = new_version
                 if (
                     record.primary_source == "true"
                     and previous.get("primary_source") != "true"
                 ):
                     # Prefer official provenance for unchanged evidence.
+                    was_critical = previous.get("importance") == "Critical"
                     for field in (
                         "source_name",
                         "source_type",
@@ -641,11 +1041,12 @@ def upsert(
                         "importance_score",
                     ):
                         previous[field] = row[field]
-                    if (
-                        record.importance == "Critical"
-                        and previous.get("review_status") != "Accepted"
+                    if record.importance == "Critical" and (
+                        not was_critical or not critical_resolved(previous)
                     ):
                         previous["review_status"] = "Needs Counsel Review"
+                        previous["reviewer"] = ""
+                        previous["disposition_notes"] = ""
         if record.canonical_url:
             by_url[record.canonical_url] = key
         if record.content_hash:
@@ -791,7 +1192,7 @@ def build_outputs(
         "section_mapping_rate": round(mapped_rate, 3),
         "redline_coverage_rate": round(redline_rate, 3),
         "unresolved_critical": len(unresolved),
-        "connector_errors": errors,
+        "connector_errors": [sanitized_text(error) for error in errors],
         "checks": {
             "all_urls_present": all(
                 valid_source_url(r.get("canonical_url", "")) for r in rows
@@ -805,6 +1206,15 @@ def build_outputs(
             "all_daily_records_mapped": all(
                 r.get("section") and r.get("section") != "Needs mapping"
                 for r in daily
+            ),
+            "all_mapping_targets_valid": all(
+                valid_mapping_target(
+                    r.get("target_document", ""),
+                    r.get("section", ""),
+                    r.get("paragraph", ""),
+                )
+                for r in rows
+                if r.get("section") != "Needs mapping"
             ),
             "all_daily_records_have_redlines": all(
                 r.get("proposed_redline") for r in daily
@@ -915,8 +1325,55 @@ def box_upload(paths: list[Path]) -> list[str]:
                         )
             response.raise_for_status()
         except Exception as exc:
-            errors.append(f"Box upload {path.name}: {exc}")
+            errors.append(f"Box upload {path.name}: {type(exc).__name__}")
     return errors
+
+
+def mark_run_complete(today: str, recovered: bool = False) -> None:
+    dated = POLICY_RESEARCH / today.replace("-", "")
+    (dated / "RUN_COMPLETE.json").write_text(
+        json.dumps(
+            {
+                "date": today,
+                "recovered_from_ledger": recovered,
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+
+def recover_missing_outputs(rows: list[dict[str, str]], today: str) -> None:
+    required = [
+        "DAILY_BRIEF.md",
+        "PROPOSED_REDLINES.md",
+        "SOURCE_PACKET.json",
+        "QA_REPORT.json",
+        "CRITICAL_ALERT.md",
+        "RUN_COMPLETE.json",
+    ]
+    for day in sorted({r.get("date_ingested", "") for r in rows}):
+        try:
+            day = date.fromisoformat(day).isoformat()
+        except ValueError:
+            continue
+        if day == today:
+            continue
+        dated = POLICY_RESEARCH / day.replace("-", "")
+        if all((dated / name).is_file() for name in required):
+            continue
+        historical = [r for r in rows if r.get("date_ingested", "") <= day]
+        build_outputs(
+            historical,
+            day,
+            [
+                "Recovered from ledger; "
+                "original connector diagnostics unavailable"
+            ],
+            0,
+        )
+        mark_run_complete(day, recovered=True)
 
 
 def main() -> int:
@@ -936,7 +1393,7 @@ def main() -> int:
         raw.extend(box_items)
         errors.extend(box_errors)
 
-    rules = load_json(POLICY_MAP, {}).get("rules", [])
+    rules = validated_rules(load_json(POLICY_MAP, {}).get("rules", []), errors)
     records = []
     for item in raw:
         if not in_scope(item):
@@ -950,7 +1407,17 @@ def main() -> int:
             continue
         records.append(score_and_map(record, rules))
 
-    rows, added = upsert(read_tracker(), records)
+    try:
+        existing = [sanitize_row(row) for row in read_tracker()]
+    except (OSError, ValueError, csv.Error) as exc:
+        errors.append(
+            f"Tracker unavailable: {type(exc).__name__}; ledger preserved"
+        )
+        qa = build_outputs([], args.date, errors, 0)
+        print(json.dumps(qa, indent=2))
+        return 1
+    recover_missing_outputs(existing, args.date)
+    rows, added = upsert(existing, records, errors)
     write_csv(TRACKER, rows, FIELDS)
     write_indexes(rows)
     qa = build_outputs(rows, args.date, errors, added)
@@ -975,6 +1442,7 @@ def main() -> int:
             qa["connector_errors"].extend(report_errors)
             qa["passed"] = False
             write_qa_exports(rows, args.date, qa)
+    mark_run_complete(args.date)
     print(json.dumps(qa, indent=2))
     return 1 if args.strict and not qa["passed"] else 0
 
