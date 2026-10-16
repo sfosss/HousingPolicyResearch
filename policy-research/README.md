@@ -7,12 +7,12 @@ This directory is the dated, review-ready output of the NYC Public Equity Transf
 The loop runs on weekdays and performs seven controlled stages:
 
 1. **Collect** official RSS items plus normalized Web, Midpage and Box packets.
-2. **Constrain** results to NYC housing, household stability, civil-rights and implementation relevance.
-3. **Normalize and deduplicate** with canonical URLs, content hashes and stable event IDs.
-4. **Map and score** each development against PETF/TCAP sections and the Critical–Considerations scale.
-5. **Draft proposed redlines** in a separate file; canonical legislation is never edited automatically.
-6. **Validate** URLs, jurisdiction, mapping, redline coverage, connector health and counsel-review gates.
-7. **Publish** the master CSV, dated brief, source packet, source index and ChatGPT export; optionally mirror outputs to Box.
+1. **Constrain** results to NYC housing, household stability, civil-rights and implementation relevance.
+1. **Normalize and deduplicate** with canonical URLs, content hashes and stable event IDs.
+1. **Map and score** each development against PETF/TCAP sections and the Critical–Considerations scale.
+1. **Draft proposed redlines** in a separate file; canonical legislation is never edited automatically.
+1. **Validate** URLs, jurisdiction, mapping, redline coverage, connector health and counsel-review gates.
+1. **Publish** the master CSV, dated brief, source packet, source index and ChatGPT export; optionally mirror outputs to Box.
 
 ## Human review gate
 
@@ -28,7 +28,11 @@ Every generated redline begins with `PROPOSED—HUMAN REVIEW REQUIRED`. Critical
 - `QA_REPORT.json`
 - `CRITICAL_ALERT.md`
 
-The authoritative event ledger is `datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv`. Source-of-truth indexes are `indexes/SOURCE_INDEX.csv` and `.md`. Machine-readable handoff is written to `exports-for-chatgpt/`.
+The authoritative event ledger is `datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv`. Generated policy indexes are `indexes/POLICY_SOURCE_INDEX.csv` and `.md`; the curated `SOURCE_INDEX` files are preserved. Machine-readable handoff is written to `exports-for-chatgpt/`.
+
+Incoming records match persisted event IDs, canonical URLs or content hashes. A revision keeps the original event ID and resets the review disposition; unchanged evidence preserves its review. Missing publication dates stay empty rather than changing with the intake date.
+
+QA and Critical alerts include unresolved Critical records from the entire ledger, even on days with no new intake. A Critical record is resolved only when marked `Accepted` with a named reviewer. Unresolved Critical items, invalid URLs, missing daily mappings/redlines and connector errors fail QA. Strict mode returns a nonzero exit status after writing diagnostic artifacts.
 
 ## Importance scale
 
@@ -56,6 +60,8 @@ Place JSON files in `intake/connectors/web`, `midpage`, or `box`. A packet is ei
 }
 ```
 
+Source URLs must be absolute HTTP(S) links with a valid host and no embedded user credentials. Use JSON booleans for `primary_source` (the strings `"true"` and `"false"` are also accepted). Malformed packets and rejected items appear in `connector_errors`; valid sibling items and other sources still run.
+
 For **Midpage**, include only opinions that have passed `analyzeOpinion`; put the exact supported proposition and scope limit in `summary`, and use the opinion or deep-link URL. Midpage results are legal research inputs, not automatic holdings applicable to PETF/TCAP.
 
 For **Web/Perplexity Premium**, prioritize statutes, budgets, audits, agency guidance and official releases. Secondary reporting may identify an issue but should not be the sole basis for a Critical redline.
@@ -70,14 +76,17 @@ Set repository secrets:
 
 Box is a collaboration mirror. GitHub remains authoritative for sources/facts and version history. Use a Box app or short-lived token with access limited to the two configured folders.
 
+Recurring output names create new Box file versions after a name conflict. Content uploads finish before the final QA report is mirrored. Local QA and both ChatGPT exports include upload failures. If the final QA upload itself fails, the local diagnostics remain authoritative; Box may retain an older report.
+
 ## Required GitHub setup
 
 1. Add repository label `policy-review` (optional; the workflow falls back if missing).
-2. Add Box secrets if Box synchronization is required.
-3. Configure `WEB_RESEARCH_JSON` or pass `web_packet` in manual dispatch.
-4. Configure `MIDPAGE_RESEARCH_JSON` or pass `midpage_packet` after legal research.
-5. Protect the default branch and require review for canonical legislation.
-6. Run the workflow manually once with `strict=false`; inspect QA before enabling strict mode.
+1. Add Box secrets if Box synchronization is required.
+1. Configure `WEB_RESEARCH_JSON` or pass `web_packet` in manual dispatch.
+1. Configure `MIDPAGE_RESEARCH_JSON` or pass `midpage_packet` after legal research.
+1. Protect the default branch and require review for canonical legislation.
+1. Run the workflow manually once with `strict=false`; inspect QA before enabling strict mode. Set repository variable `POLICY_LOOP_STRICT=true` to enforce strict weekday runs; unset or `false` keeps the initial diagnostic mode. Manual dispatch uses its own `strict` input independently.
+1. Strict failures still attempt Critical issue creation after the research step. Generated commits run only after successful QA execution under the selected mode. Publishing currently uses a direct push, so protected branches need an approved automation path or a future PR-based publisher.
 
 ## Self-assessment
 

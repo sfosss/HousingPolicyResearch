@@ -36,23 +36,26 @@ jobs:
       BOX_ACCESS_TOKEN: ${{ secrets.BOX_ACCESS_TOKEN }}
       BOX_INBOX_FOLDER_ID: ${{ secrets.BOX_INBOX_FOLDER_ID }}
       BOX_OUTPUT_FOLDER_ID: ${{ secrets.BOX_OUTPUT_FOLDER_ID }}
+      STRICT_MODE: ${{ (github.event_name == 'workflow_dispatch' && inputs.strict && 'true') || (github.event_name == 'schedule' && vars.POLICY_LOOP_STRICT) || 'false' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - name: Install runtime dependencies
-        run: pip install requests pytest
+        run: pip install requests pytest pyyaml
       - name: Run tests
         run: pytest -q tests/test_adaptive_policy_loop.py
       - name: Run adaptive intake, mapping, redlines, QA and exports
+        id: research
         run: |
           FLAGS=""
           if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_INBOX_FOLDER_ID" ]; then FLAGS="$FLAGS --box-pull"; fi
           if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_OUTPUT_FOLDER_ID" ]; then FLAGS="$FLAGS --box-push"; fi
-          if [ "${{ inputs.strict }}" = "true" ]; then FLAGS="$FLAGS --strict"; fi
+          if [ "$STRICT_MODE" = "true" ]; then FLAGS="$FLAGS --strict"; fi
           python scripts/adaptive_policy_loop.py $FLAGS
       - name: Open a review issue for Critical items
+        if: ${{ !cancelled() && (steps.research.outcome == 'success' || steps.research.outcome == 'failure') }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -68,7 +71,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv indexes/SOURCE_INDEX.csv indexes/SOURCE_INDEX.md policy-research exports-for-chatgpt
+          git add datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv indexes/POLICY_SOURCE_INDEX.csv indexes/POLICY_SOURCE_INDEX.md policy-research exports-for-chatgpt
           if ! git diff --cached --quiet; then
             git commit -m "chore(policy): daily adaptive research update $(date -u +%F)"
             git push
