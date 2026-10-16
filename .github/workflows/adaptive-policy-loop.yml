@@ -1,0 +1,120 @@
+name: Adaptive Housing Policy Loop
+
+on:
+  workflow_dispatch:
+    inputs:
+      web_packet:
+        description: "Optional normalized JSON from Perplexity Web research"
+        required: false
+        type: string
+      midpage_packet:
+        description: "Optional normalized JSON from Midpage legal research (analyzed opinions only)"
+        required: false
+        type: string
+      strict:
+        description: "Fail on connector or QA errors"
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: "15 12 * * 1-5" # 8:15 a.m. ET during daylight saving time
+
+concurrency:
+  group: adaptive-policy-loop
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  research-update:
+    runs-on: ubuntu-latest
+    env:
+      WEB_RESEARCH_JSON: ${{ inputs.web_packet || secrets.WEB_RESEARCH_JSON }}
+      MIDPAGE_RESEARCH_JSON: ${{ inputs.midpage_packet || secrets.MIDPAGE_RESEARCH_JSON }}
+      BOX_ACCESS_TOKEN: ${{ secrets.BOX_ACCESS_TOKEN }}
+      BOX_INBOX_FOLDER_ID: ${{ secrets.BOX_INBOX_FOLDER_ID }}
+      BOX_OUTPUT_FOLDER_ID: ${{ secrets.BOX_OUTPUT_FOLDER_ID }}
+      OUTPUT_BRANCH: automation/adaptive-policy-loop/${{ github.ref_name }}
+      STRICT_MODE: ${{ (github.event_name == 'workflow_dispatch' && inputs.strict && 'true') || (github.event_name == 'schedule' && vars.POLICY_LOOP_STRICT) || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install runtime dependencies
+        run: pip install requests pytest pyyaml
+      - name: Run tests
+        run: pytest -q tests/test_adaptive_policy_loop.py
+      - name: Restore pending reviewed research artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          OPEN=$(gh pr list --state open --head "$OUTPUT_BRANCH" --base "$GITHUB_REF_NAME" --json number --jq 'length')
+          if [ "$OPEN" != "0" ]; then
+            git fetch origin "$OUTPUT_BRANCH"
+            git restore --source=FETCH_HEAD --worktree -- datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv indexes/POLICY_SOURCE_INDEX.csv indexes/POLICY_SOURCE_INDEX.md ':(glob)policy-research/[0-9]*/**' exports-for-chatgpt
+          fi
+      - name: Run adaptive intake, mapping, redlines, QA and exports
+        id: research
+        run: |
+          FLAGS=""
+          if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_INBOX_FOLDER_ID" ]; then FLAGS="$FLAGS --box-pull"; fi
+          if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_OUTPUT_FOLDER_ID" ]; then FLAGS="$FLAGS --box-push"; fi
+          if [ "$STRICT_MODE" = "true" ]; then FLAGS="$FLAGS --strict"; fi
+          TODAY=$(date -u +%Y%m%d)
+          rm -f "policy-research/$TODAY/RUN_COMPLETE.json"
+          set +e
+          python scripts/adaptive_policy_loop.py $FLAGS
+          STATUS=$?
+          set -e
+          if [ -f "policy-research/$TODAY/RUN_COMPLETE.json" ]; then
+            echo "artifacts_ready=true" >> "$GITHUB_OUTPUT"
+          fi
+          exit "$STATUS"
+      - name: Open a review issue for Critical items
+        if: ${{ !cancelled() && (steps.research.outcome == 'success' || steps.research.outcome == 'failure') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TODAY=$(date -u +%Y%m%d)
+          ALERT="policy-research/$TODAY/CRITICAL_ALERT.md"
+          TITLE="Critical PETF/TCAP policy review"
+          if [ -f "$ALERT" ] && grep -q '^-' "$ALERT"; then
+            EXISTING=$(gh issue list --state open --search "\"$TITLE\" in:title" --json number,title --jq '.[] | select(.title == "Critical PETF/TCAP policy review") | .number' | head -1)
+            if [ -n "$EXISTING" ]; then
+              gh issue edit "$EXISTING" --body-file "$ALERT"
+            else
+              gh issue create --title "$TITLE" --body-file "$ALERT" --label "policy-review" || gh issue create --title "$TITLE" --body-file "$ALERT"
+            fi
+          fi
+      - name: Preserve research and diagnostic artifacts
+        if: ${{ !cancelled() && (steps.research.outcome == 'success' || steps.research.outcome == 'failure') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-policy-research-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 14
+          path: |
+            datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv
+            policy-research/
+            indexes/POLICY_SOURCE_INDEX.*
+            exports-for-chatgpt/
+      - name: Propose generated research artifacts
+        if: ${{ !cancelled() && steps.research.outputs.artifacts_ready == 'true' }}
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: ${{ env.OUTPUT_BRANCH }}
+          base: ${{ github.ref_name }}
+          title: "Update adaptive policy research ledger and diagnostics"
+          commit-message: "chore(policy): persist research ledger and diagnostic artifacts"
+          body: |
+            Persist completed research artifacts, including records awaiting counsel review and failed QA diagnostics.
+            Review the dated QA_REPORT.json and resolve Critical dispositions in the ledger before accepting proposed legislative changes.
+          add-paths: |
+            datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv
+            indexes/POLICY_SOURCE_INDEX.csv
+            indexes/POLICY_SOURCE_INDEX.md
+            policy-research/[0-9]*/
+            exports-for-chatgpt/
