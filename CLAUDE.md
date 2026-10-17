@@ -5,8 +5,9 @@ datasets, and Python tooling in `src/` and `scripts/`.
 
 ## Commands
 
-- Tests: `PYTHONPATH=src python3 -m pytest -q tests`
-- Format / lint: `black --check .` and `flake8` (also run by pre-commit, with mdformat and detect-secrets)
+- Tests: `python3 -m pytest -q tests` (pytest adds `src` via `pyproject.toml`)
+- Format / lint: `black --check .` and `flake8` (also run by pre-commit, with mdformat)
+- Secret scan (manual stage; not run by ordinary pre-commit): `pre-commit run detect-secrets --hook-stage manual --all-files`
 - Dependencies: `requirements.txt` (mirrored in `pyproject.toml`; keep the two in sync)
 
 ## Rules
