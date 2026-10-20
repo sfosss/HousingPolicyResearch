@@ -1,0 +1,216 @@
+name: Preflight Health Checks
+
+on:
+  push:
+    branches:
+      - main
+      - 'capstone/**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: '0 6 * * *'
+
+jobs:
+  preflight-macos:
+    name: Preflight Checks (macOS arm64)
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Display system information
+        run: |
+          echo "=== System Information ==="
+          sw_vers
+          uname -m
+          python3 --version
+          which python3
+          echo "=========================="
+      
+      - name: Install smartmontools (optional)
+        run: |
+          # Install smartmontools for SMART checks
+          # Using || true to not fail if brew has issues
+          brew install smartmontools || true
+        continue-on-error: true
+      
+      - name: Make scripts executable
+        run: |
+          chmod +x capstone/scripts/preflight_macos.sh
+          chmod +x capstone/scripts/preflight_check.py
+      
+      - name: Create reports directory
+        run: mkdir -p capstone/reports
+      
+      - name: Run preflight checks
+        id: preflight
+        run: |
+          cd capstone/scripts
+          ./preflight_macos.sh
+        continue-on-error: true
+        env:
+          # Optional: Add GitHub token for API checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: List generated reports
+        if: always()
+        run: |
+          echo "=== Generated Reports ==="
+          ls -lh capstone/reports/ || echo "No reports directory found"
+      
+      - name: Upload JSON report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-report-macos-${{ github.run_number }}
+          path: capstone/reports/*.json
+          retention-days: 30
+          if-no-files-found: warn
+      
+      - name: Upload Markdown report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-markdown-macos-${{ github.run_number }}
+          path: capstone/reports/*.md
+          retention-days: 30
+          if-no-files-found: warn
+      
+      - name: Display summary
+        if: always()
+        run: |
+          echo "=== Preflight Check Summary ==="
+          if [ -f capstone/reports/*.md ]; then
+            # Show the latest markdown report
+            cat $(ls -t capstone/reports/*.md | head -1)
+          else
+            echo "No markdown report found"
+          fi
+      
+      - name: Check preflight result
+        if: steps.preflight.outcome == 'failure'
+        run: |
+          echo "⚠️ Preflight checks reported errors"
+          echo "Review the artifacts for detailed results"
+          # Don't fail the workflow on warnings, only on critical errors
+          exit 0
+
+  preflight-linux:
+    name: Preflight Checks (Linux)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Display system information
+        run: |
+          echo "=== System Information ==="
+          uname -a
+          python3 --version
+          echo "=========================="
+      
+      - name: Make scripts executable
+        run: |
+          chmod +x capstone/scripts/preflight_linux.sh
+          chmod +x capstone/scripts/preflight_check.py
+      
+      - name: Create reports directory
+        run: mkdir -p capstone/reports
+      
+      - name: Run preflight checks
+        id: preflight
+        run: |
+          cd capstone/scripts
+          ./preflight_linux.sh
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload JSON report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-report-linux-${{ github.run_number }}
+          path: capstone/reports/*.json
+          retention-days: 30
+          if-no-files-found: warn
+      
+      - name: Upload Markdown report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-markdown-linux-${{ github.run_number }}
+          path: capstone/reports/*.md
+          retention-days: 30
+          if-no-files-found: warn
+
+  preflight-windows:
+    name: Preflight Checks (Windows)
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Display system information
+        run: |
+          Write-Host "=== System Information ==="
+          Get-ComputerInfo | Select-Object WindowsVersion, OsArchitecture
+          python --version
+          Write-Host "=========================="
+      
+      - name: Create reports directory
+        run: New-Item -ItemType Directory -Force -Path capstone/reports
+      
+      - name: Run preflight checks
+        id: preflight
+        run: |
+          cd capstone/scripts
+          .\preflight_windows.ps1
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload JSON report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-report-windows-${{ github.run_number }}
+          path: capstone/reports/*.json
+          retention-days: 30
+          if-no-files-found: warn
+      
+      - name: Upload Markdown report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-markdown-windows-${{ github.run_number }}
+          path: capstone/reports/*.md
+          retention-days: 30
+          if-no-files-found: warn

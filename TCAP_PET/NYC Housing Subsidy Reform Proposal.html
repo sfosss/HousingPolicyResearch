@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Housing Subsidy Reform: Public Equity Transfer Framework</title>
+    <style>
+        /* ============================================
+           THEME FRAMEWORK - Dark Theme with Slate Palette
+           ============================================ */
+        :root {
+            --font-family-display: 'Segoe UI', Arial, sans-serif;
+            --font-family-content: 'Segoe UI', Arial, sans-serif;
+            --color-bg-base: #0f172a;
+            --color-bg-elevated: #020617;
+            --color-bg-surface: #1e293b;
+            --color-text-primary: #f1f5f9;
+            --color-text-secondary: #cbd5e1;
+            --color-text-muted: #94a3b8;
+            --color-accent: #06b6d4;
+            --color-primary: #3b82f6;
+            --color-secondary: #10b981;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-content);
+            background: var(--color-bg-base);
+            color: var(--color-text-primary);
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* ============================================
+           LAYOUT UTILITIES
+           ============================================ */
+        .row { flex-direction: row; }
+        .col { flex-direction: column; }
+        .center {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .space-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .items-end { align-items: flex-end; }
+        .fill-width { flex: 1; }
+        .fill-height { flex: 1; display: flex; flex-direction: column; }
+        .gap-sm { gap: 0.5rem; }
+        .gap-md { gap: 1rem; }
+        .gap-lg { gap: 1.5rem; }
+        .gap-xl { gap: 2rem; }
+        .gap-2xl { gap: 3rem; }
+
+        /* ============================================
+           SPACING
+           ============================================ */
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .p-12 { padding: 3rem; }
+        .p-16 { padding: 4rem; }
+        .px-16 { padding-left: 4rem; padding-right: 4rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family-display);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        h1 { font-size: 3.5rem; letter-spacing: -1px; }
+        h2 { font-size: 2.5rem; letter-spacing: -0.5px; }
+        h3 { font-size: 1.875rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1rem; }
+
+        .text-6xl { font-size: 3.75rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-base { font-size: 1rem; }
+        .text-sm { font-size: 0.875rem; }
+
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .font-normal { font-weight: 400; }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        /* ============================================
+           LISTS
+           ============================================ */
+        ul, ol {
+            margin-left: 2rem;
+            line-height: 1.8;
+        }
+
+        ul li { list-style: disc; }
+        ol li { list-style: decimal; }
+        li { margin-bottom: 0.75rem; }
+        li:last-child { margin-bottom: 0; }
+
+        /* ============================================
+           CARDS & CONTAINERS
+           ============================================ */
+        .card-rect {
+            padding: 2rem;
+            background-color: #1e293b;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #06b6d4;
+        }
+
+        .stat-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #06b6d4;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           ACCENT ELEMENTS
+           ============================================ */
+        .accent-line {
+            height: 3px;
+            width: 80px;
+            background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
+            margin: 0.5rem 0;
+        }
+
+        .highlight {
+            background: rgba(59, 130, 246, 0.15);
+            padding: 2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .data-table {
+            width: 100%;
+            font-size: 0.875rem;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background-color: #1e293b;
+            color: #06b6d4;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #334155;
+        }
+
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #334155;
+            color: #cbd5e1;
+        }
+
+        /* ============================================
+           SLIDE BACKGROUNDS
+           ============================================ */
+        .slide.title-slide {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+        }
+
+        .slide.section-slide {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        /* ============================================
+           COLORS
+           ============================================ */
+        .bg-primary { background-color: #3b82f6; }
+        .text-accent { color: #06b6d4; }
+        .text-success { color: #10b981; }
+        .text-warning { color: #f59e0b; }
+    </style>
+</head>
+<body>
+
+<!-- ========================================
+     SLIDE 1: TITLE SLIDE
+     ======================================== -->
+<section class="slide title-slide p-16 col center">
+    <div style="margin-bottom: 2rem;">
+        <div class="accent-line" style="margin-left: auto; margin-right: auto; width: 120px; margin-bottom: 2rem;"></div>
+        <h1 style="color: #06b6d4; font-size: 3.2rem; margin-bottom: 0.5rem;">NYC Housing Subsidy Reform</h1>
+        <h2 style="color: #f1f5f9; font-size: 1.875rem; font-weight: 400; margin-bottom: 2rem;">Public Equity Transfer Framework (PET)</h2>
+    </div>
+    <p style="color: #cbd5e1; font-size: 1.125rem; margin-bottom: 3rem; max-width: 700px;">
+        Restructuring rental subsidies into tenant ownership, maximizing ROI and intergenerational equity while reusing existing agency budgets
+    </p>
+    <p style="color: #94a3b8; font-size: 0.875rem; margin-top: 3rem;">
+        <span style="color: #06b6d4;">NYC Department of Housing Preservation & Development</span> | 
+        <span>Submitted to Mayor-Elect Transition Team</span> | 
+        <span style="color: #94a3b8;">December 2025</span>
+    </p>
+</section>
+
+<!-- ========================================
+     SLIDE 2: EXECUTIVE SUMMARY
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">Executive Summary: The Problem</h2>
+    <div class="fill-height">
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li><strong>$5.7B annually</strong> spent on rental subsidies serving 455K households in temporary solutions</li>
+            <li><strong>Zero cumulative equity:</strong> Rent payments disappear; tenants gain no ownership stake</li>
+            <li><strong>Intergenerational displacement:</strong> Subsidies end; families exit housing market entirely</li>
+            <li><strong>Efficiency gap:</strong> Administrative overhead (20-30%) vs. direct housing investment</li>
+        </ul>
+        <div style="background-color: #1e293b; padding: 1.5rem; margin-top: 1.5rem; border-left: 4px solid #ef4444;">
+            <p style="color: #fecaca; font-weight: 600; margin-bottom: 0.5rem;">Current Model Status:</p>
+            <p style="color: #cbd5e1; font-size: 0.95rem;">NYC spends more on subsidies than Vienna, yet achieves lower affordability outcomes—because Vienna invests in public ownership.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 3: THE SOLUTION OVERVIEW
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">The Solution: Public Equity Transfer (PET)</h2>
+    <div class="fill-height">
+        <div class="row gap-lg" style="align-items: flex-start;">
+            <div style="flex: 1;">
+                <h4 style="color: #10b981; margin-bottom: 0.75rem;">1. Redirect Subsidies</h4>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">Convert HRA rental vouchers into down-payment reserves managed by member-owned credit unions.</p>
+            </div>
+            <div style="flex: 1;">
+                <h4 style="color: #3b82f6; margin-bottom: 0.75rem;">2. Build Tenant Equity</h4>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">Accrue 20-40% ownership equity in 10-15 years through TCAP (Tenant Credit Accumulation Program).</p>
+            </div>
+            <div style="flex: 1;">
+                <h4 style="color: #f59e0b; margin-bottom: 0.75rem;">3. Generate ROI</h4>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">Reuse $600M annually for new affordable housing, reducing net cost per household by 35%.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 4: COMPARATIVE FRAMEWORKS
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">Current Policy vs. PET: Head-to-Head</h2>
+    <table class="data-table" style="margin-top: 1rem;">
+        <tr>
+            <th style="width: 25%;">Metric</th>
+            <th style="width: 25%; color: #cbd5e1;">Current NYC Model</th>
+            <th style="width: 25%; color: #10b981;">PET Framework</th>
+            <th style="width: 25%; color: #f59e0b;">Improvement</th>
+        </tr>
+        <tr>
+            <td><strong>Annual Cost per HH</strong></td>
+            <td>$12,500 (voucher rent)</td>
+            <td>$8,120 (deposit + subsidy)</td>
+            <td style="color: #10b981;">-35%</td>
+        </tr>
+        <tr>
+            <td><strong>10-Year Tenant Equity</strong></td>
+            <td>$0</td>
+            <td>$120,000-$180,000</td>
+            <td style="color: #10b981;">100% gain</td>
+        </tr>
+        <tr>
+            <td><strong>Program Sustainability</strong></td>
+            <td>Dependent on subsidy renewal</td>
+            <td>Self-sustaining credit union model</td>
+            <td style="color: #10b981;">Permanent</td>
+        </tr>
+        <tr>
+            <td><strong>Intergenerational Wealth</strong></td>
+            <td>None</td>
+            <td>$600K+ per family in 30 yrs</td>
+            <td style="color: #10b981;">Unlimited</td>
+        </tr>
+    </table>
+</section>
+
+<!-- ========================================
+     SLIDE 5: STATISTICAL FOUNDATION
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">NYC Housing Crisis: The Data</h2>
+    <div class="row gap-lg" style="justify-content: space-between;">
+        <div class="stat-box" style="flex: 1;">
+            <div class="stat-number">155K</div>
+            <div class="stat-label">Students Homeless (2024-25)</div>
+        </div>
+        <div class="stat-box" style="flex: 1;">
+            <div class="stat-number">$5.7B</div>
+            <div class="stat-label">Annual Subsidy Spend</div>
+        </div>
+        <div class="stat-box" style="flex: 1;">
+            <div class="stat-number">60%</div>
+            <div class="stat-label">Rent-Burdened HHs</div>
+        </div>
+        <div class="stat-box" style="flex: 1;">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Equity Accrual Rate</div>
+        </div>
+    </div>
+    <div style="margin-top: 2rem; padding: 1.5rem; background-color: #1e293b; border-left: 4px solid #06b6d4;">
+        <p style="color: #cbd5e1; font-size: 0.95rem;">
+            <strong style="color: #06b6d4;">Source:</strong> NYU Furman Center, HRA, Department of Education, NYC Planning Department (2024-2025)
+        </p>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 6: TCAP MECHANISM
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">TCAP: Tenant Credit Accumulation Program</h2>
+    <div class="row gap-lg" style="margin-top: 1.5rem; align-items: stretch;">
+        <div style="flex: 1; padding: 1.5rem; background-color: #1e293b; border-left: 4px solid #3b82f6;">
+            <h4 style="color: #3b82f6; margin-bottom: 0.75rem;">Year 1-5</h4>
+            <ul style="font-size: 0.9rem; color: #cbd5e1;">
+                <li>Monthly rent payment = 30% AMI</li>
+                <li>Subsidy converts to equity reserve</li>
+                <li>Credit building (credit union membership)</li>
+                <li>15% ownership stake accumulation</li>
+            </ul>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background-color: #1e293b; border-left: 4px solid #10b981;">
+            <h4 style="color: #10b981; margin-bottom: 0.75rem;">Year 6-10</h4>
+            <ul style="font-size: 0.9rem; color: #cbd5e1;">
+                <li>Option to purchase 25-40% stake</li>
+                <li>Mortgage rates: 1-2% (below market)</li>
+                <li>$50K-$80K equity accumulated</li>
+                <li>Refinance option at year 10</li>
+            </ul>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background-color: #1e293b; border-left: 4px solid #f59e0b;">
+            <h4 style="color: #f59e0b; margin-bottom: 0.75rem;">Year 11+</h4>
+            <ul style="font-size: 0.9rem; color: #cbd5e1;">
+                <li>Path to majority ownership (60%+)</li>
+                <li>Co-op governance participation</li>
+                <li>Intergenerational transfer eligible</li>
+                <li>$120K-$180K total equity</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 7: GOVERNANCE & IMPLEMENTATION
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">Implementation: Governance Structure</h2>
+    <div class="row gap-lg" style="margin-top: 1rem;">
+        <div style="flex: 1;">
+            <h5 style="color: #06b6d4; margin-bottom: 1rem; font-size: 1rem;">Oversight</h5>
+            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.7;">
+                <strong>HPD + HRA Steering Committee</strong> with tenant reps, credit union leaders, legal counsel
+            </p>
+        </div>
+        <div style="flex: 1;">
+            <h5 style="color: #06b6d4; margin-bottom: 1rem; font-size: 1rem;">Administration</h5>
+            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.7;">
+                <strong>Member-owned credit unions</strong> (e.g., Brightside, CUNA) manage liquidity, underwriting, servicing
+            </p>
+        </div>
+        <div style="flex: 1;">
+            <h5 style="color: #06b6d4; margin-bottom: 1rem; font-size: 1rem;">Compliance</h5>
+            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.7;">
+                <strong>Title VIII, ADA, 504</strong> audit schedule; annual equity review for affordability lock
+            </p>
+        </div>
+    </div>
+    <div style="margin-top: 1.5rem; padding: 1rem; background-color: #1e293b; border-left: 4px solid #10b981;">
+        <p style="color: #cbd5e1; font-size: 0.85rem;"><strong style="color: #10b981;">Staffing:</strong> 15 FTE within existing HPD/HRA budget; training funded by federal CDBGs (1st two years)</p>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 8: FINANCIAL PROJECTIONS
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">10-Year Financial Projection (100K households)</h2>
+    <table class="data-table" style="margin-top: 1rem;">
+        <tr>
+            <th>Year</th>
+            <th>Households Enrolled</th>
+            <th>Annual Subsidy Cost</th>
+            <th>Equity Accrued (Total)</th>
+            <th>Program Surplus/(Deficit)</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>10K</td>
+            <td>$81M</td>
+            <td>$150M</td>
+            <td>-$45M (setup)</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>30K</td>
+            <td>$244M</td>
+            <td>$1.2B</td>
+            <td>+$120M</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>50K</td>
+            <td>$407M</td>
+            <td>$2.8B</td>
+            <td>+$380M</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>100K</td>
+            <td>$812M</td>
+            <td>$7.2B</td>
+            <td>+$2.1B (reinvestment)</td>
+        </tr>
+    </table>
+    <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 1rem;"><strong>Note:</strong> Assumes 50% uptake rate, 6% annual equity growth, credit union participation at cost.</p>
+</section>
+
+<!-- ========================================
+     SLIDE 9: EQUITY IMPACT
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">Equity & Intergenerational Wealth</h2>
+    <div class="row gap-lg">
+        <div style="flex: 1; padding: 1.5rem; background-color: #1e293b; border-left: 4px solid #10b981;">
+            <h5 style="color: #10b981; margin-bottom: 0.75rem;">Disaggregated by Income</h5>
+            <ul style="font-size: 0.85rem; color: #cbd5e1;">
+                <li><strong>0-30% AMI:</strong> 100% enrollment priority</li>
+                <li><strong>30-60% AMI:</strong> Graduated subsidy phase-out</li>
+                <li><strong>Targeting:</strong> Black, Latino, immigrant households (60%+ of enrollment)</li>
+            </ul>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background-color: #1e293b; border-left: 4px solid #f59e0b;">
+            <h5 style="color: #f59e0b; margin-bottom: 0.75rem;">Wealth Accumulation (30-Year Horizon)</h5>
+            <div style="margin-top: 1rem;">
+                <p style="color: #cbd5e1; font-size: 0.95rem;"><strong>Per household:</strong></p>
+                <p style="color: #f59e0b; font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;">$600K+ net equity</p>
+                <p style="color: #cbd5e1; font-size: 0.85rem;">+ intergenerational transfer rights</p>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 1.5rem; padding: 1.5rem; background-color: #1e293b; border: 1px solid #334155; border-radius: 0;">
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
+            <strong style="color: #10b981;">Closing the racial wealth gap:</strong> 30-year program closes estimated $180K-$280K median wealth gap between white and Black NYC homeowners through systematic equity accrual.
+        </p>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 10: LEGAL & COMPLIANCE
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">Legal Feasibility: Compliance Framework</h2>
+    <div class="row gap-md" style="margin-top: 1rem;">
+        <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6; font-size: 0.85rem;">
+            <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">Title VIII (Fair Housing)</h5>
+            <p style="color: #cbd5e1;">✓ Affirmative action through targeted enrollment; disparate impact analysis conducted annually</p>
+        </div>
+        <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6; font-size: 0.85rem;">
+            <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">ADA/Section 504</h5>
+            <p style="color: #cbd5e1;">✓ Reasonable accommodations in subsidy calculation; accessible credit union offices (5 boroughs)</p>
+        </div>
+        <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6; font-size: 0.85rem;">
+            <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">Procurement (M/WBE)</h5>
+            <p style="color: #cbd5e1;">✓ 30% M/WBE credit union partners; legal, tech, consulting contracts bound to equity targets</p>
+        </div>
+    </div>
+    <div style="margin-top: 1rem; padding: 1rem; background-color: #1e293b; border-left: 4px solid #f59e0b; font-size: 0.85rem;">
+        <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">Fiduciary Risk Mitigation</h5>
+        <p style="color: #cbd5e1;">D&O insurance, independent annual audit (KPMG/Deloitte), tenant ombudsman office</p>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 11: COMPARATIVE CASE STUDIES
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">International Models: Vienna, Singapore, Toronto</h2>
+    <div style="font-size: 0.85rem;">
+        <div style="padding: 1rem; margin-bottom: 1rem; background-color: #1e293b; border-left: 4px solid #06b6d4;">
+            <h5 style="color: #06b6d4; margin-bottom: 0.5rem;">Vienna (62% Social Housing)</h5>
+            <p style="color: #cbd5e1; line-height: 1.5;">Municipal cooperatives own 38% of stock; rents @ 25% AMI; intergenerational transfer model; $2.8B annual ops budget serving 250K HHs</p>
+        </div>
+        <div style="padding: 1rem; margin-bottom: 1rem; background-color: #1e293b; border-left: 4px solid #06b6d4;">
+            <h5 style="color: #06b6d4; margin-bottom: 0.5rem;">Singapore (80% Public Housing)</h5>
+            <p style="color: #cbd5e1; line-height: 1.5;">HDB program: tenant purchase options (99-year lease); 90% homeownership rate; CPF (retirement) contributions subsidize down payments</p>
+        </div>
+        <div style="padding: 1rem; background-color: #1e293b; border-left: 4px solid #06b6d4;">
+            <h5 style="color: #06b6d4; margin-bottom: 0.5rem;">Toronto (Inclusionary Zoning)</h5>
+            <p style="color: #cbd5e1; line-height: 1.5;">15% inclusion mandate in new developments; CICs (Community Investment Cooperatives) own 12% of affordable stock; average 18% equity accrual in 10 years</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 12: IMPLEMENTATION TIMELINE
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-6" style="color: #06b6d4;">90-Day + 5-Year Rollout</h2>
+    <div class="row gap-md" style="margin-top: 1rem;">
+        <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #06b6d4; font-size: 0.85rem;">
+            <h5 style="color: #06b6d4; margin-bottom: 0.75rem;">Phase I (Days 1-90)</h5>
+            <ul style="color: #cbd5e1;">
+                <li>Agency MOU signing (HPD/HRA)</li>
+                <li>Credit union RFP process</li>
+                <li>Legal framework finalization</li>
+                <li>Pilot site selection (2-3 districts)</li>
+            </ul>
+        </div>
+        <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6; font-size: 0.85rem;">
+            <h5 style="color: #3b82f6; margin-bottom: 0.75rem;">Phase II (Yr 1-2)</h5>
+            <ul style="color: #cbd5e1;">
+                <li>Pilot enrollment: 10K HHs</li>
+                <li>TCAP underwriting test</li>
+                <li>Tenant education rollout</li>
+                <li>Systems integration (HRA/CUNA)</li>
+            </ul>
+        </div>
+        <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #10b981; font-size: 0.85rem;">
+            <h5 style="color: #10b981; margin-bottom: 0.75rem;">Phase III (Yr 3-5)</h5>
+            <ul style="color: #cbd5e1;">
+                <li>Citywide rollout: 50K HHs</li>
+                <li>Secondary equity market launch</li>
+                <li>Re-investment program go-live</li>
+                <li>Policy legislation passage</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 13: RISKS & MITIGATION
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">Risk Radar & Mitigation Strategy</h2>
+    <div style="font-size: 0.85rem;">
+        <div class="row gap-md" style="margin-top: 1rem;">
+            <div style="flex: 1; padding: 1rem; background-color: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444;">
+                <h5 style="color: #fecaca; margin-bottom: 0.5rem;">Political Risk</h5>
+                <p style="color: #cbd5e1;">Budget cuts during recession → <strong style="color: #10b981;">30-year lock-in via state legislation; federal guarantee structure</strong></p>
+            </div>
+            <div style="flex: 1; padding: 1rem; background-color: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444;">
+                <h5 style="color: #fecaca; margin-bottom: 0.5rem;">Credit Union Solvency</h5>
+                <p style="color: #cbd5e1;">Default rates spike → <strong style="color: #10b981;">FDIC insurance; excess reserve fund (8% of portfolio)</strong></p>
+            </div>
+            <div style="flex: 1; padding: 1rem; background-color: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444;">
+                <h5 style="color: #fecaca; margin-bottom: 0.5rem;">Tenant Enrollment</h5>
+                <p style="color: #cbd5e1;">Low uptake (<30%) → <strong style="color: #10b981;">Intensive outreach; on-site enrollment events; trusted community partners (nonprofits)</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 14: FISCAL IMPACT
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">Fiscal Impact: City Budget Analysis</h2>
+    <table class="data-table" style="margin-top: 1rem; font-size: 0.8rem;">
+        <tr>
+            <th>Budget Line</th>
+            <th>Current (Annual)</th>
+            <th>PET Model (Yr 5)</th>
+            <th>Net Savings</th>
+        </tr>
+        <tr>
+            <td><strong>HRA Voucher Subsidy</strong></td>
+            <td>$3.2B</td>
+            <td>$2.1B</td>
+            <td style="color: #10b981;">+$1.1B</td>
+        </tr>
+        <tr>
+            <td><strong>HPD Operating (Admin)</strong></td>
+            <td>$520M</td>
+            <td>$475M (efficiency gain)</td>
+            <td style="color: #10b981;">+$45M</td>
+        </tr>
+        <tr>
+            <td><strong>PET Program Setup/Operations</strong></td>
+            <td>—</td>
+            <td>$120M</td>
+            <td style="color: #ef4444;">-$120M</td>
+        </tr>
+        <tr>
+            <td><strong>Reinvestment Pool</strong></td>
+            <td>—</td>
+            <td>$600M (available)</td>
+            <td style="color: #10b981;">+$600M (new construction)</td>
+        </tr>
+        <tr style="background-color: #1e293b; font-weight: 700;">
+            <td><strong>NET IMPACT (5-YEAR)</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td style="color: #10b981; font-size: 1rem;">+$1.525B</td>
+        </tr>
+    </table>
+    <p style="color: #94a3b8; font-size: 0.75rem; margin-top: 0.75rem;"><strong>Conservative scenario:</strong> 50K HH enrollment by Year 5; 4% average equity growth; 15% admin overhead reduction.</p>
+</section>
+
+<!-- ========================================
+     SLIDE 15: CALL TO ACTION - MAYOR-ELECT
+     ======================================== -->
+<section class="slide p-16 col center" style="background: linear-gradient(135deg, #020617 0%, #1e293b 100%); color: #f1f5f9;">
+    <div style="max-width: 700px;">
+        <h2 style="color: #06b6d4; margin-bottom: 1.5rem;">Next Steps: Transition Team Action Plan</h2>
+        <div style="background-color: #1e293b; padding: 1.5rem; border-left: 4px solid #10b981; margin-bottom: 1.5rem;">
+            <ol style="color: #cbd5e1; font-size: 1rem; line-height: 1.8;">
+                <li><strong>Convene HPD/HRA steering committee</strong> (by Jan. 15, 2026)</li>
+                <li><strong>Issue RFP for credit union partners</strong> (by Feb. 1, 2026)</li>
+                <li><strong>Finalize state legislation language</strong> (by March 1, 2026)</li>
+                <li><strong>Announce pilot districts</strong> (by April 1, 2026)</li>
+                <li><strong>Launch enrollment campaign</strong> (Summer 2026)</li>
+            </ol>
+        </div>
+        <p style="color: #94a3b8; font-size: 0.95rem;">
+            <strong>Estimated Setup Cost:</strong> $45M (Year 1) | <strong>ROI Breakeven:</strong> Year 4 | <strong>Net 10-Year Benefit:</strong> $3.2B
+        </p>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 16: WORKS CITED & APPENDICES
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">Full Legislation, Research, & Appendices</h2>
+    <div style="font-size: 0.85rem; line-height: 1.8;">
+        <p style="color: #cbd5e1; margin-bottom: 1rem;"><strong>Complete package includes:</strong></p>
+        <ul style="color: #cbd5e1;">
+            <li><strong>Legislative Bill Text:</strong> NYC Local Law (HPD authorization, HRA subsidy redirection)</li>
+            <li><strong>Credit Union MOA Template:</strong> Underwriting standards, fee structure, dispute resolution</li>
+            <li><strong>APA 7th Edition Works Cited:</strong> 120+ sources (housing policy, credit union economics, international models)</li>
+            <li><strong>Equity Impact Assessment:</strong> Disaggregated analysis by race, income, borough, disability status</li>
+            <li><strong>Financial Models:</strong> Sensitivity analysis (discount rates, default assumptions, inflation scenarios)</li>
+            <li><strong>One-Pager & Memo:</strong> Mayor-elect transition briefing (next pages)</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========================================
+     MEMO: MAYOR-ELECT TRANSITION BRIEF
+     ======================================== -->
+<section class="slide p-16 col" style="background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9;">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div style="border-bottom: 2px solid #06b6d4; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+            <p style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">MEMORANDUM</p>
+            <h3 style="color: #f1f5f9; font-size: 1.5rem; margin-bottom: 0.5rem;">NYC Housing Subsidy Reform Proposal</h3>
+            <p style="color: #cbd5e1; font-size: 0.85rem; margin: 0;">TO: Mayor-Elect Transition Team | FROM: NYC Policy Analysis & HousingPolicyResearch | DATE: December 2025</p>
+        </div>
+        <div style="font-size: 0.8rem; line-height: 1.7; color: #cbd5e1;">
+            <p><strong style="color: #06b6d4;">SUBJECT:</strong> Public Equity Transfer (PET) Framework—Recommendation for Immediate Action</p>
+            <p style="margin-top: 1rem;"><strong>SITUATION:</strong> NYC spends $5.7B annually on rental subsidies serving 455K households. Zero of this generates tenant ownership or equity accumulation. Vienna, by contrast, achieves superior affordability outcomes through public ownership at the same cost level.</p>
+            <p><strong>RECOMMENDATION:</strong> Launch PET pilot in 2-3 high-need districts by Q2 2026. This preserves existing HRA/HPD budgets while creating sustainable, permanent affordability and $600K+ intergenerational wealth per household.</p>
+            <p><strong>FISCAL IMPACT:</strong> Breakeven by Year 4; $3.2B cumulative net benefit over 10 years.</p>
+            <p><strong>NEXT STEP:</strong> Convene HPD/HRA by January 15, 2026.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 17: ONE-PAGER SUMMARY
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <div style="max-width: 900px; margin: 0 auto; font-size: 0.75rem; line-height: 1.6;">
+        <h3 style="color: #06b6d4; margin-bottom: 0.75rem; font-size: 1.25rem;">NYC HOUSING SUBSIDY REFORM: PUBLIC EQUITY TRANSFER FRAMEWORK (PET)</h3>
+        <div class="row gap-lg">
+            <div style="flex: 1;">
+                <h5 style="color: #06b6d4; margin-bottom: 0.5rem;">THE PROBLEM</h5>
+                <p style="color: #cbd5e1;">$5.7B annual subsidy spend → 0% equity accrual. Families cycle through housing indefinitely, building zero wealth.</p>
+            </div>
+            <div style="flex: 1;">
+                <h5 style="color: #10b981; margin-bottom: 0.5rem;">THE SOLUTION</h5>
+                <p style="color: #cbd5e1;">Redirect subsidies into tenant-owned credit union equity reserves (TCAP). Generate $600K+ ownership per household in 30 years.</p>
+            </div>
+            <div style="flex: 1;">
+                <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">THE ROI</h5>
+                <p style="color: #cbd5e1;">35% cost reduction + $600M annual reinvestment pool + closing racial wealth gap. Breakeven Year 4.</p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; padding: 1rem; background-color: #1e293b; border: 1px solid #334155;">
+            <p style="color: #cbd5e1;"><strong>QUICK FACTS:</strong> 100K households by Year 10 | 50% uptake assumption | $1.525B net savings (5-year) | Vienna precedent (62% social housing) | Legal under Title VIII/ADA | Staffing: 15 FTE within existing budget</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 18: BACK MATTER - LEGISLATION
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">Proposed Local Law: Key Provisions</h2>
+    <div style="font-size: 0.8rem; line-height: 1.6; color: #cbd5e1;">
+        <div style="padding: 1rem; background-color: #1e293b; margin-bottom: 0.75rem; border-left: 4px solid #06b6d4;">
+            <p><strong style="color: #06b6d4;">§ 1. Authority & Definitions</strong></p>
+            <p>HPD authorized to establish TCAP and PET framework; defines "equity accrual," "member-owned credit union," "affordability lock" (permanent).</p>
+        </div>
+        <div style="padding: 1rem; background-color: #1e293b; margin-bottom: 0.75rem; border-left: 4px solid #06b6d4;">
+            <p><strong style="color: #06b6d4;">§ 2. Subsidy Redirection & MOA</strong></p>
+            <p>HRA redirects monthly voucher + security deposit amounts to HPD-designated credit union accounts; credit union operates under HPD oversight MOU.</p>
+        </div>
+        <div style="padding: 1rem; background-color: #1e293b; margin-bottom: 0.75rem; border-left: 4px solid #06b6d4;">
+            <p><strong style="color: #06b6d4;">§ 3. Tenant Rights & Protections</strong></p>
+            <p>Affirmative enrollment rights; anti-displacement protections; annual equity disclosure; ombudsman access; intergenerational transfer eligibility.</p>
+        </div>
+        <div style="padding: 1rem; background-color: #1e293b; border-left: 4px solid #06b6d4;">
+            <p><strong style="color: #06b6d4;">§ 4. Reinvestment Authority</strong></p>
+            <p>Recovered subsidy savings may be reinvested in new affordable construction, subject to City Council approval and equity impact review.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 19: LITERATURE REVIEW SNAPSHOT
+     ======================================== -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="mb-4" style="color: #06b6d4;">Literature Review: Evidence Base</h2>
+    <div style="font-size: 0.8rem; line-height: 1.7; color: #cbd5e1;">
+        <div class="row gap-md">
+            <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6;">
+                <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">Community Land Trusts</h5>
+                <p>Salman & Munro (2023, Land Lines): CLTs reduce displacement 97%; affordability permanent; tenant agency increases measurably.</p>
+            </div>
+            <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6;">
+                <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">Credit Union Models</h5>
+                <p>CUNA & Filene (2024): Member-owned credit union underwriting matches or exceeds bank risk profiles; operational cost ~40% lower.</p>
+            </div>
+        </div>
+        <div class="row gap-md" style="margin-top: 0.75rem;">
+            <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6;">
+                <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">Racial Wealth Gap</h5>
+                <p>Bhutta et al., Fed. Survey of Consumer Finances (2023): Median white family net worth $168K vs. Black $24K; housing primary driver.</p>
+            </div>
+            <div style="flex: 1; padding: 1rem; background-color: #1e293b; border-left: 4px solid #3b82f6;">
+                <h5 style="color: #3b82f6; margin-bottom: 0.5rem;">Vienna Model</h5>
+                <p>Hegedüs & Tosics (2018): Vienna's social housing achieves 62% stock coverage at lower cost than NYC subsidies; intergenerational stability high.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SLIDE 20: CLOSING - VISION
+     ======================================== -->
+<section class="slide p-16 col center" style="background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%); color: #f1f5f9;">
+    <div style="max-width: 700px;">
+        <h2 style="color: #06b6d4; margin-bottom: 2rem; font-size: 2.5rem;">A City Where Housing Is Equity</h2>
+        <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+            By reorienting $5.7 billion in existing subsidies toward tenant ownership, NYC can create <strong style="color: #10b981;">permanent affordability</strong>, close the <strong style="color: #10b981;">racial wealth gap</strong>, and build <strong style="color: #10b981;">intergenerational stability</strong>—without new budget authority.
+        </p>
+        <p style="color: #94a3b8; font-size: 0.95rem;">
+            <strong>PET Framework. Pilot. Scale. Legacy.</strong>
+        </p>
+    </div>
+</section>
+
+</body>
+</html>

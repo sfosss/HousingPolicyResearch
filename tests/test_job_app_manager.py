@@ -3,8 +3,6 @@ import json
 import csv
 from datetime import date
 
-import pytest
-
 from chatgpt_notion_sync import job_app_manager as jam
 
 
@@ -40,18 +38,29 @@ def sample_job_record():
 
 def test_generate_template_creates_csv(tmp_path):
     job_file = write_json(tmp_path, "jobs.json", [sample_job_record()])
-    profile = write_json(tmp_path, "profile.json", {"skills": ["research", "policy", "writing"]})
+    profile = write_json(
+        tmp_path, "profile.json", {"skills": ["research", "policy", "writing"]}
+    )
     records = jam.load_job_records(job_file)
     profile_tokens = jam.load_profile_tokens(profile)
     output = tmp_path / "template.csv"
     jam.write_reminders_template(records, profile_tokens, output)
     content = list(csv.reader(output.read_text().splitlines()))
     header = content[0]
-    assert header[-3:] == ["days_until_deadline", "deadline_status", "attention_summary"]
+    assert header[-3:] == [
+        "days_until_deadline",
+        "deadline_status",
+        "attention_summary",
+    ]
     row = content[1]
     assert "drafted" in row[0]
     assert "policy" in ",".join(content[1])
-    assert row[-2] in {"due_soon", "overdue", "scheduled", "unspecified"}
+    assert row[-2] in {
+        "due_soon",
+        "overdue",
+        "scheduled",
+        "unspecified",
+    }
 
 
 def test_configure_repository_structure_initialises_directories(tmp_path, monkeypatch):
@@ -67,11 +76,16 @@ def test_configure_repository_structure_initialises_directories(tmp_path, monkey
     monkeypatch.setattr(jam, "initialise_git_repository", fake_init)
 
     results = jam.configure_repository_structure(icloud, github_parent, "JobApps")
-    assert (icloud / jam.REMINDERS_SUBDIR).exists()
-    assert (github / jam.REMINDERS_SUBDIR).exists()
+    reminders_icloud = icloud / jam.REMINDERS_SUBDIR
+    reminders_github = github / jam.REMINDERS_SUBDIR
+    assert reminders_icloud.exists()
+    assert reminders_github.exists()
     assert (github / jam.APPLICATIONS_SUBDIR).exists()
     assert called["path"] == github
-    assert results == [icloud / jam.REMINDERS_SUBDIR, github / jam.REMINDERS_SUBDIR]
+    assert results == [
+        icloud / jam.REMINDERS_SUBDIR,
+        github / jam.REMINDERS_SUBDIR,
+    ]
 
 
 def test_resolve_github_repo_path_accepts_full_path(tmp_path):

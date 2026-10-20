@@ -9,6 +9,12 @@ __pycache__/
 *.egg-info/
 *.egg
 
+# Node/npm (especially for raycast-extension build artifacts)
+node_modules/
+.npm
+package-lock.json
+dist/
+
 # Editors
 .vscode/
 .idea/
@@ -22,6 +28,10 @@ logs/*
 artifacts/*
 !artifacts/.gitkeep
 
+# Exported assets and build outputs that shouldn't be committed
+TCAP_PET/exported-assets*/
+raycast-extension/node_modules/
+
 # Test and tooling outputs
 .pytest_cache/
 .coverage
@@ -31,4 +41,9 @@ htmlcov/
 # Misc
 *.log
 *.tmp
+*.zip
+
+# Local workspace (not versioned)
+workspace/
+*_BACKUP/
 

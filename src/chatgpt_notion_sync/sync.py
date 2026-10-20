@@ -1,4 +1,5 @@
 """Utilities for synchronising a Notion database with ChatGPT summaries."""
+
 from __future__ import annotations
 
 from typing import Any, Dict, Iterable, Optional
@@ -61,10 +62,8 @@ def update_page_summary(
 
     notion_client.pages.update(
         page_id=page_id,
-        properties=
-        {
-            summary_property:
-            {
+        properties={
+            summary_property: {
                 "rich_text": [
                     {
                         "text": {
@@ -85,7 +84,9 @@ def append_change_log(
 ) -> None:
     """Append an entry to the change log page."""
 
-    message = f"Updated {page.get('title') or page.get('id')} summary: {summary_text}"
+    message = (
+        f"Updated {page.get('title') or page.get('id')} summary: " f"{summary_text}"
+    )
     notion_client.blocks.children.append(
         block_id=change_log_page_id,
         children=[
@@ -132,4 +133,3 @@ def sync_database(
                 page=page,
                 summary_text=summary,
             )
-
