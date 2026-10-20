@@ -33,7 +33,6 @@ This repository hosts documentation and tooling for collaborative research on ho
 ## Support
 
 If you encounter configuration issues or discover missing documentation, open a GitHub issue with detailed context so the team can respond quickly.
-This repository centralizes documentation, tooling plans, and integration guidelines for the Housing Policy Research project.
 
 ## Documentation
 
@@ -84,6 +83,7 @@ This repository centralizes documentation, tooling plans, and integration guidel
 - `comments/` – Project discussion artifacts and proposals.
 - `data/` – Research datasets (planned).
 - `docs/` – Integration architecture, security controls, universal linking guidance, and task breakdown.
+- `docs/resource-index.md` – Entry point for finding documentation and archiving generative outputs.
   - `STYLE-APA.md` – Citation standards based on APA 7th edition
   - `resources-index.md` – Comprehensive catalog of research sources with annotations
   - `resources.csv` – Machine-readable resource database for automation
@@ -96,7 +96,7 @@ This repository centralizes documentation, tooling plans, and integration guidel
 
 > **Note:** Some directories are placeholders that will be populated as the integrations described in the documentation are implemented.
 
-## Getting Started
+## Additional Resources
 
 For additional context on automation scripts, secret management, and cross-platform workflows, see [docs/integration-plan.md](docs/integration-plan.md) and the capstone notes in [`capstone/`](capstone/README.md).
 
