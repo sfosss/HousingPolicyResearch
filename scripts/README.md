@@ -14,8 +14,10 @@ when a check fails. Reports are written on both passing and failing checks.
 Use `--repo-root PATH` or `--reports-dir PATH` to override the defaults.
 
 The single `.github/workflows/preflight.yml` runs this command on macOS,
-Linux, and Windows. Its sparse checkout includes only tooling because the
-research exports contain names that cannot be checked out on Windows. This
+Linux, and Windows. A Linux job stages a tooling-only artifact for the three
+runners because Git for Windows rejects research export paths even with a
+sparse checkout. The artifact contains `scripts/`, `src/`, `tests/`,
+`pyproject.toml`, and `requirements.txt`, without Git metadata. This
 does not rename or remove research files. The workflow uploads both reports
 even when checks fail; it does not suppress failures. It checks repository
 tooling, not local disk SMART health or live service connectivity. Use

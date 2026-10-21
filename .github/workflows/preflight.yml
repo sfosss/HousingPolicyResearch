@@ -16,8 +16,39 @@ permissions:
   contents: read
 
 jobs:
+  prepare-tooling:
+    name: Prepare portable tooling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tooling
+        uses: actions/checkout@v4
+        with:
+          # Git for Windows rejects research paths even in a sparse index.
+          # Stage only the tooling on Linux; never check out exports on Windows.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/
+            /src/
+            /tests/
+            /pyproject.toml
+            /requirements.txt
+
+      - name: Stage portable tooling
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-tooling-${{ github.run_number }}
+          path: |
+            scripts/
+            src/
+            tests/
+            pyproject.toml
+            requirements.txt
+          retention-days: 1
+          if-no-files-found: error
+
   preflight:
     name: Preflight Checks (${{ matrix.platform }})
+    needs: prepare-tooling
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -30,19 +61,10 @@ jobs:
           - os: windows-latest
             platform: Windows
     steps:
-      - name: Checkout tooling
-        uses: actions/checkout@v4
+      - name: Download portable tooling
+        uses: actions/download-artifact@v4
         with:
-          # Research exports contain paths Windows cannot check out.
-          # Keep this job scoped to the tooling it actually validates.
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /.github/
-            /scripts/
-            /src/
-            /tests/
-            /pyproject.toml
-            /requirements.txt
+          name: preflight-tooling-${{ github.run_number }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
