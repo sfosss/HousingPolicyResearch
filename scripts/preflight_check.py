@@ -45,10 +45,14 @@ def collect_checks(repo_root):
         for source in sources:
             relative_path = source.relative_to(repo_root).as_posix()
             try:
-                ast.parse(
+                tree = ast.parse(
                     source.read_text(encoding="utf-8-sig"),
                     filename=relative_path,
+                    feature_version=(3, 8),
                 )
+                # Parsing alone accepts context-invalid statements such as a
+                # module-level return. Compile without executing the source.
+                compile(tree, relative_path, "exec")
             except (OSError, UnicodeError, SyntaxError) as error:
                 record(
                     "Syntax: " + relative_path,

@@ -82,6 +82,33 @@ class PreflightTests(unittest.TestCase):
             next(check for check in checks if check["name"] == "Git")["passed"]
         )
 
+    def test_newer_grammar_fails_even_on_newer_interpreter(self):
+        (self.root / "scripts/newer.py").write_text(
+            "match 1:\n    case 1:\n        pass\n", encoding="utf-8"
+        )
+        result = self.run_preflight()
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertFalse(self.read_report()["passed"])
+
+    def test_context_invalid_statements_fail_without_executing_source(self):
+        for statement in ("return 1\n", "break\n", "continue\n"):
+            with self.subTest(statement=statement):
+                (self.root / "scripts/context.py").write_text(
+                    statement, encoding="utf-8"
+                )
+                result = self.run_preflight()
+                output = result.stdout + result.stderr
+                self.assertEqual(result.returncode, 1, output)
+                self.assertFalse(self.read_report()["passed"])
+
+    def test_valid_source_is_compiled_without_execution(self):
+        (self.root / "scripts/safe.py").write_text(
+            "raise RuntimeError('must not execute')\n", encoding="utf-8"
+        )
+        result = self.run_preflight()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertTrue(self.read_report()["passed"])
+
 
 if __name__ == "__main__":
     unittest.main()
