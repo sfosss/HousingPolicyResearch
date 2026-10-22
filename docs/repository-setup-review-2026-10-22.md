@@ -58,7 +58,7 @@ Snapshot: `sfosss/HousingPolicyResearch`, default branch `e3f58d536c0b4ef3f0481c
 
 ## Validation
 
-- The setup repair passed 13 local tests, including four credential-gate cases covering scheduled/manual runs with and without configuration. No API requests were made.
+- The setup repair passed 16 local tests, including publication input checks and four credential-gate cases covering scheduled/manual runs with and without configuration. No API requests were made.
 - Black, Flake8, and mdformat passed through the existing pre-commit configuration across all tracked files. Existing research documents changed only through formatter normalization, not policy or citation review. Agent instructions and this report were edited for the setup repair.
 - Actionlint passed for the changed workflows and the separate preflight workflow; dependency consistency passed.
 - The setup script completed from `/tmp` through its compatibility wrapper with a fresh virtual environment in the worktree, without API credentials.
@@ -75,4 +75,4 @@ To enable proposal generation, configure `OPENAI_API_KEY` in repository Actions 
 
 The Codex Security skill was read, but its required configuration-preflight references and scan tools were unavailable. No formal Codex Security scan or clean-security certification is claimed. Workflow changes were inspected directly for permissions, secret handling, and untrusted shell interpolation.
 
-Report publication has additional known setup debt: its workflow still uses retired `upload-artifact@v3`, lacks privilege for `apt-get`, and creates its output directory after the first PDF conversion. It had no run in the 50-run snapshot; repair and exercise it separately before using manual publication.
+Repository-wide Actionlint confirmed retired release/artifact Actions in report publication. This repair upgrades both to verified commit SHAs, installs Pandoc and XeLaTeX with sudo, creates outputs before rendering, and fails clearly when no drafts exist. Workflow lint and input/output prerequisite tests passed. No publication run appeared in the original 50-run snapshot; actual PDF rendering, citation quality, and release publication remain untested. No release was created.
