@@ -1,0 +1,13 @@
+Year,NYC_Eviction_Filings,RTC_Coverage_Pct,Notes
+2013,230000,0,Pre-RTC baseline
+2017,210000,0,Pre-RTC baseline
+2017,210000,5,RTC pilot begins (select zip codes)
+2018,200000,15,RTC expansion phase 1
+2019,190000,28,RTC expansion phase 2
+2020,80000,40,COVID moratorium begins
+2021,15000,55,Deep moratorium
+2022,90000,62,Post-moratorium rebound phase 1
+2023,140000,65,Rebound accelerates
+2024,118000,55,Comptroller notes coverage declining – RTC funding shortfalls
+2025,155000,48,Continued rebound; RTC representation falls further
+2026Q1,45000,44,Q1 2026 trajectory; annualized ~180K
