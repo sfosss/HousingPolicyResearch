@@ -25,13 +25,13 @@ ______________________________________________________________________
 
 ### Core Files
 
-| File                                       | Purpose                          | Format      |
-| ------------------------------------------ | -------------------------------- | ----------- |
+| File                                       | Purpose                          | Format       |
+| ------------------------------------------ | -------------------------------- | ------------ |
 | `tcap_task_automation.py`                  | Main automation engine           | Python 3.11+ |
-| `tcap_automation.sh`                       | Orchestration & scheduling       | Bash script |
-| `TCAP_Task_Status_Risk_Tracking.csv`       | Task status + risk export        | CSV         |
-| `TCAP_Version_History_Audit_Log.txt`       | Version control + escalation log | Text        |
-| `NYC_Housing_Subsidy_Ops_Tasks_Notion.csv` | Master task file (update me)     | CSV         |
+| `tcap_automation.sh`                       | Orchestration & scheduling       | Bash script  |
+| `TCAP_Task_Status_Risk_Tracking.csv`       | Task status + risk export        | CSV          |
+| `TCAP_Version_History_Audit_Log.txt`       | Version control + escalation log | Text         |
+| `NYC_Housing_Subsidy_Ops_Tasks_Notion.csv` | Master task file (update me)     | CSV          |
 
 ### Supporting Config
 
