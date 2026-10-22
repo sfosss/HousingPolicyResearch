@@ -1,14 +1,17 @@
 # PETF Stakeholder Brief — July 15, 2026
+
 ## For: NYC Council Housing Committee · HPD · HRA · NYCHA · Mayor's Office
+
 **From:** Mamdani Transition Housing Policy Team
 **Re:** Four Market & Legal Developments That Harden the Case for the Public Equity Transfer Framework
 
----
+______________________________________________________________________
 
 ### The Core Argument in One Sentence
+
 Today's data confirms what we already knew structurally: NYC's rental market is in a fiscal emergency, the legal floor for tenants is in place but not being held, and continuing to funnel public dollars into rent-assistance without building tenant equity is both economically irrational and morally indefensible.
 
----
+______________________________________________________________________
 
 ### Development 1 — Good Cause Eviction Creates the Legal Floor; PETF Builds the Ceiling
 
@@ -18,7 +21,7 @@ New York State's Good Cause Eviction Law (L. 2024, ch. 56) is now in full effect
 
 **Ask of Council:** Codify Good Cause non-preemption language into the PETF enabling bill (Amendment AM-2026-001).
 
----
+______________________________________________________________________
 
 ### Development 2 — Evictions Rising, Legal Defense Collapsing: The Status-Quo Subsidy System Is Failing
 
@@ -30,7 +33,7 @@ The NYC Comptroller's June 2026 report *Evictions Up, Representation Down* docum
 
 **Ask of Council:** Mandate an RTC Coverage Gate in PETF Phase II expansion criteria (Amendment AM-2026-003).
 
----
+______________________________________________________________________
 
 ### Development 3 — Rents at DefCon 1: Voucher Expansion at These Prices Is Fiscally Irrational
 
@@ -42,7 +45,7 @@ As of July 2026, average Manhattan 1-bedroom rents have crossed $5,050/month; Br
 
 **Ask of agencies:** Authorize HPD to immediately update PETF cost models with 2026 rent baselines (Amendment AM-2026-005) and present recalibrated ROI projections at the next Council fiscal briefing.
 
----
+______________________________________________________________________
 
 ### Development 4 — The Economic Mobility Summit Validates PETF's Frame; Stake a Claim Today
 
@@ -52,20 +55,20 @@ The NYC Economic Mobility Summit (Center for an Urban Future / Citi, July 15, 20
 
 **Immediate action:** Assign a Transition Team lead to engage Center for an Urban Future and Citi program staff within 72 hours to explore evaluation partnership and pilot co-funding.
 
----
+______________________________________________________________________
 
 ### Recommended Immediate Actions (Council & Agency)
 
-| Priority | Action | Owner | Timeline |
-|---|---|---|---|
-| Critical | Introduce Good Cause non-preemption amendment (AM-2026-001) | Council Housing Committee | Within 30 days |
-| High | HPD updates PETF cost model with 2026 rent baselines | HPD/OMB | Within 21 days |
-| High | Add RTC Coverage Gate to PETF Phase II milestones (AM-2026-003) | HPD/Office of Civil Justice | Within 21 days |
-| High | Comptroller eviction data integrated into PETF risk register | Policy Team | Within 14 days |
-| Medium | Summit coalition outreach (CUF, Citi) | Transition Team Lead | Within 72 hours |
-| Medium | Multilingual Good Cause KYR inserted into PETF intake packets | HPD | Within 45 days |
+| Priority | Action                                                          | Owner                       | Timeline        |
+| -------- | --------------------------------------------------------------- | --------------------------- | --------------- |
+| Critical | Introduce Good Cause non-preemption amendment (AM-2026-001)     | Council Housing Committee   | Within 30 days  |
+| High     | HPD updates PETF cost model with 2026 rent baselines            | HPD/OMB                     | Within 21 days  |
+| High     | Add RTC Coverage Gate to PETF Phase II milestones (AM-2026-003) | HPD/Office of Civil Justice | Within 21 days  |
+| High     | Comptroller eviction data integrated into PETF risk register    | Policy Team                 | Within 14 days  |
+| Medium   | Summit coalition outreach (CUF, Citi)                           | Transition Team Lead        | Within 72 hours |
+| Medium   | Multilingual Good Cause KYR inserted into PETF intake packets   | HPD                         | Within 45 days  |
 
----
+______________________________________________________________________
 
 *Prepared by Perplexity Policy Research Engine · SfosssHousing/HousingPolicyResearch · July 15, 2026*
 *Sources: NYS AG Good Cause Explainer; NYC Comptroller Evictions Up Representation Down (June 2026); Corcoran 2026 Rent Data (NY Post July 13 2026); NYC Economic Mobility Summit 2026 (CUF/Citi)*

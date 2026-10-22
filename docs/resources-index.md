@@ -107,13 +107,13 @@ JavaScript runtime required for npm-based automation tools and OpenAI Node.js SD
 
 ______________________________________________________________________
 
-#### Python 3.10+
+#### Python 3.11+
 
 **Citation:**
-Python Software Foundation. (n.d.). *Python 3.10 documentation*. Python.org. https://docs.python.org/3.10/
+Python Software Foundation. (n.d.). *Python 3.11 documentation*. Python.org. https://docs.python.org/3.11/
 
 **Annotation:**
-Python runtime required for API clients, data synchronization scripts, and automation workflows. Minimum version 3.10 specified for project compatibility.
+Python runtime required for API clients, data synchronization scripts, and automation workflows. Minimum version 3.11 specified for project compatibility.
 
 **Quality:** `[Primary source]` `[Technical documentation]`\
 **Used in:** [`docs/integration-plan.md`](integration-plan.md#1-prerequisites)\
