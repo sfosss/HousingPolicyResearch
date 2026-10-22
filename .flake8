@@ -1,0 +1,3 @@
+[flake8]
+# Match Black's default width; keep all lint checks enabled.
+max-line-length = 88

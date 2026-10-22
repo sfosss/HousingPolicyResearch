@@ -51,7 +51,10 @@ fact_check_results = {
                 "Other Programs": "~$800M estimated",
             },
             "Verification_Status": "Total plausible but not single verified source",
-            "Adjustment": "Cite: 'Over $5B across all programs (CityFHEPS, Section 8, HPD vouchers)'",
+            "Adjustment": (
+                "Cite: 'Over $5B across all programs (CityFHEPS, Section 8, "
+                "HPD vouchers)'"
+            ),
             "Status": "⚠ REQUIRES COMPONENT BREAKDOWN",
         },
         "Shelter Cost Figure": {
@@ -67,7 +70,9 @@ fact_check_results = {
             "Claim": "HDFC cooperatives show 60% fewer violations",
             "Evidence_Found": "UHAB reports distressed HDFCs struggle with violations",
             "Reality": "Well-managed HDFCs perform better, distressed ones worse",
-            "Adjustment": "Qualify: 'Well-managed HDFCs maintain lower violation rates'",
+            "Adjustment": (
+                "Qualify: 'Well-managed HDFCs maintain lower violation rates'"
+            ),
             "Status": "⚠ REQUIRES QUALIFICATION",
         },
         "Housing_Violations_2024": {
@@ -90,7 +95,9 @@ fact_check_results = {
         },
         "TCAP_Model_Cost": {
             "Original": "$26,200/unit",
-            "Adjustment": "Reduced subsidy $18,000 + TA $1,200 + admin $1,200 = $20,400",
+            "Adjustment": (
+                "Reduced subsidy $18,000 + TA $1,200 + admin $1,200 = $20,400"
+            ),
             "Plus": "Eviction reduction savings $2,500",
             "Net": "$22,900/unit annual",
             "Status": "⚠ RECALCULATE",
@@ -99,7 +106,9 @@ fact_check_results = {
     "ROI_FEASIBILITY": {
         "10_Year_Savings": {
             "Original_Claim": "$1.33B",
-            "Recalculation": "Based on $5,100/unit annual savings × 2,000 units × 10 years",
+            "Recalculation": (
+                "Based on $5,100/unit annual savings × 2,000 units × 10 years"
+            ),
             "Result": "$102M savings (more conservative)",
             "Additional": "+$31M shelter +$14M eviction = $147M total benefits",
             "Adjusted_ROI": "~2.5:1 instead of 4.6:1",

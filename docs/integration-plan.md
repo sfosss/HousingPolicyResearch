@@ -105,10 +105,10 @@ Automate each pipeline with CI jobs or scheduled tasks that authenticate using s
 ### Verification Steps for Secure Connections
 
 1. **Credential Audit** – Confirm each platform token (ChatGPT, Codex CLI, Notion, GitHub, Zotero) is present in both the local `.env` file (generated from `.env.template`) and the GitHub Secrets store with matching scopes.
-2. **Connection Tests** – Follow the commands listed in [docs/connection-checks.md](connection-checks.md) and capture success logs in `logs/connection-checks/`.
-3. **Reverse Flow Validation** – Execute the reverse synchronization paths (GitHub→Notion, Notion→Zotero, Zotero→GitHub, ChatGPT/Codex→GitHub) using the same checklist.
-4. **Security Review** – Verify that logs exclude sensitive payloads, rotate tokens post-test, and document findings in the capstone tracker within `capstone/`.
-5. **Readiness Sign-off** – Run through the [Environment Readiness Checklist](environment-readiness.md) before enabling CI jobs or scheduled syncs.
+1. **Connection Tests** – Follow the commands listed in [docs/connection-checks.md](connection-checks.md) and capture success logs in `logs/connection-checks/`.
+1. **Reverse Flow Validation** – Execute the reverse synchronization paths (GitHub→Notion, Notion→Zotero, Zotero→GitHub, ChatGPT/Codex→GitHub) using the same checklist.
+1. **Security Review** – Verify that logs exclude sensitive payloads, rotate tokens post-test, and document findings in the capstone tracker within `capstone/`.
+1. **Readiness Sign-off** – Run through the [Environment Readiness Checklist](environment-readiness.md) before enabling CI jobs or scheduled syncs.
 1. **Credential Audit** – Confirm each platform token (OpenAI API, Notion, GitHub, Zotero) is present in both the local `.env` file (generated from `.env.template`) and the GitHub Secrets store with matching scopes.
 1. **Connection Tests** – Follow the commands listed in [`docs/connection-checks.md`](docs/connection-checks.md) and capture success logs in `logs/connection-checks/`.
 1. **Reverse Flow Validation** – Execute the reverse synchronization paths (GitHub→Notion, Notion→Zotero, Zotero→GitHub, OpenAI→GitHub) using the same checklist.

@@ -11,11 +11,11 @@ https://github.com/SfosssHousing/HousingPolicyResearch.git
 Rules:
 
 1. Use this repo for all active HousingPolicyResearch / TCAP / PET work.
-2. Do not work from iCloud, Box, Desktop, Downloads, archive, or recovered clone paths.
-3. Do not open archived clones as VS Code/Cursor/Claude workspaces except for read-only comparison.
-4. Do not run GitHub Actions, npm, Python, or build/export workflows from archive clones.
-5. Archive/recovered clones may be searched for missing source material only, then copied into this active root with provenance notes.
-6. Any recovered file must be logged before integration.
+1. Do not work from iCloud, Box, Desktop, Downloads, archive, or recovered clone paths.
+1. Do not open archived clones as VS Code/Cursor/Claude workspaces except for read-only comparison.
+1. Do not run GitHub Actions, npm, Python, or build/export workflows from archive clones.
+1. Archive/recovered clones may be searched for missing source material only, then copied into this active root with provenance notes.
+1. Any recovered file must be logged before integration.
 
 Known unsafe/reference roots include:
 
