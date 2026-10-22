@@ -78,10 +78,7 @@ def index(ctx, caps, types_):
 def master(ctx, template):
     pr = ctx.obj["project_root"]
     ensure_scaffold(pr)
-    filename = (
-        "Housing_Subsidy_Reform_MASTER_v0.1_"
-        f"{datetime.date.today().strftime('%Y%m%d')}.docx"
-    )
+    filename = f"Housing_Subsidy_Reform_MASTER_v0.1_{datetime.date.today().strftime('%Y%m%d')}.docx"
     out = pr / "03-outputs" / filename
     # Create a minimal docx
     from docx import Document
@@ -95,7 +92,6 @@ def master(ctx, template):
 @cli.command()
 @click.pass_context
 def doctor(ctx):
-    _ = ctx.obj["project_root"]
     click.echo("Doctor checks placeholder.")
 
 

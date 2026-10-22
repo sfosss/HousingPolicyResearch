@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Generate a housing proposal with OpenAI in artifacts/policy_proposal.md.
+"""Generate a housing policy proposal using OpenAI and write to artifacts/policy_proposal.md.
 
-Optional: if NOTION_API_KEY and NOTION_DATABASE_ID are provided, create a
-Notion page in the given database.
+Optional: if NOTION_API_KEY and NOTION_DATABASE_ID are provided, create a Notion page in the given database.
 """
 import os
 import sys
@@ -28,26 +27,20 @@ import requests
 
 def generate_prompt():
     today = datetime.utcnow().date().isoformat()
-    prompt = (
-        "\n"
-        "You are a policy researcher asked to generate a concise, "
-        "actionable housing policy proposal for New York City focused on "
-        "improving housing subsidy efficiency and equity.\n"
-        "\n"
-        "Deliverables:\n"
-        "- Title (one line)\n"
-        "- Executive summary (2-3 short paragraphs)\n"
-        "- Background and problem statement (bullet points)\n"
-        "- Proposed policy actions (numbered list with short "
-        "descriptions)\n"
-        "- Estimated fiscal impact (high-level range and assumptions)\n"
-        "- Implementation timeline (quarterly milestones for first 2 "
-        "years)\n"
-        "- Metrics to track success (3-6 measurable metrics)\n"
-        "\n"
-        "Write in clear, non-technical language suitable for presentation"
-        f" to city council members and program leads. Date: {today}\n"
-    )
+    prompt = f"""
+You are a policy researcher asked to generate a concise, actionable housing policy proposal for New York City focused on improving housing subsidy efficiency and equity.
+
+Deliverables:
+- Title (one line)
+- Executive summary (2-3 short paragraphs)
+- Background and problem statement (bullet points)
+- Proposed policy actions (numbered list with short descriptions)
+- Estimated fiscal impact (high-level range and assumptions)
+- Implementation timeline (quarterly milestones for first 2 years)
+- Metrics to track success (3-6 measurable metrics)
+
+Write in clear, non-technical language suitable for presentation to city council members and program leads. Date: {today}
+"""
     return prompt
 
 
