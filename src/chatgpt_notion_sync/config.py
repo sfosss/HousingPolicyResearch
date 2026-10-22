@@ -5,6 +5,7 @@ environment variables used by the sync command.  The implementation is
 intentionally lightweight so that tests can instantiate the settings with
 explicit values while the production code can still rely on the environment.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -45,8 +46,9 @@ class Settings:
             NOTION_TOKEN=os.getenv(cls.ENV_NOTION_TOKEN, ""),
             NOTION_DATABASE_ID=os.getenv(cls.ENV_NOTION_DATABASE_ID, ""),
             NOTION_SUMMARY_PROPERTY_NAME=os.getenv(
-                cls.ENV_NOTION_SUMMARY_PROPERTY_NAME, "Summary"
+                cls.ENV_NOTION_SUMMARY_PROPERTY_NAME,
+                "Summary",
             ),
-            NOTION_CHANGELOG_PAGE_ID=os.getenv(cls.ENV_NOTION_CHANGELOG_PAGE_ID) or None,
+            NOTION_CHANGELOG_PAGE_ID=os.getenv(cls.ENV_NOTION_CHANGELOG_PAGE_ID)
+            or None,
         )
-

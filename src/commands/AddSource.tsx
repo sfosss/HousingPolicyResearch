@@ -1,1 +1,124 @@
-import React from \"react\";\nimport {\n  ActionPanel,\n  Form,\n  SubmitFormAction,\n  showToast,\n  Toast,\n  useNavigation,\n} from \"@raycast/api\";\nimport { useState } from \"react\";\nimport { addSource } from \"../utils/api\";\n\n/*\n * Add Source Command\n *\n * This command presents a simple form to collect the title, URL and optional\n * notes for a new source. When submitted, it POSTs the data to your backend\n * via the `addSource` function. On success, it displays a toast and resets\n * the form for another entry.\n */\n\nexport default function AddSource() {\n  const [title, setTitle] = useState(\"\");\n  const [url, setUrl] = useState(\"\");\n  const [notes, setNotes] = useState(\"\");\n  const [isLoading, setIsLoading] = useState(false);\n  const { pop } = useNavigation();\n\n  async function handleSubmit() {\n    if (!title.trim()) {\n      await showToast(\n        Toast.Style.Failure,\n        \"Please enter a source title\"\n      );\n      return;\n    }\n\n    if (!url.trim()) {\n      await showToast(\n        Toast.Style.Failure,\n        \"Please enter a valid URL\"\n      );\n      return;\n    }\n\n    // Basic URL validation\n    try {\n      new URL(url);\n    } catch (e) {\n      await showToast(\n        Toast.Style.Failure,\n        \"Invalid URL format\"\n      );\n      return;\n    }\n\n    setIsLoading(true);\n    try {\n      await addSource({\n        title,\n        url,\n        notes: notes.trim() || undefined,\n      });\n\n      await showToast(\n        Toast.Style.Success,\n        \"Source added successfully\"\n      );\n\n      // Reset form\n      setTitle(\"\");\n      setUrl(\"\");\n      setNotes(\"\");\n\n      // Uncomment to auto-dismiss after adding a source\n      // setTimeout(() => pop(), 1000);\n    } catch (err: any) {\n      await showToast(\n        Toast.Style.Failure,\n        \"Error\",\n        err.message || \"Failed to add source\"\n      );\n    } finally {\n      setIsLoading(false);\n    }\n  }\n\n  return (\n    <Form\n      isLoading={isLoading}\n      actions={\n        <ActionPanel>\n          <SubmitFormAction title=\"Add Source\" onSubmit={handleSubmit} />\n        </ActionPanel>\n      }\n    >\n      <Form.Description text=\"Add a new source to your research repository\" />\n\n      <Form.TextField\n        id=\"title\"\n        title=\"Source Title\"\n        placeholder=\"e.g., NYC Housing Preservation Database, Legislative Record\"\n        value={title}\n        onChange={setTitle}\n      />\n\n      <Form.TextField\n        id=\"url\"\n        title=\"URL\"\n        placeholder=\"https://example.com/source\"\n        value={url}\n        onChange={setUrl}\n      />\n\n      <Form.TextArea\n        id=\"notes\"\n        title=\"Notes (Optional)\"\n        placeholder=\"Add context about this source, key findings, or relevance to your research...\"\n        value={notes}\n        onChange={setNotes}\n      />\n    </Form>\n  );\n}\n
+import React from "react";
+import {
+  ActionPanel,
+  Form,
+  SubmitFormAction,
+  showToast,
+  Toast,
+  useNavigation,
+} from "@raycast/api";
+import { useState } from "react";
+import { addSource } from "../utils/api";
+
+/*
+ * Add Source Command
+ *
+ * This command presents a simple form to collect the title, URL and optional
+ * notes for a new source. When submitted, it POSTs the data to your backend
+ * via the `addSource` function. On success, it displays a toast and resets
+ * the form for another entry.
+ */
+
+export default function AddSource() {
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [notes, setNotes] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { pop } = useNavigation();
+
+  async function handleSubmit() {
+    if (!title.trim()) {
+      await showToast(
+        Toast.Style.Failure,
+        "Please enter a source title"
+      );
+      return;
+    }
+
+    if (!url.trim()) {
+      await showToast(
+        Toast.Style.Failure,
+        "Please enter a valid URL"
+      );
+      return;
+    }
+
+    // Basic URL validation
+    try {
+      new URL(url);
+    } catch (e) {
+      await showToast(
+        Toast.Style.Failure,
+        "Invalid URL format"
+      );
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await addSource({
+        title,
+        url,
+        notes: notes.trim() || undefined,
+      });
+
+      await showToast(
+        Toast.Style.Success,
+        "Source added successfully"
+      );
+
+      // Reset form
+      setTitle("");
+      setUrl("");
+      setNotes("");
+
+      // Uncomment to auto-dismiss after adding a source
+      // setTimeout(() => pop(), 1000);
+    } catch (err: any) {
+      await showToast(
+        Toast.Style.Failure,
+        "Error",
+        err.message || "Failed to add source"
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <Form
+      isLoading={isLoading}
+      actions={
+        <ActionPanel>
+          <SubmitFormAction title="Add Source" onSubmit={handleSubmit} />
+        </ActionPanel>
+      }
+    >
+      <Form.Description text="Add a new source to your research repository" />
+
+      <Form.TextField
+        id="title"
+        title="Source Title"
+        placeholder="e.g., NYC Housing Preservation Database, Legislative Record"
+        value={title}
+        onChange={setTitle}
+      />
+
+      <Form.TextField
+        id="url"
+        title="URL"
+        placeholder="https://example.com/source"
+        value={url}
+        onChange={setUrl}
+      />
+
+      <Form.TextArea
+        id="notes"
+        title="Notes (Optional)"
+        placeholder="Add context about this source, key findings, or relevance to your research..."
+        value={notes}
+        onChange={setNotes}
+      />
+    </Form>
+  );
+}

@@ -1,94 +1,114 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# Housing Policy Research - Project Setup Script
+# This script helps set up the development environment for the project
 
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_PATH="${PROJECT_ROOT}/.venv"
-REQUIREMENTS_FILE="${PROJECT_ROOT}/requirements.txt"
-ENV_TEMPLATE="${PROJECT_ROOT}/.env.template"
-ENV_FILE="${PROJECT_ROOT}/.env"
+set -e  # Exit on error
 
-usage() {
-  cat <<USAGE
-Usage: ./setup.sh [--ci]
+echo "=========================================="
+echo "Housing Policy Research - Setup Script"
+echo "=========================================="
+echo ""
 
-Options:
-  --ci    Run in CI mode (no prompts, run pre-commit after install)
-USAGE
-}
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
-RUN_CI=false
-case "${1-}" in
-  "" )
-    # No arguments: default interactive mode, RUN_CI remains false
-    ;;
-  --ci )
-    RUN_CI=true
-    ;;
-  --help )
-    usage
-    exit 0
-    ;;
-  * )
-    echo "Error: Unknown option: ${1-}" >&2
-    echo >&2
-    usage >&2
+# Check Python version
+echo "Checking Python version..."
+if ! command -v python3 &> /dev/null; then
+    echo -e "${RED}Error: Python 3 is not installed${NC}"
     exit 1
-    ;;
-esac
+fi
 
-ensure_python() {
-  if ! command -v python3 >/dev/null 2>&1; then
-    echo "Python 3 is required but not found on PATH." >&2
+PYTHON_VERSION=$(python3 --version | cut -d' ' -f2 | cut -d'.' -f1,2)
+echo -e "${GREEN}✓ Python $PYTHON_VERSION found${NC}"
+
+# Check if we're in the right directory
+if [ ! -f "README.md" ] || [ ! -d ".git" ]; then
+    echo -e "${RED}Error: Please run this script from the repository root${NC}"
     exit 1
-  fi
-}
+fi
 
-create_venv() {
-  if [[ ! -d "${VENV_PATH}" ]]; then
-    python3 -m venv "${VENV_PATH}"
-  fi
-  # shellcheck disable=SC1091
-  source "${VENV_PATH}/bin/activate"
-}
+# Create virtual environment if it doesn't exist
+if [ ! -d ".venv" ]; then
+    echo ""
+    echo "Creating Python virtual environment..."
+    python3 -m venv .venv
+    echo -e "${GREEN}✓ Virtual environment created${NC}"
+else
+    echo -e "${YELLOW}Virtual environment already exists${NC}"
+fi
 
-install_dependencies() {
-  python -m pip install --upgrade pip
-  if [[ -f "${REQUIREMENTS_FILE}" ]]; then
-    python -m pip install -r "${REQUIREMENTS_FILE}"
-  fi
-}
+# Activate virtual environment
+echo ""
+echo "Activating virtual environment..."
+source .venv/bin/activate
 
-prepare_environment_file() {
-  if [[ -f "${ENV_TEMPLATE}" && ! -f "${ENV_FILE}" ]]; then
-    cp "${ENV_TEMPLATE}" "${ENV_FILE}"
-    echo "Copied ${ENV_TEMPLATE} to ${ENV_FILE}. Populate it with your credentials."
-  fi
-}
+# Upgrade pip
+echo ""
+echo "Upgrading pip..."
+pip install --upgrade pip -q
 
-ensure_tracked_directories() {
-  mkdir -p "${PROJECT_ROOT}/logs" "${PROJECT_ROOT}/artifacts" "${PROJECT_ROOT}/docs/prompts"
-  # avoid creating untracked directories that are not committed or ignored
-}
+# Install dependencies
+echo ""
+echo "Installing dependencies from requirements.txt..."
+pip install -r requirements.txt -q
+echo -e "${GREEN}✓ Dependencies installed${NC}"
 
-install_pre_commit() {
-  if command -v pre-commit >/dev/null 2>&1; then
-    pre-commit install --install-hooks
-    if [[ "${RUN_CI}" == true ]]; then
-      pre-commit run --all-files
-    fi
-  else
-    echo "pre-commit not installed in this environment; skipping hook installation."
-  fi
-}
+# Create .env file if it doesn't exist
+if [ ! -f ".env" ]; then
+    echo ""
+    echo "Creating .env file from template..."
+    cp .env.template .env
+    echo -e "${YELLOW}⚠ Please edit .env and add your API keys${NC}"
+else
+    echo -e "${YELLOW}.env file already exists${NC}"
+fi
 
-main() {
-  ensure_python
-  create_venv
-  install_dependencies
-  prepare_environment_file
-  ensure_tracked_directories
-  install_pre_commit
-  echo "Setup complete. Activate the virtual environment with: source ${VENV_PATH}/bin/activate"
-}
+# Install pre-commit hooks
+echo ""
+echo "Installing pre-commit hooks..."
+if command -v pre-commit &> /dev/null; then
+    pre-commit install
+    echo -e "${GREEN}✓ Pre-commit hooks installed${NC}"
+else
+    echo -e "${YELLOW}⚠ pre-commit not found in PATH, skipping hook installation${NC}"
+fi
 
-main "$@"
+# Create necessary directories (most already exist)
+echo ""
+echo "Verifying directory structure..."
+mkdir -p logs/connection-checks
+mkdir -p artifacts
+mkdir -p outputs
+mkdir -p docs/prompts
+mkdir -p docs/outputs
+mkdir -p docs/audit-notes
+echo -e "${GREEN}✓ Directory structure verified${NC}"
+
+# Check for required environment variables
+echo ""
+echo "=========================================="
+echo "Setup Complete!"
+echo "=========================================="
+echo ""
+echo "Next steps:"
+echo "1. Edit .env file and add your API keys:"
+echo "   - OPENAI_API_KEY (for ChatGPT/Codex)"
+echo "   - NOTION_API_KEY (optional, for Notion integration)"
+echo "   - ZOTERO_API_KEY (optional, for bibliography management)"
+echo ""
+echo "2. Activate the virtual environment:"
+echo "   source .venv/bin/activate"
+echo ""
+echo "3. Run validation checks:"
+echo "   python scripts/validate_connections.py"
+echo ""
+echo "4. Read the documentation:"
+echo "   - docs/environment-setup.md"
+echo "   - docs/project-roadmap.md"
+echo "   - docs/rulesets.md"
+echo ""
+echo -e "${GREEN}Happy coding!${NC}"

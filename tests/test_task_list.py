@@ -19,8 +19,16 @@ def sample_data():
                 "project": "HousingPolicyResearch",
                 "last_updated": "2024-05-10",
                 "tasks": [
-                    {"description": "Draft outline", "priority": "urgent", "status": "open"},
-                    {"description": "Sync Zotero notes", "priority": "low", "status": True},
+                    {
+                        "description": "Draft outline",
+                        "priority": "urgent",
+                        "status": "open",
+                    },
+                    {
+                        "description": "Sync Zotero notes",
+                        "priority": "low",
+                        "status": True,
+                    },
                 ],
             },
             {
@@ -28,14 +36,22 @@ def sample_data():
                 "subject": "Zotero",
                 "last_updated": "2024-05-09",
                 "tasks": [
-                    {"description": "Tag sources", "priority": "medium", "status": "done"}
+                    {
+                        "description": "Tag sources",
+                        "priority": "medium",
+                        "status": "done",
+                    }
                 ],
             },
             {
                 "chat_title": "Misc scratchpad",
                 "last_updated": "2024-05-11",
                 "tasks": [
-                    {"description": "Clarify scope", "priority": "unknown", "status": "open"}
+                    {
+                        "description": "Clarify scope",
+                        "priority": "unknown",
+                        "status": "open",
+                    }
                 ],
             },
         ]

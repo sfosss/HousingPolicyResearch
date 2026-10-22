@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Subsidy Reform: A Comprehensive Policy Proposal</title>
+    <style>
+        /* DARK THEME CSS FRAMEWORK */
+        :root {
+            --font-family-display: Arial, sans-serif;
+            --font-weight-display: 600;
+            --font-family-content: Arial, sans-serif;
+            --font-weight-content: 400;
+            --font-size-content: 16px;
+            --line-height-content: 1.4;
+        }
+
+        body.theme-dark {
+            --color-bg-base: #0f172a;
+            --color-bg-elevated: #020617;
+            --color-bg-surface: #1e293b;
+            --color-bg-muted: #334155;
+            --color-text-primary: #f1f5f9;
+            --color-text-secondary: #cbd5e1;
+            --color-text-muted: #94a3b8;
+            --color-text-accent: #38bdf8;
+            --color-primary: #38bdf8;
+            --color-primary-foreground: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-content);
+            font-weight: var(--font-weight-content);
+            font-size: var(--font-size-content);
+            line-height: var(--line-height-content);
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .row { flex-direction: row; }
+        .col { flex-direction: column; }
+        .center {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .space-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .items-end { align-items: flex-end; }
+        .fill-width { flex: 1; }
+        .fill-height { flex: 1; display: flex; flex-direction: column; }
+
+        .gap-sm { gap: 0.5rem; }
+        .gap-md { gap: 1rem; }
+        .gap-lg { gap: 1.5rem; }
+        .gap-xl { gap: 2rem; }
+        .gap-2xl { gap: 3rem; }
+
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .p-12 { padding: 3rem; }
+        .p-16 { padding: 4rem; }
+
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-12 { margin-top: 3rem; }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family-display);
+            font-weight: var(--font-weight-display);
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1rem; }
+
+        .text-6xl { font-size: 3.75rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-base { font-size: 1rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-xs { font-size: 0.75rem; }
+
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .font-normal { font-weight: 400; }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .opacity-90 { opacity: 0.9; }
+        .opacity-80 { opacity: 0.8; }
+        .opacity-70 { opacity: 0.7; }
+        .opacity-60 { opacity: 0.6; }
+
+        ul, ol {
+            margin-left: 2rem;
+            line-height: 1.8;
+        }
+
+        ul li { list-style: disc; }
+        ol li { list-style: decimal; }
+
+        li { margin-bottom: 0.75rem; }
+        li:last-child { margin-bottom: 0; }
+
+        p {
+            margin: 0 0 1rem 0;
+        }
+    </style>
+</head>
+<body class="theme-dark">
+
+    <!-- SLIDE 1: TITLE SLIDE -->
+    <section class="slide p-16 col center" style="background-color: #020617; color: #f1f5f9;">
+        <h1 class="text-6xl mb-4" style="color: #38bdf8;">Housing Subsidy Reform</h1>
+        <p class="text-2xl" style="color: #cbd5e1;">A Comprehensive Policy Proposal for NYC</p>
+        <p class="text-sm mt-8" style="color: #94a3b8;">Policy Analysis for Housing Justice & Affordability • December 2024</p>
+    </section>
+
+    <!-- SLIDE 2: THE CRISIS -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">The Housing Affordability Crisis</h2>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Over 2 million NYC households spend >30% of income on rent (cost-burdened)</li>
+                <li>336,000 households on HCV waitlist; average wait 8+ years</li>
+                <li>NYC receives $7.2B in federal housing assistance annually</li>
+                <li>Only 1 in 4 eligible low-income households receive any subsidy</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: CURRENT PROGRAMS OVERVIEW -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Federal Housing Assistance Programs</h2>
+        <div class="fill-height row gap-lg">
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+                <h3 style="color: #38bdf8; margin-bottom: 1rem;">Housing Choice Vouchers</h3>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">$6.5B annually for 120,000+ NYC households</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+                <h3 style="color: #38bdf8; margin-bottom: 1rem;">Public Housing</h3>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">NYCHA manages 180,000+ units</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+                <h3 style="color: #38bdf8; margin-bottom: 1rem;">LIHTC & Production</h3>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">$833M annually for affordable housing development</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: EVIDENCE OF SUCCESS -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Empirical Evidence: What Works</h2>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Voucher recipients 2-4x less likely to be housing-insecure vs. unassisted</li>
+                <li>Housing quality: 7.9% more voucher holders rate housing as "good/excellent"</li>
+                <li>Neighborhood outcomes: Voucher holders live in 5.2% lower-poverty areas</li>
+                <li>Children exposed to vouchers before age 13 have 30% higher earnings as adults</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: LANDLORD DISCRIMINATION BARRIER -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">The Landlord Discrimination Problem</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">48% of NYC landlords exhibit source-of-income (SOI) discrimination</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Nearly 50% of NYCHA voucher recipients lose vouchers unable to find housing</li>
+                <li>Sophisticated discrimination tactics: steering, ghosting, inflated credit requirements</li>
+                <li>Only 17 CCHR attorneys enforce fair housing for 8+ million New Yorkers</li>
+                <li>Underfunded CCHR leaves discrimination largely unpunished</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: COST-EFFECTIVENESS DATA -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Why Tenant-Based Vouchers Matter</h2>
+        <div class="row gap-lg items-center fill-height">
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem;">
+                <h3 style="color: #38bdf8; margin-bottom: 1rem;">Monthly Cost Per Unit</h3>
+                <p style="font-size: 1.5rem; color: #38bdf8; font-weight: bold;">$1,408 - $1,466</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">Significantly less than production costs</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem;">
+                <h3 style="color: #38bdf8; margin-bottom: 1rem;">Cost-Efficiency</h3>
+                <p style="font-size: 1.5rem; color: #38bdf8; font-weight: bold;">2-3x More Cost-Effective</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">vs. project-based subsidies</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem;">
+                <h3 style="color: #38bdf8; margin-bottom: 1rem;">Reach</h3>
+                <p style="font-size: 1.5rem; color: #38bdf8; font-weight: bold;">120,000+ Units</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">Current NYC participation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: REFORM PILLARS -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Four Pillars of Reform</h2>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li><strong style="color: #38bdf8;">Pillar 1: Expand Voucher Access</strong> - Double HCV supply from 120,000 to 240,000+ units</li>
+                <li><strong style="color: #38bdf8;">Pillar 2: Eliminate Discrimination</strong> - Fund enforcement; implement landlord incentives</li>
+                <li><strong style="color: #38bdf8;">Pillar 3: Improve Payment Standards</strong> - Implement SAFMR in high-opportunity areas</li>
+                <li><strong style="color: #38bdf8;">Pillar 4: Support Implementation</strong> - Training, tech, data infrastructure</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: PILLAR 1 - EXPANSION -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Pillar 1: Expanding Voucher Access</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">Target: Add 120,000 new vouchers over 5 years</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Reopen waitlist for all eligible households (not lottery-closed)</li>
+                <li>Federal funding: $1.2B annually to HPD + NYCHA for expansion</li>
+                <li>Priority: 75% to extremely low-income (ELI) households per HUD mandate</li>
+                <li>Cost: ~$1,700/month per voucher ($20.4B over 10 years)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: PILLAR 2 - DISCRIMINATION ENFORCEMENT -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Pillar 2: Eliminating Discrimination</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">Two-pronged approach: Enforcement + Incentives</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li><strong style="color: #38bdf8;">A. CCHR Funding:</strong> Increase from 17 to 50+ attorneys; $15M annually</li>
+                <li><strong style="color: #38bdf8;">B. Landlord Incentives:</strong> Tax credits, insurance protections for SOI participants</li>
+                <li><strong style="color: #38bdf8;">C. Proactive Testing:</strong> Fair Housing Initiative paired testing operations</li>
+                <li><strong style="color: #38bdf8;">D. Behavioral Interventions:</strong> Ideas42 model for landlord engagement</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 10: PILLAR 3 - PAYMENT STANDARDS -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Pillar 3: Strategic Allocation Metrics (SAFMR)</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">Location-based rent standards to expand opportunity access</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Implement SAFMR in 15 high-opportunity census tracts (low poverty, job centers, transit)</li>
+                <li>Evidence: 24 metro areas with SAFMR show voucher holders move to lower-poverty neighborhoods</li>
+                <li>Cost-neutral policy: Redirects existing HCV budget, not increased spending</li>
+                <li>Protects current holders: Grandfathered at existing payment standards</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 11: PILLAR 4 - IMPLEMENTATION -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Pillar 4: Implementation Infrastructure</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">Systems and resources for program success</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Tenant services: Dedicated counselors, language access, mobility coaching</li>
+                <li>Landlord engagement: Front-end relationship building and payment reliability assurance</li>
+                <li>Data systems: Real-time dashboards for waitlist management, utilization tracking</li>
+                <li>Staff capacity: HPD + NYCHA + CCHR hiring plan for administration</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 12: BUDGETARY IMPACT -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Budgetary Impact (10-Year Horizon)</h2>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li><strong style="color: #38bdf8;">Voucher Expansion (Pillar 1):</strong> $20.4B (federal + local match)</li>
+                <li><strong style="color: #38bdf8;">Enforcement (Pillar 2):</strong> $150M (CCHR + testing)</li>
+                <li><strong style="color: #38bdf8;">Administrative/Infrastructure (Pillar 4):</strong> $200M (systems, staff, training)</li>
+                <li><strong style="color: #38bdf8;">TOTAL 10-YEAR COST:</strong> ~$20.75B for permanent assistance to 240,000+ households</li>
+                <li><strong style="color: #38bdf8;">Per-household 10-year cost:</strong> ~$86,500 (highly cost-effective)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 13: LEGISLATIVE FRAMEWORK -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Legislative Implementation Strategy</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">Model: ROAD to Housing Act framework (2025)</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>State: "Housing Opportunity and Discrimination Prevention Act" (HOPA)</li>
+                <li>City: "Source of Income Enforcement and Voucher Expansion Law"</li>
+                <li>HUD: Emergency Rental Assistance modernization + HCV reauthorization</li>
+                <li>Timelines: Year 1-2 funding authorization; Years 3-5 full expansion</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 14: EQUITY & JUSTICE -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Equity Impact</h2>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>65% of HCV recipients nationwide are Black & Latinx; 78% are female-headed households</li>
+                <li>Reform prioritizes ELI households (75% of new vouchers)</li>
+                <li>Targets women, seniors, people with disabilities disproportionately excluded</li>
+                <li>Anti-discrimination enforcement protects civil rights of 120,000 new families</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 15: RISKS & MITIGATION -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Implementation Risks & Mitigations</h2>
+        <div class="row gap-lg fill-height">
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 1.5rem;">
+                <p style="color: #38bdf8; font-weight: bold; margin-bottom: 0.5rem;">Risk: Federal Funding Cuts</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">Mitigation: State/city revenue bonds; phased expansion</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 1.5rem;">
+                <p style="color: #38bdf8; font-weight: bold; margin-bottom: 0.5rem;">Risk: Landlord Resistance</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">Mitigation: Incentives; enforcement; relationship building</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 1.5rem;">
+                <p style="color: #38bdf8; font-weight: bold; margin-bottom: 0.5rem;">Risk: Tight Rental Market</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem;">Mitigation: Concurrent production; concurrent affordability</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 16: MEASURABLE OUTCOMES -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Measurable Success Metrics (5-Year Targets)</h2>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>120,000+ new HCV vouchers issued to eligible households</li>
+                <li>50,000+ new households moved to opportunity neighborhoods (SAFMR)</li>
+                <li>50+ reduction in SOI discrimination complaints (enforcement effectiveness)</li>
+                <li>$100M+ in state/local tax credit investment to landlords accepting vouchers</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 17: NATIONAL ALIGNMENT -->
+    <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Alignment with Federal Reform Momentum</h2>
+        <p class="text-lg mb-4" style="color: #cbd5e1;">ROAD to Housing Act 2025 & Administration Priorities</p>
+        <div class="fill-height">
+            <ul class="text-lg" style="color: #cbd5e1;">
+                <li>Build Now Act: Ties CDBG funding to housing production</li>
+                <li>Choice in Affordable Housing: Streamlines HCV inspection process</li>
+                <li>Innovation Fund: $200M for local demonstration of proven reforms</li>
+                <li>NYC proposal aligns with national evidence-based best practices</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 18: CALL TO ACTION -->
+    <section class="slide p-16 col center" style="background-color: #020617; color: #f1f5f9;">
+        <h2 class="mb-8" style="color: #38bdf8;">Call to Action</h2>
+        <p class="text-xl mb-8" style="color: #cbd5e1;">Implement comprehensive housing subsidy reform to:</p>
+        <div class="fill-height center">
+            <ul class="text-lg" style="color: #cbd5e1; text-align: center;">
+                <li>House 120,000+ more families in stable, quality housing</li>
+                <li>Eliminate racial and source-of-income discrimination</li>
+                <li>Invest $20.75B over 10 years for permanent affordability</li>
+                <li>Lead the nation in tenant rights and housing justice</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 19: THANK YOU & CONTACT -->
+    <section class="slide p-16 col center" style="background-color: #020617; color: #f1f5f9;">
+        <h2 class="text-5xl mb-6" style="color: #38bdf8;">Thank You</h2>
+        <p class="text-xl mb-8" style="color: #cbd5e1;">Questions & Discussion</p>
+        <p class="text-sm" style="color: #94a3b8;">NYC Public Policy Analysis • Housing Subsidy Reform Initiative</p>
+    </section>
+
+</body>
+</html>
