@@ -59,7 +59,7 @@ Snapshot: `sfosss/HousingPolicyResearch`, default branch `e3f58d536c0b4ef3f0481c
 ## Validation
 
 - The setup repair passed 13 local tests, including four credential-gate cases covering scheduled/manual runs with and without configuration. No API requests were made.
-- Black, Flake8, and mdformat passed through the existing pre-commit configuration across all tracked files. The Markdown changes outside this report are formatter normalization, not a policy or citation review.
+- Black, Flake8, and mdformat passed through the existing pre-commit configuration across all tracked files. Existing research documents changed only through formatter normalization, not policy or citation review. Agent instructions and this report were edited for the setup repair.
 - Actionlint passed for the changed workflows and the separate preflight workflow; dependency consistency passed.
 - The setup script completed from `/tmp` through its compatibility wrapper with a fresh virtual environment in the worktree, without API credentials.
 - The Pages build passed using the same `ghcr.io/actions/jekyll-build-pages:v1.0.13` image as the failed hosted job. GitHub metadata was unavailable locally; public deployment was not performed.
