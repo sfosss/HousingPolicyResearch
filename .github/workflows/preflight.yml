@@ -176,7 +176,9 @@ jobs:
           # Archive only these inputs, without constructing the full Git index.
           git init .
           git fetch --depth=1 "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git" "$GITHUB_SHA"
-          git archive --format=tar FETCH_HEAD capstone tests/test_preflight.py | tar -xf -
+          # Allow Git to inspect the source tree's invalid names, but extract
+          # only the two Windows-safe paths explicitly listed below.
+          git -c core.protectNTFS=false archive --format=tar FETCH_HEAD capstone tests/test_preflight.py | tar -xf -
 
       - name: Set up Python
         uses: actions/setup-python@v5
