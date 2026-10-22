@@ -169,15 +169,14 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          # Only materialize preflight inputs: unrelated document paths in
-          # Capstone/ cannot be checked out on Windows (colons/trailing spaces).
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /capstone/
-            /tests/test_preflight.py
+      - name: Extract preflight inputs from workflow commit
+        shell: bash
+        run: |
+          # Git rejects unrelated Windows-invalid paths even in sparse checkout.
+          # Archive only these inputs, without constructing the full Git index.
+          git init .
+          git fetch --depth=1 "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git" "$GITHUB_SHA"
+          git archive --format=tar FETCH_HEAD capstone tests/test_preflight.py | tar -xf -
 
       - name: Set up Python
         uses: actions/setup-python@v5
