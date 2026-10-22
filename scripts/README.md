@@ -6,7 +6,7 @@ This directory contains automation scripts for repository management and mainten
 
 ### `preflight_check.py`
 
-Run `python scripts/preflight_check.py` from a checkout with Python 3.8+ and
+Run `python scripts/preflight_check.py` from a checkout with Python 3.11+ and
 Git on PATH. No packages, API tokens, or network access are needed. The command
 checks required tooling files and Python source syntax, writes
 `reports/preflight/preflight.json` and `preflight.md`, and exits with status 1

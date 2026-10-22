@@ -84,11 +84,18 @@ class PreflightTests(unittest.TestCase):
 
     def test_newer_grammar_fails_even_on_newer_interpreter(self):
         (self.root / "scripts/newer.py").write_text(
-            "match 1:\n    case 1:\n        pass\n", encoding="utf-8"
+            "type Alias = int\n", encoding="utf-8"
         )
         result = self.run_preflight()
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         self.assertFalse(self.read_report()["passed"])
+
+    def test_python_below_project_minimum_is_a_failed_check(self):
+        with patch.object(preflight.sys, "version_info", (3, 10)):
+            checks = preflight.collect_checks(self.root)
+        self.assertFalse(
+            next(check for check in checks if check["name"] == "Python")["passed"]
+        )
 
     def test_context_invalid_statements_fail_without_executing_source(self):
         for statement in ("return 1\n", "break\n", "continue\n"):

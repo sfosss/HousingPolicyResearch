@@ -3,7 +3,7 @@
 
 Usage: python scripts/preflight_check.py --help
 Maintainer: Housing Policy Research team. Created: 2026-10-21.
-Requires Python 3.8+ and Git; no third-party Python packages are needed.
+Requires Python 3.11+ and Git; no third-party Python packages are needed.
 """
 
 import argparse
@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 
+MINIMUM_PYTHON = (3, 11)
 REQUIRED_FILES = (
     "pyproject.toml",
     "requirements.txt",
@@ -30,7 +31,7 @@ def collect_checks(repo_root):
     def record(name, passed, detail):
         checks.append({"name": name, "passed": passed, "detail": detail})
 
-    record("Python", sys.version_info >= (3, 8), platform.python_version())
+    record("Python", sys.version_info >= MINIMUM_PYTHON, platform.python_version())
     record("Git", shutil.which("git") is not None, "git must be on PATH")
     for relative_path in REQUIRED_FILES:
         record(
@@ -48,7 +49,7 @@ def collect_checks(repo_root):
                 tree = ast.parse(
                     source.read_text(encoding="utf-8-sig"),
                     filename=relative_path,
-                    feature_version=(3, 8),
+                    feature_version=MINIMUM_PYTHON,
                 )
                 # Parsing alone accepts context-invalid statements such as a
                 # module-level return. Compile without executing the source.
