@@ -5,7 +5,7 @@ This document captures the setup guidance and project tasks required to connect 
 ## 1. Prerequisites
 
 - **Node.js and npm**: Install the current LTS release from [nodejs.org](https://nodejs.org/).
-- **Python 3.10+**: Required for automation scripts or API clients.
+- **Python 3.11+**: Required for automation scripts or API clients.
 - **Package Managers**: `pipx` (Python) and `npm` (Node.js) are recommended for isolating tooling.
 - **Version Control**: Git 2.40+ configured with SSH and/or HTTPS credentials.
 - **Secret Storage**: Use a password manager or secret manager (e.g., 1Password, Bitwarden, GitHub Encrypted Secrets) to store API keys.

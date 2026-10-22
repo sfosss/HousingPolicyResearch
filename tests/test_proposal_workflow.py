@@ -1,11 +1,17 @@
 """Exercise the proposal workflow's credential gate without live API calls."""
 
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
 import pytest
 import yaml
+
+pytestmark = pytest.mark.skipif(
+    os.name == "nt" or shutil.which("bash") is None,
+    reason="Exercises Bash steps from an ubuntu-latest GitHub Actions job",
+)
 
 
 WORKFLOW = (

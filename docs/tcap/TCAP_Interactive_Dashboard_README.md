@@ -27,7 +27,7 @@ ______________________________________________________________________
 
 | File                                       | Purpose                          | Format      |
 | ------------------------------------------ | -------------------------------- | ----------- |
-| `tcap_task_automation.py`                  | Main automation engine           | Python 3.8+ |
+| `tcap_task_automation.py`                  | Main automation engine           | Python 3.11+ |
 | `tcap_automation.sh`                       | Orchestration & scheduling       | Bash script |
 | `TCAP_Task_Status_Risk_Tracking.csv`       | Task status + risk export        | CSV         |
 | `TCAP_Version_History_Audit_Log.txt`       | Version control + escalation log | Text        |
@@ -394,7 +394,7 @@ ______________________________________________________________________
 
 **Problem:** `python3: command not found`
 
-- **Solution:** Install Python 3.8+. On macOS: `brew install python3`
+- **Solution:** Install Python 3.11+. On macOS: `brew install python3`
 
 **Problem:** `Permission denied: tcap_automation.sh`
 
