@@ -55,7 +55,7 @@ cd your-project
 chmod +x tcap_automation.sh
 
 # Verify Python installation
-python3 --version  # Requires 3.8+
+python3 --version  # Requires 3.11+
 ```
 
 ### 2. Generate Your First Report
