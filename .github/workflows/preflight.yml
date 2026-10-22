@@ -27,10 +27,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -78,7 +78,7 @@ jobs:
 
       - name: Upload JSON report as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: preflight-report-macos-${{ github.run_number }}
           path: capstone/reports/*.json
@@ -87,7 +87,7 @@ jobs:
 
       - name: Upload Markdown report as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: preflight-markdown-macos-${{ github.run_number }}
           path: capstone/reports/*.md
@@ -115,10 +115,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -150,7 +150,7 @@ jobs:
 
       - name: Upload JSON report as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: preflight-report-linux-${{ github.run_number }}
           path: capstone/reports/*.json
@@ -159,7 +159,7 @@ jobs:
 
       - name: Upload Markdown report as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: preflight-markdown-linux-${{ github.run_number }}
           path: capstone/reports/*.md
@@ -185,7 +185,7 @@ jobs:
           git -c core.protectNTFS=false archive --format=tar FETCH_HEAD capstone tests/test_preflight.py | tar -xf -
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -212,7 +212,7 @@ jobs:
 
       - name: Upload JSON report as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: preflight-report-windows-${{ github.run_number }}
           path: capstone/reports/*.json
@@ -221,7 +221,7 @@ jobs:
 
       - name: Upload Markdown report as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: preflight-markdown-windows-${{ github.run_number }}
           path: capstone/reports/*.md
