@@ -6,6 +6,7 @@ result in a predictable ``<Tasks>`` directory. The goal is to keep a unified
 view of pending work regardless of whether the user opens ChatGPT on iOS,
 macOS, or the web interface.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -67,7 +68,10 @@ class ChatEntry:
     def sorted_tasks(self) -> List[ChatTask]:
         return sorted(
             self.tasks,
-            key=lambda task: (PRIORITY_ORDER.get(task.normalised_priority(), 99), task.description.lower()),
+            key=lambda task: (
+                PRIORITY_ORDER.get(task.normalised_priority(), 99),
+                task.description.lower(),
+            ),
         )
 
 
@@ -89,7 +93,9 @@ def normalise_priority(priority: str | None) -> str:
 
     if not priority:
         return "medium"
-    cleaned = "".join(char for char in priority.lower() if char.isalpha() or char.isspace()).strip()
+    cleaned = "".join(
+        char for char in priority.lower() if char.isalpha() or char.isspace()
+    ).strip()
     if cleaned in {"urgent", "critical", "high"}:
         return "high"
     if cleaned in {"low", "minor"}:
@@ -115,7 +121,11 @@ def load_chat_tasks(path: Path) -> List[ChatEntry]:
     """
 
     payload = json.loads(path.read_text())
-    chats = payload["chats"] if isinstance(payload, dict) and "chats" in payload else payload
+    chats = (
+        payload["chats"]
+        if isinstance(payload, dict) and "chats" in payload
+        else payload
+    )
     entries: List[ChatEntry] = []
     for chat in chats:
         tasks: List[ChatTask] = []
@@ -129,7 +139,9 @@ def load_chat_tasks(path: Path) -> List[ChatEntry]:
             )
         entries.append(
             ChatEntry(
-                chat_title=chat.get("chat_title") or chat.get("title") or "Untitled chat",
+                chat_title=chat.get("chat_title")
+                or chat.get("title")
+                or "Untitled chat",
                 last_updated=chat.get("last_updated") or chat.get("updated") or "",
                 project=chat.get("project"),
                 subject=chat.get("subject"),
@@ -192,14 +204,21 @@ def write_task_table(entries: Sequence[ChatEntry], output_path: Path) -> Path:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate a ChatGPT tasks CSV table")
-    parser.add_argument("--chat-export", type=Path, required=True, help="Path to a JSON file with chat tasks")
+    parser.add_argument(
+        "--chat-export",
+        type=Path,
+        required=True,
+        help="Path to a JSON file with chat tasks",
+    )
     parser.add_argument(
         "--output-dir",
         type=Path,
         default=DEFAULT_TASKS_DIR,
         help="Directory to write the <Tasks> CSV into (defaults to ChatGPT/Projects/Tasks)",
     )
-    parser.add_argument("--filename", default=DEFAULT_TASKS_FILE, help="Name of the generated CSV file")
+    parser.add_argument(
+        "--filename", default=DEFAULT_TASKS_FILE, help="Name of the generated CSV file"
+    )
     return parser.parse_args(argv)
 
 

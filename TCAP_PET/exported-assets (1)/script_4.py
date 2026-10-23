@@ -1,4 +1,3 @@
-
 # Create a final summary for the user
 summary = """
 ✅ PROJECT COMPLETE: NYC HOUSING SUBSIDY REFORM ASSETS PACKAGE
@@ -165,7 +164,7 @@ stakeholder circulation.
 print(summary)
 
 # Save this summary
-with open("DOWNLOAD_INSTRUCTIONS.txt", 'w') as f:
+with open("DOWNLOAD_INSTRUCTIONS.txt", "w") as f:
     f.write(summary)
 
 print("\n✅ Saved to: DOWNLOAD_INSTRUCTIONS.txt")

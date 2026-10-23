@@ -1,4 +1,5 @@
 # TENANT CO-OP ACQUISITION PROGRAM (TCAP)
+
 ## Comprehensive Master Policy Report
 
 **Version 3.0 FINAL | December 26, 2025**
@@ -7,23 +8,23 @@
 
 **Prepared for: NYC City Council, NYC Housing Authority, NYC Department of Housing Preservation & Development**
 
----
+______________________________________________________________________
 
 ## TABLE OF CONTENTS
 
 1. **Executive Summary** (1 page)
-2. **Problem Statement & Fiscal Context** (3 pages)
-3. **TCAP Solution Design** (6 pages)
-4. **Fiscal Analysis: 10-Year Projections** (4 pages)
-5. **Equity Impact & Social Outcomes** (5 pages)
-6. **Implementation Framework: 4-Phase Roadmap** (6 pages)
-7. **Agency Budget Reallocation Strategy** (3 pages)
-8. **Legal Framework & Precedent** (5 pages)
-9. **Risk Assessment & Mitigation** (4 pages)
-10. **Governance & Operational Structure** (5 pages)
-11. **Appendices** (12 pages)
+1. **Problem Statement & Fiscal Context** (3 pages)
+1. **TCAP Solution Design** (6 pages)
+1. **Fiscal Analysis: 10-Year Projections** (4 pages)
+1. **Equity Impact & Social Outcomes** (5 pages)
+1. **Implementation Framework: 4-Phase Roadmap** (6 pages)
+1. **Agency Budget Reallocation Strategy** (3 pages)
+1. **Legal Framework & Precedent** (5 pages)
+1. **Risk Assessment & Mitigation** (4 pages)
+1. **Governance & Operational Structure** (5 pages)
+1. **Appendices** (12 pages)
 
----
+______________________________________________________________________
 
 ## EXECUTIVE SUMMARY
 
@@ -36,6 +37,7 @@ New York City spends **$5.2 billion annually** on housing subsidies serving 895,
 ### The Model
 
 Tenant co-operatives acquire subsidized buildings through:
+
 - **Tenant organizing** (6-12 months)
 - **Cooperative financing** (credit union loans + TCAP subsidy)
 - **Permanent affordability** (state co-op housing law + recorded deed restriction)
@@ -43,34 +45,34 @@ Tenant co-operatives acquire subsidized buildings through:
 
 ### The Impact (10-Year)
 
-| Metric | Value |
-|--------|-------|
-| **Buildings Acquired** | 353 |
-| **Households Served** | 38,700 |
-| **Public Subsidy Savings** | $37.5B |
-| **Member Wealth Created** | $1.24B |
-| **Evictions Prevented** | 65,000+ |
-| **ROI (Direct)** | 3.4:1 |
-| **ROI (Full Societal)** | 6.2:1 |
-| **Homeownership Gap Closure** | 4-6 pp |
-| **Annual Budget Required** | $145M (steady state) |
+| Metric                        | Value                |
+| ----------------------------- | -------------------- |
+| **Buildings Acquired**        | 353                  |
+| **Households Served**         | 38,700               |
+| **Public Subsidy Savings**    | $37.5B               |
+| **Member Wealth Created**     | $1.24B               |
+| **Evictions Prevented**       | 65,000+              |
+| **ROI (Direct)**              | 3.4:1                |
+| **ROI (Full Societal)**       | 6.2:1                |
+| **Homeownership Gap Closure** | 4-6 pp               |
+| **Annual Budget Required**    | $145M (steady state) |
 
 ### Why TCAP Works
 
 1. **Fiscal**: Redirects $1.4B from rent assistance (loses money) to member wealth (gains assets)
-2. **Equity**: Concentrates benefits on Black/Latino households most harmed by displacement
-3. **Legal**: Proven 40-year precedent (DC TOPA, SF COPA, Swiss cooperatives 150+ years)
-4. **Sustainable**: Moves subsidy burden to asset creation, reducing future costs
-5. **Governance**: Members control building → decisions serve residents, not landlords
+1. **Equity**: Concentrates benefits on Black/Latino households most harmed by displacement
+1. **Legal**: Proven 40-year precedent (DC TOPA, SF COPA, Swiss cooperatives 150+ years)
+1. **Sustainable**: Moves subsidy burden to asset creation, reducing future costs
+1. **Governance**: Members control building → decisions serve residents, not landlords
 
 ### Immediate Action
 
-**Legislative:** Pass INT.A-D (20 co-sponsors minimum) by June 2026  
-**Fiscal:** Reallocate $1.4B from HRA/HPD (Year 1: $500M pilot)  
-**Operational:** TCAP Office staffed (9 FTE) by Month 3  
-**First Buildings:** 3-5 closings by Month 8  
+**Legislative:** Pass INT.A-D (20 co-sponsors minimum) by June 2026\
+**Fiscal:** Reallocate $1.4B from HRA/HPD (Year 1: $500M pilot)\
+**Operational:** TCAP Office staffed (9 FTE) by Month 3\
+**First Buildings:** 3-5 closings by Month 8
 
----
+______________________________________________________________________
 
 ## PART I: PROBLEM STATEMENT & FISCAL CONTEXT
 
@@ -88,12 +90,12 @@ Tenant co-operatives acquire subsidized buildings through:
 
 #### The Wealth Gap
 
-| Group | Homeownership Rate | Wealth (Median) |
-|-------|-------------------|-----------------|
-| White households | 46% | $284,000 |
-| Black households | 19% | $24,000 |
-| Latino households | 20% | $36,000 |
-| **Gap (Black-White)** | **27 pp** | **$260,000** |
+| Group                 | Homeownership Rate | Wealth (Median) |
+| --------------------- | ------------------ | --------------- |
+| White households      | 46%                | $284,000        |
+| Black households      | 19%                | $24,000         |
+| Latino households     | 20%                | $36,000         |
+| **Gap (Black-White)** | **27 pp**          | **$260,000**    |
 
 **Cost to close gap (tax revenue forgone, lost investment):** $8-12B annually
 
@@ -113,6 +115,7 @@ Tenant co-operatives acquire subsidized buildings through:
 **Problem 1: Temporary Relief, Permanent Insecurity**
 
 HRA emergency assistance (largest program):
+
 - **$2.1B annual budget**
 - **Helps 65,000 families** with 3-12 months of rent
 - **Outcome after subsidy ends:** 40% return to homelessness within 18 months
@@ -121,6 +124,7 @@ HRA emergency assistance (largest program):
 **Problem 2: Landlord Extraction**
 
 Every dollar of subsidy goes to landlord, not building maintenance:
+
 - Building code violations increase 35% in subsidized buildings
 - Maintenance deferred → building quality declines
 - Capital investment by landlord: 0% (subsidy covers costs)
@@ -129,6 +133,7 @@ Every dollar of subsidy goes to landlord, not building maintenance:
 **Problem 3: Racial Targeting**
 
 Subsidies concentrate in segregated neighborhoods:
+
 - HPD affordable housing policy requires 20% set-aside for low-income
 - Buildings in disinvested (majority-Black) neighborhoods get higher subsidy
 - Buildings in wealthy (majority-White) neighborhoods get development bonuses
@@ -175,47 +180,55 @@ Subsidies concentrate in segregated neighborhoods:
 ### Why NYC is Ready for TCAP
 
 **Fiscal capacity:**
+
 - $5.2B housing subsidy budget (largest in US)
 - 895,000 beneficiaries (largest constituency)
 - Fiscal pressure to reduce homelessness + eviction spending
 
 **Policy momentum:**
+
 - Mayor's 25,000 plan (convert homeless shelters to permanent housing)
 - HPD's affordability mandate (requires 20% low-income)
 - City Council housing focus (multiple housing bills pending)
 
 **Community capacity:**
+
 - 100+ active tenant organizations in NYC
 - 200+ organizations trained in co-op governance
 - 50+ organizations ready to sponsor co-ops immediately
 
 **Legal foundation:**
+
 - NY State housing law permits co-op creation
 - Deed restriction mechanism proven in NYC
 - Legal precedent from other cities established
 
----
+______________________________________________________________________
 
 ## PART II: TCAP SOLUTION DESIGN
 
 ### Core Principles
 
 **Principle 1: Equity Over Efficiency**
+
 - Prioritize neighborhoods with worst racial gaps (Brownsville, East Harlem, South Bronx)
 - Target 60% female-headed households, 35% senior (65+)
-- Reserved 50% for households making <30% of AMI
+- Reserved 50% for households making \<30% of AMI
 
 **Principle 2: Member Control Over Landlord Profit**
+
 - Every decision made by tenant-elected board
 - No landlord retained, no profits extracted
 - Building maintained for members' benefit, not profit
 
 **Principle 3: Permanent Affordability Over Time Limits**
+
 - Affordability locked in deed restriction (permanent)
 - Member occupancy required for co-op membership
 - Resale price capped at affordable level (member wealth share + inflation cap)
 
 **Principle 4: Public Investment in Permanent Assets**
+
 - Subsidy redirected from rent assistance to building purchase
 - Building becomes community asset (not landlord property)
 - Wealth accumulation becomes intergenerational (members → children → grandchildren)
@@ -225,22 +238,26 @@ Subsidies concentrate in segregated neighborhoods:
 #### Phase 1: Tenant Organizing & Preparation (Months 1-12)
 
 **Goals:**
+
 - Tenant group achieves consensus to become cooperative
 - Building studied for financial feasibility
 - Member training completed (co-op governance, financial literacy)
 
 **Timeline:**
+
 - **Months 1-3:** Tenant group formation, monthly meetings established
 - **Months 3-6:** Feasibility study (building inspection, financial review)
 - **Months 6-9:** Member training program (8-week course, 20+ hours)
 - **Months 9-12:** Formal co-op board election, bylaws adopted
 
 **TCAP Role:**
+
 - Provide organizer grant ($15,000-25,000 per building)
 - Fund feasibility studies ($10,000-15,000 per building)
 - Offer training curriculum (cost-free)
 
 **Success Metric:**
+
 - 90%+ member commitment (vote >75% for co-op conversion)
 - Feasibility study shows positive economics
 - Board elected with 70%+ confidence
@@ -248,45 +265,53 @@ Subsidies concentrate in segregated neighborhoods:
 #### Phase 2: Financing & Acquisition (Months 13-24)
 
 **Goals:**
+
 - Cooperative finances purchase of building
 - Subsidy committed by City
 - Loan approved by credit union
 - Building conveyed to cooperative
 
 **Financing Structure:**
+
 - **Down payment:** 20% (members + TCAP subsidy)
 - **Senior mortgage:** 70% (credit union, 30-year fixed rate)
 - **Subordinate financing:** 10% (TCAP deferred subsidy, 0% interest, 15-year)
 
 **Example (100-unit building, $40M purchase price):**
+
 - Senior mortgage: $28M (7-year LIBOR + 2.5%, fixed after year 1)
 - TCAP subsidy: $8M (down payment assistance + affordability subsidy)
 - Member contribution: $4M (saved over 12 months, modest amounts)
 
 **TCAP Role:**
+
 - Commit subsidy ($4-8M per building average)
 - Facilitate credit union financing
 - Coordinate with HPD/HRA for regulatory approval
 
 **Success Metric:**
+
 - 100% of buildings receive financing approval
-- <3% default rate on member contributions
+- \<3% default rate on member contributions
 - 100% of buildings successfully acquired
 
 #### Phase 3: Member Governance & Operations (Months 25-60, Year 3+)
 
 **Goals:**
+
 - Cooperative board assumes full governance
 - Building operations optimized for member benefit
 - Affordable charges maintained (30% of income cap)
 - Maintenance reserve funded (5% annually)
 
 **Member Charge Structure:**
+
 - Base charge: ~35% of member income (down from 50% average for renters)
 - Includes: mortgage, maintenance, property tax, insurance, management
 - Assistance available: If charge >30%, additional subsidy provided
 
 **Board Responsibilities:**
+
 - Hiring/firing building management company
 - Approving annual budget
 - Setting member charges
@@ -295,37 +320,43 @@ Subsidies concentrate in segregated neighborhoods:
 - Disputes between members
 
 **TCAP Role:**
+
 - Provide Board training (annual updates)
 - Monitor financial performance (annual audits)
 - Provide technical assistance (legal, management, financial)
 - Fund emergency reserve (if building crisis occurs)
 
 **Success Metric:**
-- 95%+ buildings meeting affordability targets (charges <30% of income)
+
+- 95%+ buildings meeting affordability targets (charges \<30% of income)
 - 100% buildings maintaining capital reserve fund
-- <2% vacancy rate in co-op sector
+- \<2% vacancy rate in co-op sector
 - Member satisfaction >80%
 
 #### Phase 4: Scaling & National Model (Years 6-10+)
 
 **Goals:**
+
 - TCAP becomes established program (not pilot)
 - 300+ buildings acquired, 40,000+ households served
 - Model proven in multiple neighborhoods, boroughs
 - National replication begins (other cities adopt model)
 
 **Expansion Targets:**
+
 - Year 6: 180 buildings acquired (60 per year ongoing)
 - Year 7: 240 buildings acquired (steady state achieved)
 - Year 8-10: 50 buildings per year (mature program)
 
 **TCAP Role:**
+
 - Permanent funding from city budget
 - Policy refinements based on 5-year experience
 - National partnership development (other cities)
 - Academic research on outcomes
 
 **Success Metric:**
+
 - 250+ buildings in co-op sector (20% of NYC buildings)
 - 50,000+ households in permanent affordable housing
 - National replication in 5+ other cities
@@ -334,19 +365,22 @@ Subsidies concentrate in segregated neighborhoods:
 ### TCAP Eligibility Criteria
 
 **Building Eligibility:**
+
 - Occupied rental building (currently subsidized or targeted for subsidy)
 - 10+ units (minimum viable economic scale)
-- <80 units (maximum for first phase, increases in Phase 3)
+- \<80 units (maximum for first phase, increases in Phase 3)
 - Building score ≥65 (structural integrity adequate for 30-year mortgage)
 - Landlord willing to sell (or building acquired through default)
 
 **Tenant Group Eligibility:**
+
 - 75%+ occupancy rate (majority of units engaged)
 - 50%+ member commitment vote (formal lease commitment)
 - Elected governing board (7-9 members representing diverse demographics)
 - Completed member training (20+ hours financial literacy + co-op governance)
 
 **Neighborhood Eligibility:**
+
 - Highest priority: Neighborhoods with >70% racial minorities (historically disinvested)
 - Secondary priority: Neighborhoods with high eviction rates (>8% annually)
 - Tertiary priority: Neighborhoods with most homeless population density
@@ -355,26 +389,29 @@ Subsidies concentrate in segregated neighborhoods:
 ### Member Selection & Equity Requirements
 
 **Priority Populations (50% of members minimum):**
-- Households earning <30% of AMI
+
+- Households earning \<30% of AMI
 - Female-headed households
 - Seniors (65+)
 - Families with children
 - Communities of color (prioritize Black/Latino households)
 
 **Member Composition Target (per 100-unit building):**
+
 - 60% female-headed households
 - 35% seniors (65+)
-- 50% earning <30% of AMI
+- 50% earning \<30% of AMI
 - 80% Black/Latino (in designated neighborhoods)
 - 15% people with disabilities
 
 **Displacement Prevention:**
+
 - Every current tenant offered co-op membership (right to remain)
 - Member charge capped at 30% of income (assistance if higher)
 - No evictions for non-payment during member transition (3-year assistance)
 - Right to purchase maintained in perpetuity
 
----
+______________________________________________________________________
 
 ## PART III: FISCAL ANALYSIS - 10-YEAR PROJECTIONS
 
@@ -382,21 +419,23 @@ Subsidies concentrate in segregated neighborhoods:
 
 **Current Annual Spending (NYC Housing Subsidy Budget):**
 
-| Program | Annual Budget | Beneficiaries | Per-Household |
-|---------|---------------|---------------|---------------|
-| HRA Emergency Assistance | $2,100M | 65,000 | $32,308 |
-| HPD Affordability Subsidy | $1,800M | 250,000 | $7,200 |
-| NYCHA Operating Subsidy | $1,000M | 400,000 | $2,500 |
-| HUD Section 8 Local Match | $300M | 180,000 | $1,667 |
-| **Total** | **$5,200M** | **895,000** | **$5,810** |
+| Program                   | Annual Budget | Beneficiaries | Per-Household |
+| ------------------------- | ------------- | ------------- | ------------- |
+| HRA Emergency Assistance  | $2,100M       | 65,000        | $32,308       |
+| HPD Affordability Subsidy | $1,800M       | 250,000       | $7,200        |
+| NYCHA Operating Subsidy   | $1,000M       | 400,000       | $2,500        |
+| HUD Section 8 Local Match | $300M         | 180,000       | $1,667        |
+| **Total**                 | **$5,200M**   | **895,000**   | **$5,810**    |
 
 **Cost Per Household Over 10 Years:**
+
 - Rent assistance only: $58,000 per household
 - Plus emergency services: $68,000-75,000 per household
 - Plus court/enforcement: $75,000-85,000 per household
 - **Total public cost:** $75,000-85,000 per household
 
 **Outcome After 10 Years:**
+
 - Member has $0 in assets (rent assistance depletes each year)
 - Household less stable (frequent displacement, school changes)
 - Building deteriorated (landlord avoids maintenance)
@@ -406,15 +445,15 @@ Subsidies concentrate in segregated neighborhoods:
 
 **TCAP Annual Budget Requirement (10-Year Average: $145M steady state)**
 
-| Budget Category | Year 1-2 | Year 3-5 | Year 6-10 | Steady State |
-|-----------------|----------|----------|----------|-------------|
-| Member acquisition subsidy (down payment) | $25M | $75M | $150M | $150M |
-| Affordability subsidy (member charge cap) | $10M | $20M | $35M | $35M |
-| Cooperative development (training, organizing) | $8M | $12M | $18M | $18M |
-| Building repair reserve | $5M | $10M | $20M | $20M |
-| Program administration (TCAP Office) | $2M | $3M | $5M | $5M |
-| Emergency assistance fund | $5M | $10M | $15M | $15M |
-| **Total Annual TCAP Budget** | **$55M** | **$130M** | **$243M** | **$145M** |
+| Budget Category                                | Year 1-2 | Year 3-5  | Year 6-10 | Steady State |
+| ---------------------------------------------- | -------- | --------- | --------- | ------------ |
+| Member acquisition subsidy (down payment)      | $25M     | $75M      | $150M     | $150M        |
+| Affordability subsidy (member charge cap)      | $10M     | $20M      | $35M      | $35M         |
+| Cooperative development (training, organizing) | $8M      | $12M      | $18M      | $18M         |
+| Building repair reserve                        | $5M      | $10M      | $20M      | $20M         |
+| Program administration (TCAP Office)           | $2M      | $3M       | $5M       | $5M          |
+| Emergency assistance fund                      | $5M      | $10M      | $15M      | $15M         |
+| **Total Annual TCAP Budget**                   | **$55M** | **$130M** | **$243M** | **$145M**    |
 
 *Note: Year 1-2 budget front-loaded for pilot phase. Steady state ($145M/year) maintains 50-60 new buildings/year, 40-year building lifecycle amortization.*
 
@@ -422,29 +461,31 @@ Subsidies concentrate in segregated neighborhoods:
 
 **Program Scale:**
 
-| Year | Buildings | Households | Cumulative HH | Annual Budget | Cumulative Investment |
-|------|-----------|-----------|---------------|---------------|----------------------|
-| 1 | 12 | 1,200 | 1,200 | $45M | $45M |
-| 2 | 8 | 800 | 2,000 | $30M | $75M |
-| 3 | 18 | 2,000 | 4,000 | $75M | $150M |
-| 4 | 25 | 2,750 | 6,750 | $103M | $253M |
-| 5 | 35 | 3,850 | 10,600 | $144M | $397M |
-| 6 | 45 | 4,950 | 15,550 | $186M | $583M |
-| 7 | 60 | 6,600 | 22,150 | $248M | $831M |
-| 8 | 50 | 5,500 | 27,650 | $206M | $1,037M |
-| 9 | 50 | 5,500 | 33,150 | $206M | $1,243M |
-| 10 | 50 | 5,500 | 38,650 | $206M | $1,449M |
-| **Total** | **353** | **38,650** | **—** | **$1,449M** | **$1,449M** |
+| Year      | Buildings | Households | Cumulative HH | Annual Budget | Cumulative Investment |
+| --------- | --------- | ---------- | ------------- | ------------- | --------------------- |
+| 1         | 12        | 1,200      | 1,200         | $45M          | $45M                  |
+| 2         | 8         | 800        | 2,000         | $30M          | $75M                  |
+| 3         | 18        | 2,000      | 4,000         | $75M          | $150M                 |
+| 4         | 25        | 2,750      | 6,750         | $103M         | $253M                 |
+| 5         | 35        | 3,850      | 10,600        | $144M         | $397M                 |
+| 6         | 45        | 4,950      | 15,550        | $186M         | $583M                 |
+| 7         | 60        | 6,600      | 22,150        | $248M         | $831M                 |
+| 8         | 50        | 5,500      | 27,650        | $206M         | $1,037M               |
+| 9         | 50        | 5,500      | 33,150        | $206M         | $1,243M               |
+| 10        | 50        | 5,500      | 38,650        | $206M         | $1,449M               |
+| **Total** | **353**   | **38,650** | **—**         | **$1,449M**   | **$1,449M**           |
 
 ### Subsidy Savings Analysis
 
 **Status Quo Cost (38,650 households, rent assistance trajectory):**
+
 - Rent assistance 10 years: $52.0B
 - Additional services (emergency, court, health): $8.0B
 - **Total 10-year cost:** $60.0B
 - **Per household (10-year):** $58,000-65,000
 
 **TCAP Cost (38,650 households in cooperative):**
+
 - Building acquisition subsidy: $1.236B
 - Ongoing affordability subsidy: $230M
 - Emergency reserve fund: $80M
@@ -452,11 +493,13 @@ Subsidies concentrate in segregated neighborhoods:
 - **Per household (10-year):** $37,500-40,000
 
 **Net Savings:**
+
 - 10-year savings: $58.5B ($60B - $1.5B)
 - Per household savings: $20,000-27,500
 - Savings multiple: 38:1 (for every $1 in TCAP investment, save $38 in subsidy costs)
 
 **Additional Benefit (Not Counted Above):**
+
 - Member wealth created: $1.236B (asset ownership)
 - Eviction prevention: $2.8B
 - Health improvements: $600M
@@ -464,6 +507,7 @@ Subsidies concentrate in segregated neighborhoods:
 - **Total additional benefit:** $5.4B
 
 **Total 10-Year Public Benefit: $63.9B**
+
 - Direct subsidy savings: $58.5B
 - Additional societal benefits: $5.4B
 
@@ -472,6 +516,7 @@ Subsidies concentrate in segregated neighborhoods:
 **Direct Financial ROI (Building Investment Only):**
 
 Building value appreciation over 10 years:
+
 - Initial purchase price (353 buildings, average $4M): $1.412B
 - Annual appreciation 2-3%: Conservative 2% (NYC below-market buildings)
 - Terminal value (Year 10): $1.722B
@@ -479,6 +524,7 @@ Building value appreciation over 10 years:
 - **Total member assets: $2.032B**
 
 **ROI Calculation:**
+
 - Public investment: $1.449B
 - Member wealth created: $1.236B (amortization + appreciation)
 - Public savings: $58.5B
@@ -486,11 +532,13 @@ Building value appreciation over 10 years:
 - **ROI ratio: 41:1** (for every $1 public investment, generate $41 in public + member benefit)
 
 **Simplified ROI (Conservative):**
+
 - Public subsidy investment: $1.5B
 - Direct financial benefit (member wealth only): $5.1B
 - **Direct Financial ROI: 3.4:1**
 
 **Full Societal ROI (Including Social Benefits):**
+
 - Public investment: $1.5B
 - Member wealth: $1.24B
 - Subsidy savings: $58.5B
@@ -500,17 +548,18 @@ Building value appreciation over 10 years:
 
 ### Cost-Effectiveness Comparison
 
-**Intervention** | **Cost Per Household** | **Duration** | **Outcome** |
-|---|---|---|---|
-| HRA Emergency Assistance | $32,000 (annual) | 6-12 months | Temporary relief |
-| Housing subsidies (current) | $58,000 (10-year) | 10 years | Rent assistance |
-| TCAP Cooperative | $40,000 (10-year) | Perpetual | Member ownership |
-| **Cost per year** | | | |
-| HRA | $32,000 | Repeats indefinitely | Household stays at $0 |
-| Rent assistance | $5,800 | Repeats indefinitely | Household stays at $0 |
-| TCAP | $4,000 | 10 years then free | Household owns asset ($310K) |
+| **Intervention**            | **Cost Per Household** | **Duration**         | **Outcome**                  |
+| --------------------------- | ---------------------- | -------------------- | ---------------------------- |
+| HRA Emergency Assistance    | $32,000 (annual)       | 6-12 months          | Temporary relief             |
+| Housing subsidies (current) | $58,000 (10-year)      | 10 years             | Rent assistance              |
+| TCAP Cooperative            | $40,000 (10-year)      | Perpetual            | Member ownership             |
+| **Cost per year**           |                        |                      |                              |
+| HRA                         | $32,000                | Repeats indefinitely | Household stays at $0        |
+| Rent assistance             | $5,800                 | Repeats indefinitely | Household stays at $0        |
+| TCAP                        | $4,000                 | 10 years then free   | Household owns asset ($310K) |
 
 **Break-Even Analysis:**
+
 - TCAP investment breaks even when building appreciates 10-15% (typical NYC market)
 - Member wealth advantage achieved within 7-10 years
 - After Year 10, ongoing cost is $0 (building owned, mortgage paid or minimal)
@@ -523,28 +572,30 @@ Building value appreciation over 10 years:
 
 **Reallocation (transition period, Years 1-5):**
 
-| Source | Current | Year 1 Realloc | Year 3 Realloc | Year 5 Realloc | Rationale |
-|--------|---------|------------------|------------------|------------------|-----------|
-| HRA Emergency Assistance | $2,100M | -$200M | -$400M | -$630M (30%) | TCAP replaces emergency assistance |
-| HPD Affordability | $1,800M | -$200M | -$300M | -$450M (25%) | TCAP replaces some affordability subsidy |
-| NYCHA Operating | $1,000M | -$50M | -$100M | -$250M (25%) | TCAP conversion reduces NYCHA costs |
-| HUD Section 8 Match | $300M | $0M | -$50M | -$75M (25%) | TCAP conversion reduces match requirements |
-| **TCAP Funding** | **—** | **$450M** | **$850M** | **$1,405M** | Redirected from existing programs |
-| **Remaining for other programs** | **$5,200M** | **$5,050M** | **$5,050M** | **$3,795M** | Still adequate for ongoing operations |
+| Source                           | Current     | Year 1 Realloc | Year 3 Realloc | Year 5 Realloc | Rationale                                  |
+| -------------------------------- | ----------- | -------------- | -------------- | -------------- | ------------------------------------------ |
+| HRA Emergency Assistance         | $2,100M     | -$200M         | -$400M         | -$630M (30%)   | TCAP replaces emergency assistance         |
+| HPD Affordability                | $1,800M     | -$200M         | -$300M         | -$450M (25%)   | TCAP replaces some affordability subsidy   |
+| NYCHA Operating                  | $1,000M     | -$50M          | -$100M         | -$250M (25%)   | TCAP conversion reduces NYCHA costs        |
+| HUD Section 8 Match              | $300M       | $0M            | -$50M          | -$75M (25%)    | TCAP conversion reduces match requirements |
+| **TCAP Funding**                 | **—**       | **$450M**      | **$850M**      | **$1,405M**    | Redirected from existing programs          |
+| **Remaining for other programs** | **$5,200M** | **$5,050M**    | **$5,050M**    | **$3,795M**    | Still adequate for ongoing operations      |
 
 **Why this works:**
+
 1. As co-ops acquire buildings, emergency assistance demand drops (members stabilized)
-2. As TCAP scales, HPD affordability needs drop (co-ops are permanent affordable)
-3. NYCHA converts buildings to co-ops → operating subsidy drops
-4. Reallocation is gradual (5-year transition) → existing programs remain funded
+1. As TCAP scales, HPD affordability needs drop (co-ops are permanent affordable)
+1. NYCHA converts buildings to co-ops → operating subsidy drops
+1. Reallocation is gradual (5-year transition) → existing programs remain funded
 
 **Financial sustainability (Year 10+):**
+
 - TCAP annual requirement: $145M (stabilized)
 - Covered by reallocation: $200-250M (more than adequate)
 - Excess reallocation can fund other housing programs
 - Co-ops become self-sustaining (no additional subsidy needed)
 
----
+______________________________________________________________________
 
 ## PART IV: EQUITY IMPACT & SOCIAL OUTCOMES
 
@@ -569,13 +620,15 @@ The homeownership gap didn't emerge naturally—it was created by deliberate pol
 **Geographic Targeting (Tier 1 Priority Neighborhoods):**
 
 Priority neighborhoods selected by:
+
 1. Homeownership gap (>20 pp Black/White)
-2. Eviction rate (>8% annually)
-3. Percentage minority population (>70%)
-4. Historical disinvestment (Census tract poverty >25%)
-5. Community organizing capacity (active tenant groups)
+1. Eviction rate (>8% annually)
+1. Percentage minority population (>70%)
+1. Historical disinvestment (Census tract poverty >25%)
+1. Community organizing capacity (active tenant groups)
 
 **Tier 1 Neighborhoods (Immediate Focus, Years 1-3):**
+
 - East Harlem (102nd-125th St, 5th Ave-East River)
 - South Bronx (Mott Haven, Hunts Point)
 - Brownsville (East Flatbush, Brooklyn)
@@ -583,12 +636,14 @@ Priority neighborhoods selected by:
 - Astoria/Long Island City (Queens)
 
 **Tier 2 Neighborhoods (Expansion, Years 4-6):**
+
 - Washington Heights (Manhattan)
 - Fordham (Bronx)
 - Jamaica (Queens)
 - Williamsburg/Greenpoint (Brooklyn - majority minority areas only)
 
 **Tier 3 Neighborhoods (Scaling, Years 7-10):**
+
 - All neighborhoods with >40% minority population and active tenant groups
 
 ### Member Composition Targets
@@ -597,33 +652,34 @@ Priority neighborhoods selected by:
 
 **Target Composition (Per 100-Unit Building):**
 
-| Demographic | Target | Rationale |
-|---|---|---|
-| **Female-Headed Households** | 60% | Most vulnerable to eviction; lowest wealth accumulation |
-| **Seniors (65+)** | 35% | Fixed income; highest eviction risk; most isolated |
-| **Households <30% AMI** | 50% | Lowest income; highest subsidy need; greatest wealth benefit |
-| **Black/Latino** | 80% (in designated neighborhoods) | Highest racial wealth gap; targeted reversal |
-| **Immigrants (non-English primary)** | 25% | Vulnerable to exploitation; greatest benefit from stability |
-| **People with disabilities** | 15% | High displacement risk; housing stability critical |
-| **Families with children** | 45% | School stability; educational outcomes benefit |
+| Demographic                          | Target                            | Rationale                                                    |
+| ------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
+| **Female-Headed Households**         | 60%                               | Most vulnerable to eviction; lowest wealth accumulation      |
+| **Seniors (65+)**                    | 35%                               | Fixed income; highest eviction risk; most isolated           |
+| **Households \<30% AMI**             | 50%                               | Lowest income; highest subsidy need; greatest wealth benefit |
+| **Black/Latino**                     | 80% (in designated neighborhoods) | Highest racial wealth gap; targeted reversal                 |
+| **Immigrants (non-English primary)** | 25%                               | Vulnerable to exploitation; greatest benefit from stability  |
+| **People with disabilities**         | 15%                               | High displacement risk; housing stability critical           |
+| **Families with children**           | 45%                               | School stability; educational outcomes benefit               |
 
 **Result (10-Year):**
 
 If composition maintained across 353 buildings, 38,650 members:
 
-| Group | Members | Member Wealth Avg | Cumulative Wealth |
-|---|---|---|---|
-| Female-Headed | 23,190 | $32,000 | $741M |
-| Seniors | 13,528 | $32,000 | $432M |
-| Black households | 30,920 | $32,000 | $989M |
-| Latino households | 7,704 | $32,000 | $246M |
-| **BIPOC Total** | **38,624** (99%+) | **$32,000** | **$1.24B** |
+| Group             | Members           | Member Wealth Avg | Cumulative Wealth |
+| ----------------- | ----------------- | ----------------- | ----------------- |
+| Female-Headed     | 23,190            | $32,000           | $741M             |
+| Seniors           | 13,528            | $32,000           | $432M             |
+| Black households  | 30,920            | $32,000           | $989M             |
+| Latino households | 7,704             | $32,000           | $246M             |
+| **BIPOC Total**   | **38,624** (99%+) | **$32,000**       | **$1.24B**        |
 
 **Key insight:** Concentrating co-op benefits on communities with widest wealth gaps creates largest equity impact.
 
 ### 10-Year Homeownership Impact
 
 **Current Baseline (NYC):**
+
 - Black homeownership: 19%
 - Latino homeownership: 20%
 - White homeownership: 46%
@@ -632,13 +688,14 @@ If composition maintained across 353 buildings, 38,650 members:
 
 **TCAP Projection (10-Year):**
 
-| Year | Black HO | Latino HO | Gap B-W | Gap L-W | New Co-op Members |
-|------|----------|----------|---------|---------|------------------|
-| Baseline | 19% | 20% | 27 pp | 26 pp | — |
-| Year 5 | 21% | 22% | 25 pp | 24 pp | 10,600 |
-| Year 10 | 25% | 26% | 21 pp | 20 pp | 38,650 |
+| Year     | Black HO | Latino HO | Gap B-W | Gap L-W | New Co-op Members |
+| -------- | -------- | --------- | ------- | ------- | ----------------- |
+| Baseline | 19%      | 20%       | 27 pp   | 26 pp   | —                 |
+| Year 5   | 21%      | 22%       | 25 pp   | 24 pp   | 10,600            |
+| Year 10  | 25%      | 26%       | 21 pp   | 20 pp   | 38,650            |
 
 **20-Year Projection (Year 20, post-TCAP stabilization):**
+
 - Black homeownership: 32%
 - Latino homeownership: 33%
 - Gap B-W: 14 pp (down from 27 pp)
@@ -648,16 +705,19 @@ If composition maintained across 353 buildings, 38,650 members:
 ### Eviction Prevention Impact
 
 **Baseline (Current):**
+
 - Annual evictions (citywide): 40,000-50,000
 - Monthly evictions: 3,500-5,000
 - Eviction rate (percentage of renting households): 4.0% annually
 - Housing court filings: 8,500-12,000 per month
 
 **TCAP Buildings (Annual):**
+
 - Eviction rate in co-ops: 0.5% annually (88% reduction)
 - Reason: Members cannot be evicted; member charge capped at 30% affordability
 
 **Cumulative Eviction Prevention (10-Year):**
+
 - Evictions in comparable buildings (status quo): 65,000-70,000
 - Evictions in TCAP buildings: 8,000-10,000 (member transitions only)
 - **Evictions prevented: 55,000-65,000**
@@ -665,6 +725,7 @@ If composition maintained across 353 buildings, 38,650 members:
 - **Total benefit: $1.4-2.2B**
 
 **Ripple Effects of Eviction Prevention:**
+
 - School stability: 65,000 children stay in same school (vs. avg 2.1 school changes)
 - Job stability: 65,000 workers maintain employment (vs. avg job loss from homelessness)
 - Health outcomes: 65,000+ reduction in displacement-related illness
@@ -673,24 +734,27 @@ If composition maintained across 353 buildings, 38,650 members:
 ### Educational Outcomes
 
 **Baseline (NYC, Low-Income Households):**
+
 - HS graduation rate: 65%
 - School changes (average per childhood): 2.1
 - Chronic absences (>10 days/year): 35%
 
 **TCAP Buildings (Projected):**
+
 - HS graduation rate: 80% (+15 pp)
 - School changes: 0.8 (+62% reduction)
 - Chronic absences: 15% (-57%)
 
 **10-Year Impact (38,650 households, avg 2.1 children/HH = 81,165 children):**
 
-| Outcome | Baseline | TCAP | Improvement |
-|---|---|---|---|
-| HS Graduates | 52,757 | 64,932 | +12,175 (+23%) |
-| School disruptions prevented | 170,647 | 65,250 | -105,397 |
-| College enrollment (if graduation increases 15 pp) | 16,139 | 19,962 | +3,823 |
+| Outcome                                            | Baseline | TCAP   | Improvement    |
+| -------------------------------------------------- | -------- | ------ | -------------- |
+| HS Graduates                                       | 52,757   | 64,932 | +12,175 (+23%) |
+| School disruptions prevented                       | 170,647  | 65,250 | -105,397       |
+| College enrollment (if graduation increases 15 pp) | 16,139   | 19,962 | +3,823         |
 
 **Lifetime benefit (College earnings premium: $340,000 over lifetime):**
+
 - Additional college graduates: 3,823
 - Lifetime earnings benefit: $1.3B
 - Public value (tax revenue): $260M
@@ -698,6 +762,7 @@ If composition maintained across 353 buildings, 38,650 members:
 ### Health Outcomes
 
 **Baseline (NYC Low-Income, Renting):**
+
 - Chronic disease prevalence: 35%
 - Uncontrolled hypertension: 32%
 - Mental health diagnosis: 28%
@@ -705,6 +770,7 @@ If composition maintained across 353 buildings, 38,650 members:
 - Life expectancy: 75.2 years
 
 **TCAP Buildings (Projected):**
+
 - Chronic disease prevalence: 22% (-37%)
 - Uncontrolled hypertension: 18% (-44%)
 - Mental health diagnosis: 15% (-46%)
@@ -712,51 +778,55 @@ If composition maintained across 353 buildings, 38,650 members:
 - Life expectancy: 80.8 years (+5.6 years)
 
 **Mechanisms:**
+
 1. **Housing stability** → reduced stress → lower blood pressure
-2. **Predictable housing cost** → reduced financial stress → better mental health
-3. **Community control** → social connection → reduced isolation
-4. **Reduced eviction threat** → reduced anxiety → better health
+1. **Predictable housing cost** → reduced financial stress → better mental health
+1. **Community control** → social connection → reduced isolation
+1. **Reduced eviction threat** → reduced anxiety → better health
 
 **10-Year Health Impact (38,650 members):**
 
-| Outcome | Baseline | TCAP | Improvement | Value |
-|---|---|---|---|---|
-| Chronic disease cases prevented | 13,528 | 8,344 | 5,184 | $300M healthcare savings |
-| Uncontrolled hypertension cases prevented | 12,368 | 6,957 | 5,411 | $150M medication savings |
-| Mental health cases prevented | 10,822 | 5,798 | 5,024 | $200M psychiatric care savings |
-| Life years gained | 291,635 | 308,514 | 16,879 | Immeasurable |
+| Outcome                                   | Baseline | TCAP    | Improvement | Value                          |
+| ----------------------------------------- | -------- | ------- | ----------- | ------------------------------ |
+| Chronic disease cases prevented           | 13,528   | 8,344   | 5,184       | $300M healthcare savings       |
+| Uncontrolled hypertension cases prevented | 12,368   | 6,957   | 5,411       | $150M medication savings       |
+| Mental health cases prevented             | 10,822   | 5,798   | 5,024       | $200M psychiatric care savings |
+| Life years gained                         | 291,635  | 308,514 | 16,879      | Immeasurable                   |
 
 **Total health value:** $650M direct medical savings + immeasurable quality of life
 
 ### Employment & Income Impact
 
 **Baseline (NYC Low-Income):**
+
 - Employment rate: 58%
 - Job tenure: 2.1 years average
 - Median household income: $38,000
 - Unemployment episodes (per 5 years): 1.8
 
 **TCAP Buildings (Projected):**
+
 - Employment rate: 72% (+14 pp)
 - Job tenure: 4.5 years (+114%)
 - Median household income: $42,000 (+11%)
 - Unemployment episodes: 0.9 (-50%)
 
 **Mechanism:**
+
 1. Housing stability enables full-time employment (vs. part-time)
-2. Reduced stress enables job performance improvements
-3. Community connections enable job referrals and advancement
+1. Reduced stress enables job performance improvements
+1. Community connections enable job referrals and advancement
 
 **10-Year Income Impact (38,650 members):**
 
-| Outcome | Baseline | TCAP | Improvement | Value |
-|---|---|---|---|---|
-| New full-time employees | 22,297 | 27,828 | 5,531 | $280M annual income |
-| Income increase per household | $0 | $4,000 | $4,000 | $155M annual income |
-| Total annual household income increase | $1.468B | $1.623B | $155M | $155M new annual income |
-| Tax revenue increase | $220M | $243M | $23M | $23M new annual tax revenue |
+| Outcome                                | Baseline | TCAP    | Improvement | Value                       |
+| -------------------------------------- | -------- | ------- | ----------- | --------------------------- |
+| New full-time employees                | 22,297   | 27,828  | 5,531       | $280M annual income         |
+| Income increase per household          | $0       | $4,000  | $4,000      | $155M annual income         |
+| Total annual household income increase | $1.468B  | $1.623B | $155M       | $155M new annual income     |
+| Tax revenue increase                   | $220M    | $243M   | $23M        | $23M new annual tax revenue |
 
----
+______________________________________________________________________
 
 ## PART V: IMPLEMENTATION FRAMEWORK - 4-PHASE ROADMAP
 
@@ -767,39 +837,47 @@ If composition maintained across 353 buildings, 38,650 members:
 #### Legislative Tasks (Weeks 1-12)
 
 **Bill Drafting (Weeks 1-2):**
+
 - INT.A: TCAP Program Establishment
+
   - Creates TCAP Office within HPD
   - Authorizes $500M initial subsidy (5-year)
   - Defines member selection criteria
   - Establishes affordability deed restriction
 
 - INT.B: Subsidy Reallocation
+
   - Redirects $200M HRA emergency assistance → TCAP (Year 1)
   - Redirects $200M HPD affordability → TCAP (Year 1)
   - Redirects $50M NYCHA operating → TCAP (Year 1)
 
 - INT.C: Cooperative Housing Law Amendment
+
   - Expands NY State co-op housing law (if needed)
   - Clarifies lease-to-ownership conversion process
   - Protects affordability mechanisms
 
 - INT.D: Credit Union Authorization
+
   - Authorizes NYC Credit Union partnerships
   - Creates favorable financing terms for co-ops
   - Establishes federal low-income credit union certification
 
 **Committee Hearings (Weeks 5-8):**
+
 - Week 5: Housing Committee hearing (testimonies from DC TOPA, SF COPA, NYC tenant groups)
 - Week 6: Finance Committee hearing (fiscal analysis, budget impact)
 - Week 7: Government Operations Committee hearing (implementation feasibility)
 - Week 8: Healthcare Committee hearing (health outcomes analysis)
 
 **Amendments Process (Weeks 9-11):**
+
 - Finance Committee amendments (budget reconciliation)
 - Legal amendments (deed restriction clarity)
 - Member protection amendments (anti-discrimination, grievance procedures)
 
 **Passage Vote (Week 12):**
+
 - City Council full body vote
 - Target: 40-45 affirmative votes (minimum 34 required)
 - Expected passage: 60-70% probability with organized push
@@ -807,11 +885,13 @@ If composition maintained across 353 buildings, 38,650 members:
 #### Administrative Setup (Months 1-12)
 
 **TCAP Office Establishment (Weeks 1-4):**
+
 - Deputy Commissioner appointed (by Month 1, Week 2)
 - Associate Directors hired: Finance, Operations, Community Partnerships (by Month 1, Week 4)
 - 9 FTE positions created and staffed by Month 2
 
 **Regulatory Drafting (Weeks 1-8):**
+
 - HPD regulations on cooperative conversion (Chapter 1 of Housing Maintenance Code)
 - Member protection standards (fair housing, anti-discrimination)
 - Building acquisition procedures
@@ -819,6 +899,7 @@ If composition maintained across 353 buildings, 38,650 members:
 - Affordability deed restriction template
 
 **Partnership Agreements (Weeks 5-8):**
+
 - MOU with NYC Credit Union (financing, rate guarantee)
 - MOU with HPD (regulatory coordination, subsidy administration)
 - MOU with HRA (data sharing on emergency assistance recipients)
@@ -826,6 +907,7 @@ If composition maintained across 353 buildings, 38,650 members:
 - MOU with tenant organizations (co-op development)
 
 **Community Engagement (Weeks 1-12):**
+
 - TCAP office visits 15-20 active tenant groups (recruiting early participants)
 - Distribute application packages (20-30 groups pre-apply)
 - Host community briefings in 3 boroughs (Bronx, Brooklyn, Manhattan)
@@ -834,16 +916,19 @@ If composition maintained across 353 buildings, 38,650 members:
 #### Funding Mechanisms (Months 1-12)
 
 **Budget Reconciliation (Weeks 1-12):**
+
 - OMB identifies $450M in subsidy reallocation
 - Finance Committee approves budget amendment
 - Spending plan approved (timeline for $450M allocation)
 
 **Bond Authorization (Weeks 4-8):**
+
 - One-time $150M bond issue approved (for startup assistance)
 - Issue period: Months 3-4
 - Use: Initial down payment assistance for pilot phase
 
 **Interagency Funding Agreements (Weeks 5-12):**
+
 - HRA transfers $200M to TCAP (annual, starting Year 1)
 - HPD transfers $200M to TCAP (annual, starting Year 1)
 - NYCHA transfers $50M to TCAP (annual, starting Year 1)
@@ -851,17 +936,20 @@ If composition maintained across 353 buildings, 38,650 members:
 #### Community Organizing & Education (Months 1-12)
 
 **Tenant Organizer Network (Months 1-4):**
+
 - Recruit 20-30 community organizers
 - Training in cooperative development (5-day intensive)
 - Assign to 50-75 buildings (begin organizing)
 
 **Member Training Curriculum (Months 2-8):**
+
 - Develop 8-week cooperative membership program (20 hours)
 - Topics: Cooperative law, financial literacy, building maintenance, governance, conflict resolution
 - Pilot test with 3-4 groups (collect feedback)
 - Finalize curriculum (by Month 8)
 
 **First Applications Submitted (Months 9-12):**
+
 - 12-15 tenant groups submit applications
 - Feasibility studies initiated (10,000-15,000 each)
 - First formal TCAP meetings held with selected groups
@@ -869,6 +957,7 @@ If composition maintained across 353 buildings, 38,650 members:
 #### Phase 1 Success Metrics
 
 By end of Month 12:
+
 - [ ] Legislation passed (all 4 bills)
 - [ ] $500M initial subsidy approved
 - [ ] TCAP Office established (9 FTE staffed)
@@ -886,17 +975,20 @@ By end of Month 12:
 #### Feasibility & Underwriting (Months 13-16)
 
 **Building Selection:**
+
 - Evaluate 12-15 applications
 - Score on: building condition, member readiness, neighborhood priority, financing viability
 - Select 8-12 buildings for pilot phase
 
 **Feasibility Studies Completed (Months 13-20):**
+
 - Building inspection & appraisal (10,000-15,000)
 - Financial analysis (10,000-12,000)
 - Member financial survey ($3,000-5,000)
 - Market analysis & appraisal ($5,000-8,000)
 
 **Underwriting Standards Tested:**
+
 - Member income qualification (max 80% AMI, target 30-50% AMI)
 - Building debt capacity (max 80% LTV)
 - Member contribution capacity (avg savings rate)
@@ -905,6 +997,7 @@ By end of Month 12:
 #### Member Education & Governance Formation (Months 13-20)
 
 **Extended Training (20+ hours per member):**
+
 - Cooperative law and history (5 hours)
 - Financial literacy and personal finance (4 hours)
 - Building finance and budgeting (4 hours)
@@ -912,12 +1005,14 @@ By end of Month 12:
 - Member rights and responsibilities (3 hours)
 
 **Governance Development:**
+
 - Formal board election (democratic process)
 - Bylaws adoption (TCAP template + member modifications)
 - Committee formation (finance, maintenance, member services)
 - Annual meeting planning
 
 **Member Commitment Secured:**
+
 - Formal co-op membership vote (target >75% approval)
 - Member contribution commitment (average $5,000-10,000 savings requirement)
 - Lease amendments (adding co-op conversion language)
@@ -925,22 +1020,26 @@ By end of Month 12:
 #### Financing Arranged (Months 16-22)
 
 **Credit Union Financing (4 buildings, average $4-5M each):**
+
 - Senior mortgage: 70% of building value (30-year fixed after Year 1)
 - Interest rate: LIBOR + 2.5% fixed (capped at 5.5%)
 - Underwriting: Completed by Month 18
 - Loan approval: Months 19-20
 
 **TCAP Subsidy Allocation (4 buildings, average $4-5M each):**
+
 - Down payment assistance: 20% of building value (TCAP grant)
 - Affordability subsidy: Committed for member charge cap (30-year)
 - Emergency reserve: 5% of building value (line of credit)
 
 **Member Contribution (4 buildings, average $4-5M each):**
+
 - Per-member contribution target: $5,000-15,000 (based on income)
 - Group savings campaign: Months 16-22
 - Target: 80% of members achieve contribution goal
 
 **Financing Documentation (Months 20-22):**
+
 - Permanent affordability deed restriction recorded
 - Mortgage documents finalized
 - Member notes and agreements signed
@@ -949,12 +1048,14 @@ By end of Month 12:
 #### First Acquisitions (Months 22-24)
 
 **Building Closings (Target: 3-4 buildings):**
+
 - Month 22: First 2 buildings close (pilot buildings)
 - Month 23: Second round 2 buildings close (learning incorporated)
 - Member possession takes effect immediately
 - Member board assumes governance
 
 **Post-Closing Member Orientation (Weeks 1-2):**
+
 - Member assemblies explain new structure
 - Building manager introduced and contracted
 - First member charge billing explained
@@ -963,12 +1064,14 @@ By end of Month 12:
 #### Documentation & Learning (Months 13-24)
 
 **Ongoing Documentation:**
+
 - Monthly progress reports (to HPD, OMB, City Council)
 - Building performance monitoring (occupancy, charges, maintenance)
 - Member satisfaction surveys (quarterly)
 - Financial performance tracking (P&L, reserve fund)
 
 **Lessons Captured:**
+
 - Application process refined
 - Underwriting standards tested and adjusted
 - Member training curriculum feedback
@@ -976,6 +1079,7 @@ By end of Month 12:
 - Partner coordination improved
 
 **National Outreach Begins:**
+
 - Case study documentation (lessons from pilot)
 - Presentations to other cities (DC, SF, Chicago, LA)
 - Academic researchers engaged (tracking outcomes)
@@ -984,11 +1088,12 @@ By end of Month 12:
 #### Phase 2 Success Metrics
 
 By end of Month 24:
+
 - [ ] 8-12 buildings completed feasibility studies
 - [ ] 3-4 buildings acquired and closed
 - [ ] 300+ members converted to co-op membership
 - [ ] 90%+ member satisfaction
-- [ ] <2% default rate on member contributions
+- [ ] \<2% default rate on member contributions
 - [ ] All 4 buildings meeting affordability targets
 - [ ] Financing model proven replicable
 - [ ] 20-30 additional buildings in pipeline (for Phase 3)
@@ -1001,18 +1106,21 @@ By end of Month 24:
 #### Operational Scaling (Year 3)
 
 **TCAP Office Expansion:**
+
 - Staff grows from 9 to 20 FTE
 - Add regional coordinators (Bronx, Brooklyn, Manhattan, Queens)
 - Finance team expanded (compliance, audit, risk management)
 - Community partnerships team added
 
 **Application Processing:**
+
 - 40-50 new applications received (annually)
 - 25-35 buildings approved for feasibility studies (annually)
 - 15-20 buildings approved for financing (annually)
 - 10-15 buildings closed (annually, by Year 5)
 
 **Standardized Processes:**
+
 - Application template and scoring matrix finalized
 - Feasibility study protocol standardized
 - Underwriting guidelines finalized
@@ -1023,6 +1131,7 @@ By end of Month 24:
 #### Portfolio Management (Years 3-5)
 
 **Annual Portfolio Monitoring:**
+
 - Quarterly financial audits (all buildings)
 - Annual member satisfaction surveys
 - Maintenance condition assessments
@@ -1030,12 +1139,14 @@ By end of Month 24:
 - Subsidy performance tracking
 
 **Risk Management:**
+
 - Early warning system for buildings in distress
 - Emergency assistance fund deployed (if needed)
 - Building rehabilitation support (if major repairs needed)
 - Member counseling (if affordability crisis)
 
 **Performance Metrics Tracked:**
+
 - Occupancy rate (target: >95%)
 - Affordability compliance (target: >95%)
 - Member retention (target: >85% per year)
@@ -1045,21 +1156,25 @@ By end of Month 24:
 #### Neighborhood Expansion (Years 3-5)
 
 **Year 3 Targets:**
+
 - 18-25 buildings acquired
 - 5,000-7,000 households served
 - 3-4 neighborhoods expanded (Tier 2 neighborhoods added)
 
 **Year 4 Targets:**
+
 - 25-35 buildings acquired
 - 7,500-10,000 households served
 - 5-6 neighborhoods active
 
 **Year 5 Targets:**
+
 - 35-45 buildings acquired
 - 10,000-12,500 households served
 - 7-10 neighborhoods active
 
 **Geographic Spread (By Year 5):**
+
 - All 5 Tier 1 neighborhoods fully deployed
 - 2-3 Tier 2 neighborhoods launched
 - Presence in all 5 boroughs
@@ -1068,18 +1183,21 @@ By end of Month 24:
 #### Financing Scaling (Years 3-5)
 
 **Credit Union Partnership Deepens:**
+
 - Rate terms stabilize (LIBOR + 2.25%)
 - Volume discount achieved ($50M+ annual volume)
 - Standardized underwriting reduces costs
 - Product refinement (separate junior financing, emergency fund)
 
 **TCAP Subsidy Efficiency:**
+
 - Down payment assistance per building remains $800-1.2M (constant)
 - Affordability subsidy cost reduction (per-member cost drops 10-15% due to economies of scale)
 - Member contribution increases (savings discipline improves)
 - Leverage ratio improves (public investment → member investment → credit union financing)
 
 **Emerging Financing Products:**
+
 - Member secondary financing (for unforeseen expenses)
 - Emergency assistance loans (bridges member cash flow gaps)
 - Capital improvement bonds (collective financing for major repairs)
@@ -1087,18 +1205,21 @@ By end of Month 24:
 #### Community Network Development (Years 3-5)
 
 **TCAP Co-op Network Established:**
+
 - Annual co-op conference (peer learning, best practices)
 - Regional working groups (Bronx, Brooklyn, Manhattan, Queens)
 - Peer mentoring (experienced boards advise new boards)
 - Information sharing (financial reports, maintenance solutions)
 
 **Member Leadership Development:**
+
 - Board chair training program
 - Treasurer training program
 - Managing agent selection and training
 - Governance dispute resolution training
 
 **Community Integration:**
+
 - Co-op buildings partner with local CBOs (social services, employment)
 - Co-op boards engage in neighborhood associations
 - Co-op members voting bloc in local elections
@@ -1107,12 +1228,14 @@ By end of Month 24:
 #### Regulatory Refinement (Years 3-5)
 
 **Policy Adjustments Based on Learning:**
+
 - Member charge structure adjusted (if affordability targets missed)
 - Reserve fund requirements refined (if maintenance crises emerge)
 - Affordability deed restriction strengthened (if conversion risk emerges)
 - Emergency assistance fund protocols established (if member crises emerge)
 
 **Inter-Agency Coordination Deepened:**
+
 - HRA data sharing improved (identifying additional co-op candidates)
 - HPD relationship solidified (building code compliance, violations)
 - NYCHA partnership expanded (public housing conversion to co-ops)
@@ -1121,6 +1244,7 @@ By end of Month 24:
 #### Phase 3 Success Metrics
 
 By end of Year 5:
+
 - [ ] 100+ buildings acquired (cumulative)
 - [ ] 10,000+ households served
 - [ ] $400M+ cumulative public investment deployed
@@ -1140,18 +1264,21 @@ By end of Year 5:
 #### Mature Operations (Years 6-10)
 
 **Steady-State TCAP Operations:**
+
 - 50-60 buildings acquired annually
 - 5,500-6,600 households served annually
 - Portfolio of 250-300 buildings by Year 10
 - 35,000-40,000 households served by Year 10
 
 **Full Neighborhood Saturation:**
+
 - All Tier 1 neighborhoods fully deployed (90% of available buildings)
 - Tier 2 neighborhoods substantially deployed (70% of available buildings)
 - Tier 3 neighborhoods partially deployed (30-40% of available buildings)
 - 20%+ of NYC rental buildings in co-op sector by Year 10
 
 **TCAP Office at Full Scale:**
+
 - Staff: 35-40 FTE (regional teams, portfolio management, community partnerships)
 - Budget: $145M annually (steady state)
 - Portfolio value: $1.4B+ (buildings owned by members)
@@ -1160,17 +1287,20 @@ By end of Year 5:
 #### Long-Term Sustainability (Years 6-10+)
 
 **Financial Self-Sufficiency Begins:**
+
 - Early co-ops (Year 1-2) mortgages >50% paid (member equity growing)
 - Member wealth accumulation accelerating (property appreciation + amortization)
 - Emergency assistance fund building (revenue from overcollections)
 - TCAP subsidy needs declining (as buildings mature)
 
 **Member Wealth Trajectory:**
+
 - Average member equity (Year 6-10): $35,000-50,000 (vs $0 for renters)
 - Wealth growth rate: $3,000-5,000 annually per member
 - Intergenerational transfer beginning (first members leaving equity to children)
 
 **Building Performance Maturation:**
+
 - Occupancy rates stabilized at 95%+ (membership demand high)
 - Maintenance reserve funds solid (capital planning robust)
 - Member satisfaction high (95%+ positive ratings)
@@ -1179,6 +1309,7 @@ By end of Year 5:
 #### Research & Documentation (Years 6-10)
 
 **Comprehensive Outcome Studies:**
+
 - 10-year longitudinal study (tracking original members over decade)
 - Comparative analysis (TCAP vs. TOPA vs. COPA outcomes)
 - Equity impact analysis (wealth gap closure, homeownership change)
@@ -1186,12 +1317,14 @@ By end of Year 5:
 - National economic analysis (cost-benefit, ROI)
 
 **Academic Publications:**
+
 - Journal articles (Housing Policy Debate, Journal of Urban Affairs)
 - Policy reports (NYU Wagner, Harvard Kennedy School)
 - Book manuscript (academic and practitioner audience)
 - Case studies (for other cities and practitioner networks)
 
 **Replication Framework:**
+
 - TCAP Replication Guide (for other cities)
 - Legislation template (INT.A-D models for other states)
 - Operations manual (implementation step-by-step)
@@ -1200,11 +1333,13 @@ By end of Year 5:
 #### National Expansion (Years 6-10)
 
 **Other Cities Adopting Model:**
+
 - Year 6: 1-2 cities begin similar programs (learning from NYC)
 - Year 7: 3-4 cities operational (with NYC technical assistance)
 - Year 8-10: 5-10 cities with active co-op acquisition programs
 
 **Peer City Network:**
+
 - Annual conference (NYC, TOPA, COPA, new programs share learning)
 - Technical assistance sharing (NYC staff supports other cities)
 - Federal engagement (HUD recognizing as national model)
@@ -1213,12 +1348,14 @@ By end of Year 5:
 #### Policy Evolution (Years 6-10)
 
 **State-Level Policy Changes (NY State):**
+
 - Co-op housing law amendments (facilitate conversion)
 - Tax incentives for co-op developers (state tax credits)
 - Financing encouragement (state low-interest loan programs)
 - Regulatory streamlining (faster approval processes)
 
 **Federal Policy Changes (US Government):**
+
 - HUD recognition of TCAP (program model)
 - Affordable housing preservation credits (tax incentive)
 - Pilot program funding (other cities)
@@ -1227,6 +1364,7 @@ By end of Year 5:
 #### Phase 4 Success Metrics
 
 By end of Year 10:
+
 - [ ] 300+ buildings acquired (cumulative)
 - [ ] 40,000+ households served
 - [ ] $1.4B+ cumulative public investment
@@ -1238,7 +1376,7 @@ By end of Year 10:
 - [ ] National model established and published
 - [ ] Federal recognition and support announced
 
----
+______________________________________________________________________
 
 ## PART VI: AGENCY BUDGET REALLOCATION
 
@@ -1246,15 +1384,16 @@ By end of Year 10:
 
 **Total Annual NYC Housing Subsidy Budget: $5.2 Billion**
 
-| Agency | Program | Annual Budget | Beneficiaries | Per-Household | Rationale |
-|---|---|---|---|---|---|
-| **HRA** | Emergency Assistance | $2,100M | 65,000 | $32,308 | Temporary rent assistance, eviction prevention |
-| **HPD** | Affordability Subsidy | $1,800M | 250,000 | $7,200 | Mixed-income housing development, rent gap bridging |
-| **NYCHA** | Public Housing Operating Subsidy | $1,000M | 400,000 | $2,500 | Maintenance, utilities, services for public housing |
-| **HUD** | Section 8 Local Match | $300M | 180,000 | $1,667 | Federal program local matching funds |
-| **Total** | — | **$5,200M** | **895,000** | **$5,810** | — |
+| Agency    | Program                          | Annual Budget | Beneficiaries | Per-Household | Rationale                                           |
+| --------- | -------------------------------- | ------------- | ------------- | ------------- | --------------------------------------------------- |
+| **HRA**   | Emergency Assistance             | $2,100M       | 65,000        | $32,308       | Temporary rent assistance, eviction prevention      |
+| **HPD**   | Affordability Subsidy            | $1,800M       | 250,000       | $7,200        | Mixed-income housing development, rent gap bridging |
+| **NYCHA** | Public Housing Operating Subsidy | $1,000M       | 400,000       | $2,500        | Maintenance, utilities, services for public housing |
+| **HUD**   | Section 8 Local Match            | $300M         | 180,000       | $1,667        | Federal program local matching funds                |
+| **Total** | —                                | **$5,200M**   | **895,000**   | **$5,810**    | —                                                   |
 
 **Subsidy Trajectory (Baseline):**
+
 - Growing 3-5% annually (demographic pressure, cost increases)
 - Homelessness budget: $1.2B (separate, growing 8-12% annually)
 - Total public housing + subsidy spending: $6.4B+ annually
@@ -1266,6 +1405,7 @@ By end of Year 10:
 **Solution:** Redirect $1.4B of $5.2B to co-op acquisition (permanent ownership model). Households end year with $30,000+ in assets. After 10 years, no subsidy needed (building owned, mortgage paid, intergenerational wealth).
 
 **Math:**
+
 - Status quo (10 years): $5.2B × 10 years = $52B (zero assets)
 - TCAP (10 years): $1.4B + $0.3B (ongoing) = $1.7B (members own $1.24B in buildings)
 - Net savings: $50.3B over 10 years
@@ -1275,16 +1415,17 @@ By end of Year 10:
 
 **Year 1 (2026):**
 
-| Program | Current | TCAP Transfer | Remaining | % Reduction |
-|---------|---------|---------------|-----------|-|
-| HRA Emergency Assistance | $2,100M | -$200M | $1,900M | 9.5% |
-| HPD Affordability | $1,800M | -$200M | $1,600M | 11% |
-| NYCHA Operating | $1,000M | -$50M | $950M | 5% |
-| HUD Section 8 Match | $300M | $0M | $300M | 0% |
-| **TCAP Allocation** | **—** | **$450M** | **—** | **—** |
-| **Total Budget** | **$5,200M** | **-$450M** | **$4,750M** | **9% reduction** |
+| Program                  | Current     | TCAP Transfer | Remaining   | % Reduction      |
+| ------------------------ | ----------- | ------------- | ----------- | ---------------- |
+| HRA Emergency Assistance | $2,100M     | -$200M        | $1,900M     | 9.5%             |
+| HPD Affordability        | $1,800M     | -$200M        | $1,600M     | 11%              |
+| NYCHA Operating          | $1,000M     | -$50M         | $950M       | 5%               |
+| HUD Section 8 Match      | $300M       | $0M           | $300M       | 0%               |
+| **TCAP Allocation**      | **—**       | **$450M**     | **—**       | **—**            |
+| **Total Budget**         | **$5,200M** | **-$450M**    | **$4,750M** | **9% reduction** |
 
 **Why Year 1 reduction is painless:**
+
 - HRA: 9.5% reduction (~6,000 households lose emergency assistance) but goal is to make them unnecessary (co-ops are permanent). Those 6,000 become early TCAP members (stabilized).
 - HPD: 11% reduction (~18,000 households) but those with stable housing (co-ops) no longer need affordability subsidy.
 - NYCHA: 5% reduction (~20,000 households) due to conversion of public housing to co-ops (existing tenants + co-op structure = similar outcome, lower cost).
@@ -1293,18 +1434,19 @@ By end of Year 10:
 
 **Year 2 (2027):**
 
-| Program | Current | Year 1 | TCAP Transfer | Remaining | Notes |
-|---------|---------|--------|--------------|-----------|-------|
-| HRA Emergency Assistance | $2,100M | $1,900M | -$100M | $1,800M | Cumulative reduction: $300M |
-| HPD Affordability | $1,800M | $1,600M | -$150M | $1,450M | Cumulative reduction: $350M |
-| NYCHA Operating | $1,000M | $950M | -$100M | $850M | Cumulative reduction: $150M |
-| HUD Section 8 | $300M | $300M | $0M | $300M | No reduction yet |
-| **TCAP Allocation** | **—** | **$450M** | **$350M** | **$800M** | Cumulative: $800M |
-| **Total Budget** | **$5,200M** | **$4,750M** | **-$350M** | **$4,400M** | 15% reduction cumulative |
+| Program                  | Current     | Year 1      | TCAP Transfer | Remaining   | Notes                       |
+| ------------------------ | ----------- | ----------- | ------------- | ----------- | --------------------------- |
+| HRA Emergency Assistance | $2,100M     | $1,900M     | -$100M        | $1,800M     | Cumulative reduction: $300M |
+| HPD Affordability        | $1,800M     | $1,600M     | -$150M        | $1,450M     | Cumulative reduction: $350M |
+| NYCHA Operating          | $1,000M     | $950M       | -$100M        | $850M       | Cumulative reduction: $150M |
+| HUD Section 8            | $300M       | $300M       | $0M           | $300M       | No reduction yet            |
+| **TCAP Allocation**      | **—**       | **$450M**   | **$350M**     | **$800M**   | Cumulative: $800M           |
+| **Total Budget**         | **$5,200M** | **$4,750M** | **-$350M**    | **$4,400M** | 15% reduction cumulative    |
 
 **Year 3-5 (Scaling Period):**
 
 **Target Reallocation (Years 3-5):**
+
 - HRA: Reduce by $450M total (30% of emergency budget)
 - HPD: Reduce by $450M total (25% of affordability budget)
 - NYCHA: Reduce by $250M total (25% of operating budget)
@@ -1319,10 +1461,12 @@ By end of Year 10:
 **Example (Year 3):**
 
 100,000 households currently in emergency assistance (HRA):
+
 - 10,000 in Year 1-2 TCAP co-ops (permanently housed, stabilized, off emergency system)
 - 90,000 still need emergency assistance
 
 **HRA Budget:**
+
 - Previous budget: $2,100M for 100,000 households = $21,000 per household
 - New budget: $1,650M for 90,000 households = $18,333 per household
 - **Savings:** $450M without reducing service to remaining 90,000
@@ -1333,42 +1477,43 @@ By end of Year 10:
 
 **Year 1 (2026):**
 
-| Action | Timeline | Amount | Notes |
-|--------|----------|--------|-------|
-| Legislative passage (INT.B) | Week 12 | $450M Y1 commitment | City Council approves budget amendment |
-| HRA reallocation (to TCAP) | Month 1-3 | $200M (Y1) | From emergency assistance budget |
-| HPD reallocation (to TCAP) | Month 1-3 | $200M (Y1) | From affordability budget |
-| NYCHA reallocation (to TCAP) | Month 1-3 | $50M (Y1) | From operating budget |
-| OMB distribution | Month 3 | $450M allocated | TCAP begins spending |
-| Bond issuance | Month 3-4 | $150M (one-time) | Startup assistance for down payments |
-| Year 1 total | — | **$600M deployed** | **$450M ongoing + $150M bond** |
+| Action                       | Timeline  | Amount              | Notes                                  |
+| ---------------------------- | --------- | ------------------- | -------------------------------------- |
+| Legislative passage (INT.B)  | Week 12   | $450M Y1 commitment | City Council approves budget amendment |
+| HRA reallocation (to TCAP)   | Month 1-3 | $200M (Y1)          | From emergency assistance budget       |
+| HPD reallocation (to TCAP)   | Month 1-3 | $200M (Y1)          | From affordability budget              |
+| NYCHA reallocation (to TCAP) | Month 1-3 | $50M (Y1)           | From operating budget                  |
+| OMB distribution             | Month 3   | $450M allocated     | TCAP begins spending                   |
+| Bond issuance                | Month 3-4 | $150M (one-time)    | Startup assistance for down payments   |
+| Year 1 total                 | —         | **$600M deployed**  | **$450M ongoing + $150M bond**         |
 
 **Year 2 (2027):**
 
-| Action | Amount | Running Total | Notes |
-|--------|--------|---|---|
-| HRA reallocation (incremental) | $100M | $300M | Emergency assistance trending down |
-| HPD reallocation (incremental) | $150M | $350M | Affordability goals met via co-ops |
-| NYCHA reallocation (incremental) | $100M | $150M | Public housing conversion proceeds |
-| TCAP Year 2 spend | $750M | $1,350M total invested | Larger cohort, more buildings |
+| Action                           | Amount | Running Total          | Notes                              |
+| -------------------------------- | ------ | ---------------------- | ---------------------------------- |
+| HRA reallocation (incremental)   | $100M  | $300M                  | Emergency assistance trending down |
+| HPD reallocation (incremental)   | $150M  | $350M                  | Affordability goals met via co-ops |
+| NYCHA reallocation (incremental) | $100M  | $150M                  | Public housing conversion proceeds |
+| TCAP Year 2 spend                | $750M  | $1,350M total invested | Larger cohort, more buildings      |
 
 **Year 3 (2028):**
 
-| Action | Amount | Running Total | Notes |
-|--------|--------|---|---|
-| HRA reallocation (incremental) | $130M | $430M | Emergency system shrinking |
-| HPD reallocation (incremental) | $100M | $450M | Goal: reduce affordability subsidy needs |
-| NYCHA reallocation (incremental) | $50M | $200M | Public housing transition slowing |
-| **TCAP Year 3 spend** | **$1,050M** | **$2,400M total invested** | Acceleration phase |
+| Action                           | Amount      | Running Total              | Notes                                    |
+| -------------------------------- | ----------- | -------------------------- | ---------------------------------------- |
+| HRA reallocation (incremental)   | $130M       | $430M                      | Emergency system shrinking               |
+| HPD reallocation (incremental)   | $100M       | $450M                      | Goal: reduce affordability subsidy needs |
+| NYCHA reallocation (incremental) | $50M        | $200M                      | Public housing transition slowing        |
+| **TCAP Year 3 spend**            | **$1,050M** | **$2,400M total invested** | Acceleration phase                       |
 
 **Year 4-5 Projection (Steady State Achieved):**
 
-| Year | HRA Reduction | HPD Reduction | NYCHA Reduction | TCAP Total Spend | Cumulative Investment |
-|------|---|---|---|---|---|
-| Year 4 | $530M | $450M | $200M | $1,180M | $3,580M |
-| Year 5 | $630M | $450M | $250M | $1,330M | $4,910M |
+| Year   | HRA Reduction | HPD Reduction | NYCHA Reduction | TCAP Total Spend | Cumulative Investment |
+| ------ | ------------- | ------------- | --------------- | ---------------- | --------------------- |
+| Year 4 | $530M         | $450M         | $200M           | $1,180M          | $3,580M               |
+| Year 5 | $630M         | $450M         | $250M           | $1,330M          | $4,910M               |
 
 **Steady-State (Year 6+):**
+
 - Annual TCAP spend: $1,405M
 - Covered by reallocation: $630M + $450M + $250M + $75M = $1,405M
 - **Perfect fit: No additional revenue needed after Year 5**
@@ -1381,10 +1526,10 @@ By end of Year 10:
 **Mitigation:**
 
 1. **Gradual transition:** 5-year phase-in (not immediate cut)
-2. **Mission continuity:** Agencies still serve same population (co-ops serve subsidized households)
-3. **Staff retention:** Agencies don't lose staff (TCAP staff come from HPD, HRA, NYCHA voluntary transfers)
-4. **Success stories:** Early TCAP buildings become proof of concept (agencies see success)
-5. **Federal incentives:** If federal government rewards co-op conversion with additional federal funding (HUD), agencies benefit
+1. **Mission continuity:** Agencies still serve same population (co-ops serve subsidized households)
+1. **Staff retention:** Agencies don't lose staff (TCAP staff come from HPD, HRA, NYCHA voluntary transfers)
+1. **Success stories:** Early TCAP buildings become proof of concept (agencies see success)
+1. **Federal incentives:** If federal government rewards co-op conversion with additional federal funding (HUD), agencies benefit
 
 ### Alternative Reallocation (If Agencies Resist)
 
@@ -1414,7 +1559,7 @@ By end of Year 10:
 
 **Recommendation:** Primary strategy (Option 1: Gradual reallocation) + hybrid (Option A: $500M bonds for Year 1-2) = $500M annual commitment Year 1, scaled to $1.4B by Year 6.
 
----
+______________________________________________________________________
 
 ## PART VII: LEGAL FRAMEWORK & PRECEDENT
 
@@ -1423,17 +1568,20 @@ By end of Year 10:
 #### 1. New York State Cooperative Housing Law
 
 **Current Legal Basis:**
+
 - NY Housing Finance Agency (HFA) has authority to create cooperative housing programs
 - Article 4-A of NY Private Housing Finance Law (cooperatives)
 - Permanent affordability mechanisms exist in NY law (deed restrictions, use restrictions)
 
 **Legal Changes Needed:**
+
 - INT.C: Amendment to NY State co-op housing law
   - Clarify conversion process (rental to co-op)
   - Expand HFA authority to fund co-op conversions
   - Permit permanent deed restrictions (30-40 year minimum)
 
 **Precedent:**
+
 - NY State already authorizes housing cooperatives
 - Deed restrictions used successfully in other states (DC, CA, MA)
 - Legal framework is not a barrier—just needs clarification
@@ -1490,12 +1638,14 @@ recorded in the Office of the Register of [Borough]:
 **Why This Works:**
 
 Deed restrictions are legally binding property covenants that:
+
 - Run with the land in perpetuity (survive property transfers)
 - Are enforceable by city, state, and cooperative members
 - Have 40+ year precedent in DC (TOPA) and SF (COPA)
 - Are recognized by courts as legitimate public interest mechanism
 
 **Example (DC TOPA):**
+
 - Deed restrictions imposed since 1982 (40+ years)
 - Zero legal challenges that succeeded
 - Courts consistently uphold affordability covenants
@@ -1506,12 +1656,14 @@ Deed restrictions are legally binding property covenants that:
 **TCAP Model Bylaws (Template Governance):**
 
 **Board Composition:**
+
 - 7-9 members (elected by membership annually)
 - Proportional representation (neighborhoods, building floors, demographics)
 - Term limits: 2-year terms, max 3 consecutive terms
 - Diversity requirements: 50%+ women, 70%+ communities of color (in designated neighborhoods)
 
 **Member Rights:**
+
 - One member, one vote (regardless of unit size or ownership percent)
 - Democratic assembly (annual meeting minimum)
 - Recall procedures (member can remove underperforming board)
@@ -1519,6 +1671,7 @@ Deed restrictions are legally binding property covenants that:
 - Fair hearing procedures (disputes resolved internally before court)
 
 **Board Responsibilities:**
+
 - Fiduciary duty (act in members' interests, not personal profit)
 - Compliance with affordable housing requirements
 - Financial management (annual audit, reserve funding, insurance)
@@ -1526,12 +1679,14 @@ Deed restrictions are legally binding property covenants that:
 - Member support (training, dispute resolution, counseling)
 
 **Conflict Resolution:**
+
 - Internal grievance procedures (first step)
 - Mediation (second step, third-party mediator)
 - Binding arbitration (final step, if mediation fails)
 - Court access (if arbitration fails or illegal conduct alleged)
 
 **Why This Works:**
+
 - Cooperative governance model proven globally (150+ years, Switzerland)
 - Democratic control prevents predatory landlord behavior
 - Member protections similar to homeowner protections
@@ -1540,20 +1695,23 @@ Deed restrictions are legally binding property covenants that:
 #### 4. Credit Union Financing Authority
 
 **Federal Credit Union Regulations:**
+
 - Federal Credit Unions can lend to cooperatives (12 CFR § 701.1)
 - Community Development Financial Institutions (CDFI) status allows preferential lending
 - Affordable housing loans get favorable regulatory treatment
 
 **NYC Credit Union Licensing:**
+
 - NY State Banking Department licenses credit unions
 - INT.D authorizes NYC Credit Union partnerships
 - Preferential rates permitted for low-income housing (publicly subsidized)
 
 **Example (Existing Model):**
+
 - Bay Area Credit Union (CA): Lends to COPA co-ops since 1995
 - Rates: LIBOR + 1.5-2.5% (vs. 4-5% for traditional mortgages)
 - 30-year terms standard
-- Default rate: <1% (outperforms traditional mortgages)
+- Default rate: \<1% (outperforms traditional mortgages)
 
 #### 5. Merger of Subsidies & Ownership (Novel Legal Structure)
 
@@ -1562,24 +1720,28 @@ Deed restrictions are legally binding property covenants that:
 **TCAP Solution:** Dual-layer financing
 
 **Layer 1: Credit Union Senior Mortgage (Private Capital)**
+
 - Building purchase financing (70% of value)
 - Standard 30-year mortgage
 - Member responsible for payments (from affordability subsidy)
 - Credit union takes first lien (senior position)
 
 **Layer 2: TCAP Subordinate Subsidy (Public Capital)**
+
 - Down payment assistance (20% of value)
 - Affordability subsidy (member charge cap)
 - TCAP takes second lien (junior position, lower risk)
 - Public funds never at risk (credit union absorbs losses first)
 
 **Why This Works:**
+
 - Separates private capital (credit union) from public subsidy (TCAP)
 - Aligns incentives (credit union incentivized for success)
 - Limits public risk (subordinate position = public $ protected)
 - Sustainable financing (not dependent on continual subsidy)
 
 **Precedent:**
+
 - DC TOPA uses similar dual-layer structure (DC government + private lender)
 - SF COPA uses similar structure (SF government + private lender)
 - Proven 40+ years in other jurisdictions
@@ -1591,16 +1753,19 @@ Deed restrictions are legally binding property covenants that:
 **TCAP Compliance with Federal Law:**
 
 1. **No Discrimination:** Fair Housing Act (42 USC § 3601+)
+
    - TCAP cannot discriminate by race, religion, national origin, disability, familial status, sex
    - Member selection must be income-based, not race-based (though outcomes will be racially equitable)
    - Accessibility requirements (ADA compliance in all buildings)
 
-2. **Prevailing Wage:** Davis-Bacon Act (40 USC § 3141+)
+1. **Prevailing Wage:** Davis-Bacon Act (40 USC § 3141+)
+
    - If TCAP uses federal funds for construction, prevailing wage required
    - TCAP building acquisitions (not new construction) = no prevailing wage requirement
    - If major capital improvements funded federally, wage requirement applies
 
-3. **Civil Rights Compliance:** Title VI (42 USC § 2000d)
+1. **Civil Rights Compliance:** Title VI (42 USC § 2000d)
+
    - Federal funding recipients must comply with all civil rights laws
    - TCAP receives no direct federal funding (state + local only in Phase 1-3)
    - Phase 4+ federal funding triggers full civil rights compliance (minor burden)
@@ -1608,18 +1773,21 @@ Deed restrictions are legally binding property covenants that:
 #### Internal Revenue Code (Tax-Exempt Status)
 
 **Non-Profit TCAP Office Structure:**
+
 - TCAP Office established as 501(c)(3) non-profit
 - Tax-exempt status enables lower operating costs
 - Permits acceptance of charitable donations
 - NOT required for cooperative housing (co-ops can be for-profit)
 
 **Member Tax Treatment:**
+
 - Member equity not immediately taxable (cooperative law)
 - Appreciation taxable only on sale
 - Member interest deductions (on mortgage, if applicable)
 - Tax treatment equivalent to homeowners
 
 **Building Tax Assessment:**
+
 - Co-op buildings assessed at affordable housing rate (if deed-restricted)
 - Property tax reduction estimated at $1-2M annually per building
 - Tax revenue forecone by city (can be accounted for in TCAP budget)
@@ -1631,6 +1799,7 @@ Deed restrictions are legally binding property covenants that:
 **Challenge:** Does permanently affordable deed restriction violate member "property rights"?
 
 **Response:**
+
 - Members voluntarily enter co-operative with full knowledge of restriction
 - Restriction is disclosed in all agreements and deeds
 - Members benefit from restriction (ensures affordability for future members, community stability)
@@ -1642,6 +1811,7 @@ Deed restrictions are legally binding property covenants that:
 **Challenge:** Does permanent affordability restriction constitute a "taking" requiring compensation?
 
 **Response:**
+
 - No taking occurs (member retains ownership and occupancy rights)
 - Restriction on resale price is public interest regulation (like zoning)
 - Member receives benefit (permanent affordable housing, community control)
@@ -1653,12 +1823,14 @@ Deed restrictions are legally binding property covenants that:
 #### Building Codes & Health Standards
 
 **TCAP Compliance:**
+
 - All buildings meet NYC Building Code (minimum standard)
 - All buildings meet NYC Housing Maintenance Code (adequacy standard)
 - All buildings meet ADA accessibility requirements
 - Annual inspections (building dept, cooperative, insurance)
 
 **Co-Op Building Authority:**
+
 - Cooperatives can enforce building code on members (via bylaws)
 - TCAP provides technical assistance (compliance support)
 - HPD coordinates with TCAP (building dept oversight)
@@ -1667,37 +1839,39 @@ Deed restrictions are legally binding property covenants that:
 #### Financial Regulations
 
 **TCAP Office Auditing:**
+
 - Annual independent audit (CPA firm, 501(c)(3) requirement)
 - Quarterly financial reports (OMB oversight)
 - Real-time spending tracking (HPD monitoring)
 
 **Cooperative Financial Standards:**
+
 - Annual member financial audit (cooperative law requirement)
 - Monthly member charge statements (member transparency)
 - Reserve fund requirements (capital planning, maintenance)
 - Insurance coverage (liability, property, officers & directors)
 
----
+______________________________________________________________________
 
 ## PART VIII: RISK ASSESSMENT & MITIGATION
 
 ### Risk Matrix Overview
 
-| Risk Category | Probability | Impact | Mitigation Strategy | Residual Risk |
-|---|---|---|---|---|
-| **Fiscal** | | | | |
-| Interest rate volatility | Medium | High | Fixed-rate financing, rate cap | Low |
-| Member default on charges | Low-Med | High | Payment assistance fund | Low |
-| Building maintenance crisis | Medium | High | Mandatory reserve fund | Low-Med |
-| **Governance** | | | | |
-| Weak board leadership | Medium | Medium | Training, professional mgmt | Low |
-| Member disengagement | Medium | Low | Engagement programs | Low |
-| **Legal** | | | | |
-| Affordability challenge | Low | High | Dual protection, legal fund | Very Low |
-| Discrimination claim | Low | High | Fair housing training | Very Low |
-| **Operational** | | | | |
-| Building abandonment | Very Low | Catastrophic | Underwriting, intervention | Very Low |
-| Management failure | Low | High | Approved providers, backup | Low |
+| Risk Category               | Probability | Impact       | Mitigation Strategy            | Residual Risk |
+| --------------------------- | ----------- | ------------ | ------------------------------ | ------------- |
+| **Fiscal**                  |             |              |                                |               |
+| Interest rate volatility    | Medium      | High         | Fixed-rate financing, rate cap | Low           |
+| Member default on charges   | Low-Med     | High         | Payment assistance fund        | Low           |
+| Building maintenance crisis | Medium      | High         | Mandatory reserve fund         | Low-Med       |
+| **Governance**              |             |              |                                |               |
+| Weak board leadership       | Medium      | Medium       | Training, professional mgmt    | Low           |
+| Member disengagement        | Medium      | Low          | Engagement programs            | Low           |
+| **Legal**                   |             |              |                                |               |
+| Affordability challenge     | Low         | High         | Dual protection, legal fund    | Very Low      |
+| Discrimination claim        | Low         | High         | Fair housing training          | Very Low      |
+| **Operational**             |             |              |                                |               |
+| Building abandonment        | Very Low    | Catastrophic | Underwriting, intervention     | Very Low      |
+| Management failure          | Low         | High         | Approved providers, backup     | Low           |
 
 ### Detailed Risk Analysis
 
@@ -1709,12 +1883,14 @@ Deed restrictions are legally binding property covenants that:
 
 **Probability:** Medium (rates fluctuate, but 10-year fixed rates available)
 
-**Impact:** 
+**Impact:**
+
 - Member charge increase (if variable-rate financing)
 - Affordability target at risk (charge might exceed 30% cap)
 - Member defaults possible (can't afford charge increase)
 
 **Mitigation:**
+
 - **Fixed-rate financing:** TCAP requires 30-year fixed-rate mortgages (rates locked for 30 years)
 - **Rate cap hedge:** For variable-rate subordinate financing, TCAP caps rate at 5.5%
 - **Contingency fund:** 2% of TCAP budget ($3M annually) reserved for rate increase impacts
@@ -1729,11 +1905,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Low-Medium (1-3% default rate anticipated, vs. 8-10% for traditional renters)
 
 **Impact:**
+
 - Building cash flow disrupted (can't pay mortgage if members don't pay)
 - Eviction may be necessary (legal remedy)
 - Building financial viability at risk
 
 **Mitigation:**
+
 - **Affordability cap:** Member charge limited to 30% of income (lower than market rent, sustainable)
 - **Payment assistance fund:** $5-10M annually ($500-1,000 per member annually) covers temporary hardships
 - **Member counseling:** TCAP provides counseling (financial, employment services)
@@ -1749,11 +1927,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Medium (buildings aged, deferred maintenance likely)
 
 **Impact:**
+
 - Emergency financing needed (members can't cover from operating budget)
 - Quality of life impact (building condition deteriorates)
 - Potential loan default (if building unlivable, lender may foreclose)
 
 **Mitigation:**
+
 - **Inspection before purchase:** Feasibility study includes building inspection (identify major issues)
 - **Repair reserve requirement:** 5% of building value set aside annually ($2-3M over 10 years for 100-unit building)
 - **Capital planning:** Long-term maintenance plan (identify future needs)
@@ -1771,11 +1951,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Medium (governance capacity varies, especially early years)
 
 **Impact:**
+
 - Financial mismanagement (waste, inefficiency)
 - Member dissatisfaction (lack of trust)
 - Legal liability (breach of fiduciary duty)
 
 **Mitigation:**
+
 - **Mandatory training:** Board training required before taking office (20+ hours)
 - **Professional management:** Cooperative hires professional building manager (not volunteer)
 - **Annual review:** TCAP conducts annual review (performance assessment)
@@ -1792,11 +1974,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Medium (participation naturally declines over time)
 
 **Impact:**
+
 - Weaker governance (fewer people participating)
 - Board capture (small group makes decisions)
 - Member alienation (people feel excluded)
 
 **Mitigation:**
+
 - **Engagement programs:** Monthly member meetings, social events, committees
 - **Communication:** Regular newsletters, email updates, member portal
 - **Incentives:** Board stipends ($1-2K annually for board service)
@@ -1814,11 +1998,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Low (40+ years of TOPA/COPA precedent, zero successful challenges)
 
 **Impact:**
+
 - If restriction invalidated, building could be sold at market rate
 - Permanent affordability lost
 - Court litigation (expensive, time-consuming)
 
 **Mitigation:**
+
 - **Dual protection:** Both deed restriction AND cooperative bylaws require affordability (two layers)
 - **Legal precedent:** 40 years of TOPA (DC) and COPA (SF) withstand legal challenges
 - **Legal defense fund:** $1-2M reserved for litigation defense
@@ -1834,11 +2020,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Low (TCAP targets low-income, which is non-discriminatory class)
 
 **Impact:**
+
 - Legal liability (damages possible)
 - Reputational harm
 - Program disruption (litigation delay)
 
 **Mitigation:**
+
 - **Fair housing training:** All staff and board trained (annual)
 - **Written standards:** Member selection criteria documented and objective
 - **Regular audit:** Disparate impact analysis (quarterly review)
@@ -1857,10 +2045,12 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Very Low (rigorous underwriting prevents this)
 
 **Impact:**
+
 - Catastrophic (members displaced, building lost)
 - Community impact (neighborhood destabilization)
 
 **Mitigation:**
+
 - **Rigorous underwriting:** Only buildings meeting strict financial criteria approved
 - **Early warning system:** Monthly financial monitoring identifies distress early
 - **Intervention protocol:** TCAP provides assistance if building shows distress
@@ -1877,11 +2067,13 @@ Deed restrictions are legally binding property covenants that:
 **Probability:** Low (management companies generally reliable)
 
 **Impact:**
+
 - Building quality declines
 - Member dissatisfaction
 - Potential lender default (building condition affects appraisals)
 
 **Mitigation:**
+
 - **Approved provider list:** TCAP maintains list of qualified building managers (vetted)
 - **Performance standards:** Written contract with performance benchmarks
 - **Annual review:** TCAP reviews manager performance
@@ -1891,13 +2083,14 @@ Deed restrictions are legally binding property covenants that:
 
 **Residual Risk:** Low (approved providers + oversight + bonding prevent most scenarios)
 
----
+______________________________________________________________________
 
 ## PART IX: GOVERNANCE & OPERATIONAL STRUCTURE
 
 ### TCAP Office Organization
 
 **Deputy Commissioner (TCAP Director):**
+
 - Reports to HPD Commissioner
 - Responsible for all TCAP operations
 - Budget authority ($145M annually, steady state)
@@ -1945,6 +2138,7 @@ Deputy Commissioner / TCAP Director
 ```
 
 **Staffing Timeline:**
+
 - Year 1: 9 FTE (initial team, core functions)
 - Year 3: 20 FTE (regional expansion, portfolio growth)
 - Year 6+: 35-40 FTE (mature program, full operations)
@@ -1952,16 +2146,19 @@ Deputy Commissioner / TCAP Director
 ### TCAP Cooperative Network
 
 **Membership:**
+
 - All cooperatives receiving TCAP subsidy (automatic membership)
 - Cooperatives participate in annual conference (mandatory)
 - Information sharing and peer learning (voluntary)
 
 **Co-Op Network Governance:**
+
 - Annual meeting (election of network board, 7-9 members)
 - Regional working groups (Bronx, Brooklyn, Manhattan, Queens)
 - Committees (Finance, Legal, Maintenance, Member Services)
 
 **Network Functions:**
+
 - Peer mentoring (experienced boards advise new boards)
 - Information sharing (financial reports, maintenance solutions)
 - Collective bargaining (bulk purchasing, insurance, legal services)
@@ -1969,6 +2166,7 @@ Deputy Commissioner / TCAP Director
 - Training (board training, member education)
 
 **Example Benefits of Network:**
+
 - Bulk insurance purchasing (20% savings vs. individual policies)
 - Shared legal services (pool for attorney on retainer)
 - Collective training (annual conference, peer learning)
@@ -1977,18 +2175,21 @@ Deputy Commissioner / TCAP Director
 ### NYC Credit Union Partnership
 
 **Credit Union Role:**
+
 - Primary lender for TCAP cooperative mortgages
 - Provides 30-year fixed-rate financing
 - Works with TCAP to underwrite borrowers
 - Services member accounts and cooperatives
 
 **Financing Terms (TCAP-Exclusive):**
+
 - Senior mortgage: 70% of building value
 - Interest rate: LIBOR + 2.25% fixed (capped at 5.5%)
 - Term: 30-year amortization
 - Monthly payments: ~$4.50 per $100 borrowed (3.5% effective rate)
 
 **Why Credit Union Partners:**
+
 - TCAP members are cooperative members (strong credit profiles)
 - Deed restriction ensures affordability (credit union secure in purpose)
 - TCAP subsidy provides first-loss protection (risk reduction)
@@ -2000,11 +2201,13 @@ Deputy Commissioner / TCAP Director
 #### 1. Pre-Acquisition Support (Before Building Purchase)
 
 **Tenant Organizing (6-12 months):**
+
 - Professional organizer provided (TCAP funded)
 - Cost: $15,000-25,000 per building
 - Outcome: Organized tenant group with co-op commitment
 
 **Member Training (8-week course, 20 hours):**
+
 - Cooperative law and history (5 hours)
 - Financial literacy and personal finance (4 hours)
 - Building finance and budgeting (4 hours)
@@ -2012,6 +2215,7 @@ Deputy Commissioner / TCAP Director
 - Cost: $2,000 per building (training materials, facilitator)
 
 **Feasibility Study ($10,000-15,000):**
+
 - Building inspection and appraisal
 - Financial analysis
 - Member survey
@@ -2021,6 +2225,7 @@ Deputy Commissioner / TCAP Director
 #### 2. Post-Acquisition Support (After Building Purchase)
 
 **Board Training:**
+
 - Board Chair training (governance, fiduciary duty)
 - Treasurer training (accounting, budgeting)
 - Managing Agent selection (procurement, oversight)
@@ -2028,6 +2233,7 @@ Deputy Commissioner / TCAP Director
 - Cost: $5,000 per building (training materials, facilitator)
 
 **Member Counseling:**
+
 - Financial counseling (personal budgeting, saving)
 - Housing stability counseling (eviction prevention)
 - Employment counseling (job search, training)
@@ -2035,6 +2241,7 @@ Deputy Commissioner / TCAP Director
 - Cost: $2,000-3,000 per building annually
 
 **Dispute Resolution:**
+
 - Mediation services (member-to-member disputes)
 - Board grievance procedures
 - Fair hearing processes
@@ -2044,23 +2251,26 @@ Deputy Commissioner / TCAP Director
 #### 3. Emergency Support Services
 
 **Emergency Assistance Fund:**
+
 - Up to $500 per member annually (if hardship)
 - Covers temporary rent increases, essential repairs, job loss transition
 - Administered through member counseling
 - Cost: $2,000-3,000 per building annually
 
 **Building Emergency Fund:**
+
 - $200-300 per member for unexpected repairs
 - Used for emergency building maintenance
 - Loan (not grant) if possible
 - Cost: Built into reserve fund
 
 **Legal Defense Fund:**
+
 - Covers legal services (disputes, discrimination claims, evictions)
 - Provided for free to member cooperatives
 - Cost: $10,000-20,000 annually (reserve for multiple buildings)
 
----
+______________________________________________________________________
 
 ## PART X: CONCLUSION & CALL TO ACTION
 
@@ -2070,11 +2280,11 @@ Deputy Commissioner / TCAP Director
 
 1. **Fiscal Reality:** NYC spends $5.2B on housing subsidies. TCAP redirects 27% to permanent ownership (instead of yearly rent assistance). Savings: $37.5B over 10 years.
 
-2. **Equity Imperative:** TCAP deliberately targets communities harmed by redlining, highways, and gentrification. Impact: 4-6 pp homeownership gap closure, $1.24B member wealth created.
+1. **Equity Imperative:** TCAP deliberately targets communities harmed by redlining, highways, and gentrification. Impact: 4-6 pp homeownership gap closure, $1.24B member wealth created.
 
-3. **Legal Precedent:** TOPA (40 years, 25,000 households), COPA (30 years, 100+ buildings), Swiss cooperatives (150+ years, 800,000 households) prove the model works forever.
+1. **Legal Precedent:** TOPA (40 years, 25,000 households), COPA (30 years, 100+ buildings), Swiss cooperatives (150+ years, 800,000 households) prove the model works forever.
 
-4. **Democratic Accountability:** Members control buildings through elected boards, not landlords extracting profit. Members decide maintenance, charges, admissions—not outside profit motive.
+1. **Democratic Accountability:** Members control buildings through elected boards, not landlords extracting profit. Members decide maintenance, charges, admissions—not outside profit motive.
 
 ### The Moment
 
@@ -2092,21 +2302,25 @@ Deputy Commissioner / TCAP Director
 ### Implementation Roadmap (Immediate Actions)
 
 **This Month (December 2025):**
+
 - [ ] Distribute this report to City Council leadership (25+ copies)
 - [ ] Brief housing chair and finance chair (30-minute meetings)
 - [ ] Reach out to 3-5 co-sponsors (identify champions)
 
 **January 2026:**
+
 - [ ] Formal bill introduction (INT.A-D)
 - [ ] Committee hearings (Housing, Finance, Government Operations)
 - [ ] Community launch event (100+ residents, media coverage)
 
 **February-March 2026:**
+
 - [ ] Committee passage (INT.A-D)
 - [ ] Council floor debate and passage
 - [ ] Mayor signature
 
 **April-June 2026:**
+
 - [ ] TCAP Office established and staffed (9 FTE)
 - [ ] First 12-15 buildings in pipeline
 - [ ] First 3-5 buildings close
@@ -2116,6 +2330,7 @@ Deputy Commissioner / TCAP Director
 **Success is not beautiful policy documents. Success is 38,000+ families in permanent, affordable, member-controlled housing by 2035.**
 
 **Success is:**
+
 - A 27-point homeownership gap that shrinks to 20 points
 - 65,000 evictions prevented (families stable, children in one school, parents with steady jobs)
 - $1.24B in member wealth created (intergenerational wealth transfer, first-time asset ownership)
@@ -2156,7 +2371,7 @@ Follow NYC. Adopt TOPA-style legislation. Build co-op acquisition programs. Shar
 
 **Do this. Build TCAP. Change NYC. Prove the model works nationally.**
 
----
+______________________________________________________________________
 
 # APPENDICES
 
@@ -2393,7 +2608,7 @@ This local law shall take effect immediately upon enactment.
 [END INT.A]
 ```
 
----
+______________________________________________________________________
 
 ## APPENDIX B: Agency Implementation Forms & Documents
 
@@ -2519,7 +2734,7 @@ Prepared by: _________________________ Date: __________
 [FORM END]
 ```
 
----
+______________________________________________________________________
 
 ## APPENDIX C: Member Training Curriculum Outline
 
@@ -2638,7 +2853,7 @@ FINAL EXAM (1 hour):
 [CURRICULUM END]
 ```
 
----
+______________________________________________________________________
 
 ## APPENDIX D: Key Statistics Summary
 
@@ -2646,12 +2861,14 @@ FINAL EXAM (1 hour):
 
 **Annual Spending:** $5.2 billion (895,000 households)
 **Breakdown:**
+
 - HRA Emergency Assistance: $2.1B (65,000 households)
 - HPD Affordability Subsidy: $1.8B (250,000 households)
 - NYCHA Operating Subsidy: $1.0B (400,000 households)
 - HUD Section 8 Local Match: $0.3B (180,000 households)
 
 **Outcomes (Current Model):**
+
 - Homeownership rate (Black): 19%
 - Homeownership rate (White): 46%
 - Homeownership gap: 27 pp
@@ -2663,11 +2880,13 @@ FINAL EXAM (1 hour):
 ### TCAP Projections (10-Year)
 
 **Scale:**
+
 - Buildings acquired: 353
 - Households served: 38,650
 - Annual budget (steady state): $145M
 
 **Fiscal Impact:**
+
 - Public subsidy savings: $37.5B (vs. status quo)
 - Member wealth created: $1.236B
 - Evictions prevented: 65,000+
@@ -2675,6 +2894,7 @@ FINAL EXAM (1 hour):
 - Full societal ROI: 6.2:1
 
 **Equity Impact:**
+
 - Black homeownership (Year 10): 25% (+6 pp)
 - Latino homeownership (Year 10): 26% (+6 pp)
 - Homeownership gap (Year 10): 21 pp (-6 pp)
@@ -2683,6 +2903,7 @@ FINAL EXAM (1 hour):
 - Seniors (65+): 35% of members
 
 **Social Outcomes (10-Year):**
+
 - Evictions prevented: 65,000+
 - School disruptions prevented: 105,000+
 - HS graduates (additional): 12,000+
@@ -2690,39 +2911,43 @@ FINAL EXAM (1 hour):
 - Mental health cases prevented: 5,000+
 - Life years gained: 16,879+
 
----
+______________________________________________________________________
 
 ## APPENDIX E: Works Cited & References
 
-[150+ peer-reviewed sources organized by category]
+\[150+ peer-reviewed sources organized by category\]
 
 ### Housing Policy & Cooperatives
+
 1. Rohe, W. M., & Stewart, L. S. (1996). Homeownership and neighborhood stability. *Housing Policy Debate*, 7(1), 37-81.
 
-2. Kolodinsky, J. M., & Marbellah, R. (1991). Cooperative housing ownership. *Comparative Studies*, 23(2), 156-178.
+1. Kolodinsky, J. M., & Marbellah, R. (1991). Cooperative housing ownership. *Comparative Studies*, 23(2), 156-178.
 
-3. Mallach, A. (2012). *Bringing buildings back: New life for vacant properties through community development*. Lincoln Institute of Land Policy.
+1. Mallach, A. (2012). *Bringing buildings back: New life for vacant properties through community development*. Lincoln Institute of Land Policy.
 
 ### Tenant Rights & Housing Justice
+
 4. Marcuse, P. (2012). Whose right to the city? *Journal of Urban Affairs*, 34(2), 93-99.
 
-5. Desmond, M. (2016). *Evicted: Poverty and profit in the American city*. Crown.
+1. Desmond, M. (2016). *Evicted: Poverty and profit in the American city*. Crown.
 
-6. Gould Ellen, I., Lacoe, J., & Schwartz, A. E. (2019). Does gentrification displace poor households? *Journal of Urban Affairs*, 41(2), 178-189.
+1. Gould Ellen, I., Lacoe, J., & Schwartz, A. E. (2019). Does gentrification displace poor households? *Journal of Urban Affairs*, 41(2), 178-189.
 
 ### DC TOPA & Precedent
+
 7. Hess, D., & Winner, L. (2007). Enhancing justice and sustainability: Technology and public participation. *Journal of Public Affairs Education*, 13(3), 207-226.
 
-8. Acquisition International LLC. (2014). *Tenant Opportunity to Purchase Act analysis: 30-year impact study*. DC Department of Housing and Community Development.
+1. Acquisition International LLC. (2014). *Tenant Opportunity to Purchase Act analysis: 30-year impact study*. DC Department of Housing and Community Development.
 
 ### Equity & Wealth Gap
+
 9. Oliver, M. L., & Shapiro, T. M. (2006). *Black wealth, white wealth: A new perspective on racial wealth inequality*. Routledge.
 
-10. Rothstein, R. (2017). *The color of law: A forgotten history of how government segregated America*. Liveright.
+1. Rothstein, R. (2017). *The color of law: A forgotten history of how government segregated America*. Liveright.
 
-[... 140+ additional sources in full report ...]
+\[... 140+ additional sources in full report ...\]
 
----
+______________________________________________________________________
 
 **END OF COMPREHENSIVE MASTER REPORT**
 

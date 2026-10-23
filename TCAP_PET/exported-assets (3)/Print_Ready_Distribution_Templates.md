@@ -1,10 +1,11 @@
 # PRINT-READY DISTRIBUTION PACKAGE TEMPLATES
+
 ## Complete Graphics & Layout Specifications
 
-**For NYC Council Submission & Stakeholder Distribution**  
+**For NYC Council Submission & Stakeholder Distribution**\
 **December 30, 2025**
 
----
+______________________________________________________________________
 
 ## SECTION 1: BLUE COVER STOCK SPECIFICATIONS
 
@@ -94,7 +95,7 @@ BACK COVER SPECIFICATIONS:
 - Content: Contact info, bill number, subject matter
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 2: INTERIOR PAGE FORMATTING
 
@@ -213,7 +214,7 @@ SECTION HEADER FORMATTING:
                      1, 2, 3... for operative sections
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 3: AMENDMENT MARKUP FORMAT (For DOCX Track Changes)
 
@@ -257,7 +258,7 @@ MARKUP STANDARDS (DOCX Track Changes):
 - Final version: Clean black text (no red/blue markup)
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 4: EXECUTIVE SUMMARY (1-PAGE PRINT VERSION)
 
@@ -341,7 +342,7 @@ PRINT SPECIFICATIONS:
 - Page count: 1 page (fits on single page if formatted tightly)
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 5: ONE-PAGE FACT SHEET (PRINTER-FRIENDLY)
 
@@ -451,7 +452,7 @@ PRINT SPECIFICATIONS:
 - Print method: Color laser OR inkjet (high speed)
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 6: TWO-PAGE BRIEFING MEMO (FOR ELECTED OFFICIALS)
 
@@ -687,7 +688,7 @@ PRINT SPECIFICATIONS (2 PAGES):
 - Binding: Stapled (single staple, top left) or unbound
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 7: PDF EXPORT INSTRUCTIONS (MICROSOFT WORD)
 
@@ -704,10 +705,11 @@ Click: OPEN
 ### Step 2: Verify Formatting Before Export
 
 **Check these elements:**
+
 - [ ] Font: Times New Roman 12pt (body), 14pt bold (headings)
 - [ ] Line spacing: 1.5 (double-spaced)
 - [ ] Margins: 1" all sides, 1.25" left (binding gutter)
-- [ ] Page numbers: Bottom right, "- [N] -" format
+- [ ] Page numbers: Bottom right, "- \[N\] -" format
 - [ ] Section headers: Centered, bold, all caps
 - [ ] No Track Changes visible (all edits accepted)
 - [ ] Blue cover pages included (Front + Back)
@@ -738,6 +740,7 @@ Click: SAVE
 ### Step 4: Verify PDF Output
 
 **After PDF saves, open it and verify:**
+
 - [ ] All pages present (count total pages)
 - [ ] Text is searchable (use Ctrl+F; should find text)
 - [ ] Images/charts display correctly
@@ -759,11 +762,12 @@ File → Properties → Compression
 Save as: INT_A_XXXX_Public_Equity_Transfer_Act_COMPRESSED.pdf
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 8: PRINTING & BINDING SERVICES DIRECTORY
 
 ### Option A: NYC In-House Printing Services
+
 ```
 NYC Department of Citywide Administrative Services (DCAS)
 Print Management Division
@@ -826,31 +830,34 @@ PrintNinja (printninja.com)
   • Shipping: Extra charge
 ```
 
----
+______________________________________________________________________
 
 ## SECTION 9: FINAL CHECKLIST BEFORE PRINTING
 
 ### Pre-Print Quality Assurance (Must Pass All Gates)
 
 **FORMAT GATE**
+
 - [ ] Page size: 8.5" × 11" letter
 - [ ] Margins: 1" all sides (0.75" acceptable)
 - [ ] Gutter margin: 1.25" left (for binding)
 - [ ] Font: Times New Roman 12pt body, 14pt headings
 - [ ] Line spacing: 1.5 (double-spaced)
-- [ ] Page numbers: "- [N] -" format, bottom right
-- [ ] Header/footer: [Bill title] | [Page number]
+- [ ] Page numbers: "- \[N\] -" format, bottom right
+- [ ] Header/footer: \[Bill title\] | \[Page number\]
 
 **CONTENT GATE**
+
 - [ ] All 15 sections present
 - [ ] Legislative findings: Minimum 5, with citations
 - [ ] Definitions: All capitalized terms defined (≥15 terms)
-- [ ] Amendments: Show [strikethrough] and **bold** format
+- [ ] Amendments: Show \[strikethrough\] and **bold** format
 - [ ] Effective date: Specified in final section
 - [ ] Severability clause: Included
 - [ ] No typos or grammatical errors (final read-through)
 
 **VISUAL GATE**
+
 - [ ] Blue cover stock shows (front + back)
 - [ ] Section headings centered and bold
 - [ ] Text alignment consistent
@@ -859,21 +866,23 @@ PrintNinja (printninja.com)
 - [ ] Page breaks: No section header alone at bottom
 
 **BINDING GATE**
+
 - [ ] Blue cover stock color correct (Navy Blue 80 lb)
 - [ ] Spiral binding specs: 21 holes, 5/16" diameter, silver
 - [ ] All pages secured (no loose pages after binding test)
 - [ ] Cover text centered and legible
 
 **DELIVERY GATE**
+
 - [ ] File saved as PDF (searchable, not image)
-- [ ] File size <50 MB
+- [ ] File size \<50 MB
 - [ ] Filename: INT_A_XXXX_Public_Equity_Transfer_Act.pdf
 - [ ] Backup copy saved: Naming convention followed
 - [ ] Email copy: Sent to Council Clerk email
 - [ ] Physical copies: 100 copies printed + bound
 - [ ] Packaging: Placed in official NYC Council Clerk envelope
 
----
+______________________________________________________________________
 
 ## SUMMARY: YOUR PRINT-READY PACKAGE IS COMPLETE
 
@@ -890,4 +899,3 @@ You now have:
 ✓ **Pre-Print Checklist** (9-gate quality assurance)
 
 **Ready to submit to NYC Council Clerk today.**
-

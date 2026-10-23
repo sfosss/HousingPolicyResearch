@@ -80,7 +80,7 @@ If you don't have a `package.json` file in your project root, create one:
 }
 ```
 
----
+______________________________________________________________________
 
 ## TypeScript Configuration
 
@@ -127,7 +127,7 @@ Create `tsconfig.node.json`:
 }
 ```
 
----
+______________________________________________________________________
 
 ## ESLint Configuration
 
@@ -150,7 +150,7 @@ Create `.eslintrc.json`:
 }
 ```
 
----
+______________________________________________________________________
 
 ## Installation & Build
 
@@ -201,7 +201,7 @@ npm run dev
 # Cmd + Shift + A → "Load Extension" → Select your project directory
 ```
 
----
+______________________________________________________________________
 
 ## Environment Setup
 
@@ -233,7 +233,7 @@ npm --version
 npm install -g npm@latest
 ```
 
----
+______________________________________________________________________
 
 ## Optional: .gitignore
 
@@ -268,7 +268,7 @@ Thumbs.db
 .env.*.local
 ```
 
----
+______________________________________________________________________
 
 ## Optional: Prettier Configuration
 
@@ -287,7 +287,7 @@ Create `.prettierrc.json`:
 }
 ```
 
----
+______________________________________________________________________
 
 ## Troubleshooting
 
@@ -331,7 +331,7 @@ npm run format
 npm run lint -- --fix
 ```
 
----
+______________________________________________________________________
 
 ## Verification Checklist
 
@@ -345,19 +345,19 @@ npm run lint -- --fix
 - [ ] `npm run dev` runs without errors
 - [ ] Extension loads in Raycast (Cmd + Shift + A)
 
----
+______________________________________________________________________
 
 ## Next Steps
 
 1. Create `package.json` if it doesn't exist (copy one from above)
-2. Run `npm install`
-3. Run `npm run build`
-4. Load extension into Raycast
-5. Test all three commands
+1. Run `npm install`
+1. Run `npm run build`
+1. Load extension into Raycast
+1. Test all three commands
 
 See `RAYCAST_QUICK_START.md` for testing instructions.
 
----
+______________________________________________________________________
 
-**Status:** ✅ Configuration Complete  
+**Status:** ✅ Configuration Complete\
 **Last Updated:** December 26, 2024

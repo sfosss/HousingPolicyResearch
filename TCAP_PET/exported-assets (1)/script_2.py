@@ -1,4 +1,3 @@
-
 import zipfile
 import os
 from datetime import datetime
@@ -33,8 +32,8 @@ generated_files = [
 # Create zip file
 zip_filename = f"NYC_Housing_Subsidy_Reform_Assets_Complete_{datetime.now().strftime('%Y%m%d')}.zip"
 
-with zipfile.ZipFile(zip_filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
-    
+with zipfile.ZipFile(zip_filename, "w", zipfile.ZIP_DEFLATED) as zipf:
+
     # Add generated files
     print("Adding generated deliverables...")
     for file in generated_files:
@@ -43,7 +42,7 @@ with zipfile.ZipFile(zip_filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
             arcname = f"Generated_Deliverables/{file}"
             zipf.write(file, arcname)
             print(f"  ✓ {arcname}")
-    
+
     # Create a README for the zip
     readme_content = """# NYC Housing Subsidy Reform Assets Package
 ## Complete Project Archive (December 26, 2025)
@@ -148,7 +147,7 @@ For more information:
 
 *Do not distribute outside authorized recipient list without mayoral/CFO approval.*
 """
-    
+
     zipf.writestr("README.md", readme_content)
     print("\n✓ Added README.md")
 

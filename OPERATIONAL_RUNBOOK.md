@@ -1,29 +1,31 @@
 # Housing Policy Research Tools - Operational Runbook
 
-**Audience:** Municipal Policy Analyst, Research Team  
-**Version:** 1.0  
-**Last Updated:** December 26, 2025  
+**Audience:** Municipal Policy Analyst, Research Team\
+**Version:** 1.0\
+**Last Updated:** December 26, 2025\
 **Status:** Production Ready
 
----
+______________________________________________________________________
 
 ## Quick Reference
 
-| Task | Command | Time | Frequency |
-|------|---------|------|----------|
-| **Sweep Bills** | "Sweep Bills" in Raycast | 5 min | Weekly |
-| **Generate Memo** | "Generate Draft Section" in Raycast | 5 min | As needed |
-| **Add Source** | "Add Source" in Raycast | 2 min | Daily |
-| **Weekly Report** | bash scripts/sweep_bills_weekly.sh | 10 min | Monday 9am |
+| Task              | Command                             | Time   | Frequency  |
+| ----------------- | ----------------------------------- | ------ | ---------- |
+| **Sweep Bills**   | "Sweep Bills" in Raycast            | 5 min  | Weekly     |
+| **Generate Memo** | "Generate Draft Section" in Raycast | 5 min  | As needed  |
+| **Add Source**    | "Add Source" in Raycast             | 2 min  | Daily      |
+| **Weekly Report** | bash scripts/sweep_bills_weekly.sh  | 10 min | Monday 9am |
 
----
+______________________________________________________________________
 
 ## 1. SWEEP BILLS (Legislative Monitoring)
 
 ### Purpose
+
 Monitor new and updated legislation across NYC, NY State, and Federal levels related to housing subsidies and policy.
 
 ### When to Use
+
 - **Frequency:** Weekly (recommended Mondays)
 - **Time Required:** 5 minutes
 - **Output:** CSV file with bill data
@@ -32,12 +34,14 @@ Monitor new and updated legislation across NYC, NY State, and Federal levels rel
 ### Step-by-Step Guide
 
 #### Step 1: Open Raycast
+
 ```
 Keyboard: Cmd + Space
 Result: Raycast search bar opens
 ```
 
 #### Step 2: Search for Command
+
 ```
 Type: "Sweep Bills"
 Result: "Sweep Bills" command appears
@@ -45,6 +49,7 @@ Click: Select the command
 ```
 
 #### Step 3: Select Jurisdictions
+
 ```
 You see three checkboxes:
   ✓ NYC
@@ -56,6 +61,7 @@ Note: Federal optional for broader context
 ```
 
 #### Step 4: Set Date Range
+
 ```
 You see: "Search Since (Optional)" date picker
 Action: Click date picker
@@ -65,6 +71,7 @@ Note: Leave empty to search all bills
 ```
 
 #### Step 5: Execute
+
 ```
 Action: Click "Sweep Bills" button
 Status: Loading indicator appears
@@ -72,6 +79,7 @@ Wait: 5-30 seconds for results
 ```
 
 #### Step 6: Review Results
+
 ```
 You see: Detail view with formatted results
 Show: 
@@ -87,6 +95,7 @@ Note: Copy relevant bills for your research
 ```
 
 #### Step 7: Export to CSV
+
 ```
 Raycast outputs: bills_sweep_YYYYMMDD.csv
 Location: ~/Documents/GitHub/HousingPolicyResearch/data/bills/
@@ -103,6 +112,7 @@ Columns:
 ```
 
 #### Step 8: Add to Notion Database
+
 ```
 Action: Open Notion Housing Bills table
 Import: Paste bill data from CSV
@@ -119,6 +129,7 @@ Notes: "Increases subsidized housing funding by 12%; could affect TCAP model ass
 ```
 
 #### Step 9: Close Raycast
+
 ```
 Keyboard: Esc
 Result: Raycast closes
@@ -127,16 +138,16 @@ Next: Proceed to research or memo drafting
 
 ### Troubleshooting
 
-**Problem:** Command not found in search  
+**Problem:** Command not found in search\
 **Solution:** Ensure extension is loaded (Cmd + Shift + A → "Load Extension" → Select directory)
 
-**Problem:** "Network error. Check your connection and backend URL."  
+**Problem:** "Network error. Check your connection and backend URL."\
 **Solution:** Verify backend API is running and URL is correct in Raycast preferences (Cmd + ,)
 
-**Problem:** Results show "No new bills found."  
+**Problem:** Results show "No new bills found."\
 **Solution:** Normal if search period is short; try extending date range or try Federal jurisdiction
 
-**Problem:** Results are loading slowly  
+**Problem:** Results are loading slowly\
 **Solution:** Backend may be under load; wait 30+ seconds or try again later
 
 ### Example Output
@@ -158,14 +169,16 @@ Next: Proceed to research or memo drafting
   - Summary: Proposes changes to Low-Income Housing Tax Credit program
 ```
 
----
+______________________________________________________________________
 
 ## 2. GENERATE DRAFT SECTION (Policy Memo Writing)
 
 ### Purpose
+
 Generate AI-assisted draft policy memo sections to accelerate policy document creation.
 
 ### When to Use
+
 - **Frequency:** As needed (3-5 times per memo)
 - **Time Required:** 5 minutes per section
 - **Output:** Markdown text with drafted content
@@ -174,12 +187,14 @@ Generate AI-assisted draft policy memo sections to accelerate policy document cr
 ### Step-by-Step Guide
 
 #### Step 1: Open Raycast
+
 ```
 Keyboard: Cmd + Space
 Result: Raycast search bar opens
 ```
 
 #### Step 2: Search for Command
+
 ```
 Type: "Generate Draft"
 Result: "Generate Draft Section" command appears
@@ -187,6 +202,7 @@ Click: Select the command
 ```
 
 #### Step 3: Enter Section Name
+
 ```
 You see: "Section Name" text field
 
@@ -204,6 +220,7 @@ Example: "Key Findings"
 ```
 
 #### Step 4: Write Your Prompt
+
 ```
 You see: "Prompt" text area
 
@@ -226,6 +243,7 @@ Note: More specific = better output
 ```
 
 #### Step 5: Submit Request
+
 ```
 Action: Click "Generate Draft" button
 Status: Loading indicator with progress
@@ -233,6 +251,7 @@ Wait: 10-60 seconds depending on prompt complexity
 ```
 
 #### Step 6: Review Generated Content
+
 ```
 You see: Detail view with generated markdown
 
@@ -253,6 +272,7 @@ Note: AI output is DRAFT ONLY - human review required
 ```
 
 #### Step 7: Copy to Memo Document
+
 ```
 Action: Copy generated text (Cmd + C)
 Open: Your policy memo document in Word/Google Docs/Markdown editor
@@ -261,6 +281,7 @@ Edit: Refine wording, add citations, adjust as needed
 ```
 
 #### Step 8: Manual Refinement
+
 ```
 Tasks:
 1. Verify all claims and statistics
@@ -279,6 +300,7 @@ After (You): "The Public Equity Transfer Framework, as described in our analysis
 ```
 
 #### Step 9: Generate Next Section (Repeat)
+
 ```
 Raycast: Cmd + Space → "Generate Draft" → New section name → New prompt → Execute
 Note: You can generate multiple sections in sequence
@@ -287,6 +309,7 @@ Note: You can generate multiple sections in sequence
 ### Tips for Better Output
 
 **DO:**
+
 - ✓ Provide specific context (e.g., "based on NYC housing data 2024")
 - ✓ Include constraints (word count, tone, format)
 - ✓ Mention key points to cover
@@ -294,6 +317,7 @@ Note: You can generate multiple sections in sequence
 - ✓ Reference your research sources
 
 **DON'T:**
+
 - ✗ Use vague prompts ("write about housing")
 - ✗ Expect perfectly accurate citations
 - ✗ Skip human review of output
@@ -338,29 +362,31 @@ Total time: ~2 hours for complete memo with AI assistance
 
 ### Troubleshooting
 
-**Problem:** "Please specify a section name"  
+**Problem:** "Please specify a section name"\
 **Solution:** Click back and enter section name (required field)
 
-**Problem:** "Please provide a prompt for the draft"  
+**Problem:** "Please provide a prompt for the draft"\
 **Solution:** Click back and enter detailed prompt (required field)
 
-**Problem:** Generated content is irrelevant or inaccurate  
+**Problem:** Generated content is irrelevant or inaccurate\
 **Solution:** Refine your prompt with more specific context and constraints
 
-**Problem:** Output is too short or too long  
+**Problem:** Output is too short or too long\
 **Solution:** Add word count targets in prompt (e.g., "Target: 400-500 words")
 
-**Problem:** Tone doesn't match your policy memo style  
+**Problem:** Tone doesn't match your policy memo style\
 **Solution:** Add tone instruction in prompt (e.g., "professional, academic tone")
 
----
+______________________________________________________________________
 
 ## 3. ADD SOURCE (Research Management)
 
 ### Purpose
+
 Manage your research source inventory with validated URLs and contextual notes.
 
 ### When to Use
+
 - **Frequency:** Daily (as sources are discovered)
 - **Time Required:** 2 minutes per source
 - **Output:** Source added to Notion database
@@ -369,12 +395,14 @@ Manage your research source inventory with validated URLs and contextual notes.
 ### Step-by-Step Guide
 
 #### Step 1: Open Raycast
+
 ```
 Keyboard: Cmd + Space
 Result: Raycast search bar opens
 ```
 
 #### Step 2: Search for Command
+
 ```
 Type: "Add Source"
 Result: "Add Source" command appears
@@ -382,6 +410,7 @@ Click: Select the command
 ```
 
 #### Step 3: Enter Source Title
+
 ```
 You see: "Source Title" text field
 
@@ -396,6 +425,7 @@ Note: Must not be empty
 ```
 
 #### Step 4: Enter URL
+
 ```
 You see: "URL" text field
 
@@ -413,6 +443,7 @@ Error: Invalid URL format will be rejected
 ```
 
 #### Step 5: Add Notes (Optional)
+
 ```
 You see: "Notes" text area
 
@@ -435,6 +466,7 @@ Length: Up to 500 characters recommended
 ```
 
 #### Step 6: Submit
+
 ```
 Action: Click "Add Source" button
 Status: Processing confirmation
@@ -443,6 +475,7 @@ Result: Success notification appears
 ```
 
 #### Step 7: Verify in Notion
+
 ```
 Action: Open Notion "Research Sources" table
 Verify: Source appears with:
@@ -464,6 +497,7 @@ Next steps:
 Tag your sources appropriately:
 
 **By Type:**
+
 - Government report
 - Academic research
 - Nonprofit analysis
@@ -473,6 +507,7 @@ Tag your sources appropriately:
 - Advocacy publication
 
 **By Policy Area:**
+
 - Housing subsidies
 - Tenant protection
 - Homelessness
@@ -481,6 +516,7 @@ Tag your sources appropriately:
 - Implementation
 
 **By Jurisdiction:**
+
 - NYC
 - New York State
 - Federal
@@ -520,22 +556,22 @@ Tag your sources appropriately:
 
 ### Troubleshooting
 
-**Problem:** "Please enter a source title"  
+**Problem:** "Please enter a source title"\
 **Solution:** Go back and enter title (required field)
 
-**Problem:** "Please enter a valid URL"  
+**Problem:** "Please enter a valid URL"\
 **Solution:** Ensure URL format is correct (must start with https:// or http://)
 
-**Problem:** "Invalid URL format"  
+**Problem:** "Invalid URL format"\
 **Solution:** Check URL is complete and correct (copy-paste recommended)
 
-**Problem:** Source doesn't appear in Notion after adding  
+**Problem:** Source doesn't appear in Notion after adding\
 **Solution:** Refresh Notion page or check that Raycast preference has Notion API key
 
-**Problem:** Duplicate sources in database  
+**Problem:** Duplicate sources in database\
 **Solution:** Check URL before adding; use Notion search to find existing entries
 
----
+______________________________________________________________________
 
 ## 4. WEEKLY AUTOMATION
 
@@ -586,34 +622,36 @@ FRIDAY:
 TOTAL TIME: ~3 hours/week for full research cycle
 ```
 
----
+______________________________________________________________________
 
 ## 5. ERROR HANDLING & SUPPORT
 
 ### Common Issues
 
-| Error | Cause | Fix |
-|-------|-------|-----|
-| "Assistant backend URL not configured" | Missing preference setting | Cmd + , → Set URL |
-| "Network error" | Backend down or wrong URL | Check backend status |
-| "API error: 404" | Endpoint doesn't exist | Verify endpoint path |
-| "Request timeout" | Slow backend response | Increase timeout in preferences |
-| "Invalid URL format" | Malformed URL in AddSource | Verify URL format |
+| Error                                  | Cause                      | Fix                             |
+| -------------------------------------- | -------------------------- | ------------------------------- |
+| "Assistant backend URL not configured" | Missing preference setting | Cmd + , → Set URL               |
+| "Network error"                        | Backend down or wrong URL  | Check backend status            |
+| "API error: 404"                       | Endpoint doesn't exist     | Verify endpoint path            |
+| "Request timeout"                      | Slow backend response      | Increase timeout in preferences |
+| "Invalid URL format"                   | Malformed URL in AddSource | Verify URL format               |
 
 ### Getting Help
 
 **For technical issues:**
+
 - Check RAYCAST_IMPLEMENTATION_REVIEW.md
 - Verify Raycast extension is loaded
 - Check backend API is running
 - Review logs in ~/Documents/GitHub/HousingPolicyResearch/logs/
 
 **For workflow questions:**
+
 - Refer to relevant section in this runbook
 - Review examples and use cases
 - Check Space instructions for patterns
 
----
+______________________________________________________________________
 
 ## 6. PERFORMANCE METRICS
 
@@ -633,7 +671,7 @@ Compare to baseline (manual process):
   - Time saved: 50-65% reduction
 ```
 
----
+______________________________________________________________________
 
 ## 7. KEYBOARD SHORTCUTS
 
@@ -653,7 +691,7 @@ Within Extension:
   Esc             Go back
 ```
 
----
+______________________________________________________________________
 
 ## Quick Links
 
@@ -663,9 +701,9 @@ Within Extension:
 - **Output Files:** ~/Documents/GitHub/HousingPolicyResearch/data/
 - **Logs:** ~/Documents/GitHub/HousingPolicyResearch/logs/
 
----
+______________________________________________________________________
 
 **Need Help?** Refer to the relevant documentation file or review examples in this runbook.
 
-**Status:** Production Ready  
+**Status:** Production Ready\
 **Last Updated:** December 26, 2025

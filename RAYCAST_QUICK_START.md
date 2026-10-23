@@ -5,11 +5,13 @@
 ### 1. Backend URL Configuration
 
 **Open Raycast Preferences:**
+
 - Press `Cmd + ,` (Comma)
 - Search for "Housing Policy"
 - Click the extension
 
 **Configure Settings:**
+
 ```
 Assistant Backend URL: https://your-api-endpoint.com
 API Timeout (ms):      30000  (optional, leave default if unsure)
@@ -17,7 +19,7 @@ API Timeout (ms):      30000  (optional, leave default if unsure)
 
 ⚠️ **Required:** The backend URL must be set before using any commands.
 
----
+______________________________________________________________________
 
 ### 2. Build & Load
 
@@ -35,43 +37,48 @@ npm run build  # Production mode
 ```
 
 **Load into Raycast:**
-1. Press `Cmd + Shift + A` in Raycast
-2. Type "Load Extension"
-3. Select your HousingPolicyResearch directory
-4. Extension loads automatically
 
----
+1. Press `Cmd + Shift + A` in Raycast
+1. Type "Load Extension"
+1. Select your HousingPolicyResearch directory
+1. Extension loads automatically
+
+______________________________________________________________________
 
 ### 3. Test the Commands
 
 **In Raycast, search for:**
 
 #### 📃 Sweep Bills
+
 - Select 1+ jurisdiction (NYC, NY State, Federal)
 - Optionally set "Search Since" date
 - Click "Sweep Bills"
 - Results appear in detail view
 
 #### ✍️ Generate Draft Section
+
 - Enter section name (e.g., "Introduction")
 - Enter prompt describing what you want
 - Click "Generate Draft"
 - AI-generated content appears
 
 #### 📄 Add Source
+
 - Enter source title
 - Enter full URL (must start with https://)
 - Optionally add notes
 - Click "Add Source"
 - Success notification appears
 
----
+______________________________________________________________________
 
 ## Backend Requirements
 
 Your backend must have these three endpoints:
 
 ### Endpoint 1: Bill Sweep
+
 ```
 POST /sweep_bills
 
@@ -95,6 +102,7 @@ Response (200):
 ```
 
 ### Endpoint 2: Generate Section
+
 ```
 POST /generate_section
 
@@ -111,6 +119,7 @@ Response (200):
 ```
 
 ### Endpoint 3: Add Source
+
 ```
 POST /add_source
 
@@ -128,7 +137,7 @@ Response (200):
 }
 ```
 
----
+______________________________________________________________________
 
 ## Common Issues
 
@@ -154,6 +163,7 @@ curl -X POST https://your-api.com/sweep_bills \
 ### ❌ "API error: 404"
 
 **Fix:** Verify endpoint paths are correct:
+
 - `/sweep_bills` (not `/billsweep` or `/bills/sweep`)
 - `/generate_section` (not `/section` or `/generate`)
 - `/add_source` (not `/source` or `/addsource`)
@@ -166,7 +176,7 @@ curl -X POST https://your-api.com/sweep_bills \
 API Timeout: 60000  (60 seconds instead of 30)
 ```
 
----
+______________________________________________________________________
 
 ## File Locations
 
@@ -182,7 +192,7 @@ src/utils/
 raycast.manifest.json   # Extension config
 ```
 
----
+______________________________________________________________________
 
 ## Testing Checklist
 
@@ -195,7 +205,7 @@ raycast.manifest.json   # Extension config
 - [ ] Draft generation produces output
 - [ ] Source is successfully added
 
----
+______________________________________________________________________
 
 ## Environment Variables (Optional)
 
@@ -208,7 +218,7 @@ export ASSISTANT_BASE_URL="https://api.housing-policy.local"
 
 Raycast will use preferences first, then fall back to environment variables.
 
----
+______________________________________________________________________
 
 ## Useful Raycast Shortcuts
 
@@ -221,20 +231,21 @@ Cmd + ]              Go forward
 Esc                  Close/cancel
 ```
 
----
+______________________________________________________________________
 
 ## Need Help?
 
 Refer to the detailed guide: `RAYCAST_IMPLEMENTATION_REVIEW.md`
 
 It contains:
+
 - Complete API specifications
 - Troubleshooting guide
 - Performance notes
 - Security considerations
 - Deployment instructions
 
----
+______________________________________________________________________
 
-**Status:** ✅ Ready to use  
+**Status:** ✅ Ready to use\
 **Last Updated:** December 26, 2024

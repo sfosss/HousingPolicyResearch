@@ -79,4 +79,4 @@ while building more than **US$150 million in aggregate household equity**.  The
 within roughly **seven years** and achieves a positive ROI thereafter.  These fiscal dynamics
 reinforce that PET is not only equitable but also an efficient reallocation of public resources.
 
----
+______________________________________________________________________

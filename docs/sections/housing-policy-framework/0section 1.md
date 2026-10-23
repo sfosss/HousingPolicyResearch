@@ -35,21 +35,21 @@ into a wealth‑building strategy.
 ## Crisis Snapshot
 
 - **Evictions & Homelessness:** New York City courts process **95,000+ eviction cases** annually,
-and more than **64,000 people** live in city shelters at any given time.  Youth homelessness is at
-record levels; during the 2023–24 school year over **154,000 students** lacked stable housing.
-These figures illustrate that current programmes are failing to provide lasting security.
+  and more than **64,000 people** live in city shelters at any given time.  Youth homelessness is at
+  record levels; during the 2023–24 school year over **154,000 students** lacked stable housing.
+  These figures illustrate that current programmes are failing to provide lasting security.
 
 - **Expenditure vs. Outcomes:** The city spends about **US$3 billion** each year on shelters,
-legal services and emergency rent programmes.  Despite this, most households receiving rent
-subsidies have **zero accumulated equity** after ten years, and the cycle of eviction and
-homelessness continues【936499250569345†L93-L96】.
+  legal services and emergency rent programmes.  Despite this, most households receiving rent
+  subsidies have **zero accumulated equity** after ten years, and the cycle of eviction and
+  homelessness continues【936499250569345†L93-L96】.
 
 - **Legacy Programme Shortcomings:** Previous attempts at resident ownership, such as the **Tenant
-Interim Lease (TIL)** and **ANCP** programmes, promised cooperative ownership but were undermined by
-administrative mismanagement and warehousing.  Mixed‑income cooperatives relied heavily on
-federal subsidies; low‑income members became minority owners and lacked control.  The key lesson
-is that ownership programmes must ensure strong resident governance, predictable capital and
-minimal dependence on federal subsidies.
+  Interim Lease (TIL)** and **ANCP** programmes, promised cooperative ownership but were undermined by
+  administrative mismanagement and warehousing.  Mixed‑income cooperatives relied heavily on
+  federal subsidies; low‑income members became minority owners and lacked control.  The key lesson
+  is that ownership programmes must ensure strong resident governance, predictable capital and
+  minimal dependence on federal subsidies.
 
 This persistent crisis, combined with widening racial wealth gaps, underscores the need for a new
 framework that not only stabilises tenants but also converts public support into durable assets

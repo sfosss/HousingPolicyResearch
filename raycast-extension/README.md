@@ -6,9 +6,9 @@ extension exposes three commands:
 
 1. **Add Source** – capture the title, URL and optional notes for a new
    research source and send it to your backend service.
-2. **Generate Draft Section** – request the assistant to draft a specific
+1. **Generate Draft Section** – request the assistant to draft a specific
    section of your policy brief given a free‑form prompt.
-3. **Sweep Legislation** – poll legislative data sources for new or
+1. **Sweep Legislation** – poll legislative data sources for new or
    updated bills across selected jurisdictions since a given date.
 
 The commands are intentionally light on UI; they gather input and display
@@ -24,17 +24,17 @@ notifications or additional configuration.
    npm install
    ```
 
-2. Configure the backend URL by setting the `assistant_base_url` in the
+1. Configure the backend URL by setting the `assistant_base_url` in the
    `../00_admin/settings.yaml` file.  At build time, you can also set
    the environment variable `ASSISTANT_BASE_URL` to override this value.
 
-3. Build the extension:
+1. Build the extension:
 
    ```bash
    npm run build
    ```
 
-4. In Raycast, go to **Extensions → Development → Install Extension...** and
+1. In Raycast, go to **Extensions → Development → Install Extension...** and
    select this directory.  The three commands will appear in your command
    palette.  Assign keyboard shortcuts or favourite them for quick access.
 

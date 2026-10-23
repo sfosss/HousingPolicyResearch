@@ -40,14 +40,20 @@ def sample_job_record():
 
 def test_generate_template_creates_csv(tmp_path):
     job_file = write_json(tmp_path, "jobs.json", [sample_job_record()])
-    profile = write_json(tmp_path, "profile.json", {"skills": ["research", "policy", "writing"]})
+    profile = write_json(
+        tmp_path, "profile.json", {"skills": ["research", "policy", "writing"]}
+    )
     records = jam.load_job_records(job_file)
     profile_tokens = jam.load_profile_tokens(profile)
     output = tmp_path / "template.csv"
     jam.write_reminders_template(records, profile_tokens, output)
     content = list(csv.reader(output.read_text().splitlines()))
     header = content[0]
-    assert header[-3:] == ["days_until_deadline", "deadline_status", "attention_summary"]
+    assert header[-3:] == [
+        "days_until_deadline",
+        "deadline_status",
+        "attention_summary",
+    ]
     row = content[1]
     assert "drafted" in row[0]
     assert "policy" in ",".join(content[1])

@@ -1,17 +1,19 @@
 # IMMEDIATE ACTION CHECKLIST
+
 ## Format Finalization & Print Distribution (Next 72 Hours)
 
-**Public Equity Transfer Act (INT A-XXXX)**  
-**NYC Housing Subsidy Reform**  
+**Public Equity Transfer Act (INT A-XXXX)**\
+**NYC Housing Subsidy Reform**\
 **December 30, 2025 - January 2, 2026**
 
----
+______________________________________________________________________
 
 ## PHASE 1: DOCUMENT FINALIZATION (TODAY - 2 HOURS)
 
 ### Task 1.1: Bill Text Verification
-**Time**: 30 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 30 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Verified DOCX file
 
 ```
@@ -50,11 +52,12 @@
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ### Task 1.2: Backup & Archive
-**Time**: 15 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 15 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Backup copy saved
 
 ```
@@ -83,11 +86,12 @@
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ### Task 1.3: Legal Review Sign-Off
-**Time**: 30 minutes  
-**Owner**: [Introducing Council Member or Legislative Counsel]  
+
+**Time**: 30 minutes\
+**Owner**: \[Introducing Council Member or Legislative Counsel\]\
 **Deliverable**: Email confirmation ("Ready to submit")
 
 ```
@@ -111,16 +115,17 @@
 ☐ Confirm sign-off: Receive email "Approved for submission"
 ```
 
-**Status**: ☐ COMPLETE  
-**Sign-off**: _________________________________ Date: _________
+**Status**: ☐ COMPLETE\
+**Sign-off**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_
 
----
+______________________________________________________________________
 
 ## PHASE 2: PDF CONVERSION & VALIDATION (TOMORROW - 3 HOURS)
 
 ### Task 2.1: PDF Export from DOCX
-**Time**: 45 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 45 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Searchable PDF file
 
 ```
@@ -157,11 +162,12 @@
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ### Task 2.2: PDF Validation (Quality Assurance)
-**Time**: 45 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 45 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Confirmed valid PDF
 
 ```
@@ -225,11 +231,12 @@
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ### Task 2.3: Create Backup PDF
-**Time**: 10 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 10 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Backup PDF file
 
 ```
@@ -244,13 +251,14 @@
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ## PHASE 3: PRINTING & BINDING LOGISTICS (TOMORROW - 2 HOURS)
 
 ### Task 3.1: Printing Service Selection
-**Time**: 30 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 30 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Printing service confirmed, order placed
 
 ```
@@ -319,11 +327,12 @@ Choose based on: Timeline + Budget + Delivery location
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ### Task 3.2: Submit Print Order
-**Time**: 30 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 30 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Printing order confirmed
 
 ```
@@ -371,16 +380,17 @@ Choose based on: Timeline + Budget + Delivery location
           Location: PRINT_READY_FILES/ folder
 ```
 
-**Status**: ☐ COMPLETE  
-**Tracking #**: ________________________
+**Status**: ☐ COMPLETE\
+**Tracking #**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
----
+______________________________________________________________________
 
 ## PHASE 4: OFFICIAL SUBMISSION TO NYC COUNCIL CLERK (DAY 4-5)
 
 ### Task 4.1: Physical Delivery (100 Bound Copies)
-**Time**: 1 hour (coordination + delivery)  
-**Owner**: [Your Name or Designee]  
+
+**Time**: 1 hour (coordination + delivery)\
+**Owner**: \[Your Name or Designee\]\
 **Deliverable**: Printed copies delivered to City Hall
 
 ```
@@ -448,14 +458,15 @@ Choose based on: Timeline + Budget + Delivery location
           File: Physical_Delivery_Confirmation_[DATE].pdf
 ```
 
-**Status**: ☐ COMPLETE  
-**Delivery Confirmation**: _________________________ Date: _________
+**Status**: ☐ COMPLETE\
+**Delivery Confirmation**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_
 
----
+______________________________________________________________________
 
 ### Task 4.2: Electronic Submission (Council Clerk Email)
-**Time**: 45 minutes  
-**Owner**: [Your Name]  
+
+**Time**: 45 minutes\
+**Owner**: \[Your Name\]\
 **Deliverable**: Email confirmation ("Email received")
 
 ```
@@ -526,18 +537,19 @@ Choose based on: Timeline + Budget + Delivery location
                     confirming official bill number assignment
 ```
 
-**Status**: ☐ COMPLETE  
-**Email sent to**: clerk@council.nyc.gov  
-**Date/Time sent**: ________________  
+**Status**: ☐ COMPLETE\
+**Email sent to**: clerk@council.nyc.gov\
+**Date/Time sent**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 **Confirmation received**: ☐ YES  ☐ PENDING
 
----
+______________________________________________________________________
 
 ## PHASE 5: PUBLIC & STAKEHOLDER DISTRIBUTION (DAYS 7-14)
 
 ### Task 5.1: Email Distribution to Coalition Partners
-**Time**: 2 hours (preparation), 1 hour (distribution)  
-**Owner**: [Your Name]  
+
+**Time**: 2 hours (preparation), 1 hour (distribution)\
+**Owner**: \[Your Name\]\
 **Deliverable**: Email sent to 50+ stakeholders
 
 ```
@@ -636,11 +648,12 @@ Recipients: Key staff, fiscal analysts, housing policy leads
 
 **Status**: ☐ COMPLETE
 
----
+______________________________________________________________________
 
 ### Task 5.2: Press Release Distribution
-**Time**: 1.5 hours  
-**Owner**: [Your Name or Communications Staff]  
+
+**Time**: 1.5 hours\
+**Owner**: \[Your Name or Communications Staff\]\
 **Deliverable**: Press release sent to 30+ media contacts
 
 ```
@@ -696,11 +709,11 @@ Recipients: Key staff, fiscal analysts, housing policy leads
           File: Press_Clippings_[DATE].pdf
 ```
 
-**Status**: ☐ COMPLETE  
-**Press release sent**: [Date]  
-**Media outlets contacted**: __________ organizations
+**Status**: ☐ COMPLETE\
+**Press release sent**: \[Date\]\
+**Media outlets contacted**: \_\_\_\_\_\_\_\_\_\_ organizations
 
----
+______________________________________________________________________
 
 ## FINAL SIGN-OFF CHECKLIST
 
@@ -737,11 +750,12 @@ NEXT MILESTONE:
   ☐ Committee hearing scheduled (Housing & Community Development)
 ```
 
----
+______________________________________________________________________
 
 ## SUCCESS METRICS (How You'll Know It's Working)
 
 **Week 1 After Submission:**
+
 - [ ] Official bill number assigned by Council Clerk
 - [ ] Bill posted on nyc.gov Council website
 - [ ] 2-3 press articles published (housing media coverage)
@@ -749,76 +763,87 @@ NEXT MILESTONE:
 - [ ] 5+ Council Members express co-sponsorship interest
 
 **Week 2-3:**
+
 - [ ] Committee hearing scheduled (date announced)
 - [ ] 10+ co-sponsors signed on
 - [ ] Agency briefing meetings scheduled (HPD, HRA leadership)
 - [ ] Community board meeting invites received (borough presentations)
 
 **Month 2:**
+
 - [ ] Committee hearing testimony completed (HPD, CLTs, advocates)
 - [ ] Committee vote scheduled
 - [ ] 20+ co-sponsors total
 - [ ] Positive Gotham Gazette / nonprofit press coverage
 
 **Month 3:**
+
 - [ ] Full Council floor vote scheduled
 - [ ] Passage (51 votes needed)
 - [ ] Mayor signature or veto (negotiate if needed)
 - [ ] Implementation planning begins (PETO hiring, partner recruitment)
 
----
+______________________________________________________________________
 
 ## EMERGENCY TROUBLESHOOTING
 
 ### Problem: Bill text has typo/error
-**Solution**: 
+
+**Solution**:
+
 1. Fix typo in DOCX
-2. Resave as: NYC_Public_Equity_Transfer_Act_v1.1.docx
-3. Re-export to PDF
-4. Contact Council Clerk: "We're submitting revised PDF per earlier submission"
-5. Provide updated PDF
+1. Resave as: NYC_Public_Equity_Transfer_Act_v1.1.docx
+1. Re-export to PDF
+1. Contact Council Clerk: "We're submitting revised PDF per earlier submission"
+1. Provide updated PDF
 
 ### Problem: Printing service delays
+
 **Solution**:
+
 1. Contact DCAS or alternative print shop immediately
-2. Explain deadline: "Legislation needs to be submitted to NYC Council by [DATE]"
-3. Ask about rush production (usually available for 20-30% surcharge)
-4. Have backup plan: Can 50 copies be ready faster? (Half for immediate delivery, half follow-up)
+1. Explain deadline: "Legislation needs to be submitted to NYC Council by \[DATE\]"
+1. Ask about rush production (usually available for 20-30% surcharge)
+1. Have backup plan: Can 50 copies be ready faster? (Half for immediate delivery, half follow-up)
 
 ### Problem: Council Clerk says format doesn't comply
+
 **Solution**:
+
 1. Ask specifically: "Which formatting requirement was missed?"
-2. Refer to: NYC Charter §74-101, City Council Rules Chapter 3.0
-3. Use NYC_Council_Legislative_Format_Guide.md to identify issue
-4. Fix immediately and resubmit
-5. Confirm: "Is revised version now compliant?"
+1. Refer to: NYC Charter §74-101, City Council Rules Chapter 3.0
+1. Use NYC_Council_Legislative_Format_Guide.md to identify issue
+1. Fix immediately and resubmit
+1. Confirm: "Is revised version now compliant?"
 
 ### Problem: Low stakeholder response/interest
-**Solution**:
-1. Don't panic - legislative process is slow
-2. Schedule follow-up calls with key partners (CLTs, credit unions)
-3. Emphasize: "We need your input and endorsement for committee hearing"
-4. Offer in-person briefing meetings
-5. Highlight: Specific benefits for each partner category
-6. Set 2-week follow-up deadline for feedback
 
----
+**Solution**:
+
+1. Don't panic - legislative process is slow
+1. Schedule follow-up calls with key partners (CLTs, credit unions)
+1. Emphasize: "We need your input and endorsement for committee hearing"
+1. Offer in-person briefing meetings
+1. Highlight: Specific benefits for each partner category
+1. Set 2-week follow-up deadline for feedback
+
+______________________________________________________________________
 
 ## FINAL REMINDER
 
 **You are 72 hours away from submitting comprehensive, professionally formatted legislation to NYC Council that:**
 
-✓ Restructures $680 million in existing subsidies  
-✓ Creates wealth for 5,600 low-income families  
-✓ Generates $572.6M in intergenerational assets  
-✓ Achieves 1.296x municipal fiscal ROI  
-✓ Advances racial equity (40% BIPOC beneficiaries)  
-✓ Demonstrates proven models (12 NYC CLT partners ready)  
-✓ Comes with complete financial, legal, and operational documentation  
+✓ Restructures $680 million in existing subsidies\
+✓ Creates wealth for 5,600 low-income families\
+✓ Generates $572.6M in intergenerational assets\
+✓ Achieves 1.296x municipal fiscal ROI\
+✓ Advances racial equity (40% BIPOC beneficiaries)\
+✓ Demonstrates proven models (12 NYC CLT partners ready)\
+✓ Comes with complete financial, legal, and operational documentation
 
 **You have everything you need. Execute the checklists above. Success is just 72 hours away.**
 
----
+______________________________________________________________________
 
 ## CONTACT & SUPPORT
 
@@ -835,13 +860,12 @@ Email: clerk@council.nyc.gov
 **Support from CPD/HPD?**
 Contact: NYC Department of Housing Preservation & Development
 Phone: (212) 863-5000
-Email: [HPD legislative affairs contact]
+Email: \[HPD legislative affairs contact\]
 
----
+______________________________________________________________________
 
-**Public Equity Transfer Act (INT A-XXXX)**  
-**3-Day Execution Timeline**  
+**Public Equity Transfer Act (INT A-XXXX)**\
+**3-Day Execution Timeline**\
 **December 30, 2025 - January 2, 2026**
 
 **YOU'VE GOT THIS. LET'S MAKE HOUSING EQUITY REAL IN NYC.**
-

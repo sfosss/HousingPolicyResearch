@@ -5,15 +5,19 @@ This section contains the consolidated reference list in APA 7th edition format 
 ## 10.1 Works Cited (APA 7th)
 
 Notes:
+
 - Entries are listed as provided in the project library. Where an entry is missing a URL or publisher detail, treat it as a “metadata completion” task (fill via the primary source, not a secondary citation).
 - If a source is used only in an appendix (e.g., legislative text excerpts), it remains listed here to preserve auditability.
 
----
+______________________________________________________________________
+
 # WORKS CITED
+
 ## Housing Subsidy Reform Policy Proposal (TCAP)
+
 ### Complete APA 7th Edition Reference List
 
----
+______________________________________________________________________
 
 Alba, R. D., & Logan, J. R. (1992). Assimilation and stratification in the homeownership patterns of racial and ethnic groups. *International Migration Review, 26*(4), 1314–1340. https://doi.org/10.1177/019791839202600407
 
@@ -75,7 +79,7 @@ U.S. Department of Housing and Urban Development. (2025). *FY 2025 income limits
 
 Urban Homesteading Assistance Board. (2024). *Why limited equity? Preserving affordability through cooperative ownership*. UHAB. https://www.uhab.org/our-work/development/why-limited-equity/
 
----
+______________________________________________________________________
 
 ## Additional Government Sources Referenced
 
@@ -87,7 +91,7 @@ New York City Housing Authority. (2023). *NYCHA fact sheet*. NYC Housing Authori
 
 New York State Homes and Community Renewal. (2023). *Rent stabilization in New York City*. NYS HCR. https://hcr.ny.gov/rent-stabilization-new-york-city
 
----
+______________________________________________________________________
 
 ## Policy Reports & White Papers Cited
 
@@ -101,7 +105,7 @@ National Association of Housing Cooperatives. (2023). *State of housing cooperat
 
 Urban Institute. (2023). *Housing affordability and wealth building: Policy solutions for low-income households*. Urban Institute. https://www.urban.org/research/publication/housing-affordability-and-wealth-building
 
----
+______________________________________________________________________
 
 ## Legal Sources & Statutes
 
@@ -117,11 +121,11 @@ New York City Administrative Code § 26-504 (2023). *Rent stabilization code*.
 
 District of Columbia Code § 42-3404.02 (2023). *Tenant Opportunity to Purchase Act*.
 
-42 U.S.C. § 1437f (2023). *Low-income housing assistance* [Section 8 Housing Choice Vouchers].
+42 U.S.C. § 1437f (2023). *Low-income housing assistance* \[Section 8 Housing Choice Vouchers\].
 
-26 U.S.C. § 42 (2023). *Low-income housing credit* [LIHTC].
+26 U.S.C. § 42 (2023). *Low-income housing credit* \[LIHTC\].
 
----
+______________________________________________________________________
 
 ## Court Cases Referenced
 
@@ -129,7 +133,7 @@ District of Columbia Code § 42-3404.02 (2023). *Tenant Opportunity to Purchase 
 
 *Texas Department of Housing & Community Affairs v. Inclusive Communities Project, Inc.*, 576 U.S. 519 (2015).
 
----
+______________________________________________________________________
 
 ## Organizational & Advocacy Resources
 
@@ -147,7 +151,7 @@ Tenants & Neighbors. (2024). *Know your rights: Cooperative conversion and TOPA*
 
 Urban Homesteading Assistance Board. (2024). *Technical assistance for cooperative housing*. UHAB. https://www.uhab.org/our-work/technical-assistance/
 
----
+______________________________________________________________________
 
 ## Data Sources
 
@@ -157,7 +161,7 @@ NYC Department of City Planning. (2023). *Housing and vacancy survey 2023*. NYC 
 
 U.S. Census Bureau. (2020). *American Community Survey 5-year estimates: Housing characteristics*. U.S. Census Bureau. https://data.census.gov/
 
----
+______________________________________________________________________
 
 ## Methodological & Research Design Sources
 
@@ -167,11 +171,12 @@ Patton, M. Q. (2015). *Qualitative research & evaluation methods* (4th ed.). SAG
 
 Yin, R. K. (2018). *Case study research and applications: Design and methods* (6th ed.). SAGE Publications.
 
----
+______________________________________________________________________
 
 ## Notes on Citation Format
 
 **APA 7th Edition Standards Applied:**
+
 - All journal articles include DOI where available
 - Government documents include agency and retrieval URLs
 - Web sources include full URLs and most recent access verification (October 2025)
@@ -179,6 +184,7 @@ Yin, R. K. (2018). *Case study research and applications: Design and methods* (6
 - Organizational reports include publishing organization as author when individual authors not specified
 
 **Special Formatting Notes:**
+
 - NYC agency names use full official titles per city charter
 - Federal statutes cited using U.S. Code format
 - State statutes use New York statutory citation format
@@ -187,18 +193,19 @@ Yin, R. K. (2018). *Case study research and applications: Design and methods* (6
 **Retrieved Dates:**
 All web sources were verified as accessible as of October 2025. For archival purposes, consider using web archiving tools (e.g., Internet Archive) for critical policy documents.
 
----
+______________________________________________________________________
 
-**Reference List Compiled By:** Policy Research Documentation Services  
-**APA Edition:** 7th Edition (2020)  
-**Total Sources:** 50+ primary and secondary sources  
+**Reference List Compiled By:** Policy Research Documentation Services\
+**APA Edition:** 7th Edition (2020)\
+**Total Sources:** 50+ primary and secondary sources\
 **Document Version:** October 25, 2025
 
----
+______________________________________________________________________
 
 ## 10.2 Source Control Protocol
 
 ### A. Canonical bibliography file
+
 Maintain **one** canonical bibliography and treat it as the source of truth:
 
 - `Works_Cited_MASTER.md` (human-readable, APA formatted)
@@ -207,34 +214,44 @@ Maintain **one** canonical bibliography and treat it as the source of truth:
 Every other artifact (one-pager, briefing memo, slide deck, legislative memos, toolkits) should reference this master list rather than maintaining separate bibliographies.
 
 ### B. Primary-source rule
+
 When the proposal cites numbers, statutory text, or program parameters:
+
 1. Prefer **primary sources** (statutes, agency reports, audited budget documents, HUD/NYC DSS/HPD program documents).
-2. If a secondary source is used for interpretation, cite **both**: the primary data source and the interpretive analysis.
+1. If a secondary source is used for interpretation, cite **both**: the primary data source and the interpretive analysis.
 
 ### C. Citation integrity checks (required before “final” exports)
+
 Before exporting the master report to PDF/Word:
+
 - **In-text to bibliography check:** Every in-text citation must have a corresponding bibliography entry.
 - **Bibliography to in-text check:** Remove any entry not used anywhere in the report (unless explicitly marked “background / future integration”).
 - **Date sanity check:** Verify years, edition numbers, and “retrieved on” dates for online sources.
 - **Numeric claim traceability:** For every numeric claim in the Executive Summary and Financial/ROI section, record the exact source and page/table reference in a footnote or endnote comment.
 
 ### D. Legislative drafting citations
+
 For local laws and model legislation:
+
 - Cite the **controlling authority** (NYC Admin Code, NYS Private Housing Finance Law, Cooperative Corporations Law, HUD guidance, NYDFS guidance).
 - When modeling from another jurisdiction (e.g., DC TOPA), cite the statute and an authoritative explainer (government or legal aid publication) if needed.
 
 ### E. Update workflow (when adding new sources)
+
 When a new source is added:
+
 1. Add it to the master bibliography.
-2. Add a 1–3 sentence annotation (what it supports, and which section it belongs to).
-3. Tag it (examples): `ROI`, `CityFHEPS`, `TOPA`, `cooperatives`, `CLT`, `HDFCs`, `health impacts`, `education impacts`.
-4. If it replaces an older source for the same claim, mark the older one as `superseded` rather than deleting immediately (keep a short deprecation log).
+1. Add a 1–3 sentence annotation (what it supports, and which section it belongs to).
+1. Tag it (examples): `ROI`, `CityFHEPS`, `TOPA`, `cooperatives`, `CLT`, `HDFCs`, `health impacts`, `education impacts`.
+1. If it replaces an older source for the same claim, mark the older one as `superseded` rather than deleting immediately (keep a short deprecation log).
 
 ### F. Versioning
+
 Use a date-stamped versioning convention for releases:
+
 - `TCAP_PET_Master_Report_vYYYY-MM-DD.md`
 - `Works_Cited_MASTER_vYYYY-MM-DD.md`
 
 Keep a short change log at the top of the master bibliography (added sources, removed sources, corrected metadata).
 
----
+______________________________________________________________________

@@ -21,7 +21,11 @@ from typing import Iterable, List, Sequence, Tuple
 
 
 DEFAULT_ICLOUD_DIR = (
-    Path.home() / "Library" / "Mobile Documents" / "com~apple~CloudDocs" / "JobApplications"
+    Path.home()
+    / "Library"
+    / "Mobile Documents"
+    / "com~apple~CloudDocs"
+    / "JobApplications"
 )
 DEFAULT_GITHUB_DIR = Path.home() / "Documents" / "GitHub" / "JobApplications"
 DEFAULT_REPO_NAME = "JobApplications"
@@ -83,7 +87,9 @@ def parse_deadline(deadline: str | None) -> date | None:
         return None
 
 
-def describe_deadline(deadline: str | None, today: date | None = None) -> Tuple[str, str]:
+def describe_deadline(
+    deadline: str | None, today: date | None = None
+) -> Tuple[str, str]:
     parsed = parse_deadline(deadline)
     if not parsed:
         return "", "unspecified"
@@ -147,7 +153,9 @@ class JobApplicationRecord:
     def to_row(self, profile_tokens: Sequence[str]) -> List[str]:
         keywords = derive_keywords(self.description_summary, self.responsibilities)
         match_score = estimate_match(self.prerequisites, profile_tokens)
-        days_until_deadline, deadline_status = describe_deadline(self.submission_deadline)
+        days_until_deadline, deadline_status = describe_deadline(
+            self.submission_deadline
+        )
         attention_flags = self.pending_components()
         if deadline_status in {"overdue", "due_soon"}:
             attention_flags.append(f"deadline_{deadline_status}")
@@ -255,7 +263,11 @@ def load_profile_tokens(profile_path: Path | None) -> List[str]:
     return tokens
 
 
-def write_reminders_template(records: Sequence[JobApplicationRecord], profile_tokens: Sequence[str], output_path: Path) -> Path:
+def write_reminders_template(
+    records: Sequence[JobApplicationRecord],
+    profile_tokens: Sequence[str],
+    output_path: Path,
+) -> Path:
     ensure_directory(output_path.parent)
     ordered_records = sorted(
         records,
@@ -299,14 +311,29 @@ def configure_repository_structure(
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Manage job application reminders template")
-    parser.add_argument("--job-data", type=Path, required=True, help="Path to a JSON file with job postings")
-    parser.add_argument("--profile", type=Path, help="Path to a JSON profile for estimating job match")
-    parser.add_argument("--output-name", default="job_application_reminders.csv", help="Name of the CSV template file")
+    parser = argparse.ArgumentParser(
+        description="Manage job application reminders template"
+    )
+    parser.add_argument(
+        "--job-data",
+        type=Path,
+        required=True,
+        help="Path to a JSON file with job postings",
+    )
+    parser.add_argument(
+        "--profile", type=Path, help="Path to a JSON profile for estimating job match"
+    )
+    parser.add_argument(
+        "--output-name",
+        default="job_application_reminders.csv",
+        help="Name of the CSV template file",
+    )
     parser.add_argument("--icloud-dir", type=Path, default=DEFAULT_ICLOUD_DIR)
     parser.add_argument("--github-dir", type=Path, default=DEFAULT_GITHUB_DIR)
     parser.add_argument("--repo-name", default=DEFAULT_REPO_NAME)
-    parser.add_argument("--skip-git", action="store_true", help="Do not initialise Git repository")
+    parser.add_argument(
+        "--skip-git", action="store_true", help="Do not initialise Git repository"
+    )
     return parser.parse_args(argv)
 
 
@@ -323,7 +350,9 @@ def main(argv: Sequence[str] | None = None) -> List[Path]:
     written_paths = []
     for directory in targets:
         output_path = directory / args.output_name
-        written_paths.append(write_reminders_template(records, profile_tokens, output_path))
+        written_paths.append(
+            write_reminders_template(records, profile_tokens, output_path)
+        )
     return written_paths
 
 

@@ -1,4 +1,3 @@
-
 import os
 
 # Create comprehensive inventory of all assets
@@ -245,19 +244,19 @@ inventory = """
 """
 
 # Write inventory
-with open("PROJECT_ASSET_INVENTORY.md", 'w') as f:
+with open("PROJECT_ASSET_INVENTORY.md", "w") as f:
     f.write(inventory)
 
 print("✅ Created: PROJECT_ASSET_INVENTORY.md")
-print("\n" + "="*70)
+print("\n" + "=" * 70)
 print("NYC HOUSING SUBSIDY REFORM PROJECT - COMPLETE")
-print("="*70)
+print("=" * 70)
 print("\n📦 DELIVERABLES READY FOR DOWNLOAD:\n")
 print("1. NYC_Housing_Subsidy_Reform_Assets_Complete_20251226.zip")
 print("   └─ Contains all generated documents + research library + README")
 print("\n2. PROJECT_ASSET_INVENTORY.md (this file)")
 print("   └─ Complete reference guide for what's included")
-print("\n" + "="*70)
+print("\n" + "=" * 70)
 print("\nKEY DOCUMENTS GENERATED:")
 print("  ✓ Master_Policy_Report_v1_20251226.md (25,000 words)")
 print("  ✓ Briefing_Memo_Exec_v1_20251226.md (2 pages)")
@@ -266,4 +265,4 @@ print("  ✓ NYC_Housing_Subsidy_Ops_Tasks_Workplan.csv")
 print("  ✓ README.md (with quick-start guide)")
 print("\nRESEARCH LIBRARY:")
 print("  ✓ 16 PDF files from Space files")
-print("\n" + "="*70)
+print("\n" + "=" * 70)

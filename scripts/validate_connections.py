@@ -42,9 +42,13 @@ class ServiceCheck:
         try:
             response = requests.get(self.url, timeout=TIMEOUT, headers=self.headers)
             response.raise_for_status()
-        except requests.exceptions.HTTPError as exc:  # pragma: no cover - network dependent
+        except (
+            requests.exceptions.HTTPError
+        ) as exc:  # pragma: no cover - network dependent
             return False, f"HTTP error: {exc}"
-        except requests.exceptions.RequestException as exc:  # pragma: no cover - network dependent
+        except (
+            requests.exceptions.RequestException
+        ) as exc:  # pragma: no cover - network dependent
             return False, f"Connection failed: {exc}"
         return True, "OK"
 

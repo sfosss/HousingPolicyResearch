@@ -1,4 +1,3 @@
-
 import json
 import os
 from datetime import datetime
@@ -14,7 +13,7 @@ tasks = [
         "Owner": "Policy Analyst",
         "Due": "Week 1",
         "Status": "In Progress",
-        "Artifact": "Agency Map + Budget Flow Chart"
+        "Artifact": "Agency Map + Budget Flow Chart",
     },
     {
         "Section": "I. Baseline Research",
@@ -22,7 +21,7 @@ tasks = [
         "Owner": "Research Team",
         "Due": "Week 1-2",
         "Status": "In Progress",
-        "Artifact": "Annotated Bibliography (APA 7)"
+        "Artifact": "Annotated Bibliography (APA 7)",
     },
     {
         "Section": "I. Baseline Research",
@@ -30,7 +29,7 @@ tasks = [
         "Owner": "CFO Analyst",
         "Due": "Week 2",
         "Status": "Queued",
-        "Artifact": "Budget Snapshot (3-yr trend)"
+        "Artifact": "Budget Snapshot (3-yr trend)",
     },
     {
         "Section": "II. Drafting",
@@ -38,7 +37,7 @@ tasks = [
         "Owner": "Lead Policy Writer",
         "Due": "Week 3-4",
         "Status": "Queued",
-        "Artifact": "Master_Policy_Report_v1_YYYYMMDD.docx"
+        "Artifact": "Master_Policy_Report_v1_YYYYMMDD.docx",
     },
     {
         "Section": "II. Drafting",
@@ -46,7 +45,7 @@ tasks = [
         "Owner": "Financial Analyst",
         "Due": "Week 3",
         "Status": "Queued",
-        "Artifact": "ROI_Model_Comparison_v1.xlsx"
+        "Artifact": "ROI_Model_Comparison_v1.xlsx",
     },
     {
         "Section": "II. Drafting",
@@ -54,7 +53,7 @@ tasks = [
         "Owner": "Communications",
         "Due": "Week 4",
         "Status": "Queued",
-        "Artifact": "Briefing_Memo_v1_YYYYMMDD.docx"
+        "Artifact": "Briefing_Memo_v1_YYYYMMDD.docx",
     },
     {
         "Section": "II. Drafting",
@@ -62,7 +61,7 @@ tasks = [
         "Owner": "Lead Policy Writer",
         "Due": "Week 4",
         "Status": "Queued",
-        "Artifact": "1Pager_Summary_v1_YYYYMMDD.docx"
+        "Artifact": "1Pager_Summary_v1_YYYYMMDD.docx",
     },
     {
         "Section": "III. Validation",
@@ -70,7 +69,7 @@ tasks = [
         "Owner": "Civil Rights Attorney",
         "Due": "Week 7-8",
         "Status": "Queued",
-        "Artifact": "Legal_Risk_Memo.docx"
+        "Artifact": "Legal_Risk_Memo.docx",
     },
     {
         "Section": "III. Validation",
@@ -78,7 +77,7 @@ tasks = [
         "Owner": "Policy Analyst",
         "Due": "Week 7-9",
         "Status": "Queued",
-        "Artifact": "Interview_Summary_Notes.docx"
+        "Artifact": "Interview_Summary_Notes.docx",
     },
     {
         "Section": "III. Validation",
@@ -86,7 +85,7 @@ tasks = [
         "Owner": "Financial Analyst",
         "Due": "Week 8",
         "Status": "Queued",
-        "Artifact": "ROI_Model_Final_v2.xlsx"
+        "Artifact": "ROI_Model_Final_v2.xlsx",
     },
     {
         "Section": "IV. Finalization",
@@ -94,7 +93,7 @@ tasks = [
         "Owner": "Municipal CFO",
         "Due": "Week 10-11",
         "Status": "Queued",
-        "Artifact": "All Docs v_final in Archive/"
+        "Artifact": "All Docs v_final in Archive/",
     },
     {
         "Section": "IV. Finalization",
@@ -102,7 +101,7 @@ tasks = [
         "Owner": "Communications",
         "Due": "Week 11",
         "Status": "Queued",
-        "Artifact": "Briefing_Deck_Final_YYYYMMDD.pptx"
+        "Artifact": "Briefing_Deck_Final_YYYYMMDD.pptx",
     },
     {
         "Section": "IV. Finalization",
@@ -110,13 +109,13 @@ tasks = [
         "Owner": "Communications",
         "Due": "Week 12",
         "Status": "Queued",
-        "Artifact": "NYC_Housing_Subsidy_Reform_Packet_Final_YYYYMMDD.pdf"
-    }
+        "Artifact": "NYC_Housing_Subsidy_Reform_Packet_Final_YYYYMMDD.pdf",
+    },
 ]
 
 # Write tasks CSV
 csv_filename = "NYC_Housing_Subsidy_Ops_Tasks_Workplan.csv"
-with open(csv_filename, 'w', newline='') as csvfile:
+with open(csv_filename, "w", newline="") as csvfile:
     fieldnames = ["Section", "Task", "Owner", "Due", "Status", "Artifact"]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()

@@ -5,9 +5,7 @@ This roadmap captures actionable follow-up work for the Housing Policy Research 
 ## 1. Documentation Enhancements
 
 - [ ] Convert the legacy `Capstone alias` document (see `docs/capstone-alias.docx`, a summary of prior project milestones and terminology) into structured Markdown (determine whether to archive or reformat).
-- [ ] Add a project overview to `README.md`.
-- [ ] Add research goals to `README.md`.
-- [ ] Add pointers to relevant datasets in `README.md`.
+- [ ] Expand the datasets section in `README.md` with specific links and access instructions.
 - [ ] Draft a citation management guide linking Zotero collections to repository outputs.
 
 ## 2. Data and Analysis Pipeline

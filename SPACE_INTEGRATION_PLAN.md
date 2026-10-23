@@ -1,42 +1,45 @@
 # Housing Policy Research Tools - Space Integration Plan
 
-**Status:** Implementation Ready  
-**Objective:** Integrate Raycast extension components into NYC Housing Subsidy Reform operational framework  
+**Status:** Implementation Ready\
+**Objective:** Integrate Raycast extension components into NYC Housing Subsidy Reform operational framework\
 **Pattern:** Context Manager + Recipe + Output Automater
 
----
+______________________________________________________________________
 
 ## 1 | CONTEXT & SCOPE
 
 ### Research Operations Frame
 
-**Focus:** NYC housing subsidy policy reform via Public Equity Transfer Framework  
-**Tools:** Raycast CLI extension for automated research, drafting, and source management  
-**Scale:** Three commands (BillSweep, DraftSection, AddSource)  
-**Budget:** Reuse existing agency infrastructure (HPD, HRA, NYCHA)  
+**Focus:** NYC housing subsidy policy reform via Public Equity Transfer Framework\
+**Tools:** Raycast CLI extension for automated research, drafting, and source management\
+**Scale:** Three commands (BillSweep, DraftSection, AddSource)\
+**Budget:** Reuse existing agency infrastructure (HPD, HRA, NYCHA)\
 **Deliverables:** Evidence-based policy memos, briefing decks, ROI models
 
 ### Scope Alignment
 
 ✅ **In Scope:**
+
 - Legislation tracking (NYC, NY State, Federal)
 - AI-assisted policy document drafting
 - Research source inventory management
 - Integration with housing subsidy policy domain
 
 ✅ **Integration Points:**
+
 - TCAP task automation (Phase III: Validation)
 - Capstone research workflow (Phase II: Drafting)
 - Notion database for source tracking
 - Git-based version control for drafts
 
----
+______________________________________________________________________
 
 ## 2 | ROLES & PERSONAS
 
 ### Municipal Policy Analyst (You)
 
 **Responsibilities:**
+
 - Run BillSweep to monitor legislative changes
 - Trigger DraftSection for policy memo sections
 - Manage sources via AddSource command
@@ -44,6 +47,7 @@
 - Integrate findings into final briefing memos
 
 **Tools Access:**
+
 - Raycast CLI extension
 - Local Notion instance for sources
 - Git for version control
@@ -52,17 +56,19 @@
 ### Technical Architect (Support)
 
 **Responsibilities:**
+
 - Maintain backend API endpoints
 - Monitor Raycast extension performance
 - Support preference configuration
 - Handle integration issues
 
 **Tools Access:**
+
 - Backend API server
 - API monitoring/logging
 - Raycast configuration management
 
----
+______________________________________________________________________
 
 ## 3 | IMPLEMENTATION WORKFLOW
 
@@ -210,14 +216,14 @@
 
 **Deliverable:** Production-ready extension with operational documentation
 
----
+______________________________________________________________________
 
 ## 4 | DETAILED RECIPES
 
 ### Recipe 1: Run Bill Sweep
 
-**Goal:** Monitor new legislation across jurisdictions  
-**Time:** 5 minutes per execution  
+**Goal:** Monitor new legislation across jurisdictions\
+**Time:** 5 minutes per execution\
 **Frequency:** Weekly (Mondays recommended)
 
 **Step-by-step:**
@@ -262,8 +268,8 @@ echo "Results exported to bills_$(date +%Y%m%d).csv"
 
 ### Recipe 2: Generate Policy Memo Section
 
-**Goal:** Create draft policy memo sections with AI assistance  
-**Time:** 2-5 minutes per section  
+**Goal:** Create draft policy memo sections with AI assistance\
+**Time:** 2-5 minutes per section\
 **Frequency:** As needed during drafting phase
 
 **Step-by-step:**
@@ -314,8 +320,8 @@ echo "Draft generated - open memo document for refinement"
 
 ### Recipe 3: Add Research Source
 
-**Goal:** Manage research source inventory  
-**Time:** 1-2 minutes per source  
+**Goal:** Manage research source inventory\
+**Time:** 1-2 minutes per source\
 **Frequency:** As sources are discovered
 
 **Step-by-step:**
@@ -361,7 +367,7 @@ done < sources.csv
 echo "Batch source addition complete"
 ```
 
----
+______________________________________________________________________
 
 ## 5 | OUTPUT AUTOMATION
 
@@ -422,23 +428,23 @@ Status: NEEDS_REVIEW
 Notes: Confirm inflation adjustment applied
 ```
 
----
+______________________________________________________________________
 
 ## 6 | PATTERN INTEGRATION MATRIX
 
-| Pattern | Trigger | Action | Artifact |
-|---------|---------|--------|----------|
-| **Context Manager** | Scope drift in policy focus | Restate housing subsidy constraints | SPACE_INTEGRATION_PLAN.md |
-| **Question Refinement** | Ambiguous research direction | Rewrite measurable policy outcomes | Research questions doc |
-| **Fact Check List** | Claims in generated memo | Generate verification checklist | fact_check_[date].csv |
-| **Recipe** | Multi-step Raycast workflow | Output full command sequence | sweep_bills.sh, draft_memo.sh |
-| **Template** | Policy memo output format | Apply standard memo structure | memo_template.md |
-| **Alternative Approaches** | Design choice (bill tracking method) | Compare ≥2 filtering/sorting options | alternatives_comparison.md |
-| **Persona** | Policy analyst role | Adopt municipal CFO constraints | Policy analyst runbook |
-| **Output Automater** | ≥2 repeatable steps (bill sweep → CSV) | Emit sweep_bills_weekly.sh | task_automation.sh |
-| **Flipped Interaction** | Missing backend config | Ask 3 clarifying Qs before proceeding | setup_checklist.md |
+| Pattern                    | Trigger                                | Action                                | Artifact                      |
+| -------------------------- | -------------------------------------- | ------------------------------------- | ----------------------------- |
+| **Context Manager**        | Scope drift in policy focus            | Restate housing subsidy constraints   | SPACE_INTEGRATION_PLAN.md     |
+| **Question Refinement**    | Ambiguous research direction           | Rewrite measurable policy outcomes    | Research questions doc        |
+| **Fact Check List**        | Claims in generated memo               | Generate verification checklist       | fact_check\_\[date\].csv      |
+| **Recipe**                 | Multi-step Raycast workflow            | Output full command sequence          | sweep_bills.sh, draft_memo.sh |
+| **Template**               | Policy memo output format              | Apply standard memo structure         | memo_template.md              |
+| **Alternative Approaches** | Design choice (bill tracking method)   | Compare ≥2 filtering/sorting options  | alternatives_comparison.md    |
+| **Persona**                | Policy analyst role                    | Adopt municipal CFO constraints       | Policy analyst runbook        |
+| **Output Automater**       | ≥2 repeatable steps (bill sweep → CSV) | Emit sweep_bills_weekly.sh            | task_automation.sh            |
+| **Flipped Interaction**    | Missing backend config                 | Ask 3 clarifying Qs before proceeding | setup_checklist.md            |
 
----
+______________________________________________________________________
 
 ## 7 | WORKFLOW EXECUTION
 
@@ -503,7 +509,7 @@ GATE 5: Final Approval
   IF reject → Question Refinement for next iteration
 ```
 
----
+______________________________________________________________________
 
 ## 8 | INTEGRATION CHECKLIST
 
@@ -541,24 +547,24 @@ GATE 5: Final Approval
 ### Phase 5: Quality Assurance
 
 - [ ] 100+ hour operational testing complete
-- [ ] Error rates < 2%
+- [ ] Error rates \< 2%
 - [ ] User satisfaction > 90%
 - [ ] Documentation comprehensive
 - [ ] Ready for production use
 
----
+______________________________________________________________________
 
 ## 9 | RISK MITIGATION
 
-| Risk | Impact | Mitigation | Owner |
-|------|--------|------------|-------|
-| Backend API unavailable | Can't run commands | Fallback to manual research | Tech |
-| Generated content inaccurate | Policy errors | Fact-check all claims | Analyst |
+| Risk                             | Impact               | Mitigation                           | Owner   |
+| -------------------------------- | -------------------- | ------------------------------------ | ------- |
+| Backend API unavailable          | Can't run commands   | Fallback to manual research          | Tech    |
+| Generated content inaccurate     | Policy errors        | Fact-check all claims                | Analyst |
 | Bill surge (legislative session) | Workflow overwhelmed | Increase sweep frequency, automation | Analyst |
-| Source URL broken | Research interrupted | Maintain source inventory in Notion | Analyst |
-| Preference misconfiguration | Extension fails | Clear documentation + validation | Tech |
+| Source URL broken                | Research interrupted | Maintain source inventory in Notion  | Analyst |
+| Preference misconfiguration      | Extension fails      | Clear documentation + validation     | Tech    |
 
----
+______________________________________________________________________
 
 ## 10 | SUCCESS METRICS
 
@@ -577,7 +583,7 @@ GATE 5: Final Approval
 - **Decision Support:** 2+ policy recommendations acted upon
 - **Equity Impact:** $X million in subsidy reform aligned to equity criteria
 
----
+______________________________________________________________________
 
 ## 11 | VERSION CONTROL & ARCHIVING
 
@@ -607,42 +613,42 @@ memo_sections_20250110.md
     sources_inventory_20250122.csv
 ```
 
----
+______________________________________________________________________
 
 ## 12 | DELIVERABLES SUMMARY
 
 ### Core Deliverables
 
 1. **Raycast Extension** - Fully functional (3/3 components)
-2. **API Client** - Complete with error handling
-3. **Configuration Files** - raycast.manifest.json, package.json, tsconfig.json
-4. **Setup Documentation** - Step-by-step installation guide
-5. **Operational Runbooks** - How to execute each command
-6. **Automation Scripts** - Bash scripts for repeated tasks
-7. **Quality Assurance** - Testing procedures and validation
+1. **API Client** - Complete with error handling
+1. **Configuration Files** - raycast.manifest.json, package.json, tsconfig.json
+1. **Setup Documentation** - Step-by-step installation guide
+1. **Operational Runbooks** - How to execute each command
+1. **Automation Scripts** - Bash scripts for repeated tasks
+1. **Quality Assurance** - Testing procedures and validation
 
 ### Workflow Deliverables
 
 1. **Weekly Bill Sweeps** - CSV exports with legislative tracking
-2. **Draft Policy Memos** - Using DraftSection with human refinement
-3. **Source Inventory** - Notion database of 50+ research sources
-4. **Task Tracking** - CSV task list for Notion/Trello
-5. **Final Briefing Memos** - Completed policy documents ready for stakeholder distribution
+1. **Draft Policy Memos** - Using DraftSection with human refinement
+1. **Source Inventory** - Notion database of 50+ research sources
+1. **Task Tracking** - CSV task list for Notion/Trello
+1. **Final Briefing Memos** - Completed policy documents ready for stakeholder distribution
 
----
+______________________________________________________________________
 
 ## 13 | NEXT STEPS
 
 ### Immediate (Week 1)
 
 1. ✅ Review this integration plan
-2. ✅ Confirm backend API requirements with tech team
-3. ⬜ Install Node.js 18+ and npm
-4. ⬜ Create package.json and run `npm install`
-5. ⬜ Build extension: `npm run build`
-6. ⬜ Load into Raycast
-7. ⬜ Configure backend URL
-8. ⬜ Test all three commands
+1. ✅ Confirm backend API requirements with tech team
+1. ⬜ Install Node.js 18+ and npm
+1. ⬜ Create package.json and run `npm install`
+1. ⬜ Build extension: `npm run build`
+1. ⬜ Load into Raycast
+1. ⬜ Configure backend URL
+1. ⬜ Test all three commands
 
 ### This Week
 
@@ -660,7 +666,7 @@ memo_sections_20250110.md
 - [ ] Generate first policy memo using DraftSection
 - [ ] Stakeholder review and sign-off
 
----
+______________________________________________________________________
 
 ## Approval Checklist
 
@@ -669,8 +675,8 @@ memo_sections_20250110.md
 - [ ] Stakeholder: Deliverables meet policy research needs
 - [ ] Project Manager: Timeline and resources allocated
 
----
+______________________________________________________________________
 
-**Status:** Ready for Implementation  
-**Last Updated:** December 26, 2025  
+**Status:** Ready for Implementation\
+**Last Updated:** December 26, 2025\
 **Next Review:** January 2, 2026
