@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "authoritative_repository": "/Users/USERNAME/Seth_Ops/02_PROJECTS/HousingPolicyResearch",
+  "sources": [
+    {
+      "id": "box-collaborative-projects",
+      "kind": "box_shared_folder",
+      "path": "$HOME/Library/CloudStorage/Box-Box/Collaborative Projects",
+      "mode": "reference_only",
+      "data_owner": "project lead",
+      "contains_chat_exports": true,
+      "contains_personal_data": "unknown"
+    },
+    {
+      "id": "chatgpt-project-export",
+      "kind": "chatgpt_export",
+      "path": "$HOME/approved-import-staging/chatgpt-project",
+      "mode": "staged_import",
+      "data_owner": "project lead",
+      "contains_chat_exports": true,
+      "contains_personal_data": "review_required"
+    },
+    {
+      "id": "claude-project-setup",
+      "kind": "claude_workspace",
+      "path": "$HOME/approved-import-staging/claude-project",
+      "mode": "reference_only",
+      "data_owner": "project lead",
+      "contains_chat_exports": true,
+      "contains_personal_data": "review_required"
+    }
+  ]
+}
