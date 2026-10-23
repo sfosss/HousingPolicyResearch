@@ -1,0 +1,47 @@
+name: Action Compatibility
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout workflow files
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11'
+
+      - name: Verify immutable workflow action references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for path in Path('.github/workflows').glob('*.yml'):
+              for number, line in enumerate(path.read_text().splitlines(), 1):
+                  match = re.match(r'^\s*(?:- )?uses:\s*([^\s#]+)', line)
+                  if match and not match[1].startswith(('./', 'docker://')):
+                      assert re.fullmatch(r'[^@]+@[0-9a-f]{40}', match[1]), (str(path), number)
+          print('All external workflow actions use full commit SHAs')
+          PY
+
+      - name: Lint workflow syntax and expressions
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 -shellcheck='' -pyflakes=''
+
+      - name: Set up Quarto without rendering or publishing
+        uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # v2
+
+      - name: Check Quarto installation
+        run: quarto --version
+
