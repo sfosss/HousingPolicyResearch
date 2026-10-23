@@ -317,8 +317,8 @@ def test_cli_writes_unicode_reports_under_a_non_utf8_locale(tmp_path):
     )
     env.pop("GITHUB_TOKEN", None)
     env.pop("GITHUB_REPOSITORY", None)
-    markdown = tmp_path / "report.md"
-    output = tmp_path / "report.json"
+    markdown = tmp_path / "reports/report.md"
+    output = tmp_path / "json/report.json"
     script = Path(__file__).resolve().parents[1] / "scripts/audit_repository_state.py"
     result = subprocess.run(
         [
@@ -339,3 +339,65 @@ def test_cli_writes_unicode_reports_under_a_non_utf8_locale(tmp_path):
     assert json.loads(output.read_text(encoding="utf-8"))["local_task_files"][0][
         "statuses"
     ] == {"🟢 Open": 1}
+
+
+def test_default_stdout_is_utf8_under_a_non_utf8_locale(tmp_path):
+    (tmp_path / "project_tasks.csv").write_text(
+        "Task,Status\nReview,🟢 Open\n", encoding="utf-8"
+    )
+    env = dict(
+        os.environ, LC_ALL="C", LANG="C", PYTHONUTF8="0", PYTHONCOERCECLOCALE="0"
+    )
+    env.pop("GITHUB_TOKEN", None)
+    env.pop("GITHUB_REPOSITORY", None)
+    script = Path(__file__).resolve().parents[1] / "scripts/audit_repository_state.py"
+    result = subprocess.run(
+        [sys.executable, str(script), "--root", str(tmp_path)],
+        env=env,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr.decode("utf-8", errors="replace")
+    assert "🟢 Open" in result.stdout.decode("utf-8")
+
+
+def test_empty_manifest_preserves_evidence_it_was_supplied(tmp_path):
+    manifest = tmp_path / "sources.json"
+    manifest.write_text(json.dumps({"schema_version": 1, "sources": []}))
+    report = build_report(tmp_path, None, None, manifest)
+    assert report["collaboration_manifest_supplied"] is True
+    markdown = render_markdown(report)
+    assert (
+        "0 declared collaboration sources (manifest supplied and validated)" in markdown
+    )
+    assert "no local collaboration manifest was supplied" not in markdown
+
+
+@pytest.mark.parametrize(
+    "content",
+    [
+        "Task,Status,Owner\nUnquoted, task,Not Started,Analyst\n",
+        "Task,Status\nMissing field\n",
+        'Task,Status\nReview,"unterminated\n',
+    ],
+)
+def test_malformed_trackers_are_reported_without_inventing_status_totals(
+    tmp_path, content
+):
+    (tmp_path / "bad_tasks.csv").write_text(content)
+    (tmp_path / "good_tasks.csv").write_text("Task,Status\nReview,Open\n")
+    report = build_report(tmp_path, None, None)
+    assert [item["path"] for item in report["local_task_files"]] == ["good_tasks.csv"]
+    assert report["local_task_files"][0]["statuses"] == {"Open": 1}
+    assert report["local_task_errors"] == [
+        {"path": "bad_tasks.csv", "reason": "Malformed CSV/TSV structure"}
+    ]
+    assert "Local trackers not assessed" in render_markdown(report)
+
+
+@pytest.mark.parametrize("kind", ["issues", "pull_requests"])
+def test_github_summaries_do_not_retain_untrusted_titles(kind):
+    result = sanitize_github_items(
+        kind, [{"number": 1, "title": "must-not-retain-private-title"}]
+    )
+    assert "title" not in result[0]
+    assert "must-not-retain-private-title" not in json.dumps(result)
