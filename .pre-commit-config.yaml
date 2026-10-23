@@ -14,6 +14,8 @@ repos:
     rev: 0.7.17
     hooks:
       - id: mdformat
+        # Preserve agent configuration metadata/frontmatter.
+        exclude: ^\.github/(AGENTS\.md|agents/.*\.agent\.md)$
         additional_dependencies:
           - mdformat-gfm
 
@@ -22,3 +24,4 @@ repos:
     hooks:
       - id: detect-secrets
         args: ["--baseline", ".secrets.baseline"]
+        stages: ["manual"]

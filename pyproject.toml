@@ -1,2 +1,25 @@
+[project]
+name = "housing-policy-research"
+version = "0.1.0"
+description = "TCAP Housing Subsidy Reform Tools"
+authors = [
+    { name = "SfosssHousing" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "black==26.10.1",
+    "flake8==7.3.0",
+    "fonttools==4.60.2",
+    "mdformat==1.0.0",
+    "openai==2.14.0",
+    "pandas==2.3.3",
+    "pre-commit==4.5.1",
+    "pytest==8.4.2",
+    "PyYAML==6.0.3",
+    "python-dotenv==1.2.2",
+    "requests==2.33.0",
+    "urllib3==2.8.0"
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]

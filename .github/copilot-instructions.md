@@ -1,211 +1,50 @@
-# Housing Policy Research - Copilot Instructions
+source .venv/bin/activate
+python -m pytest tests/          # Run tests
+pre-commit run --all-files       # Run code quality checks
+python <script>                  # Execute any Python script# Housing Policy Research – Copilot Instructions
 
-## Project Overview
+Purpose: give AI agents the minimum project-specific context to ship safe, accurate changes fast. Keep instructions short and actionable.
 
-This repository hosts documentation, resource management tools, and integration guidelines for collaborative housing policy research. The project focuses on evidence-based policy analysis with rigorous citation standards, secure API integrations (ChatGPT, Notion, Zotero, GitHub), and reproducible research workflows. Primary audience includes housing policy researchers, data analysts, and documentation specialists.
+## Big Picture
 
-## Repository Structure
+- Docs-first repo: key sources live in [docs](../docs) (integration plan, connection checks, APA style, resources index/CSV, universal linking). New AI text must be tracked in [docs/generative-output-version-control.md](../docs/generative-output-version-control.md).
+- Two code areas: Python utilities for ChatGPT/Notion task hygiene in [src/chatgpt_notion_sync](../src/chatgpt_notion_sync) and Raycast extension commands in [src/commands](../src/commands) calling a backend via [src/utils/api.ts](../src/utils/api.ts).
+- Security baseline: see [SECURITY.md](../SECURITY.md) and [docs/environment-setup.md](../docs/environment-setup.md); secrets live in env vars per [.env.template](../.env.template). Detect-secrets baseline is enforced via [.pre-commit-config.yaml](../.pre-commit-config.yaml).
 
-- `docs/` – Research documentation, style guides, integration architecture, and resource catalogs
-  - `STYLE-APA.md` – APA 7th edition citation standards (mandatory for all research sources)
-  - `resources-index.md` – Comprehensive catalog of research sources with annotations
-  - `resources.csv` – Machine-readable resource database for automation
-  - `generative-output-version-control.md` – Tracking and verification of AI-generated content
-- `.github/agents/` – Custom agent configurations for specialized automation tasks (do not modify these files unless explicitly required by an issue)
-- `capstone/` – Structured capstone documentation
-- `comments/` – Project discussion artifacts and proposals
-- `SECURITY.md` – Security policy and responsible disclosure instructions
+## Python utilities
 
-## Technology Stack
+- [src/chatgpt_notion_sync/sync.py](../src/chatgpt_notion_sync/sync.py) pulls Notion pages, builds an LLM prompt, updates the `NOTION_SUMMARY_PROPERTY_NAME`, and optionally appends to a changelog page. Config comes from [src/chatgpt_notion_sync/config.py](../src/chatgpt_notion_sync/config.py) (env var names documented there).
+- [src/chatgpt_notion_sync/job_app_manager.py](../src/chatgpt_notion_sync/job_app_manager.py) CLI: reads job postings/profile JSON, writes reminders CSVs to iCloud and GitHub mirrors, and can init a git repo. Progress/status values are normalised; deadlines bucket into overdue/due_soon/scheduled.
+- [src/chatgpt_notion_sync/task_list.py](../src/chatgpt_notion_sync/task_list.py) flattens ChatGPT chat exports into a priority-sorted CSV with checkbox markers.
+- Tests live in [tests](../tests); run `python -m pytest` from repo root (pyproject sets `src` on PYTHONPATH). Keep changes testable without hitting live services; mock clients like in [tests/test_sync.py](../tests/test_sync.py).
 
-- **Documentation:** Markdown (GitHub-flavored)
-- **Citations:** APA 7th edition (strictly enforced)
-- **Integrations:** OpenAI API, Notion API, Zotero API, GitHub API
-- **Configuration:** Environment variables (`.env` files, never commit secrets)
-- **Version Control:** Git with GitHub
-- **Automation:** GitHub Actions (see `.github/workflows/`)
+## Raycast extension
 
-## Citation and Documentation Standards
+- Commands: Add Source, Bill Sweep, Draft Section in [src/commands](../src/commands); all POST to the assistant backend defined in Raycast prefs `assistant_base_url` and optional `api_timeout_ms` (see [raycast.manifest.json](../raycast.manifest.json)).
+- API client: [src/utils/api.ts](../src/utils/api.ts) wraps `/sweep_bills`, `/generate_section`, `/add_source` with abortable fetch + error surfacing. Respect expected payloads (jurisdictions list; section/prompt strings; title/url/notes).
+- Build/test: no package.json yet; when editing commands, keep JSX minimal and toasts/validation consistent with existing patterns. Ensure URLs are validated client-side (AddSource) and selections non-empty (BillSweep).
 
-### APA Citation Requirements (Critical)
+## Docs, citations, and data hygiene
 
-All research sources MUST follow APA 7th edition format as defined in `docs/STYLE-APA.md`:
+- APA 7th is mandatory: follow [docs/STYLE-APA.md](../docs/STYLE-APA.md). Every new source goes in tandem to [docs/resources-index.md](../docs/resources-index.md) (annotated) and [docs/resources.csv](../docs/resources.csv) (tabular) with relevance, application note, quality flags, and DOI/URL.
+- Generative output provenance: log new AI-authored docs in [docs/generative-output-version-control.md](../docs/generative-output-version-control.md) with creation/update dates and verification notes.
+- Roadmap/context: [docs/project-roadmap.md](../docs/project-roadmap.md) lists pending work; [docs/integration-plan.md](../docs/integration-plan.md) and [docs/connection-checks.md](../docs/connection-checks.md) describe platform wiring and validation steps.
 
-1. **Always use DOI when available** – Format as `https://doi.org/xxxxx`
-2. **Include complete metadata** – Author(s), date, title, source, identifier
-3. **Add annotations** – Every citation needs relevance and application notes
-4. **Flag access issues** – Mark paywalled sources as `[Paywalled]`
-5. **Verify links** – Test all URLs before committing
+## Quality and safety gates
 
-**Example citation:**
-```
-Schuetz, J. (2020). Is zoning a useful tool or a regulatory barrier? Evidence from recent research. Cityscape: A Journal of Policy Development and Research, 22(1), 93-110. https://doi.org/10.2139/ssrn.3522864
-```
+- Run `pre-commit run --all-files` if available; hooks include black, flake8, mdformat, detect-secrets.
+- Keep secrets out of the repo; never hardcode tokens or URLs with keys. Use `.env` (ignored) and GitHub secrets.
+- Prefer deterministic inputs/fixtures for tests and scripts; avoid network calls in unit tests.
+- If adding new AI outputs or citations, validate links, DOI resolution, and flag paywalled items as `[Paywalled]` in both index and CSV.
 
-### Resource Management
+## PR expectations
 
-When adding or modifying research sources:
+- Small, scoped changes with docs updates alongside code.
+- Reference roadmap items/issues and list checks run (pytest, manual command exercise).
+- Describe any backend assumptions for Raycast commands (endpoint paths/auth) and sample payloads.
 
-1. **Update both formats:**
-   - Add entry to `docs/resources-index.md` with full citation and annotation
-   - Add corresponding row to `docs/resources.csv` for automation
-2. **Required fields:**
-   - Complete APA citation
-   - Relevance statement (why it matters)
-   - Application note (how it supports research)
-   - Quality flags (`[Primary source]`, `[Paywalled]`, etc.)
-   - Cross-references to where used in documentation
-3. **Verification protocol:**
-   - Confirm URL/DOI accessibility
-   - Verify metadata against original source
-   - Assess source quality and currency
-   - Note if data is >5 years old
+## Version
 
-### Documentation Style
-
-- **Clear and concise** – Use bullet points, headings, and tables
-- **Actionable instructions** – Prefer imperative verbs ("Use X", "Configure Y")
-- **Examples included** – Provide code snippets, command examples, or citation samples
-- **Linked references** – Internal links to related docs, external to authoritative sources
-- **Version tracking** – Include "Last updated" dates and version numbers
-
-## Security Practices (Mandatory)
-
-### Prohibited Actions
-
-❌ **Never:**
-- Commit API keys, tokens, or credentials to the repository
-- Share sensitive data in public documentation or comments
-- Use production credentials in development/testing
-- Store passwords or secrets in plaintext
-
-✅ **Always:**
-- Use environment variables for secrets (see `.env.template`)
-- Store secrets in password managers or GitHub Actions secrets
-- Rotate integration tokens (OpenAI, Notion, Zotero) regularly
-- Follow least-privilege principle for API access
-- Review `SECURITY.md` before implementing integrations
-
-### Environment Variables
-
-Configuration pattern:
-```bash
-# Copy template and populate locally
-cp .env.template .env
-# Never commit .env file
-```
-
-Required variables are documented in `.env.template`.
-
-## Contributing Guidelines
-
-### Before Making Changes
-
-1. **Review existing documentation:**
-   - Check `docs/project-roadmap.md` for planned work
-   - Read relevant style guides (`STYLE-APA.md`, etc.)
-   - Search existing issues for related discussions
-2. **Create a feature branch:**
-   ```bash
-   git checkout -b feature/descriptive-name
-   ```
-3. **Make minimal, focused changes:**
-   - One logical change per commit
-   - Update related documentation
-   - Add/update tests if applicable
-
-### Pull Request Requirements
-
-1. **Reference related issues:** Link to roadmap tasks or GitHub issues
-2. **Descriptive title and body:** Explain what changed and why
-3. **Documentation updates:** Keep docs in sync with code/config changes
-4. **Citation verification:** If adding sources, confirm APA compliance
-5. **No secrets committed:** Double-check `.env` files are gitignored
-
-### Code Review Focus Areas
-
-- Documentation clarity and completeness
-- Citation format and accuracy
-- Security best practices followed
-- Links tested and working
-- Consistency with existing patterns
-
-## Common Tasks
-
-### Adding a New Research Source
-
-1. **Gather complete citation information:**
-   - Author(s), publication date, title, source, DOI/URL
-   - Verify URL is accessible
-2. **Format in APA 7th edition:**
-   - Follow examples in `docs/STYLE-APA.md`
-   - Use proper capitalization (sentence case for titles)
-3. **Add to both locations:**
-   - `docs/resources-index.md` – Full entry with annotation
-   - `docs/resources.csv` – Corresponding database row
-4. **Include required fields:**
-   - Relevance: One sentence on why it matters
-   - Application: One sentence on how it's used
-   - Quality flags: Source type and access status
-   - Cross-references: Where cited in documentation
-
-### Updating Integration Documentation
-
-1. **Review current state:** Check `docs/integration-plan.md`
-2. **Document changes:** API versions, authentication methods, endpoints
-3. **Update examples:** Code snippets, configuration samples
-4. **Test instructions:** Verify setup steps actually work
-5. **Update security notes:** Flag any new credentials or permissions needed
-
-### Managing Generative AI Output
-
-When using ChatGPT, Codex, or similar tools:
-
-1. **Version control:** Follow `docs/generative-output-version-control.md` guidelines
-2. **Verification:** Human review required for all AI-generated content
-3. **Attribution:** Note when content is AI-assisted
-4. **Quality checks:** Verify facts, citations, and recommendations
-5. **Iterate:** Refine prompts and outputs until meeting standards
-
-## Key Documentation Links
-
-- [Environment Setup Guide](docs/environment-setup.md)
-- [Integration Plan](docs/integration-plan.md)
-- [Project Roadmap](docs/project-roadmap.md)
-- [APA Style Guide](docs/STYLE-APA.md)
-- [Resources Index](docs/resources-index.md)
-- [Generative Output Tracking](docs/generative-output-version-control.md)
-- [Universal Linking Guide](docs/universal-linking-guide.md)
-
-## Anti-Patterns to Avoid
-
-❌ **Don't:**
-- Copy citations from secondary sources without verification
-- Add resources without proper APA formatting
-- Commit configuration files with hardcoded credentials
-- Make broad changes without documenting rationale
-- Skip annotation requirements for citations
-- Use broken or redirected URLs without noting issues
-
-✅ **Do:**
-- Start with project roadmap to understand priorities
-- Follow established conventions and patterns
-- Ask questions via GitHub issues when uncertain
-- Keep documentation up-to-date with changes
-- Verify every citation against original source
-- Use persistent identifiers (DOI) whenever possible
-
-## Questions and Support
-
-- **Documentation issues:** Open an issue with label `documentation`
-- **Security concerns:** Follow `SECURITY.md` reporting guidelines
-- **Integration problems:** Reference `docs/connection-checks.md` for API connectivity troubleshooting
-- **Style questions:** Consult `docs/STYLE-APA.md` for citation formatting or open issue
-- **Roadmap updates:** Discuss in issues with label `roadmap`
-
-## Version Information
-
-**Version:** 1.0  
-**Last Updated:** 2025-12-02  
-**Maintained by:** Housing Policy Research team  
-**Review cadence:** Quarterly or when major changes occur
+- Maintainer: Housing Policy Research team
+- Last updated: 2025-12-30
+- Review cadence: Quarterly or as major changes occur

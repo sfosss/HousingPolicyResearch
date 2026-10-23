@@ -1,0 +1,37 @@
+
+🗂️ Housing Subsidy Reform – Data Sourcing Checklist (v1)
+---------------------------------------------------------
+
+✅ PRIORITY 1: HOUSING VOUCHER DATA
+- 📦 Source: NYC Open Data, HUD Picture of Subsidized Households
+- 🔍 Purpose: Identify how many vouchers are in use per borough
+- 📈 Use: Model conversion potential to tenant equity structures
+
+✅ PRIORITY 2: HPD VIOLATIONS DATABASE
+- 📦 Source: https://data.cityofnewyork.us
+- 🔍 Purpose: Target high-violation buildings and landlords
+- 📈 Use: Prioritize pilot co-op buyout buildings
+
+✅ PRIORITY 3: EVICTION DATA (CITYWIDE)
+- 📦 Source: NYC Open Data (Marshal records, Housing Court filings)
+- 🔍 Purpose: Estimate eviction-related municipal costs
+- 📈 Use: Build cost-offset model ($7k–$15k/eviction)
+
+✅ PRIORITY 4: NYC BUDGET LINE ITEMS
+- 📦 Source: NYC Office of Management and Budget
+- 🔍 Purpose: Locate existing funds that can be reclassified
+- 📈 Use: Propose budget-neutral or ROI-positive shifts
+
+✅ PRIORITY 5: TENANT DEMOGRAPHICS
+- 📦 Source: HUD CHAS Data or NYC Open Data
+- 🔍 Purpose: Highlight racial, disability, and income disparities
+- 📈 Use: Equity-centered policy justification
+
+🟦 OPTIONAL:
+- Building sale prices: NYC DOF ACRIS
+- Legal service costs: RTC Coalition, NYCLU
+- Vacancy trends: NYU Furman, StreetEasy, Zillow
+
+📝 Tip: Upload these files to ChatGPT for instant analysis + integration into your report
+
+📅 Last updated: April 8, 2025

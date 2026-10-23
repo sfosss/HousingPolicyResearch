@@ -1,0 +1,15 @@
+# TCAP Housing Subsidy Reform - Cron Configuration
+# Add to: crontab -e
+
+# Daily report generation (6 AM every weekday)
+0 6 * * 1-5 /path/to/project/tcap_automation.sh daily >> /path/to/project/tcap_cron.log 2>&1
+
+# Weekly comprehensive review (Monday 9 AM)
+0 9 * * 1 /path/to/project/tcap_automation.sh weekly >> /path/to/project/tcap_cron.log 2>&1
+
+# Monthly archive and snapshot (1st of month, 8 AM)
+0 8 1 * * /path/to/project/tcap_automation.sh monthly >> /path/to/project/tcap_cron.log 2>&1
+
+# Backup to external storage (daily at midnight)
+0 0 * * * rsync -avz /path/to/project/NYC_Housing_Subsidy_Ops_Tasks_*.csv /backup/location/ >> /path/to/project/tcap_cron.log 2>&1
+

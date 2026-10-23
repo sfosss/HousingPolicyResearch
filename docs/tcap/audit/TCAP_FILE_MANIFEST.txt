@@ -1,0 +1,266 @@
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║         TCAP INTERACTIVE TASK DASHBOARD — FILE MANIFEST & CHECKSUMS           ║
+║                            December 14, 2025                                   ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+✅ DEPLOYMENT PACKAGE CONTENTS (9 Files)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 AUTOMATION CORE
+
+File: tcap_task_automation.py
+  Type: Python 3.8+ executable module
+  Size: ~6.5 KB
+  Lines: 173
+  Dependencies: csv, json, datetime, collections, argparse, hashlib
+  Purpose: Main automation engine (CSV I/O, dependency mapping, risk calculation)
+  Usage: python3 tcap_task_automation.py [report|risk|update|dependencies]
+  Status: ✅ TESTED & FUNCTIONAL
+
+File: tcap_automation.sh
+  Type: Bash shell script (executable)
+  Size: ~2.1 KB
+  Lines: 70
+  Dependencies: python3, csv, datetime, rsync (optional)
+  Purpose: Orchestration script for daily/weekly/monthly automation cycles
+  Usage: ./tcap_automation.sh [daily|weekly|monthly]
+  Status: ✅ READY FOR CRON SCHEDULING
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION
+
+File: TCAP_Interactive_Dashboard_README.md
+  Type: Markdown documentation
+  Size: ~14 KB
+  Lines: 420+
+  Purpose: Comprehensive user guide with quick-start, command reference, troubleshooting
+  Sections:
+    • System Overview (5 capabilities)
+    • Quick Start (4 steps)
+    • Command Reference (Python & Bash)
+    • Risk Radar Interpretation
+    • Dependency Phases (8 project phases)
+    • Weekly Checklist
+    • Customization Guide
+    • Troubleshooting
+    • Appendix (Ops Manual patterns)
+  Status: ✅ READY FOR DISTRIBUTION
+
+File: TCAP_DEPLOYMENT_SUMMARY.txt
+  Type: Text summary & quick reference
+  Size: ~8.5 KB
+  Lines: 250+
+  Purpose: Executive summary, file manifest, next steps, quick reference
+  Sections:
+    • System Status & Deliverables
+    • System Capabilities (5 features)
+    • Critical Findings (3 priority escalations)
+    • Quick Start (3 steps)
+    • Weekly Checklist
+    • Ops Manual Patterns Implemented
+    • Next Actions (immediate/short/medium/ongoing)
+    • Troubleshooting
+  Status: ✅ START HERE
+
+File: tcap_cron_setup.txt
+  Type: Configuration text
+  Size: ~0.8 KB
+  Lines: 12
+  Purpose: Copy-paste ready cron examples for scheduling automation
+  Contains:
+    • Daily report generation (6 AM weekdays)
+    • Weekly comprehensive review (Monday 9 AM)
+    • Monthly archive & snapshot (1st of month 8 AM)
+    • Backup to external storage (nightly)
+  Status: ✅ READY TO PASTE INTO CRONTAB
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 DATA & REPORTS
+
+File: TCAP_Task_Status_Risk_Tracking.csv
+  Type: Comma-separated values (data table)
+  Size: ~3.2 KB
+  Rows: 21 (1 header + 20 tasks)
+  Columns: 13 (Task ID, Name, Section, Owner, Status, Due Date, Days Overdue, 
+                Legal Risk, Fiscal Risk, Operational Risk, Blocker Count, 
+                Critical Path Rank, Action Required)
+  Purpose: Master export of task status + risk assessment
+  Updated: Automatically by tcap_task_automation.py
+  Sample Data:
+    • TASK_000: Set scope guardrails | 19 blockers | CRITICAL
+    • TASK_001: Refine research question | 0 blockers | OVERDUE 83d
+    • TASK_004: Identify funding streams | 1 blocker | OVERDUE 74d
+    • TASK_008: Legal feasibility | 4 blockers | LEGAL RISK HIGH
+  Status: ✅ GENERATED & CURRENT (as of 2025-12-14 21:58 UTC)
+
+File: TCAP_Version_History_Audit_Log.txt
+  Type: Formatted text report
+  Size: ~9.8 KB
+  Lines: 280+
+  Purpose: Version control, risk escalation log, dependency gate analysis
+  Sections:
+    • Version 0.1 Baseline (initialization snapshot)
+    • Risk Escalation Log (CRITICAL, ELEVATED, LOW)
+    • Dependency Gate Analysis (8 phases, 20 tasks)
+    • Recommended Immediate Actions (5 priorities)
+    • Next Steps & Archival Instructions
+  Key Findings:
+    • Fiscal Risk: 18/60 (CRITICAL) — flags TASK_001, TASK_004, TASK_006
+    • Legal Risk: 6/60 (ELEVATED) — flags TASK_008, TASK_019
+    • Operational Risk: 3/60 (LOW) — on track
+    • 19 tasks overdue (Sept/Oct 2025 due dates)
+    • 5 deliverable tasks with 15 blockers each (critical path)
+  Status: ✅ GENERATED & READY FOR REVIEW
+
+File: NYC_Housing_Subsidy_Ops_Tasks_Notion.csv
+  Type: Master task file (CSV)
+  Size: ~2.8 KB
+  Rows: 21 (1 header + 20 tasks)
+  Columns: 9 (Task, Section, Owner Persona, Status, Due Date, Frequency, Trigger, Artifact, Notes)
+  Purpose: Source of truth for all 20 project tasks
+  Phases: 8 (Intake→Research→Drafting→Decision→QA→Automation→Version Control→Deliverables)
+  Status: ✅ BASELINE LOADED (ready for updates)
+  Update Method: python3 tcap_task_automation.py update --task-id [N] --status [STATUS]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 SUMMARY BY FILE TYPE
+
+EXECUTABLE SCRIPTS (2):
+  • tcap_task_automation.py        (Python main engine)
+  • tcap_automation.sh             (Bash orchestrator)
+
+DOCUMENTATION (2):
+  • TCAP_Interactive_Dashboard_README.md      (comprehensive guide)
+  • TCAP_DEPLOYMENT_SUMMARY.txt   (quick reference)
+
+CONFIGURATION (1):
+  • tcap_cron_setup.txt           (scheduling examples)
+
+DATA & REPORTS (3):
+  • NYC_Housing_Subsidy_Ops_Tasks_Notion.csv  (master tasks)
+  • TCAP_Task_Status_Risk_Tracking.csv        (status + risk export)
+  • TCAP_Version_History_Audit_Log.txt        (version control)
+
+MANIFEST (1):
+  • TCAP_FILE_MANIFEST.txt        (this file)
+
+TOTAL: 9 files | ~45 KB | Fully integrated & tested
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 INSTALLATION CHECKLIST
+
+Before first use, verify:
+
+  ☐ All 9 files copied to project directory
+  ☐ tcap_automation.sh is executable: chmod +x tcap_automation.sh
+  ☐ Python 3.8+ installed: python3 --version
+  ☐ CSV file readable: ls -la NYC_Housing_Subsidy_Ops_Tasks_Notion.csv
+  ☐ No special characters in file paths
+  ☐ Sufficient disk space (backups/ and archives/ folders will be created)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 QUICK START COMMANDS
+
+Initialize system:
+  $ python3 tcap_task_automation.py report
+
+View risk assessment:
+  $ python3 tcap_task_automation.py risk
+
+Update task status:
+  $ python3 tcap_task_automation.py update --task-id 1 --status "In Progress"
+
+Run daily automation:
+  $ ./tcap_automation.sh daily
+
+Schedule for cron:
+  $ crontab -e
+  # Add lines from tcap_cron_setup.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 FILE DEPENDENCIES & RELATIONSHIPS
+
+NYC_Housing_Subsidy_Ops_Tasks_Notion.csv
+  ├─ READ BY: tcap_task_automation.py, tcap_automation.sh
+  └─ UPDATED BY: tcap_task_automation.py (update command)
+
+tcap_task_automation.py
+  ├─ READS: NYC_Housing_Subsidy_Ops_Tasks_Notion.csv
+  ├─ GENERATES: TCAP_Task_Status_Risk_Tracking.csv
+  ├─ GENERATES: TCAP_Status_Report.txt
+  └─ CALLED BY: tcap_automation.sh
+
+tcap_automation.sh
+  ├─ EXECUTES: tcap_task_automation.py
+  ├─ CREATES: backups/TCAP_Tasks_v[TIMESTAMP].csv
+  ├─ CREATES: archives/TCAP_Tasks_[MONTH].tar.gz
+  └─ CALLED BY: cron (scheduled)
+
+TCAP_DEPLOYMENT_SUMMARY.txt
+  └─ REFERENCE: Executive overview & next steps
+
+TCAP_Interactive_Dashboard_README.md
+  └─ REFERENCE: Comprehensive user guide
+
+tcap_cron_setup.txt
+  └─ REFERENCE: Cron scheduling examples
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ FEATURES ENABLED BY THIS PACKAGE
+
+✅ CSV Read/Write (Bidirectional)
+   Files: NYC_Housing_Subsidy_Ops_Tasks_Notion.csv ←→ tcap_task_automation.py
+
+✅ Dependency Visualization
+   Output: TCAP_Task_Status_Risk_Tracking.csv (blocker counts per task)
+
+✅ Risk Radar (Legal/Fiscal/Operational)
+   Output: TCAP_Task_Status_Risk_Tracking.csv + TCAP_Version_History_Audit_Log.txt
+
+✅ Version History & Audit Trail
+   Output: TCAP_Version_History_Audit_Log.txt (timestamped snapshots)
+
+✅ Automated Report Generation
+   Output: TCAP_Status_Report.txt (daily/weekly/monthly cycles)
+
+✅ Cron Scheduling
+   Config: tcap_cron_setup.txt + tcap_automation.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 SUPPORT
+
+Question                      | See File
+──────────────────────────────┼────────────────────────────────────────
+How do I get started?         | TCAP_DEPLOYMENT_SUMMARY.txt (first)
+How do I use the commands?    | TCAP_Interactive_Dashboard_README.md
+What tasks are critical?      | TCAP_Version_History_Audit_Log.txt
+How do I update tasks?        | TCAP_Interactive_Dashboard_README.md (Command Reference)
+How do I set up cron?         | tcap_cron_setup.txt
+What are the risk scores?     | TCAP_Task_Status_Risk_Tracking.csv
+How do I customize?           | TCAP_Interactive_Dashboard_README.md (Customization)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎓 NEXT STEPS
+
+1. Read: TCAP_DEPLOYMENT_SUMMARY.txt (2 min)
+2. Copy: All 9 files to your project directory
+3. Run: python3 tcap_task_automation.py report
+4. Review: Risk escalations in TCAP_Version_History_Audit_Log.txt
+5. Action: Escalate TASK_001 & TASK_004 to stakeholders
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Generated: 2025-12-14 22:00 UTC
+System: TCAP Housing Subsidy Reform Interactive Dashboard v0.1
+Status: ✅ READY FOR DEPLOYMENT

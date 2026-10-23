@@ -1,0 +1,34 @@
+================================================================================
+TCAP HOUSING SUBSIDY REFORM - TASK STATUS REPORT
+Generated: 2025-12-14T23:31:09.170374
+================================================================================
+
+STATUS BREAKDOWN:
+  Intake/Triage          1 (  5.0%)
+  Not Started           19 ( 95.0%)
+
+RISK ASSESSMENT:
+  LEGAL                  6 / 60
+  FISCAL                18 / 60
+  OPERATIONAL            3 / 60
+
+OVERDUE TASKS (19):
+  [86d] Adopt file naming: MASTER_v VERSION _YYYYMMDD.docx
+  [83d] Refine core research question into measurable KPIs
+  [82d] Create fact-check rubric for stats laws budgets
+  [81d] Save Works Cited in separate APA master
+  [78d] Map existing NYC/NYS/HUD subsidy programs
+  [76d] Generate shell skeletons for APA checks and data pulls
+  [74d] Identify funding streams for tenant equity and HOA reserves
+  [70d] Assemble comparative models (e.g. Vienna)
+  [67d] Draft v1: Problem Solution Governance Funding
+  [64d] Equity impact analysis with disaggregated data
+  [64d] Legal feasibility crosswalk (Title IV/IX/ADA/504 procurement
+  [62d] List 3–5 policy mechanisms with pros/cons
+  [60d] Select credit-union partnership model
+  [58d] Run Fact Check against all claims and stats
+  [56d] Resolve green flags or log as risks
+  [55d] Produce 1-pager summary
+  [54d] Produce 2-page briefing memo
+  [53d] Build slide deck outline
+  [48d] Appendices: cost model legal templates charts
