@@ -484,3 +484,10 @@ ______________________________________________________________________
 - **Creation method:** Codex-assisted curation requested by the project owner through the connected GitHub account.
 - **Verification:** Nine public repository metadata records, maintainer READMEs, default-branch head SHAs and pinned README links retrieved on 2026-10-23. Archived db-pluto replacement notice inspected. CSV schema and row counts checked; proposed Git diff inspected before PR delivery.
 - **Limits:** No upstream code executed, datasets reproduced, legal authority certified or complete agency coverage claimed. License metadata flagged where unresolved. Selection and application notes are generated analyst judgments. No merge or adoption approval implied.
+
+
+## COPA fiscal attachment recovery — 2026-10-23
+
+- AI-assisted recovery of public Council attachment 58 for Intro 905-A; source DOCX bytes preserved as base64 and derivative text in `policy-research/20261023/`.
+- Direct download returned HTTP 200; XML extraction and both rendered pages visually checked. SHA-256 and source URL recorded in source registry.
+- Verified source content; policy interpretation remains proposed. No private portfolio text included. No code changed; no runtime tests required.
