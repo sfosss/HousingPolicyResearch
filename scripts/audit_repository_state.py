@@ -386,11 +386,13 @@ def main() -> int:
     )
     if args.json_output:
         args.json_output.parent.mkdir(parents=True, exist_ok=True)
-        args.json_output.write_text(json.dumps(report, indent=2) + "\n")
+        args.json_output.write_text(
+            json.dumps(report, indent=2) + "\n", encoding="utf-8"
+        )
     markdown = render_markdown(report)
     if args.markdown_output:
         args.markdown_output.parent.mkdir(parents=True, exist_ok=True)
-        args.markdown_output.write_text(markdown)
+        args.markdown_output.write_text(markdown, encoding="utf-8")
     else:
         print(markdown)
     return 0

@@ -1,6 +1,6 @@
 # CI repair reconciliation — 2026-10-23
 
-Version: 1.2. Proposed for review. Baseline: `873590d24b0cf24c35dc4e5c47aa807295a39838`.
+Version: 1.3. Proposed for review. Baseline: `873590d24b0cf24c35dc4e5c47aa807295a39838`.
 
 ## Decisions
 
@@ -39,7 +39,7 @@ It has no bypass actors. Existing deletion/force-push protections remain. Classi
 
 ## Validation and limits
 
-The isolated local checkout was reconstructed through the GitHub connection because local network/DNS access and GitHub CLI authentication were unavailable. Its pre-change Git tree exactly matched main tree `527275cef0acfa675b3522605463bc2a5319023e`. The local baseline passed 24 tests and all configured formatting hooks. The reconciled audit initially added five tests. Review fixes add regressions for unavailable API summaries, strict manifest fields/types and Markdown table escaping; local pytest now reports 48 passed and pip check passes. Native Python 3.11 and matrix validation must pass on the final PR revision before integration.
+The isolated local checkout was reconstructed through the GitHub connection because local network/DNS access and GitHub CLI authentication were unavailable. Its pre-change Git tree exactly matched main tree `527275cef0acfa675b3522605463bc2a5319023e`. The local baseline passed 24 tests and all configured formatting hooks. The reconciled audit initially added five tests. Review fixes add regressions for unavailable API summaries, strict manifest fields/types and Markdown table escaping; local pytest now reports 49 passed and pip check passes. Native Python 3.11 and matrix validation must pass on the final PR revision before integration.
 
 The audit's hosted endpoint behavior is not exercised live in local tests. Alert permissions can be unavailable; reports must retain coverage limits. Provider-side rotation, complete secret scanning, Git history cleanup, live external integrations, PDF rendering and release publication are not certified. The publication workflow is not run during this review because it creates releases.
 
@@ -61,3 +61,7 @@ Proposal generation now force-adds only its ignored output file and pushes the r
 ## Coverage review
 
 Task discovery uses Git's tracked/untracked file inventory with standard ignore rules and negations, skips symlinked paths, and rejects invalid or inaccessible roots. The root must be inside a Git working tree. Empty trackers retain their headers. Both partial and complete API failure remain unavailable rather than zero/missing credentials; pagination accepts GitHub's canonical repository URL alias while rejecting other origins. Manual proposal runs explicitly check out main so their comparison link uses the actual source branch. These cases have fixture-based regressions and no live API calls.
+
+## Portable report encoding
+
+JSON and Markdown report files are written explicitly as UTF-8. A CLI regression disables UTF-8 locale coercion and verifies that emoji status values survive both output formats. Local regression count: 49.
