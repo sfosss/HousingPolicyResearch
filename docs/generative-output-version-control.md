@@ -15,6 +15,14 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ## Inventory of Generative Outputs
 
+### Remaining action modernization — 2026-10-23
+
+- **Version:** 1.0; proposed after the CI reconciliation.
+- **Files:** docs/actions-node24-migration-2026-10-23.md; workflow action pins and the read-only Action Compatibility smoke workflow.
+- **Creation method:** Codex-assisted runtime migration from official maintainer action manifests.
+- **Verification:** Full action SHAs and declared runtimes inspected; local tests/YAML/reference checks and native workflow results recorded in the PR.
+- **Limits:** Quarto installation is exercised without publication; live release creation and PDF rendering are not tested. Merge the reconciliation first to remove direct publication pushes to main.
+
 ### Merge-readiness audit corrections — 2026-10-23
 
 - **Version:** 1.6; follow-up review of #143 before integration.
