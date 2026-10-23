@@ -40,7 +40,11 @@ class ServiceCheck:
             return False, "Skipping (credentials not configured)"
 
         try:
-            response = requests.get(self.url, timeout=TIMEOUT, headers=self.headers)
+            response = requests.get(
+                self.url,
+                timeout=TIMEOUT,
+                headers=self.headers,
+            )
             response.raise_for_status()
         except (
             requests.exceptions.HTTPError

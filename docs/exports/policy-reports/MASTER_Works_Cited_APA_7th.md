@@ -80,9 +80,9 @@ Bipartisan Policy Center. (2025, October 24). *Reforming the housing choice vouc
 
 Center on Budget and Policy Priorities. (2023). *Moving to work housing program raises serious concerns*. Retrieved from https://www.cbpp.org/research/moving-to-work-housing-program-raises-serious-concerns
 
-Government Accountability Office. (2018). *Moving to Work: HUD needs to strengthen oversight and evaluation of demonstration agencies* (Report GAO-18-150). Retrieved from https://www.gao.gov/assets/gao-18-150.pdf
+Government Accountability Office. (2018). *Moving to Work: HUD needs to strengthen oversight and evaluation of demonstration agencies* (Report GAO-18-150). Retrieved from https://www.gao.gov/products/GAO-18-150
 
-Government Accountability Office. (2012). *Moving to Work: Lessons learned could improve HUD oversight and agency performance* (Report GAO-12-490). Retrieved from https://www.gao.gov/assets/gao-12-490.pdf
+Government Accountability Office. (2012). *Moving to Work: Lessons learned could improve HUD oversight and agency performance* (Report GAO-12-490). Retrieved from https://www.gao.gov/products/GAO-12-490
 
 Housing and Urban Development. (2024, December 31). *Housing choice voucher tenants*. Retrieved from https://www.hud.gov/helping-americans/housing-choice-vouchers-tenants
 
@@ -140,7 +140,7 @@ ______________________________________________________________________
 
 ## J. GENERAL HOUSING POLICY & RESEARCH
 
-Byrne, J. P., Fox-Karvalis, A., & Gorton, J. (2021). *Renter in the COVID-19 pandemic: Policy responses and ongoing challenges*. Housing Policy Debate, 31(3–4), 451–479. https://doi.org/10.1080/10511482.2021.1893274
+Byrne, J. P., Fox-Karvalis, A., & Gorton, J. (2021). *Renter in the COVID-19 pandemic: Policy responses and ongoing challenges*. Housing Policy Debate, 31(3–4), 451–479. https://doi.org/10.1080/10511482.2021.1893274 \[Paywalled\]
 
 Desmond, M. (2016). *Evicted: Poverty and profit in the American city*. Crown Publishers.
 

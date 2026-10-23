@@ -99,7 +99,7 @@ ______________________________________________________________________
 OpenJS Foundation. (n.d.). *Node.js documentation*. Node.js. https://nodejs.org/
 
 **Annotation:**
-JavaScript runtime required for Codex CLI and npm-based automation tools. Prerequisite for development environment setup.
+JavaScript runtime required for npm-based automation tools and OpenAI Node.js SDK. Prerequisite for development environment setup.
 
 **Quality:** `[Primary source]` `[Technical documentation]`\
 **Used in:** [`docs/integration-plan.md`](integration-plan.md#1-prerequisites), [`README.md`](../README.md)\
@@ -107,13 +107,13 @@ JavaScript runtime required for Codex CLI and npm-based automation tools. Prereq
 
 ______________________________________________________________________
 
-#### Python 3.10+
+#### Python 3.11+
 
 **Citation:**
-Python Software Foundation. (n.d.). *Python 3.10 documentation*. Python.org. https://docs.python.org/3.10/
+Python Software Foundation. (n.d.). *Python 3.11 documentation*. Python.org. https://docs.python.org/3.11/
 
 **Annotation:**
-Python runtime required for API clients, data synchronization scripts, and automation workflows. Minimum version 3.10 specified for project compatibility.
+Python runtime required for API clients, data synchronization scripts, and automation workflows. Minimum version 3.11 specified for project compatibility.
 
 **Quality:** `[Primary source]` `[Technical documentation]`\
 **Used in:** [`docs/integration-plan.md`](integration-plan.md#1-prerequisites)\
@@ -454,3 +454,17 @@ ______________________________________________________________________
 **Questions or suggestions?** Open an issue with the label `documentation` to propose additions or corrections to this index.
 
 **Citation style questions?** Refer to [`docs/STYLE-APA.md`](STYLE-APA.md) or open an issue for clarification.
+
+## PET/TCAP external repositories — proposed 2026-10-23
+
+See the [curated registry](external-repositories.md) and [filterable CSV](external-repositories.csv). All entries are code/data tools, not legal authority. Proposed applications and quality limits follow; all links and pinned README snapshots were retrieved on October 23, 2026.
+
+- NYCDB contributors. (n.d.). *nycdb* \[Source code\]. GitHub. Retrieved October 23, 2026, from [nycdb/nycdb](https://github.com/nycdb/nycdb). Load property and enforcement baselines for candidate screening. Quality: Community ETL; Core; not legal authority. Third-party transformations; NYCHA BBL coverage is not household eligibility; validate dataset vintages and BBL joins.
+- JustFix. (n.d.). *who-owns-what* \[Source code\]. GitHub. Retrieved October 23, 2026, from [JustFixNYC/who-owns-what](https://github.com/JustFixNYC/who-owns-what). Map ownership associations to investigate acquisition candidates. Quality: Tenant advocacy tool; Core; not legal authority. Associations are investigative leads rather than verified title or beneficial ownership; verify against underlying records.
+- New York City Department of City Planning. (n.d.). *data-engineering* \[Source code\]. GitHub. Retrieved October 23, 2026, from [NYCPlanning/data-engineering](https://github.com/NYCPlanning/data-engineering). Inspect DCP data production and source lineage before building parcel baselines. Quality: Agency data pipelines; Core; not legal authority. Build output may be draft; use approved published releases and record dataset vintage. Replaces archived db-pluto.
+- NYC Planning Labs. (n.d.). *labs-community-profiles* \[Source code\]. GitHub. Retrieved October 23, 2026, from [NYCPlanning/labs-community-profiles](https://github.com/NYCPlanning/labs-community-profiles). Use community district indicator patterns to design neighborhood distributional reporting. Quality: Agency visualization code; Supporting; not legal authority. README references a 202402 table and legacy services; do not infer current demographic estimates from repository activity.
+- City of New York. (n.d.). *ACCESS-NYC* \[Source code\]. GitHub. Retrieved October 23, 2026, from [CityOfNewYork/ACCESS-NYC](https://github.com/CityOfNewYork/ACCESS-NYC). Study multilingual resident navigation and benefits screening interfaces for implementation planning. Quality: City service website code; Supporting; not legal authority. Website code is not HRA administrative rules or a complete eligibility engine; program information and screening services are separate dependencies.
+- PolicyEngine. (n.d.). *policyengine-us* \[Source code\]. GitHub. Retrieved October 23, 2026, from [PolicyEngine/policyengine-us](https://github.com/PolicyEngine/policyengine-us). Explore NY household resource changes with explicit policy-year and parameter assumptions. Quality: Independent tax-benefit model; Conditional; not legal authority. README deprecates direct aggregate microsimulation in favor of policyengine.py; separately vet that package before use. NYC program coverage and calibration remain unverified; not an agency budget model.
+- Kyle Walker and contributors. (n.d.). *tidycensus* \[Source code\]. GitHub. Retrieved October 23, 2026, from [walkerke/tidycensus](https://github.com/walkerke/tidycensus). Retrieve ACS and decennial baselines for NYC geographies. Quality: Independent Census API client; Supporting; not legal authority. Not Census-endorsed; retain margins of error and survey vintage; avoid household inference from area averages.
+- JustFix. (n.d.). *nycha-scraper* \[Source code\]. GitHub. Retrieved October 23, 2026, from [JustFixNYC/nycha-scraper](https://github.com/JustFixNYC/nycha-scraper). Understand provenance of a historical NYCHA block-and-lot crosswalk. Quality: PDF extraction utility; Historical only; not legal authority. README targets August 27, 2018 guide; do not use as current NYCHA inventory or evidence of transfer eligibility.
+- BetaNYC. (n.d.). *New-York-City-Budget* \[Source code\]. GitHub. Retrieved October 23, 2026, from [BetaNYC/New-York-City-Budget](https://github.com/BetaNYC/New-York-City-Budget). Inspect structured Council designations and their provenance when assessing funding streams. Quality: Civic fiscal data extraction; Conditional; not legal authority. Use structured 2.0 sources only; retired PDF extracts have known errors. Designations are not expenditure actuals or proof of reusable HPD/HRA/NYCHA appropriations. Independently reconcile relied-on figures.

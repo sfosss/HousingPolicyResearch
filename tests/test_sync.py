@@ -43,18 +43,12 @@ def test_sync_database_updates_summary_and_appends_change_log():
     notion_client.pages.update.assert_called_once()
     update_kwargs = notion_client.pages.update.call_args.kwargs
     assert update_kwargs["page_id"] == "page-123"
-    assert (
-        update_kwargs["properties"]["Summary"]["rich_text"][0]["text"][
-            "content"
-        ]
-        == "A compact summary"
-    )
+    content = update_kwargs["properties"]["Summary"]["rich_text"][0]["text"]["content"]
+    assert content == "A compact summary"
 
     mock_append.assert_called_once()
-    assert (
-        mock_append.call_args.kwargs["change_log_page_id"]
-        == "page-change-log"
-    )
+    change_log_page_id = mock_append.call_args.kwargs["change_log_page_id"]
+    assert change_log_page_id == "page-change-log"
 
 
 def test_sync_database_skips_change_log_when_id_missing():

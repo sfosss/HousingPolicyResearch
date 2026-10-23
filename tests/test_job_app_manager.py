@@ -55,12 +55,15 @@ def test_generate_template_creates_csv(tmp_path):
     row = content[1]
     assert "drafted" in row[0]
     assert "policy" in ",".join(content[1])
-    assert row[-2] in {"due_soon", "overdue", "scheduled", "unspecified"}
+    assert row[-2] in {
+        "due_soon",
+        "overdue",
+        "scheduled",
+        "unspecified",
+    }
 
 
-def test_configure_repository_structure_initialises_directories(
-    tmp_path, monkeypatch
-):
+def test_configure_repository_structure_initialises_directories(tmp_path, monkeypatch):
     icloud = tmp_path / "icloud"
     github_parent = tmp_path / "github"
     github = github_parent / "JobApps"
@@ -72,11 +75,11 @@ def test_configure_repository_structure_initialises_directories(
 
     monkeypatch.setattr(jam, "initialise_git_repository", fake_init)
 
-    results = jam.configure_repository_structure(
-        icloud, github_parent, "JobApps"
-    )
-    assert (icloud / jam.REMINDERS_SUBDIR).exists()
-    assert (github / jam.REMINDERS_SUBDIR).exists()
+    results = jam.configure_repository_structure(icloud, github_parent, "JobApps")
+    reminders_icloud = icloud / jam.REMINDERS_SUBDIR
+    reminders_github = github / jam.REMINDERS_SUBDIR
+    assert reminders_icloud.exists()
+    assert reminders_github.exists()
     assert (github / jam.APPLICATIONS_SUBDIR).exists()
     assert called["path"] == github
     assert results == [
@@ -92,9 +95,7 @@ def test_resolve_github_repo_path_accepts_full_path(tmp_path):
 
 
 def test_describe_deadline_handles_overdue_and_pending():
-    overdue, label = jam.describe_deadline(
-        "2023-01-01", today=date(2023, 1, 10)
-    )
+    overdue, label = jam.describe_deadline("2023-01-01", today=date(2023, 1, 10))
     assert overdue == "-9"
     assert label == "overdue"
 

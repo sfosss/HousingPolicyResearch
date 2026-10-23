@@ -10,12 +10,12 @@ This repository hosts documentation and tooling for collaborative research on ho
 
 ## Tooling Overview
 
-| Tool            | Purpose                                                          | Notes                                                                     |
-| --------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| ChatGPT / Codex | Draft analytical memos, code snippets, and summaries.            | Secure API keys via environment variables or GitHub secrets.              |
-| Notion          | Organize meeting notes, project plans, and shared knowledge.     | Configure a private integration and restrict shared pages.                |
-| GitHub          | Version control for documentation, data scripts, and automation. | Enable branch protection and use pull requests for review.                |
-| Zotero          | Manage research references and citations.                        | Maintain a dedicated group library and export bibliographies to the repo. |
+| Tool       | Purpose                                                          | Notes                                                                     |
+| ---------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| OpenAI API | Draft analytical memos, code snippets, and summaries.            | Secure API keys via environment variables or GitHub secrets.              |
+| Notion     | Organize meeting notes, project plans, and shared knowledge.     | Configure a private integration and restrict shared pages.                |
+| GitHub     | Version control for documentation, data scripts, and automation. | Enable branch protection and use pull requests for review.                |
+| Zotero     | Manage research references and citations.                        | Maintain a dedicated group library and export bibliographies to the repo. |
 
 ## Security Practices
 
@@ -33,11 +33,10 @@ This repository hosts documentation and tooling for collaborative research on ho
 ## Support
 
 If you encounter configuration issues or discover missing documentation, open a GitHub issue with detailed context so the team can respond quickly.
-This repository centralizes documentation, tooling plans, and integration guidelines for the Housing Policy Research project.
 
 ## Documentation
 
-- [Environment Integrations and Documentation](docs/environment-integrations.md): describes the end-to-end setup for secure, bidirectional connections between ChatGPT, Codex automations, Notion, GitHub, and Zotero, and outlines follow-up tasks for the project workspace.
+- [Environment Integrations and Documentation](docs/environment-integrations.md): describes the end-to-end setup for secure, bidirectional connections between OpenAI API, Notion, GitHub, and Zotero, and outlines follow-up tasks for the project workspace.
 - [Workspace Readiness and Outstanding Setup](docs/workspace-readiness.md): actionable checklist for finishing the Raycast extension build, Quarto/APA installation, secrets configuration, and shortcut automation.
 - `SECURITY.md`: organization-wide security policies.
 
@@ -62,16 +61,13 @@ This repository centralizes documentation, tooling plans, and integration guidel
 └── README.md              # This overview
 ```
 
-1. Review the [Environment Integration and Documentation Plan](docs/integration-plan.md) for platform-specific setup steps.
-1. Copy `.env.template` to `.env` and add the required secrets for ChatGPT, Codex, Notion, GitHub, and Zotero.
-1. Install the Codex CLI (requires Node.js):
-   ```bash
-   ./setup.sh
-   ```
+2. Review the [Environment Integration and Documentation Plan](docs/integration-plan.md) for platform-specific setup steps.
 1. Copy `.env.template` to `.env` and add the required secrets for OpenAI, Notion, GitHub, and Zotero.
-1. Activate the virtual environment:
+1. Create a virtual environment and install dependencies:
    ```bash
-   source .venv/bin/activate
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
    ```
 1. Validate third-party connections (requires configured environment variables):
    ```bash
@@ -82,18 +78,25 @@ This repository centralizes documentation, tooling plans, and integration guidel
 
 ## Repository Structure
 
+- `Capstone/` – Data indexes and cross-chat CSV exports (automation target for [`scripts/cross-chat-sync.sh`](scripts/cross-chat-sync.sh)).
+- `capstone/` – Capstone documentation and narrative materials.
+- `comments/` – Project discussion artifacts and proposals.
+- `data/` – Research datasets (planned).
 - `docs/` – Integration architecture, security controls, universal linking guidance, and task breakdown.
+- `docs/resource-index.md` – Entry point for finding documentation and archiving generative outputs.
   - `STYLE-APA.md` – Citation standards based on APA 7th edition
   - `resources-index.md` – Comprehensive catalog of research sources with annotations
   - `resources.csv` – Machine-readable resource database for automation
   - `generative-output-version-control.md` – Tracking and verification of AI-generated content
+- `references/` – Bibliography exports from Zotero (planned).
+- `scripts/` – Automation scripts for data and chat exports.
 - `SECURITY.md` – Security policy and responsible disclosure instructions.
 - `capstone/` – Structured capstone documentation that replaces the legacy `Capstone alias` export.
 - `comments/` – Project discussion artifacts, proposals, and issue coordination documents.
 
 > **Note:** Some directories are placeholders that will be populated as the integrations described in the documentation are implemented.
 
-## Getting Started
+## Additional Resources
 
 For additional context on automation scripts, secret management, and cross-platform workflows, see [docs/integration-plan.md](docs/integration-plan.md) and the capstone notes in [`capstone/`](capstone/README.md).
 

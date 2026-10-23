@@ -1,0 +1,87 @@
+name: Preflight Health Checks
+
+on:
+  push:
+    branches:
+      - main
+      - 'capstone/**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  prepare-tooling:
+    name: Prepare portable tooling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tooling
+        uses: actions/checkout@v4
+        with:
+          # Git for Windows rejects research paths even in a sparse index.
+          # Stage only the tooling on Linux; never check out exports on Windows.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/
+            /src/
+            /tests/
+            /pyproject.toml
+            /requirements.txt
+
+      - name: Stage portable tooling
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-tooling-${{ github.run_number }}
+          path: |
+            scripts/
+            src/
+            tests/
+            pyproject.toml
+            requirements.txt
+          retention-days: 1
+          if-no-files-found: error
+
+  preflight:
+    name: Preflight Checks (${{ matrix.platform }})
+    needs: prepare-tooling
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            platform: macOS arm64
+          - os: ubuntu-latest
+            platform: Linux
+          - os: windows-latest
+            platform: Windows
+    steps:
+      - name: Download portable tooling
+        uses: actions/download-artifact@v4
+        with:
+          name: preflight-tooling-${{ github.run_number }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test preflight reporting and failure handling
+        run: python -m unittest discover -s tests -p test_preflight_check.py
+
+      - name: Run preflight checks
+        run: python scripts/preflight_check.py
+
+      - name: Upload preflight reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-${{ matrix.os }}-${{ github.run_number }}
+          path: reports/preflight/
+          retention-days: 30
+          if-no-files-found: error

@@ -1,34 +1,39 @@
 # Environment Integration and Documentation Plan
 
-This document captures the setup guidance and project tasks required to connect ChatGPT, Codex, Notion, GitHub, and Zotero securely for the Housing Policy Research environment.
+This document captures the setup guidance and project tasks required to connect ChatGPT (OpenAI API), Notion, GitHub, and Zotero securely for the Housing Policy Research environment.
 
 ## 1. Prerequisites
 
 - **Node.js and npm**: Install the current LTS release from [nodejs.org](https://nodejs.org/).
-- **Python 3.10+**: Required for automation scripts or API clients.
+- **Python 3.11+**: Required for automation scripts or API clients.
 - **Package Managers**: `pipx` (Python) and `npm` (Node.js) are recommended for isolating tooling.
 - **Version Control**: Git 2.40+ configured with SSH and/or HTTPS credentials.
 - **Secret Storage**: Use a password manager or secret manager (e.g., 1Password, Bitwarden, GitHub Encrypted Secrets) to store API keys.
 
-### Installing the Codex CLI
+### OpenAI API Integration
 
-To install the Codex CLI globally once Node.js is available, run:
+OpenAI's API can be accessed through the official `openai` Python package or Node.js SDK. Install via your preferred package manager:
+
+**Python:**
 
 ```bash
-npm install -g @openai/codex
+pip install openai
 ```
 
-If global installs are restricted, use `npx @openai/codex` or install inside a project-specific `node_modules` directory.
+**Node.js:**
+
+```bash
+npm install openai
+```
 
 ## 2. Secure Connection Architecture
 
-| System        | Purpose                              | Required Credentials                            | Storage Recommendation                |
-| ------------- | ------------------------------------ | ----------------------------------------------- | ------------------------------------- |
-| ChatGPT (API) | Conversational automation & analysis | OpenAI API key                                  | Environment variables or secret store |
-| Codex CLI     | Code generation & command assistance | Same OpenAI API key                             | `.env` files excluded from Git        |
-| Notion        | Knowledge base & documentation       | Notion integration token & database IDs         | Secret manager + local `.env` file    |
-| GitHub        | Source control & Actions             | Personal access token (PAT) with minimal scopes | Git credential manager or SSH keys    |
-| Zotero        | Reference management                 | Zotero API key and library ID                   | Secret manager + `.env` file          |
+| System     | Purpose                                 | Required Credentials                            | Storage Recommendation                |
+| ---------- | --------------------------------------- | ----------------------------------------------- | ------------------------------------- |
+| OpenAI API | AI assistance, analysis, and automation | OpenAI API key                                  | Environment variables or secret store |
+| Notion     | Knowledge base & documentation          | Notion integration token & database IDs         | Secret manager + local `.env` file    |
+| GitHub     | Source control & Actions                | Personal access token (PAT) with minimal scopes | Git credential manager or SSH keys    |
+| Zotero     | Reference management                    | Zotero API key and library ID                   | Secret manager + `.env` file          |
 
 The recommended pattern is:
 
@@ -39,20 +44,27 @@ The recommended pattern is:
 
 ## 3. Connection Workflows
 
-### 3.1 ChatGPT & Codex
+### 3.1 OpenAI API
 
 1. Generate an OpenAI API key from the OpenAI dashboard.
 
-1. Export the key before running CLI tools:
+1. Export the key as an environment variable:
 
    ```bash
    export OPENAI_API_KEY="sk-..."
    ```
 
-1. Test the CLI:
+1. Test the API connection with a simple Python script:
 
-   ```bash
-   codex --help
+   ```python
+   from openai import OpenAI
+
+   try:
+       client = OpenAI()
+       models = client.models.list()
+       print("✓ OpenAI API connection successful")
+   except Exception as e:
+       print(f"✗ OpenAI API connection failed: {e}")
    ```
 
 1. Document standard prompts, rate limits, and logging practices in the team wiki.
@@ -83,7 +95,7 @@ The recommended pattern is:
 
 ## 4. Reverse Data Flows
 
-- **ChatGPT to GitHub**: Archive finalized prompts and responses into version-controlled markdown files.
+- **OpenAI to GitHub**: Archive finalized prompts and responses into version-controlled markdown files.
 - **GitHub to Notion**: Publish documentation updates to Notion knowledge bases.
 - **Notion to Zotero**: Convert curated reading lists into Zotero collections through the API.
 - **Zotero to GitHub**: Export annotations into the repository for reproducibility.
@@ -93,8 +105,13 @@ Automate each pipeline with CI jobs or scheduled tasks that authenticate using s
 ### Verification Steps for Secure Connections
 
 1. **Credential Audit** – Confirm each platform token (ChatGPT, Codex CLI, Notion, GitHub, Zotero) is present in both the local `.env` file (generated from `.env.template`) and the GitHub Secrets store with matching scopes.
-1. **Connection Tests** – Follow the commands listed in [`docs/connection-checks.md`](docs/connection-checks.md) and capture success logs in `logs/connection-checks/`.
+1. **Connection Tests** – Follow the commands listed in [docs/connection-checks.md](connection-checks.md) and capture success logs in `logs/connection-checks/`.
 1. **Reverse Flow Validation** – Execute the reverse synchronization paths (GitHub→Notion, Notion→Zotero, Zotero→GitHub, ChatGPT/Codex→GitHub) using the same checklist.
+1. **Security Review** – Verify that logs exclude sensitive payloads, rotate tokens post-test, and document findings in the capstone tracker within `capstone/`.
+1. **Readiness Sign-off** – Run through the [Environment Readiness Checklist](environment-readiness.md) before enabling CI jobs or scheduled syncs.
+1. **Credential Audit** – Confirm each platform token (OpenAI API, Notion, GitHub, Zotero) is present in both the local `.env` file (generated from `.env.template`) and the GitHub Secrets store with matching scopes.
+1. **Connection Tests** – Follow the commands listed in [`docs/connection-checks.md`](docs/connection-checks.md) and capture success logs in `logs/connection-checks/`.
+1. **Reverse Flow Validation** – Execute the reverse synchronization paths (GitHub→Notion, Notion→Zotero, Zotero→GitHub, OpenAI→GitHub) using the same checklist.
 1. **Security Review** – Verify that logs exclude sensitive payloads, rotate tokens post-test, and document findings in the capstone tracker within `capstone/`.
 
 ## 5. Security Controls
@@ -123,7 +140,7 @@ Automate each pipeline with CI jobs or scheduled tasks that authenticate using s
 1. **Secret Management Implementation**
 
    - Select a shared secret manager.
-   - Draft `.env.template` covering ChatGPT, Codex, Notion, GitHub, and Zotero keys.
+   - Draft `.env.template` covering OpenAI, Notion, GitHub, and Zotero keys.
 
 1. **Automation Scripts**
 
@@ -145,17 +162,17 @@ Automate each pipeline with CI jobs or scheduled tasks that authenticate using s
    - Establish ownership for each integration and define SLAs.
    - Schedule monthly review meetings; log decisions in Notion.
 
-## 9. Generative Output Roadmap
+## 8. Generative Output Roadmap
 
 For the actionable steps, see [`docs/generative-output-tasks.md`](docs/generative-output-tasks.md). Track the summarized workstreams in GitHub Projects and reference them from the `capstone/` documentation:
 
-1. **Prompt Library** – Curate reusable ChatGPT and Codex prompts aligned to housing policy research goals; version them in `docs/prompts/`.
+1. **Prompt Library** – Curate reusable OpenAI prompts aligned to housing policy research goals; version them in `docs/prompts/`.
 1. **Evaluation Harness** – Implement scripts that score generative outputs against acceptance criteria (accuracy, citation coverage, compliance).
 1. **Human-in-the-Loop Reviews** – Define reviewer roles, review cadences, and escalation paths for questionable outputs.
 1. **Data Governance** – Map data sources, retention policies, and redaction requirements before automating publication workflows.
 1. **Reporting Automation** – Combine data from GitHub issues, Notion databases, and Zotero annotations into scheduled briefs or dashboards.
 
-## 8. References
+## 9. References
 
 - [OpenAI API Documentation](https://platform.openai.com/docs/)
 - [Notion API Reference](https://developers.notion.com/reference/intro)

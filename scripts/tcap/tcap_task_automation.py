@@ -64,12 +64,20 @@ class TCAPTaskManager:
 
     def generate_risk_report(self):
         """Generate risk assessment by category"""
-        risk_scores = {"legal": 0, "fiscal": 0, "operational": 0}
+        risk_scores = {
+            "legal": 0,
+            "fiscal": 0,
+            "operational": 0,
+        }
 
         for task in self.tasks:
             task_text = (task.get("Task", "") + " " + task.get("Notes", "")).lower()
             status = task.get("Status", "Not Started")
-            status_map = {"Not Started": 3, "In Progress": 2, "Complete": 0}
+            status_map = {
+                "Not Started": 3,
+                "In Progress": 2,
+                "Complete": 0,
+            }
             multiplier = status_map.get(status, 2)
 
             legal_kws = ["legal", "title", "aida", "504", "procurement"]

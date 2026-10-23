@@ -84,7 +84,9 @@ def append_change_log(
 ) -> None:
     """Append an entry to the change log page."""
 
-    message = f"Updated {page.get('title') or page.get('id')} summary: {summary_text}"
+    message = (
+        f"Updated {page.get('title') or page.get('id')} summary: " f"{summary_text}"
+    )
     notion_client.blocks.children.append(
         block_id=change_log_page_id,
         children=[

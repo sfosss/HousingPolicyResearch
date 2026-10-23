@@ -271,7 +271,7 @@ def write_reminders_template(
     ensure_directory(output_path.parent)
     ordered_records = sorted(
         records,
-        key=lambda record: parse_deadline(record.submission_deadline) or date.max,
+        key=lambda record: (parse_deadline(record.submission_deadline) or date.max),
     )
     with output_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
@@ -285,9 +285,9 @@ def resolve_github_repo_path(github_dir: Path, repo_name: str) -> Path:
     """Return the concrete path to the JobApplications repository."""
 
     # Allow callers to either pass the parent directory along with a repo name
-    # or the fully qualified repository path inside ``github_dir``.  The goal is
-    # to ensure the automation never leaves the JobApplications tree while still
-    # supporting existing environment setups.
+    # or the fully qualified repository path inside ``github_dir``.
+    # The goal is to ensure the automation never leaves the JobApplications
+    # tree while still supporting existing environment setups.
     if github_dir.name == repo_name:
         return github_dir
     return github_dir / repo_name
@@ -307,7 +307,10 @@ def configure_repository_structure(
     github_repo = ensure_directory(resolve_github_repo_path(github_dir, repo_name))
     if init_repo:
         initialise_git_repository(github_repo)
-    return [_declutter_workspace(icloud_repo), _declutter_workspace(github_repo)]
+    return [
+        _declutter_workspace(icloud_repo),
+        _declutter_workspace(github_repo),
+    ]
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -321,7 +324,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         help="Path to a JSON file with job postings",
     )
     parser.add_argument(
-        "--profile", type=Path, help="Path to a JSON profile for estimating job match"
+        "--profile",
+        type=Path,
+        help="Path to a JSON profile for estimating job match",
     )
     parser.add_argument(
         "--output-name",
@@ -332,7 +337,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--github-dir", type=Path, default=DEFAULT_GITHUB_DIR)
     parser.add_argument("--repo-name", default=DEFAULT_REPO_NAME)
     parser.add_argument(
-        "--skip-git", action="store_true", help="Do not initialise Git repository"
+        "--skip-git",
+        action="store_true",
+        help="Do not initialise Git repository",
     )
     return parser.parse_args(argv)
 

@@ -110,7 +110,13 @@ def task_is_complete(status: str | bool | None) -> bool:
         return status
     if not status:
         return False
-    return status.strip().lower() in {"done", "complete", "closed", "resolved", "yes"}
+    return status.strip().lower() in {
+        "done",
+        "complete",
+        "closed",
+        "resolved",
+        "yes",
+    }
 
 
 def load_chat_tasks(path: Path) -> List[ChatEntry]:
@@ -142,7 +148,7 @@ def load_chat_tasks(path: Path) -> List[ChatEntry]:
                 chat_title=chat.get("chat_title")
                 or chat.get("title")
                 or "Untitled chat",
-                last_updated=chat.get("last_updated") or chat.get("updated") or "",
+                last_updated=(chat.get("last_updated") or chat.get("updated") or ""),
                 project=chat.get("project"),
                 subject=chat.get("subject"),
                 tasks=tasks,
@@ -214,7 +220,10 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "--output-dir",
         type=Path,
         default=DEFAULT_TASKS_DIR,
-        help="Directory to write the <Tasks> CSV into (defaults to ChatGPT/Projects/Tasks)",
+        help=(
+            "Directory to write the <Tasks> CSV into "
+            "(defaults to ChatGPT/Projects/Tasks)"
+        ),
     )
     parser.add_argument(
         "--filename", default=DEFAULT_TASKS_FILE, help="Name of the generated CSV file"
