@@ -10,6 +10,7 @@ from html import escape
 import json
 import os
 from pathlib import Path
+import subprocess
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -43,31 +44,60 @@ SOURCE_FIELDS = {
 
 
 def find_task_files(root: Path) -> list[Path]:
-    ignored = {".git", "node_modules", ".venv"}
+    if not root.is_dir() or not os.access(root, os.R_OK | os.X_OK):
+        raise ValueError("audit root must be an existing readable directory")
+    try:
+        listing = subprocess.run(
+            [
+                "git",
+                "-c",
+                "core.fsmonitor=false",
+                "-c",
+                "core.hooksPath=/dev/null",
+                "-C",
+                str(root),
+                "ls-files",
+                "--cached",
+                "--others",
+                "--exclude-standard",
+                "--deduplicate",
+                "-z",
+                "--",
+                ".",
+            ],
+            check=True,
+            capture_output=True,
+            timeout=30,
+        ).stdout
+    except (OSError, subprocess.SubprocessError) as exc:
+        raise ValueError(
+            "audit root must be inside an accessible Git working tree"
+        ) from exc
     found = []
-    for directory, directories, filenames in os.walk(root, followlinks=False):
-        directories[:] = [
-            name
-            for name in directories
-            if name not in ignored and not (Path(directory) / name).is_symlink()
-        ]
-        for filename in filenames:
-            path = Path(directory) / filename
-            if (
-                not path.is_symlink()
-                and path.is_file()
-                and path.suffix.lower() in {".csv", ".tsv"}
-                and any(part in filename.lower() for part in TASK_NAME_PARTS)
-            ):
-                found.append(path)
+    for name in listing.split(b"\0"):
+        if not name:
+            continue
+        relative = Path(os.fsdecode(name))
+        path = root / relative
+        if (
+            not any(
+                root.joinpath(*relative.parts[:i]).is_symlink()
+                for i in range(1, len(relative.parts) + 1)
+            )
+            and path.is_file()
+            and path.suffix.lower() in {".csv", ".tsv"}
+            and any(part in path.name.lower() for part in TASK_NAME_PARTS)
+        ):
+            found.append(path)
     return sorted(found)
 
 
 def summarize_task_file(path: Path, root: Path) -> dict[str, object]:
     delimiter = "\t" if path.suffix.lower() == ".tsv" else ","
     with path.open(encoding="utf-8-sig", errors="replace", newline="") as handle:
-        rows = list(csv.DictReader(handle, delimiter=delimiter))
-    columns = [column for column in (rows[0].keys() if rows else []) if column]
+        reader = csv.DictReader(handle, delimiter=delimiter)
+        columns = [column for column in (reader.fieldnames or []) if column]
+        rows = list(reader)
     status_column = next(
         (column for column in columns if column.strip().lower() in STATUS_COLUMNS), None
     )
@@ -86,7 +116,6 @@ def summarize_task_file(path: Path, root: Path) -> dict[str, object]:
 
 def github_get(repo: str, endpoint: str, token: str) -> list[dict[str, object]]:
     url = f"https://api.github.com/repos/{repo}{endpoint}"
-    allowed_prefix = f"https://api.github.com/repos/{repo}/"
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {token}",
@@ -95,7 +124,8 @@ def github_get(repo: str, endpoint: str, token: str) -> list[dict[str, object]]:
     }
     result = []
     while url:
-        if not url.startswith(allowed_prefix):
+        origin = urllib.parse.urlsplit(url)
+        if origin.scheme != "https" or origin.netloc != "api.github.com":
             raise ValueError("GitHub pagination returned an unexpected URL")
         request = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(request, timeout=30) as response:
@@ -253,13 +283,14 @@ def render_markdown(report: dict[str, object]) -> str:
         statuses = ", ".join(
             f"{key}: {value}" for key, value in item["statuses"].items()
         )
+        empty = "No rows" if item["status_column"] else "No status column"
         lines.append(
-            f"| {markdown_cell(item['path'])} | {item['rows']} | {markdown_cell(statuses or 'No status column')} |"
+            f"| {markdown_cell(item['path'])} | {item['rows']} | {markdown_cell(statuses or empty)} |"
         )
     lines.extend(["", "## Hosted GitHub state", ""])
     github = report.get("github") or {}
     errors = report.get("github_errors") or {}
-    if not github:
+    if not github and "authentication" in errors:
         lines.append(
             "Not assessed: provide both `--repo OWNER/REPO` and `GITHUB_TOKEN`."
         )

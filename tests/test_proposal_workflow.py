@@ -84,6 +84,12 @@ def test_generated_proposal_is_committed_to_a_separate_remote_branch(tmp_path):
     proposal = "# Fixture proposal\n"
     (work / "artifacts/policy_proposal.md").write_text(proposal)
     workflow = yaml.safe_load(WORKFLOW.read_text())
+    checkout = next(
+        s
+        for s in workflow["jobs"]["build"]["steps"]
+        if "actions/checkout@" in s.get("uses", "")
+    )
+    assert checkout["with"]["ref"] == "main"
     step = next(
         s
         for s in workflow["jobs"]["build"]["steps"]

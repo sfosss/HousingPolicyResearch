@@ -1,16 +1,27 @@
 import csv
+import io
 import json
 from pathlib import Path
+import subprocess
+import urllib.request
 
 import pytest
 
 from scripts.audit_repository_state import (
     build_report,
     find_task_files,
+    github_get,
     inspect_collaboration_manifest,
     render_markdown,
     sanitize_github_items,
 )
+
+
+@pytest.fixture(autouse=True)
+def git_inventory_root(tmp_path):
+    subprocess.run(
+        ["git", "init", "--quiet", str(tmp_path)], check=True, capture_output=True
+    )
 
 
 def test_task_inventory_does_not_follow_symlinks_or_ignored_trees(tmp_path):
@@ -21,6 +32,7 @@ def test_task_inventory_does_not_follow_symlinks_or_ignored_trees(tmp_path):
     (root / "linked_tasks.csv").symlink_to(outside)
     (root / "linked-directory").symlink_to(tmp_path, target_is_directory=True)
     ignored = root / "node_modules"
+    (root / ".gitignore").write_text("node_modules/\n")
     ignored.mkdir()
     (ignored / "nested_tasks.csv").write_text("Task,Status\nIgnored,Open\n")
     retained = root / "project_tasks.csv"
@@ -212,3 +224,83 @@ def test_status_table_escapes_pipes_and_normalizes_newlines(tmp_path):
     markdown = render_markdown(build_report(tmp_path, None, None))
     assert "Blocked \\| waiting owner: 1" in markdown
     assert "Blocked | waiting\nowner" not in markdown
+
+
+def test_git_inventory_respects_ignore_patterns_and_negations(tmp_path):
+    (tmp_path / ".gitignore").write_text(
+        "workspace/\n*_BACKUP/\n*.csv\n!project_tasks.csv\n"
+    )
+    (tmp_path / "project_tasks.csv").write_text("Task,Status\n")
+    (tmp_path / "private_tasks.csv").write_text("Task,Status\n")
+    for directory in ["workspace", "old_BACKUP"]:
+        path = tmp_path / directory
+        path.mkdir()
+        (path / "project_tasks.csv").write_text("Task,Status\n")
+    assert find_task_files(tmp_path) == [tmp_path / "project_tasks.csv"]
+
+
+def test_empty_tracker_preserves_status_header(tmp_path):
+    (tmp_path / "empty_tasks.csv").write_text("Task,Status\n")
+    report = build_report(tmp_path, None, None)
+    assert report["local_task_files"][0]["status_column"] == "Status"
+    assert report["local_task_files"][0]["rows"] == 0
+    assert "No rows" in render_markdown(report)
+
+
+def test_total_github_failure_keeps_all_endpoint_coverage(tmp_path):
+    report = build_report(tmp_path, None, None)
+    report["github_errors"] = {
+        "issues": "HTTPError: 403",
+        "secret_scanning_alerts": "HTTPError: 403",
+    }
+    markdown = render_markdown(report)
+    assert "provide both" not in markdown
+    assert markdown.count("Unavailable (not assessed)") == 5
+
+
+def test_github_pagination_accepts_canonical_repository_urls(monkeypatch):
+    first, second = io.StringIO('[{"number": 1}]'), io.StringIO('[{"number": 2}]')
+    first.headers = {
+        "Link": '<https://api.github.com/repositories/123/issues?page=2>; rel="next"'
+    }
+    second.headers = {}
+    responses = iter([first, second])
+    monkeypatch.setattr(
+        urllib.request, "urlopen", lambda request, timeout: next(responses)
+    )
+    assert github_get("owner/repo", "/issues?per_page=100", "fixture-token") == [
+        {"number": 1},
+        {"number": 2},
+    ]
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://evil.invalid/issues",
+        "http://api.github.com/repos/o/r/issues",
+        "https://api.github.com@evil.invalid/issues",
+    ],
+)
+def test_github_pagination_rejects_untrusted_origins(monkeypatch, url):
+    first = io.StringIO("[]")
+    first.headers = {"Link": f'<{url}>; rel="next"'}
+    requests = []
+
+    def respond(request, timeout):
+        requests.append(request)
+        return first
+
+    monkeypatch.setattr(urllib.request, "urlopen", respond)
+    with pytest.raises(ValueError, match="unexpected URL"):
+        github_get("owner/repo", "/issues?per_page=100", "fixture-token")
+    assert len(requests) == 1
+
+
+@pytest.mark.parametrize("kind", ["missing", "file"])
+def test_invalid_audit_roots_are_unavailable(tmp_path, kind):
+    root = tmp_path / "unavailable"
+    if kind == "file":
+        root.write_text("not a directory")
+    with pytest.raises(ValueError, match="existing readable directory"):
+        build_report(root, None, None)
