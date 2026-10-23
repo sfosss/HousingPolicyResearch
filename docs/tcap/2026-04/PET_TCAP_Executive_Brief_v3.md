@@ -19,7 +19,7 @@ The Public Equity Transfer (PET) Framework redirects a portion of existing subsi
 
 ## Why Now — Mamdani Alignment
 
-The incoming administration's housing pillar under EO 08 commits the City to durable, asset-creating interventions over recurring private-landlord transfers. PET is the framework principle that operationalizes that commitment without requiring the elimination of any existing assistance program. TCAP is the first concrete pilot vehicle. The legislative window in the 2026 Council session, the unusually large pipeline of distressed buildings, and the near-term fiscal pressure on shelter spending all argue for action in FY27 rather than later.
+Executive Order 08 established Rental Ripoff Hearings and directed agencies to report on tenant harms and possible enforcement and policy responses; it did not adopt PET/TCAP or an asset-creation mandate. The pilot proposed here would require separate policy, budget, and legal decisions. [NYC Executive Order 08](https://www.nyc.gov/mayors-office/news/2026/01/executive-order-08).
 
 ______________________________________________________________________
 
@@ -67,7 +67,7 @@ ______________________________________________________________________
 
 | #   | Ask                                                                                                       | Owner                 | Timeline          |
 | --- | --------------------------------------------------------------------------------------------------------- | --------------------- | ----------------- |
-| 1   | Adopt PET as a Housing pillar principle in EO 08 implementation                                           | Mayor's Office        | Q2 FY27           |
+| 1   | Consider PET as a separate housing policy proposal                                                        | Mayor's Office        | Q2 FY27           |
 | 2   | Authorize HPD-led TCAP pilot, 500–1,000 units                                                             | HPD / HDC             | Q3 FY27           |
 | 3   | Sponsor INT 2026-A through D in Council                                                                   | IGA / Council Affairs | Q2 FY27           |
 | 4   | Commit receipts-limited revolving capital line in FY27 Executive Budget                                   | OMB                   | Budget cycle FY27 |
