@@ -23,7 +23,6 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 - **Verification:** Fixture regressions added for invalid bytes, news intake inclusion and research exclusion. Fresh native validation required on the updated head before merge.
 - **Limits:** No source datasets edited, archived or reconciled automatically.
 
-
 ### CI repair reconciliation — 2026-10-23
 
 - **Version:** 1.5; proposed after data-quality review fixes.
