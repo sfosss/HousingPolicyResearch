@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+from html import escape
 import json
 import os
 from pathlib import Path
@@ -29,7 +30,16 @@ COLLABORATION_KINDS = {
     "cloud_drive_reference",
 }
 COLLABORATION_MODES = {"reference_only", "staged_import"}
-FORBIDDEN_MANIFEST_KEYS = {"token", "secret", "password", "cookie", "shared_link"}
+MANIFEST_FIELDS = {"schema_version", "sources", "authoritative_repository"}
+SOURCE_FIELDS = {
+    "id",
+    "kind",
+    "path",
+    "mode",
+    "data_owner",
+    "contains_chat_exports",
+    "contains_personal_data",
+}
 
 
 def find_task_files(root: Path) -> list[Path]:
@@ -162,8 +172,18 @@ def collect_github(repo: str, token: str) -> tuple[dict[str, object], dict[str, 
 def inspect_collaboration_manifest(path: Path) -> list[dict[str, object]]:
     """Validate declared external sources without reading their contents."""
     document = json.loads(path.read_text(encoding="utf-8"))
-    if document.get("schema_version") != 1 or not isinstance(
-        document.get("sources"), list
+    if not isinstance(document, dict):
+        raise ValueError("collaboration manifest must be an object")
+    if set(document) - MANIFEST_FIELDS:
+        raise ValueError("forbidden or unsupported collaboration manifest fields")
+    if "authoritative_repository" in document and not isinstance(
+        document["authoritative_repository"], str
+    ):
+        raise ValueError("authoritative_repository must be a string")
+    if (
+        type(document.get("schema_version")) is not int
+        or document.get("schema_version") != 1
+        or not isinstance(document.get("sources"), list)
     ):
         raise ValueError("collaboration manifest must use schema_version 1 and sources")
     results = []
@@ -171,12 +191,16 @@ def inspect_collaboration_manifest(path: Path) -> list[dict[str, object]]:
     for source in document["sources"]:
         if not isinstance(source, dict):
             raise ValueError("each collaboration source must be an object")
-        forbidden = FORBIDDEN_MANIFEST_KEYS.intersection(source)
-        if forbidden:
-            raise ValueError(
-                "collaboration manifest contains forbidden credential/link keys: "
-                + ", ".join(sorted(forbidden))
-            )
+        if set(source) - SOURCE_FIELDS:
+            raise ValueError("forbidden or unsupported collaboration source fields")
+        for field in SOURCE_FIELDS - {"contains_chat_exports"}:
+            if field in source and not isinstance(source[field], str):
+                raise ValueError("collaboration source text fields must be strings")
+        if (
+            "contains_chat_exports" in source
+            and type(source["contains_chat_exports"]) is not bool
+        ):
+            raise ValueError("contains_chat_exports must be a boolean")
         source_id = source.get("id")
         kind = source.get("kind")
         mode = source.get("mode")
@@ -209,6 +233,11 @@ def inspect_collaboration_manifest(path: Path) -> list[dict[str, object]]:
     return results
 
 
+def markdown_cell(value: object) -> str:
+    text = " ".join(escape(str(value), quote=False).splitlines())
+    return text.replace("\\", "\\\\").replace("|", "\\|").replace("`", "\\`")
+
+
 def render_markdown(report: dict[str, object]) -> str:
     lines = [
         "# Unified repository assessment",
@@ -225,24 +254,27 @@ def render_markdown(report: dict[str, object]) -> str:
             f"{key}: {value}" for key, value in item["statuses"].items()
         )
         lines.append(
-            f"| `{item['path']}` | {item['rows']} | {statuses or 'No status column'} |"
+            f"| {markdown_cell(item['path'])} | {item['rows']} | {markdown_cell(statuses or 'No status column')} |"
         )
     lines.extend(["", "## Hosted GitHub state", ""])
     github = report.get("github") or {}
+    errors = report.get("github_errors") or {}
     if not github:
         lines.append(
             "Not assessed: provide both `--repo OWNER/REPO` and `GITHUB_TOKEN`."
         )
     else:
         for kind in GITHUB_ENDPOINTS:
-            lines.append(
-                f"* **{kind.replace('_', ' ').title()}:** {len(github.get(kind, []))}"
+            status = (
+                "Unavailable (not assessed)"
+                if kind in errors or kind not in github
+                else str(len(github[kind]))
             )
-    errors = report.get("github_errors") or {}
+            lines.append(f"* **{kind.replace('_', ' ').title()}:** {status}")
     if errors:
         lines.extend(["", "### Permission or API failures", ""])
         for kind, message in errors.items():
-            lines.append(f"* **{kind}:** `{message}`")
+            lines.append(f"* **{markdown_cell(kind)}:** {markdown_cell(message)}")
     lines.extend(["", "## Declared collaboration sources", ""])
     collaboration = report.get("collaboration_sources") or []
     if not collaboration:
@@ -256,7 +288,7 @@ def render_markdown(report: dict[str, object]) -> str:
         )
         for source in collaboration:
             lines.append(
-                f"| `{source['id']}` | {source['kind']} | {source['mode']} | "
+                f"| {markdown_cell(source['id'])} | {markdown_cell(source['kind'])} | {markdown_cell(source['mode'])} | "
                 f"{source['available']} | {source['readable']} | "
                 f"{source['data_owner_declared']} |"
             )

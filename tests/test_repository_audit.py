@@ -119,3 +119,96 @@ def test_collaboration_manifest_rejects_credentials(tmp_path):
 
     with pytest.raises(ValueError, match="forbidden"):
         inspect_collaboration_manifest(manifest)
+
+
+@pytest.mark.parametrize(
+    "field", ["access_token", "api_key", "shared_url", "credentials"]
+)
+def test_manifest_rejects_undeclared_source_fields(tmp_path, field):
+    manifest = tmp_path / "sources.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {
+                        "id": "source",
+                        "kind": "chatgpt_export",
+                        "mode": "staged_import",
+                        "path": str(tmp_path),
+                        field: {"nested_secret": "must-not-leak"},
+                    }
+                ],
+            }
+        )
+    )
+    with pytest.raises(ValueError, match="forbidden or unsupported"):
+        inspect_collaboration_manifest(manifest)
+
+
+def test_manifest_rejects_nested_values_in_declared_text_fields(tmp_path):
+    manifest = tmp_path / "sources.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {
+                        "id": "source",
+                        "kind": "chatgpt_export",
+                        "mode": "staged_import",
+                        "path": str(tmp_path),
+                        "data_owner": {"api_key": "must-not-leak"},
+                    }
+                ],
+            }
+        )
+    )
+    with pytest.raises(ValueError, match="must be strings"):
+        inspect_collaboration_manifest(manifest)
+
+
+def test_manifest_rejects_undeclared_document_fields(tmp_path):
+    manifest = tmp_path / "sources.json"
+    manifest.write_text(
+        json.dumps({"schema_version": 1, "sources": [], "credentials": {}})
+    )
+    with pytest.raises(ValueError, match="forbidden or unsupported"):
+        inspect_collaboration_manifest(manifest)
+
+
+def test_manifest_rejects_nested_document_metadata(tmp_path):
+    manifest = tmp_path / "sources.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [],
+                "authoritative_repository": {"api_key": "must-not-leak"},
+            }
+        )
+    )
+    with pytest.raises(ValueError, match="must be a string"):
+        inspect_collaboration_manifest(manifest)
+
+
+def test_unavailable_alert_families_are_not_rendered_as_zero(tmp_path):
+    report = build_report(tmp_path, None, None)
+    report["github"] = {"issues": []}
+    report["github_errors"] = {"secret_scanning_alerts": "HTTPError: 403"}
+    markdown = render_markdown(report)
+    assert "**Issues:** 0" in markdown
+    assert "**Secret Scanning Alerts:** Unavailable (not assessed)" in markdown
+    assert "**Dependabot Alerts:** Unavailable (not assessed)" in markdown
+    assert "**Secret Scanning Alerts:** 0" not in markdown
+
+
+def test_status_table_escapes_pipes_and_normalizes_newlines(tmp_path):
+    path = tmp_path / "project_tasks.csv"
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["Task", "Status"])
+        writer.writeheader()
+        writer.writerow({"Task": "Review", "Status": "Blocked | waiting\nowner"})
+    markdown = render_markdown(build_report(tmp_path, None, None))
+    assert "Blocked \\| waiting owner: 1" in markdown
+    assert "Blocked | waiting\nowner" not in markdown
