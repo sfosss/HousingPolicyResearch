@@ -23,6 +23,14 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 - **Verification:** Full action SHAs and declared runtimes inspected; local tests/YAML/reference checks and native workflow results recorded in the PR.
 - **Limits:** Quarto installation is exercised without publication; live release creation and PDF rendering are not tested. Merge the reconciliation first to remove direct publication pushes to main.
 
+### Merge-readiness audit corrections — 2026-10-23
+
+- **Version:** 1.6; follow-up review of #143 before integration.
+- **Files:** scripts/audit_repository_state.py; tests/test_repository_audit.py.
+- **Changes:** Strict UTF-8 decoding rejects malformed trackers; task/action and status headers determine tracker scope rather than filename fragments. Research metric datasets are excluded. Source archival requires owner review.
+- **Verification:** Fixture regressions added for invalid bytes, news intake inclusion and research exclusion. Fresh native validation required on the updated head before merge.
+- **Limits:** No source datasets edited, archived or reconciled automatically.
+
 ### CI repair reconciliation — 2026-10-23
 
 - **Version:** 1.5; proposed after data-quality review fixes.
