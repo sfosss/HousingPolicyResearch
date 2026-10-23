@@ -18,7 +18,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### nycdb/nycdb
 
-- **Citation:** NYCDB contributors. (n.d.). *nycdb* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/nycdb/nycdb).
+- **Citation:** NYCDB contributors. (n.d.). *nycdb* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/nycdb/nycdb).
 - **Selection:** Core; Community ETL. Topics: HPD; NYCHA; DOF; preservation.
 - **Proposed use:** Load property and enforcement baselines for candidate screening.
 - **Limits:** Third-party transformations; NYCHA BBL coverage is not household eligibility; validate dataset vintages and BBL joins.
@@ -28,7 +28,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### JustFixNYC/who-owns-what
 
-- **Citation:** JustFix. (n.d.). *who-owns-what* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/JustFixNYC/who-owns-what).
+- **Citation:** JustFix. (n.d.). *who-owns-what* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/JustFixNYC/who-owns-what).
 - **Selection:** Core; Tenant advocacy tool. Topics: Tenant ownership; preservation.
 - **Proposed use:** Map ownership associations to investigate acquisition candidates.
 - **Limits:** Associations are investigative leads rather than verified title or beneficial ownership; verify against underlying records.
@@ -38,7 +38,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### NYCPlanning/data-engineering
 
-- **Citation:** New York City Department of City Planning. (n.d.). *data-engineering* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/NYCPlanning/data-engineering).
+- **Citation:** New York City Department of City Planning. (n.d.). *data-engineering* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/NYCPlanning/data-engineering).
 - **Selection:** Core; Agency data pipelines. Topics: Land use; housing stock; local planning.
 - **Proposed use:** Inspect DCP data production and source lineage before building parcel baselines.
 - **Limits:** Build output may be draft; use approved published releases and record dataset vintage. Replaces archived db-pluto.
@@ -48,7 +48,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### NYCPlanning/labs-community-profiles
 
-- **Citation:** NYC Planning Labs. (n.d.). *labs-community-profiles* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/NYCPlanning/labs-community-profiles).
+- **Citation:** NYC Planning Labs. (n.d.). *labs-community-profiles* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/NYCPlanning/labs-community-profiles).
 - **Selection:** Supporting; Agency visualization code. Topics: Local demographics; equity.
 - **Proposed use:** Use community district indicator patterns to design neighborhood distributional reporting.
 - **Limits:** README references a 202402 table and legacy services; do not infer current demographic estimates from repository activity.
@@ -58,7 +58,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### CityOfNewYork/ACCESS-NYC
 
-- **Citation:** City of New York. (n.d.). *ACCESS-NYC* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/CityOfNewYork/ACCESS-NYC).
+- **Citation:** City of New York. (n.d.). *ACCESS-NYC* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/CityOfNewYork/ACCESS-NYC).
 - **Selection:** Supporting; City service website code. Topics: HRA interface; resident access.
 - **Proposed use:** Study multilingual resident navigation and benefits screening interfaces for implementation planning.
 - **Limits:** Website code is not HRA administrative rules or a complete eligibility engine; program information and screening services are separate dependencies.
@@ -68,7 +68,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### PolicyEngine/policyengine-us
 
-- **Citation:** PolicyEngine. (n.d.). *policyengine-us* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/PolicyEngine/policyengine-us).
+- **Citation:** PolicyEngine. (n.d.). *policyengine-us* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/PolicyEngine/policyengine-us).
 - **Selection:** Conditional; Independent tax-benefit model. Topics: Fiscal scenarios; household resources.
 - **Proposed use:** Explore NY household resource changes with explicit policy-year and parameter assumptions.
 - **Limits:** README deprecates direct aggregate microsimulation in favor of policyengine.py; separately vet that package before use. NYC program coverage and calibration remain unverified; not an agency budget model.
@@ -78,7 +78,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### walkerke/tidycensus
 
-- **Citation:** Kyle Walker and contributors. (n.d.). *tidycensus* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/walkerke/tidycensus).
+- **Citation:** Kyle Walker and contributors. (n.d.). *tidycensus* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/walkerke/tidycensus).
 - **Selection:** Supporting; Independent Census API client. Topics: Local demographics; equity.
 - **Proposed use:** Retrieve ACS and decennial baselines for NYC geographies.
 - **Limits:** Not Census-endorsed; retain margins of error and survey vintage; avoid household inference from area averages.
@@ -88,7 +88,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### JustFixNYC/nycha-scraper
 
-- **Citation:** JustFix. (n.d.). *nycha-scraper* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/JustFixNYC/nycha-scraper).
+- **Citation:** JustFix. (n.d.). *nycha-scraper* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/JustFixNYC/nycha-scraper).
 - **Selection:** Historical only; PDF extraction utility. Topics: NYCHA property identifiers.
 - **Proposed use:** Understand provenance of a historical NYCHA block-and-lot crosswalk.
 - **Limits:** README targets August 27, 2018 guide; do not use as current NYCHA inventory or evidence of transfer eligibility.
@@ -98,7 +98,7 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 
 ### BetaNYC/New-York-City-Budget
 
-- **Citation:** BetaNYC. (n.d.). *New-York-City-Budget* [Source code]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/BetaNYC/New-York-City-Budget).
+- **Citation:** BetaNYC. (n.d.). *New-York-City-Budget* \[Source code\]. GitHub. Retrieved October 23, 2026, from [repository](https://github.com/BetaNYC/New-York-City-Budget).
 - **Selection:** Conditional; Civic fiscal data extraction. Topics: Council designations; local fiscal context.
 - **Proposed use:** Inspect structured Council designations and their provenance when assessing funding streams.
 - **Limits:** Use structured 2.0 sources only; retired PDF extracts have known errors. Designations are not expenditure actuals or proof of reusable HPD/HRA/NYCHA appropriations. Independently reconcile relied-on figures.
@@ -118,11 +118,11 @@ Every entry below is a code/data resource, not legal authority. Agency-hosted so
 ## Adoption and reproducibility checklist
 
 1. Review this PR and approve individual proposed uses before implementation.
-2. Pin code SHA/release and upstream dataset URL, release date, retrieval date, geography, schema and checksum in each analysis manifest.
-3. Verify source terms separately from software license; resolve NOASSERTION before copying code or redistributing data.
-4. Validate a small NYC sample against original agency records; audit BBL/BIN joins, missingness, duplicates, survey uncertainty and temporal alignment.
-5. Separate observed baseline data, model assumptions, scenario outputs and statutory authority in every resulting fact table. Compare continuation of existing equity investments with ownership conversion using explicit costs and distributional outcomes.
-6. Record checks, unresolved gaps and human approval in the project log. Recheck links and upstream status quarterly or before reliance; no monitor is installed.
+1. Pin code SHA/release and upstream dataset URL, release date, retrieval date, geography, schema and checksum in each analysis manifest.
+1. Verify source terms separately from software license; resolve NOASSERTION before copying code or redistributing data.
+1. Validate a small NYC sample against original agency records; audit BBL/BIN joins, missingness, duplicates, survey uncertainty and temporal alignment.
+1. Separate observed baseline data, model assumptions, scenario outputs and statutory authority in every resulting fact table. Compare continuation of existing equity investments with ownership conversion using explicit costs and distributional outcomes.
+1. Record checks, unresolved gaps and human approval in the project log. Recheck links and upstream status quarterly or before reliance; no monitor is installed.
 
 ## Verification scope
 
