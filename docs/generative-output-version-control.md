@@ -488,3 +488,11 @@ ______________________________________________________________________
 **Last comprehensive audit:** 2025-12-02\
 **Next scheduled audit:** 2025-03-02\
 **Audit frequency:** Quarterly (every 3 months)
+
+## External repositories registry — 2026-10-23
+
+- **Version:** 1.0; proposed, awaiting human review.
+- **Files:** docs/external-repositories.md and docs/external-repositories.csv; companion additions to docs/resources-index.md and docs/resources.csv; this provenance entry.
+- **Creation method:** Codex-assisted curation requested by the project owner through the connected GitHub account.
+- **Verification:** Nine public repository metadata records, maintainer READMEs, default-branch head SHAs and pinned README links retrieved on 2026-10-23. Archived db-pluto replacement notice inspected. CSV schema and row counts checked; proposed Git diff inspected before PR delivery.
+- **Limits:** No upstream code executed, datasets reproduced, legal authority certified or complete agency coverage claimed. License metadata flagged where unresolved. Selection and application notes are generated analyst judgments. No merge or adoption approval implied.
