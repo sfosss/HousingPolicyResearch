@@ -16,7 +16,7 @@ Thank you for your interest in contributing to the Housing Policy Research proje
 
 ### Prerequisites
 
-- Python 3.10 or higher
+- Python 3.11 or higher
 - Git
 - A GitHub account
 
