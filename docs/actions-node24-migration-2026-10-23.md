@@ -29,3 +29,7 @@ Local unit tests, dependency consistency, workflow YAML and immutable-reference 
 ## Review fixes
 
 Proposal generation retains its existing Git authentication. Publication has no Git push after the required reconciliation. The immutable-reference guard scans both supported workflow extensions, .yml and .yaml; a local negative fixture confirms it rejects an unpinned .yaml action.
+
+## YAML-aware pin guard
+
+The guard installs the declared validation dependencies and parses both workflow extensions with PyYAML. It checks reusable-job and step action references, including quoted or spaced uses keys and references. Repository actions require full commit SHAs; Docker references require SHA-256 digests. Local negative/positive fixtures cover both extensions, quoted/spaced keys, unpinned tags and immutable references. Combined local suite: 49 tests.

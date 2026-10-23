@@ -1,8 +1,10 @@
 import csv
 import io
 import json
+import os
 from pathlib import Path
 import subprocess
+import sys
 import urllib.request
 
 import pytest
@@ -304,3 +306,36 @@ def test_invalid_audit_roots_are_unavailable(tmp_path, kind):
         root.write_text("not a directory")
     with pytest.raises(ValueError, match="existing readable directory"):
         build_report(root, None, None)
+
+
+def test_cli_writes_unicode_reports_under_a_non_utf8_locale(tmp_path):
+    (tmp_path / "project_tasks.csv").write_text(
+        "Task,Status\nReview,🟢 Open\n", encoding="utf-8"
+    )
+    env = dict(
+        os.environ, LC_ALL="C", LANG="C", PYTHONUTF8="0", PYTHONCOERCECLOCALE="0"
+    )
+    env.pop("GITHUB_TOKEN", None)
+    env.pop("GITHUB_REPOSITORY", None)
+    markdown = tmp_path / "report.md"
+    output = tmp_path / "report.json"
+    script = Path(__file__).resolve().parents[1] / "scripts/audit_repository_state.py"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(script),
+            "--root",
+            str(tmp_path),
+            "--markdown-output",
+            str(markdown),
+            "--json-output",
+            str(output),
+        ],
+        env=env,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr.decode("utf-8", errors="replace")
+    assert "🟢 Open" in markdown.read_text(encoding="utf-8")
+    assert json.loads(output.read_text(encoding="utf-8"))["local_task_files"][0][
+        "statuses"
+    ] == {"🟢 Open": 1}
