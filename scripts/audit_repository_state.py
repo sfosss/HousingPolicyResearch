@@ -17,7 +17,7 @@ import urllib.parse
 import urllib.request
 
 STATUS_COLUMNS = ("status", "current status", "state")
-TASK_NAME_PARTS = ("task", "status", "checklist")
+TASK_COLUMNS = {"task", "task name", "action required"}
 GITHUB_ENDPOINTS = {
     "issues": "/issues?state=open&per_page=100",
     "pull_requests": "/pulls?state=open&per_page=100",
@@ -87,18 +87,21 @@ def find_task_files(root: Path) -> list[Path]:
             )
             and path.is_file()
             and path.suffix.lower() in {".csv", ".tsv"}
-            and any(part in path.name.lower() for part in TASK_NAME_PARTS)
         ):
             found.append(path)
     return sorted(found)
 
 
-def summarize_task_file(path: Path, root: Path) -> dict[str, object]:
+def summarize_task_file(path: Path, root: Path) -> dict[str, object] | None:
     delimiter = "\t" if path.suffix.lower() == ".tsv" else ","
-    with path.open(encoding="utf-8-sig", errors="replace", newline="") as handle:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle, delimiter=delimiter, strict=True)
         columns = [column for column in (reader.fieldnames or []) if column]
-        normalized = [column.strip().casefold() for column in columns]
+        normalized = [column.strip().casefold().replace("_", " ") for column in columns]
+        if not (
+            set(normalized) & TASK_COLUMNS and set(normalized) & set(STATUS_COLUMNS)
+        ):
+            return None
         if (
             not normalized
             or any(not column for column in normalized)
@@ -358,7 +361,8 @@ def render_markdown(report: dict[str, object]) -> str:
             "",
             "Reconcile local rows and hosted issues by evidence, not title alone. Keep one hosted issue",
             "for each still-relevant outcome; link its source row, assign an owner and acceptance",
-            "criteria, then archive the source tracker. Close duplicates or completed work only after",
+            "criteria. Any source archival requires owner review; preserve canonical research datasets.",
+            "Close duplicates or completed work only after",
             "recording the superseding issue, pull request, commit, or deliverable.",
             "",
         ]
@@ -376,7 +380,9 @@ def build_report(
     local_errors = []
     for path in find_task_files(root):
         try:
-            local_files.append(summarize_task_file(path, root))
+            summary = summarize_task_file(path, root)
+            if summary is not None:
+                local_files.append(summary)
         except (csv.Error, ValueError):
             local_errors.append(
                 {

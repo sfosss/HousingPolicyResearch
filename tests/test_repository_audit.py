@@ -401,3 +401,32 @@ def test_github_summaries_do_not_retain_untrusted_titles(kind):
     )
     assert "title" not in result[0]
     assert "must-not-retain-private-title" not in json.dumps(result)
+
+
+@pytest.mark.parametrize("invalid_byte", [b"\xff", b"\xfe"])
+def test_invalid_utf8_tracker_is_not_assessed(tmp_path, invalid_byte):
+    (tmp_path / "project_tasks.csv").write_bytes(
+        b"Task,Status\nReview," + invalid_byte + b"\n"
+    )
+    report = build_report(tmp_path, None, None)
+    assert report["local_task_files"] == []
+    assert report["local_task_errors"] == [
+        {"path": "project_tasks.csv", "reason": "Malformed CSV/TSV structure"}
+    ]
+
+
+def test_tracker_scope_uses_schema_and_preserves_research(tmp_path):
+    (tmp_path / "Metric-Original-REVISED-Status.csv").write_text(
+        "Metric,Original,REVISED,Status\nBenefit,1,2,Conservative\n"
+    )
+    intake = tmp_path / "intake"
+    intake.mkdir()
+    news = intake / "NYC_Housing_Subsidy_Policy_News_20260725.csv"
+    original = "Headline,Action_Required,Status\nPolicy,Review,New\n"
+    news.write_text(original)
+    report = build_report(tmp_path, None, None)
+    assert [item["path"] for item in report["local_task_files"]] == [
+        "intake/NYC_Housing_Subsidy_Policy_News_20260725.csv"
+    ]
+    assert report["local_task_files"][0]["statuses"] == {"New": 1}
+    assert news.read_text() == original
