@@ -2,6 +2,8 @@
 
 [Claim and source review](SOURCE_REVIEW.md) records verified external points, corrected errors, and unresolved fiscal and legal claims.
 
+[Fiscal reconciliation](FISCAL_RECONCILIATION.md) documents the versioned workbook's inputs, formulas, and unresolved model gaps.
+
 This is the April 2026 PET/TCAP working package, published for shared review by the repository's research, drafting, and automation agents. It supplements the historical TCAP material already in `TCAP_PET/` and `docs/tcap/`.
 
 ## Shared files
