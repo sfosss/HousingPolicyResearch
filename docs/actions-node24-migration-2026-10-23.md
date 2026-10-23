@@ -6,7 +6,7 @@ Version: 1.0. Proposed follow-up to the CI reconciliation.
 
 Retain the tested checkout v5/setup-python v6 pins from merged #130 and migrate the remaining workflows to verified Node 24 action manifests. Artifact upload/download interoperability is exercised by the existing Linux-staged three-platform preflight workflow. Workflow changes also trigger a read-only Quarto installation and action-reference smoke check.
 
-Merge the reconciliation PR first: it removes publication's direct push to main. This follow-up disables persisted checkout credentials across workflows, including publication. Releases still use the explicit run-scoped GitHub token; generated commits must pass review/checks through a separate branch rather than bypass main's ruleset.
+Merge the reconciliation PR first: it removes publication's direct push to main. This follow-up disables persisted checkout credentials for read-only checkouts and publication. Proposal generation retains checkout authentication solely to push its isolated review branch; its existing token permissions are unchanged. Releases still use the explicit run-scoped GitHub token; generated commits must pass review/checks through a separate branch rather than bypass main's ruleset.
 
 ## Verified action manifests
 
@@ -25,3 +25,7 @@ The selected refs were resolved through the official maintainer repositories and
 ## Validation limits
 
 Local unit tests, dependency consistency, workflow YAML and immutable-reference checks apply. Hosted preflight validates setup, upload/download and report uploads on Linux, macOS and Windows. The compatibility workflow validates Quarto installation without rendering drafts or creating a release. The release action is verified from its manifest/declared inputs but is not executed in this review. CodeQL's existing language coverage is unchanged. Credentials, integration configuration and research text are unchanged.
+
+## Review fixes
+
+Proposal generation retains its existing Git authentication. Publication has no Git push after the required reconciliation. The immutable-reference guard scans both supported workflow extensions, .yml and .yaml; a local negative fixture confirms it rejects an unpinned .yaml action.

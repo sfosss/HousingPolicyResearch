@@ -23,6 +23,14 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 - **Verification:** Full action SHAs and declared runtimes inspected; local tests/YAML/reference checks and native workflow results recorded in the PR.
 - **Limits:** Quarto installation is exercised without publication; live release creation and PDF rendering are not tested. Merge the reconciliation first to remove direct publication pushes to main.
 
+### CI repair reconciliation — 2026-10-23
+
+- **Version:** 1.2; proposed after coverage review fixes.
+- **Files:** docs/ci-repair-reconciliation-2026-10-23.md; scoped audit/intake guidance and replacement security incident documents.
+- **Creation method:** Codex-assisted reconciliation of PRs #122/#123/#132/#134 against main 873590d24b0cf24c35dc4e5c47aa807295a39838.
+- **Verification:** Main source-tree equality, local unit tests and formatter checks; native validation recorded in the PR. Ruleset 25730785 verified through GitHub after saving.
+- **Limits:** Credential rotation, historical cleanup, complete security certification and live publication are not claimed. No research or canonical legislative text changed.
+
 ### Repository setup review — 2026-10-22
 
 - **File:** [Repository setup and open PR triage](repository-setup-review-2026-10-22.md)

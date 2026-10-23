@@ -36,7 +36,9 @@ jobs:
           fi
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
-          persist-credentials: false
+          ref: main
+          # Needed only for the generated proposal review branch.
+          persist-credentials: true
         if: steps.configuration.outputs.ready == 'true'
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         if: steps.configuration.outputs.ready == 'true'
@@ -52,15 +54,17 @@ jobs:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: python scripts/generate_policy_proposal.py
-      - name: Commit artifact
+      - name: Save proposal to a review branch
         if: steps.configuration.outputs.ready == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add artifacts/policy_proposal.md || true
+          git add -f artifacts/policy_proposal.md
           if ! git diff --cached --quiet; then
             git commit -m "Update policy proposal"
-            git push
+            branch="generated/policy-proposal-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+            git push origin "HEAD:refs/heads/$branch"
+            echo "Proposal saved for review: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "No changes to commit"
           fi
