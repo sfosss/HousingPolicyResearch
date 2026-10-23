@@ -17,7 +17,7 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ### CI repair reconciliation — 2026-10-23
 
-- **Version:** 1.3; proposed after portability review fixes.
+- **Version:** 1.4; proposed after CLI coverage fixes.
 - **Files:** docs/ci-repair-reconciliation-2026-10-23.md; scoped audit/intake guidance and replacement security incident documents.
 - **Creation method:** Codex-assisted reconciliation of PRs #122/#123/#132/#134 against main 873590d24b0cf24c35dc4e5c47aa807295a39838.
 - **Verification:** Main source-tree equality, local unit tests and formatter checks; native validation recorded in the PR. Ruleset 25730785 verified through GitHub after saving.

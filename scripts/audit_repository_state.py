@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -309,7 +310,15 @@ def render_markdown(report: dict[str, object]) -> str:
     lines.extend(["", "## Declared collaboration sources", ""])
     collaboration = report.get("collaboration_sources") or []
     if not collaboration:
-        lines.append("Not assessed: no local collaboration manifest was supplied.")
+        supplied = report.get("collaboration_manifest_supplied")
+        if supplied is True:
+            lines.append(
+                "0 declared collaboration sources (manifest supplied and validated)."
+            )
+        elif supplied is False:
+            lines.append("Not assessed: no local collaboration manifest was supplied.")
+        else:
+            lines.append("Not assessed: manifest coverage was not recorded.")
     else:
         lines.extend(
             [
@@ -346,6 +355,7 @@ def build_report(
 ) -> dict[str, object]:
     report: dict[str, object] = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "collaboration_manifest_supplied": collaboration_manifest is not None,
         "local_task_files": [
             summarize_task_file(path, root) for path in find_task_files(root)
         ],
@@ -394,6 +404,8 @@ def main() -> int:
         args.markdown_output.parent.mkdir(parents=True, exist_ok=True)
         args.markdown_output.write_text(markdown, encoding="utf-8")
     else:
+        if hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8")
         print(markdown)
     return 0
 
