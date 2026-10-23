@@ -15,6 +15,20 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ## Inventory of Generative Outputs
 
+### Repository setup review — 2026-10-22
+
+- **File:** [Repository setup and open PR triage](repository-setup-review-2026-10-22.md)
+- **Creation method:** Codex-assisted repository and GitHub Actions inspection.
+- **Verification:** Open PR metadata, selected setup-related diffs, and failed job logs inspected on 2026-10-22. Unit tests and configured hooks run locally; hosted results are recorded in the repair PR.
+- **Review status:** Proposed; no full review of unrelated research/feature PRs or formal security certification.
+
+### Python prerequisite alignment — 2026-10-22
+
+- **Files:** `docs/resources-index.md`, `docs/resources.csv`, `TCAP_Interactive_Dashboard_README.md`, both dashboard READMEs in `docs/tcap/`, and `Capstone/dashboard/README.md`.
+- **Update method:** Codex-assisted correction of remaining prerequisite references for PR #129 review comment 6.
+- **Verification:** Minimum versions checked against `pyproject.toml`, `setup.sh`, and the existing contribution and integration guides. Historical verification records retained.
+- **Review status:** Proposed for review in PR #129.
+
 ### Documentation Files
 
 #### 1. Integration Plan
@@ -462,3 +476,11 @@ ______________________________________________________________________
 **Last comprehensive audit:** 2025-12-02\
 **Next scheduled audit:** 2025-03-02\
 **Audit frequency:** Quarterly (every 3 months)
+
+## External repositories registry — 2026-10-23
+
+- **Version:** 1.0; proposed, awaiting human review.
+- **Files:** docs/external-repositories.md and docs/external-repositories.csv; companion additions to docs/resources-index.md and docs/resources.csv; this provenance entry.
+- **Creation method:** Codex-assisted curation requested by the project owner through the connected GitHub account.
+- **Verification:** Nine public repository metadata records, maintainer READMEs, default-branch head SHAs and pinned README links retrieved on 2026-10-23. Archived db-pluto replacement notice inspected. CSV schema and row counts checked; proposed Git diff inspected before PR delivery.
+- **Limits:** No upstream code executed, datasets reproduced, legal authority certified or complete agency coverage claimed. License metadata flagged where unresolved. Selection and application notes are generated analyst judgments. No merge or adoption approval implied.

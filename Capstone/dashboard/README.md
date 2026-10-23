@@ -11,7 +11,7 @@ The preflight system performs comprehensive system health checks before running 
 ### Prerequisites
 
 - macOS 11.0+ (Big Sur or later)
-- Python 3.8+
+- Python 3.11+
 - Xcode Command Line Tools (recommended)
 - Homebrew (recommended)
 
@@ -87,7 +87,7 @@ After running preflight checks, you'll find reports in `capstone/reports/`:
 
 ### 1. Python Environment
 
-- Verifies Python 3.8+ installation
+- Verifies Python 3.11+ installation
 - Checks for virtual environment
 - Reports Python version and executable path
 
@@ -194,7 +194,7 @@ Some SMART operations require root privileges:
 sudo ./preflight_macos.sh
 ```
 
-### "Python 3.8+ required"
+### "Python 3.11+ required"
 
 Install or upgrade Python:
 
