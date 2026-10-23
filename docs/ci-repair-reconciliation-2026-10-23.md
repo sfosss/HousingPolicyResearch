@@ -1,6 +1,6 @@
 # CI repair reconciliation — 2026-10-23
 
-Version: 1.4. Proposed for review. Baseline: `873590d24b0cf24c35dc4e5c47aa807295a39838`.
+Version: 1.5. Proposed for review. Baseline: `873590d24b0cf24c35dc4e5c47aa807295a39838`.
 
 ## Decisions
 
@@ -39,7 +39,7 @@ It has no bypass actors. Existing deletion/force-push protections remain. Classi
 
 ## Validation and limits
 
-The isolated local checkout was reconstructed through the GitHub connection because local network/DNS access and GitHub CLI authentication were unavailable. Its pre-change Git tree exactly matched main tree `527275cef0acfa675b3522605463bc2a5319023e`. The local baseline passed 24 tests and all configured formatting hooks. The reconciled audit initially added five tests. Review fixes add regressions for unavailable API summaries, strict manifest fields/types and Markdown table escaping; local pytest now reports 51 passed and pip check passes. Native Python 3.11 and matrix validation must pass on the final PR revision before integration.
+The isolated local checkout was reconstructed through the GitHub connection because local network/DNS access and GitHub CLI authentication were unavailable. Its pre-change Git tree exactly matched main tree `527275cef0acfa675b3522605463bc2a5319023e`. The local baseline passed 24 tests and all configured formatting hooks. The reconciled audit initially added five tests. Review fixes add regressions for unavailable API summaries, strict manifest fields/types and Markdown table escaping; local pytest now reports 56 passed and pip check passes. Native Python 3.11 and matrix validation must pass on the final PR revision before integration.
 
 The audit's hosted endpoint behavior is not exercised live in local tests. Alert permissions can be unavailable; reports must retain coverage limits. Provider-side rotation, complete secret scanning, Git history cleanup, live external integrations, PDF rendering and release publication are not certified. The publication workflow is not run during this review because it creates releases.
 
@@ -64,8 +64,12 @@ Task discovery uses Git's tracked/untracked file inventory with standard ignore 
 
 ## Portable report encoding
 
-JSON and Markdown report files are written explicitly as UTF-8. A CLI regression disables UTF-8 locale coercion and verifies that emoji status values survive both output formats. Local regression count: 51.
+JSON and Markdown report files are written explicitly as UTF-8. A CLI regression disables UTF-8 locale coercion and verifies that emoji status values survive both output formats. Local regression count: 56.
 
 ## CLI and manifest coverage
 
-Default stdout is explicitly UTF-8-capable, matching file output. A supplied empty manifest is recorded as zero declared sources rather than omitted input; older reports without that provenance are marked unknown. Fixture regressions cover both cases. Local suite: 51 tests.
+Default stdout is explicitly UTF-8-capable, matching file output. A supplied empty manifest is recorded as zero declared sources rather than omitted input; older reports without that provenance are marked unknown. Fixture regressions cover both cases. Local suite: 56 tests.
+
+## Data-quality and disclosure boundaries
+
+Malformed CSV/TSV headers or field counts are reported as not assessed, with no status totals inferred for the affected file. Valid trackers remain separately counted. GitHub issue/PR titles are omitted from retained metadata. Local relative tracker paths and status labels remain part of the summary and require owner review before sharing. Source trackers are not edited. Local suite: 56 tests.

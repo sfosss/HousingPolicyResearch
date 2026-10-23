@@ -96,9 +96,18 @@ def find_task_files(root: Path) -> list[Path]:
 def summarize_task_file(path: Path, root: Path) -> dict[str, object]:
     delimiter = "\t" if path.suffix.lower() == ".tsv" else ","
     with path.open(encoding="utf-8-sig", errors="replace", newline="") as handle:
-        reader = csv.DictReader(handle, delimiter=delimiter)
+        reader = csv.DictReader(handle, delimiter=delimiter, strict=True)
         columns = [column for column in (reader.fieldnames or []) if column]
+        normalized = [column.strip().casefold() for column in columns]
+        if (
+            not normalized
+            or any(not column for column in normalized)
+            or len(set(normalized)) != len(reader.fieldnames or [])
+        ):
+            raise ValueError("Malformed CSV/TSV header")
         rows = list(reader)
+    if any(None in row or any(value is None for value in row.values()) for row in rows):
+        raise ValueError("Malformed CSV/TSV row field count")
     status_column = next(
         (column for column in columns if column.strip().lower() in STATUS_COLUMNS), None
     )
@@ -159,9 +168,7 @@ def sanitize_github_items(
             "updated_at": item.get("updated_at"),
             "url": item.get("html_url"),
         }
-        if kind in {"issues", "pull_requests"}:
-            record["title"] = item.get("title")
-        elif kind == "dependabot_alerts":
+        if kind == "dependabot_alerts":
             dependency = item.get("dependency") or {}
             advisory = item.get("security_advisory") or {}
             record.update(
@@ -288,6 +295,18 @@ def render_markdown(report: dict[str, object]) -> str:
         lines.append(
             f"| {markdown_cell(item['path'])} | {item['rows']} | {markdown_cell(statuses or empty)} |"
         )
+    if report.get("local_task_errors"):
+        lines.extend(
+            [
+                "",
+                "### Local trackers not assessed",
+                "",
+                "| Path | Reason |",
+                "| --- | --- |",
+            ]
+        )
+        for item in report["local_task_errors"]:
+            lines.append(f"| {markdown_cell(item['path'])} | {item['reason']} |")
     lines.extend(["", "## Hosted GitHub state", ""])
     github = report.get("github") or {}
     errors = report.get("github_errors") or {}
@@ -353,12 +372,30 @@ def build_report(
     token: str | None,
     collaboration_manifest: Path | None = None,
 ) -> dict[str, object]:
+    local_files = []
+    local_errors = []
+    for path in find_task_files(root):
+        try:
+            local_files.append(summarize_task_file(path, root))
+        except (csv.Error, ValueError):
+            local_errors.append(
+                {
+                    "path": str(path.relative_to(root)),
+                    "reason": "Malformed CSV/TSV structure",
+                }
+            )
+        except OSError:
+            local_errors.append(
+                {
+                    "path": str(path.relative_to(root)),
+                    "reason": "File unavailable or unreadable",
+                }
+            )
     report: dict[str, object] = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "collaboration_manifest_supplied": collaboration_manifest is not None,
-        "local_task_files": [
-            summarize_task_file(path, root) for path in find_task_files(root)
-        ],
+        "local_task_files": local_files,
+        "local_task_errors": local_errors,
     }
     if repo and token:
         report["github"], report["github_errors"] = collect_github(repo, token)

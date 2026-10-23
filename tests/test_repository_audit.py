@@ -370,3 +370,34 @@ def test_empty_manifest_preserves_evidence_it_was_supplied(tmp_path):
         "0 declared collaboration sources (manifest supplied and validated)" in markdown
     )
     assert "no local collaboration manifest was supplied" not in markdown
+
+
+@pytest.mark.parametrize(
+    "content",
+    [
+        "Task,Status,Owner\nUnquoted, task,Not Started,Analyst\n",
+        "Task,Status\nMissing field\n",
+        'Task,Status\nReview,"unterminated\n',
+    ],
+)
+def test_malformed_trackers_are_reported_without_inventing_status_totals(
+    tmp_path, content
+):
+    (tmp_path / "bad_tasks.csv").write_text(content)
+    (tmp_path / "good_tasks.csv").write_text("Task,Status\nReview,Open\n")
+    report = build_report(tmp_path, None, None)
+    assert [item["path"] for item in report["local_task_files"]] == ["good_tasks.csv"]
+    assert report["local_task_files"][0]["statuses"] == {"Open": 1}
+    assert report["local_task_errors"] == [
+        {"path": "bad_tasks.csv", "reason": "Malformed CSV/TSV structure"}
+    ]
+    assert "Local trackers not assessed" in render_markdown(report)
+
+
+@pytest.mark.parametrize("kind", ["issues", "pull_requests"])
+def test_github_summaries_do_not_retain_untrusted_titles(kind):
+    result = sanitize_github_items(
+        kind, [{"number": 1, "title": "must-not-retain-private-title"}]
+    )
+    assert "title" not in result[0]
+    assert "must-not-retain-private-title" not in json.dumps(result)
