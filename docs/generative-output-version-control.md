@@ -17,9 +17,14 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ### PET/TCAP April 2026 package — 2026-10-23
 
+- **Source review:** [Claim and source review](tcap/2026-04/SOURCE_REVIEW.md) checks selected external legal and fiscal authorities, records corrections, and flags internal model outputs still requiring verification. Unresolvable chat citation markers were removed from the submission Markdown.
+
 - **Files:** [April package index](tcap/2026-04/README.md), with policy and legislative drafts in `TCAP_PET/2026-04-publication/` and supporting CSVs in `data/tcap/2026-04/`.
+
 - **Provenance:** Curated from Seth Foss's local April 2026 PET/TCAP framework folder; the source documents include AI-assisted drafting and review materials.
+
 - **Verification:** File selection and duplicate screening only. Legal authorities, fiscal figures, and external submission status require independent review.
+
 - **Review status:** Proposed through a pull request for shared agent and human review.
 
 ### Repository setup review — 2026-10-22

@@ -1,5 +1,7 @@
 # Public Equity Transfer (PET) Framework & Tenant–Cooperative Acquisition Program (TCAP)
 
+> **Source review (2026-10-23):** See [the claim and source review](../../docs/tcap/2026-04/SOURCE_REVIEW.md). External facts are distinguished from unvalidated internal model outputs; this draft is not legal or fiscal certification.
+
 ## Final Policy Proposal — Version 5.2 (Audit-Corrected)
 
 **Prepared for:** Office of the Mayor, City of New York
@@ -15,7 +17,7 @@ ______________________________________________________________________
 
 New York City spends more than $4 billion annually on rental subsidies and shelter operations that produce no permanent housing asset and no household wealth. The Public Equity Transfer (PET) Framework and its operational vehicle, the Tenant–Cooperative Acquisition Program (TCAP), propose a fiscally disciplined alternative: convert a portion of existing subsidy outlays into the acquisition of distressed and at-risk multifamily buildings, transferring them to limited-equity cooperatives owned by their current tenants.
 
-This is not a welfare expansion. On a per-household basis, TCAP costs approximately **3% more per year than CityFHEPS** during the acquisition and stabilization period. Unlike CityFHEPS, however, TCAP creates a verified **~$66,500 in permanent household equity** where the status quo creates **zero**. Per-unit public capital investment is conservatively modeled at **$128,000–$200,000 (midpoint $165,000)** for the single-channel acquisition baseline, validated against the HPD Affordable Neighborhood Cooperative Program (ANCP) cost band. Under the three-channel acquisition model (incorporating market, foreclosure, and penalty-leveraged acquisitions with borough-level disaggregation), the blended all-in conversion cost is **$212,969 per unit weighted citywide**, reflecting lower acquisition costs in the foreclosure and penalty channels offset by higher soft costs. Both figures represent accepted model outputs; the $165,000 midpoint is used for pilot budgeting while the $212,969 figure drives the borough-level fiscal model.
+This is not a welfare expansion. On a per-household basis, TCAP costs approximately **3% more per year than CityFHEPS** during the acquisition and stabilization period. Unlike CityFHEPS, however, TCAP projects **~$66,500 in household equity**, pending independent model review where the status quo creates **zero**. Per-unit public capital investment is conservatively modeled at **$128,000–$200,000 (midpoint $165,000)** for the single-channel acquisition baseline, validated against the HPD Affordable Neighborhood Cooperative Program (ANCP) cost band. Under the three-channel acquisition model (incorporating market, foreclosure, and penalty-leveraged acquisitions with borough-level disaggregation), the blended all-in conversion cost is **$212,969 per unit weighted citywide**, reflecting lower acquisition costs in the foreclosure and penalty channels offset by higher soft costs. Both figures represent accepted model outputs; the $165,000 midpoint is used for pilot budgeting while the $212,969 figure drives the borough-level fiscal model.
 
 The corrected fiscal model shows:
 
@@ -42,7 +44,7 @@ This v5 package is the first PET/TCAP package to incorporate the findings of two
 | --- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
 | 1   | "$37.5B in 30-year savings"                           | TCAP costs ~3% more per HH/yr than CityFHEPS during stabilization, but creates ~$66,500/HH in permanent equity vs. $0 under status quo | Fiscal Audit v2 §2 |
 | 2   | "$32,000 household equity"                            | $66,500 household equity (pro-rata mortgage amortization at Yr 30)                                                                     | Fiscal Audit v2 §3 |
-| 3   | "Per-unit cost ~$95,000"                              | $128,000–$200,000 (midpoint $165,000), validated against HPD ANCP                                                                      | Fiscal Audit v2 §4 |
+| 3   | "Per-unit cost ~$95,000"                              | $128,000–$200,000 (midpoint $165,000), not validated by HPD ANCP                                                                       | Fiscal Audit v2 §4 |
 | 4   | "3.4:1 direct ROI"                                    | 30.8% direct asset-creation ROI; 6.2:1 societal ROI (separately labeled)                                                               | Fiscal Audit v2 §5 |
 | 5   | "Break-even Year 9"                                   | Break-even Years 12–13                                                                                                                 | Fiscal Audit v2 §6 |
 | 6   | CityFHEPS baseline understated                        | CityFHEPS $21,154/HH/yr; HCV $16,896/HH/yr; shelter $84,800/family/yr                                                                  | Fiscal Audit v2 §1 |
@@ -56,7 +58,7 @@ ______________________________________________________________________
 
 ## I. Problem Statement
 
-New York City's housing-assistance architecture is structurally extractive. The City pays an average of **$21,154 per household per year** in CityFHEPS rental subsidies, **$16,896 per household per year** through federal Housing Choice Vouchers administered through NYCHA, and an average of **$84,800 per family per year** for shelter operations. None of these expenditures produce a permanent housing asset, build household wealth, or remove a unit from speculative pressure. The result is a perpetual transfer from the public fisc to private landlords, with no terminal exit point and no compounding public benefit.
+New York City's housing-assistance architecture is structurally extractive. The City pays an average of **$21,154 per household per year** in CityFHEPS rental subsidies, **$16,896 per household per year** through federal Housing Choice Vouchers administered through HPD, and an average of **$84,800 per family per year** for shelter operations. None of these expenditures produce a permanent housing asset, build household wealth, or remove a unit from speculative pressure. The result is a perpetual transfer from the public fisc to private landlords, with no terminal exit point and no compounding public benefit.
 
 At the same time, an estimated 80,000 multifamily units in the five boroughs are in physical or financial distress, carrying overdue HPD violations, failing capital systems, or facing imminent foreclosure. The City's existing acquisition tools — TPT, ANCP, Article XI — are slow, episodic, and undercapitalized relative to the volume of distress. A faster, more programmatic vehicle is required.
 
@@ -131,7 +133,7 @@ Two recent state actions create new feeder pathways for PET/TCAP acquisitions:
 | --------------------- | ---------------: | -----------------------: |
 | Shelter (family)      |          $84,800 |                       $0 |
 | CityFHEPS             |          $21,154 |                       $0 |
-| HCV (NYCHA)           |          $16,896 |                       $0 |
+| HCV (HPD)             |          $16,896 |                       $0 |
 | **TCAP (stabilized)** |     **~$21,800** |             **~$66,500** |
 
 TCAP is approximately 3.0% more expensive per household per year than CityFHEPS during the stabilization period, and converges below CityFHEPS in net operating cost after Year 12–13 as debt service amortizes.
@@ -145,7 +147,7 @@ TCAP is approximately 3.0% more expensive per household per year than CityFHEPS 
 | TCAP baseline (single-channel)                 | $128K–$200K | **$165K** | Used for pilot budgeting               |
 | TCAP blended (three-channel, borough-weighted) | $181K–$300K | **$213K** | Full model; accepted CHG001/ACQ-CHG004 |
 
-The single-channel baseline ($165K midpoint) reflects market-rate acquisition plus rehabilitation, consistent with ANCP benchmarks. The three-channel blended figure ($213K) incorporates the foreclosure and penalty-leveraged acquisition channels at lower per-unit acquisition costs but with higher soft costs from the administrative mechanisms required. The pilot budget uses the $165K figure; the borough-level fiscal model and KPI projections use the $213K figure.
+The single-channel baseline ($165K midpoint) reflects market-rate acquisition plus rehabilitation, not established by the ANCP term sheet. The three-channel blended figure ($213K) incorporates the foreclosure and penalty-leveraged acquisition channels at lower per-unit acquisition costs but with higher soft costs from the administrative mechanisms required. The pilot budget uses the $165K figure; the borough-level fiscal model and KPI projections use the $213K figure.
 
 ### IV.C ROI Framing
 
@@ -270,7 +272,7 @@ Establishes a revolving capital fund for TCAP acquisitions. **Subject to appropr
 
 ## VI. Legal Feasibility
 
-The April 2026 Legal Review identified seven issues; all seven are addressed in the bill text incorporated into this proposal. The remaining residual risks — *Mother Zion* line of cases on COPA, HUD §982.619 interpretive risk, NYC Charter §227 Borough Board notice — are mitigated by the savings clause, the pro-rata amortization framing, and the standard ULURP/§197-c compliance pathway.
+The April 2026 Legal Review identified seven issues; all seven are addressed in the bill text incorporated into this proposal. The remaining residual risks — *Mother Zion* line of cases on COPA, HUD §982.619 interpretive risk, NYC Charter §227 appropriation — are mitigated by the savings clause, the pro-rata amortization framing, and the standard ULURP/§197-c compliance pathway.
 
 The Law Department is asked to issue a confirming opinion on (a) §982.619 compatibility, (b) Charter §227 procedural sufficiency, and (c) preemption posture vis-à-vis Mitchell-Lama.
 
@@ -284,7 +286,7 @@ The Law Department is asked to issue a confirming opinion on (a) §982.619 compa
 | Q3 FY27 | HPD pilot site identification (500–1,000 units)                                                                          |
 | Q3 FY27 | HPD publishes building-selection methodology (public document)                                                           |
 | Q3 FY27 | HPD establishes 421-a(16) watch list for PET feeder pathway                                                              |
-| Q4 FY27 | Law Department opinion; Charter §227 referrals                                                                           |
+| Q4 FY27 | Law Department opinion; Charter §227 appropriation review                                                                |
 | Q4 FY27 | First annual evidence refresh: shelter per-diems, voucher costs, penalty yields, acquisition pricing; public update memo |
 | Q1 FY28 | First closings; revolving fund capitalization                                                                            |
 | Q1 FY28 | First quarterly risk-register review with MOPT/HPD/HRA                                                                   |
@@ -353,7 +355,7 @@ Risk categories shall include, at minimum:
 1. Urban Institute, *Evaluation of DC TOPA*, 2021.
 1. Champlain Housing Trust, Annual Reports, 2018–2024.
 1. NYC Admin. Code §27-2115 (as amended by Local Law 71 of 2023).
-1. NYC Charter §227 (Borough Board referrals).
+1. [NYC Charter §227](https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCcharter/0-0-0-1135) (spending pursuant to appropriations).
 1. NY Public Housing Finance Law (Mitchell-Lama).
 1. TCAP Fiscal Model Audit v2, April 3, 2026 (project file).
 1. TCAP Legal Consistency Review v2, April 2026 (project file).
