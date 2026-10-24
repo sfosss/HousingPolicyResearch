@@ -39,6 +39,11 @@ reports/preflight/
 htmlcov/
 .mypy_cache/
 
+# Local repository assessments and external-source manifests
+repository-assessment*.json
+repository-assessment*.md
+collaboration-sources.local.json
+
 # Misc
 *.log
 *.tmp

@@ -15,17 +15,29 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ## Inventory of Generative Outputs
 
-### PET/TCAP April 2026 package — 2026-10-23
+### Remaining action modernization — 2026-10-23
 
-- **Source review:** [Claim and source review](tcap/2026-04/SOURCE_REVIEW.md) checks selected external legal and fiscal authorities, records corrections, and flags internal model outputs still requiring verification. Unresolvable chat citation markers were removed from the submission Markdown.
+- **Version:** 1.0; proposed after the CI reconciliation.
+- **Files:** docs/actions-node24-migration-2026-10-23.md; workflow action pins and the read-only Action Compatibility smoke workflow.
+- **Creation method:** Codex-assisted runtime migration from official maintainer action manifests.
+- **Verification:** Full action SHAs and declared runtimes inspected; local tests/YAML/reference checks and native workflow results recorded in the PR.
+- **Limits:** Quarto installation is exercised without publication; live release creation and PDF rendering are not tested. Merge the reconciliation first to remove direct publication pushes to main.
 
-- **Files:** [April package index](tcap/2026-04/README.md), with policy and legislative drafts in `TCAP_PET/2026-04-publication/` and supporting CSVs in `data/tcap/2026-04/`.
+### Merge-readiness audit corrections — 2026-10-23
 
-- **Provenance:** Curated from Seth Foss's local April 2026 PET/TCAP framework folder; the source documents include AI-assisted drafting and review materials.
+- **Version:** 1.6; follow-up review of #143 before integration.
+- **Files:** scripts/audit_repository_state.py; tests/test_repository_audit.py.
+- **Changes:** Strict UTF-8 decoding rejects malformed trackers; task/action and status headers determine tracker scope rather than filename fragments. Research metric datasets are excluded. Source archival requires owner review.
+- **Verification:** Fixture regressions added for invalid bytes, news intake inclusion and research exclusion. Fresh native validation required on the updated head before merge.
+- **Limits:** No source datasets edited, archived or reconciled automatically.
 
-- **Verification:** File selection and duplicate screening only. Legal authorities, fiscal figures, and external submission status require independent review.
+### CI repair reconciliation — 2026-10-23
 
-- **Review status:** Proposed through a pull request for shared agent and human review.
+- **Version:** 1.5; proposed after data-quality review fixes.
+- **Files:** docs/ci-repair-reconciliation-2026-10-23.md; scoped audit/intake guidance and replacement security incident documents.
+- **Creation method:** Codex-assisted reconciliation of PRs #122/#123/#132/#134 against main 873590d24b0cf24c35dc4e5c47aa807295a39838.
+- **Verification:** Main source-tree equality, local unit tests and formatter checks; native validation recorded in the PR. Ruleset 25730785 verified through GitHub after saving.
+- **Limits:** Credential rotation, historical cleanup, complete security certification and live publication are not claimed. No research or canonical legislative text changed.
 
 ### Repository setup review — 2026-10-22
 
