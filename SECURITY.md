@@ -1,21 +1,17 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+## Reporting
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Report suspected vulnerabilities privately through GitHub's Security tab when available. If private reporting is unavailable, ask the repository owner for a private channel. Do not post credentials or personal data in issues or pull requests.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| \< 4.0  | :x:                |
+## Credentials and configuration
 
-## Reporting a Vulnerability
+Keep credentials in ignored local configuration or GitHub Actions secrets. Previously committed values require provider-side revocation or rotation; removing text from a branch does not revoke credentials or remove Git history.
 
-Use this section to tell people how to report a vulnerability.
+The detect-secrets hook currently runs at the manual stage:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+```bash
+pre-commit run detect-secrets --hook-stage manual --all-files
+```
+
+Ordinary pre-commit checks run Black, flake8 and mdformat. Enabling a blocking secret scan or changing its baseline requires separate validation. Repository and provider settings, credential rotation and historical cleanup are not certified by the CI reconciliation.

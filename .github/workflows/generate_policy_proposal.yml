@@ -5,32 +5,66 @@ on:
   schedule:
     - cron: "0 13 * * 1-5"  # 9am ET weekdays
 
+permissions:
+  contents: read
+
+concurrency:
+  group: policy-proposal
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check integration configuration
+        id: configuration
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Proposal generation was not run: configure the OPENAI_API_KEY repository Actions secret." >> "$GITHUB_STEP_SUMMARY"
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              echo "::error::OPENAI_API_KEY is required for manual proposal generation."
+              exit 1
+            fi
+            echo "::warning::Scheduled generation skipped: OPENAI_API_KEY is not configured."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: main
+          # Needed only for the generated proposal review branch.
+          persist-credentials: true
+        if: steps.configuration.outputs.ready == 'true'
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        if: steps.configuration.outputs.ready == 'true'
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install openai requests python-dotenv
+        if: steps.configuration.outputs.ready == 'true'
+        run: python -m pip install -r requirements.txt
       - name: Generate proposal
+        if: steps.configuration.outputs.ready == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: python scripts/generate_policy_proposal.py
-      - name: Commit artifact
+      - name: Save proposal to a review branch
+        if: steps.configuration.outputs.ready == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add artifacts/policy_proposal.md || true
+          git add -f artifacts/policy_proposal.md
           if ! git diff --cached --quiet; then
             git commit -m "Update policy proposal"
-            git push
+            branch="generated/policy-proposal-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+            git push origin "HEAD:refs/heads/$branch"
+            echo "Proposal saved for review: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "No changes to commit"
           fi

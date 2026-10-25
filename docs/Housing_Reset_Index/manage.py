@@ -92,7 +92,6 @@ def master(ctx, template):
 @cli.command()
 @click.pass_context
 def doctor(ctx):
-    pr = ctx.obj["project_root"]
     click.echo("Doctor checks placeholder.")
 
 
