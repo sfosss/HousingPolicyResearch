@@ -29,7 +29,7 @@ def validate(csv_path=ROOT / "sources.csv", taxonomy_path=ROOT / "taxonomy.json"
                 if not (row.get(field) or "").strip():
                     errors.append(f"row {line}: missing {field}")
             identifier = (row.get("source_id") or "").strip()
-            if identifier and not re.fullmatch(r"HPR-SRC-\\d{6}", identifier):
+            if identifier and not re.fullmatch(r"HPR-SRC-\d{6}", identifier):
                 errors.append(f"row {line}: invalid source_id")
             if identifier in seen:
                 errors.append(f"row {line}: duplicate source_id {identifier}")
@@ -57,6 +57,6 @@ def validate(csv_path=ROOT / "sources.csv", taxonomy_path=ROOT / "taxonomy.json"
 if __name__ == "__main__":
     failures = validate()
     if failures:
-        print("\\n".join(failures), file=sys.stderr)
+        print("\n".join(failures), file=sys.stderr)
         sys.exit(1)
     print("Source registry validation passed")
