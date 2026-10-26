@@ -33,10 +33,16 @@ TCAP_PET/exported-assets*/
 raycast-extension/node_modules/
 
 # Test and tooling outputs
+reports/preflight/
 .pytest_cache/
 .coverage
 htmlcov/
 .mypy_cache/
+
+# Local repository assessments and external-source manifests
+repository-assessment*.json
+repository-assessment*.md
+collaboration-sources.local.json
 
 # Misc
 *.log
