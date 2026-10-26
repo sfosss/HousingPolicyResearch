@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "rules": [
+    {
+      "policy": "PETF Master Bill",
+      "section": "§ 26-1810 Interagency coordination.",
+      "paragraph": "(c)",
+      "keywords": [
+        "public housing preservation trust",
+        "nycha",
+        "preservation trust",
+        "public housing modernization"
+      ],
+      "impact_area": "Public balance sheet / governance",
+      "legal_pathway": "NYCHA, Preservation Trust, HPD and HUD authority review",
+      "fiscal_roi_effect": "May reuse existing modernization appropriations and reduce parallel administrative structures",
+      "base_score": 65,
+      "redline_template": "Add the NYC Public Housing Preservation Trust and successor public entities as eligible co-investment partners only where enforceable resident governance and equity protections are preserved.",
+      "target_document": "NYC-Draft-Legislation.md"
+    },
+    {
+      "policy": "PETF Master Bill",
+      "section": "§ 26-1806 Financial assistance and risk management.",
+      "paragraph": "(a)",
+      "keywords": [
+        "budget",
+        "appropriation",
+        "capital plan",
+        "voucher funding",
+        "city budget",
+        "hud funding",
+        "federal funding",
+        "credit union"
+      ],
+      "impact_area": "Fiscal ROI",
+      "legal_pathway": "Municipal finance, appropriations and federal grant compliance review",
+      "fiscal_roi_effect": "Changes available agency funds, leverage assumptions or long-term public return",
+      "base_score": 55,
+      "redline_template": "Update the eligible funding and fiscal-control provisions to prioritize reuse of identified HPD, HRA, NYCHA or HUD resources before requesting new capital, with a documented ROI and non-supplantation finding.",
+      "target_document": "NYC-Draft-Legislation.md"
+    },
+    {
+      "policy": "TCAP Acquisition Bill",
+      "section": "§ 26-1804 Cooperative acquisition process.",
+      "paragraph": "(b)",
+      "keywords": [
+        "housing violations",
+        "worst landlord",
+        "foreclosure",
+        "tax lien",
+        "distressed building",
+        "tenant opportunity to purchase",
+        "acquisition"
+      ],
+      "impact_area": "Acquisition pipeline",
+      "legal_pathway": "NYC home rule, due process, property and procurement review",
+      "fiscal_roi_effect": "May redirect recurring enforcement and emergency spending into durable tenant ownership",
+      "base_score": 60,
+      "redline_template": "Revise priority-acquisition criteria to incorporate verified distress and enforcement indicators, tenant consent, independent valuation, due process, and a finding that public equity investment offers a superior lifecycle return.",
+      "target_document": "NYC-Draft-Legislation.md"
+    },
+    {
+      "policy": "TCAP Acquisition Bill",
+      "section": "§ 26-1809 Enforcement and tenant protections.",
+      "paragraph": "(c)",
+      "keywords": [
+        "discrimination",
+        "disparate impact",
+        "source of income",
+        "fair housing",
+        "credit history",
+        "criminal history",
+        "immigration",
+        "civil rights",
+        "human rights"
+      ],
+      "impact_area": "Civil and human rights",
+      "legal_pathway": "NYSHRL, NYCHRL, Fair Housing Act and due-process review",
+      "fiscal_roi_effect": "Reduces litigation and exclusion risk while protecting broad participation in tenant equity",
+      "base_score": 65,
+      "redline_template": "Require pre-implementation and annual disparate-impact review of eligibility, screening, data-sharing and governance rules, plus corrective action and an appeal process that preserves access to tenant equity.",
+      "target_document": "NYC-Draft-Legislation.md"
+    },
+    {
+      "policy": "PETF Master Bill",
+      "section": "§ 26-1803 Authorization for subsidy conversion.",
+      "paragraph": "(c)",
+      "keywords": [
+        "snap",
+        "temporary assistance",
+        "public assistance",
+        "benefits",
+        "shutdown",
+        "farm bill",
+        "section 8",
+        "rental assistance",
+        "cityfheps"
+      ],
+      "impact_area": "Household stability",
+      "legal_pathway": "HRA, HUD and federal-benefit preemption review",
+      "fiscal_roi_effect": "Changes household cash flow, arrears risk and public equity preservation assumptions",
+      "base_score": 60,
+      "redline_template": "Create a federal-benefit continuity review and temporary stabilization authority, funded first from permissible existing program resources, when an external policy change materially threatens household cash flow or the public equity position.",
+      "target_document": "NYC-Draft-Legislation.md"
+    },
+    {
+      "policy": "PETF/TCAP Implementation Act",
+      "section": "§ 26-1812 Rulemaking authority.",
+      "paragraph": "(e)",
+      "keywords": [
+        "court",
+        "decision",
+        "held",
+        "injunction",
+        "consent decree",
+        "settlement",
+        "due process",
+        "preemption"
+      ],
+      "impact_area": "Legal feasibility",
+      "legal_pathway": "Corporation Counsel review required before implementation",
+      "fiscal_roi_effect": "May alter litigation exposure, implementation timing or recoverability of public investment",
+      "base_score": 70,
+      "redline_template": "Add a legal-change-control clause requiring Corporation Counsel review, documented authority, severability analysis and an implementation hold before applying any affected provision.",
+      "target_document": "NYC-Draft-Legislation.md"
+    },
+    {
+      "policy": "PETF/TCAP Implementation Act",
+      "section": "§ 26-1805 Subsidy allocation and phase-in structure.",
+      "paragraph": "(b)",
+      "keywords": [
+        "energy cost",
+        "utility",
+        "insurance",
+        "flood",
+        "climate",
+        "weatherization",
+        "electrification",
+        "resilience"
+      ],
+      "impact_area": "Operating costs / asset preservation",
+      "legal_pathway": "Building, procurement and federal funding compliance review",
+      "fiscal_roi_effect": "Changes operating reserves, affordability and lifecycle return",
+      "base_score": 45,
+      "redline_template": "Require utility, insurance and climate-risk stress tests and permit cost-effective resilience investment where lifecycle savings protect tenant affordability and the public equity position.",
+      "target_document": "NYC-Draft-Legislation.md"
+    }
+  ]
+}
