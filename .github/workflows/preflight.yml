@@ -21,8 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout tooling
-        uses: actions/checkout@v4
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
+          persist-credentials: false
           # Git for Windows rejects research paths even in a sparse index.
           # Stage only the tooling on Linux; never check out exports on Windows.
           sparse-checkout-cone-mode: false
@@ -34,7 +35,7 @@ jobs:
             /requirements.txt
 
       - name: Stage portable tooling
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: preflight-tooling-${{ github.run_number }}
           path: |
@@ -62,12 +63,12 @@ jobs:
             platform: Windows
     steps:
       - name: Download portable tooling
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           name: preflight-tooling-${{ github.run_number }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.11'
 
@@ -79,7 +80,7 @@ jobs:
 
       - name: Upload preflight reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: preflight-${{ matrix.os }}-${{ github.run_number }}
           path: reports/preflight/
