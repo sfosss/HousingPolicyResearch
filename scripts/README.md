@@ -4,6 +4,25 @@ This directory contains automation scripts for repository management and mainten
 
 ## Available Scripts
 
+### `preflight_check.py`
+
+Run `python scripts/preflight_check.py` from a checkout with Python 3.11+ and
+Git on PATH. No packages, API tokens, or network access are needed. The command
+checks required tooling files and Python source syntax, writes
+`reports/preflight/preflight.json` and `preflight.md`, and exits with status 1
+when a check fails. Reports are written on both passing and failing checks.
+Use `--repo-root PATH` or `--reports-dir PATH` to override the defaults.
+
+The single `.github/workflows/preflight.yml` runs this command on macOS,
+Linux, and Windows. A Linux job stages a tooling-only artifact for the three
+runners because Git for Windows rejects research export paths even with a
+sparse checkout. The artifact contains `scripts/`, `src/`, `tests/`,
+`pyproject.toml`, and `requirements.txt`, without Git metadata. This
+does not rename or remove research files. The workflow uploads both reports
+even when checks fail; it does not suppress failures. It checks repository
+tooling, not local disk SMART health or live service connectivity. Use
+`validate_connections.py` separately for configured service checks.
+
 ### `merge-housing-repository.sh`
 
 **Purpose:** Automates the process of merging the `sfosss/Housing` repository into this repository's `housing/` subdirectory while preserving full commit history.

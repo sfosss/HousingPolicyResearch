@@ -15,6 +15,44 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ## Inventory of Generative Outputs
 
+### Remaining action modernization — 2026-10-23
+
+- **Version:** 1.0; proposed after the CI reconciliation.
+- **Files:** docs/actions-node24-migration-2026-10-23.md; workflow action pins and the read-only Action Compatibility smoke workflow.
+- **Creation method:** Codex-assisted runtime migration from official maintainer action manifests.
+- **Verification:** Full action SHAs and declared runtimes inspected; local tests/YAML/reference checks and native workflow results recorded in the PR.
+- **Limits:** Quarto installation is exercised without publication; live release creation and PDF rendering are not tested. Merge the reconciliation first to remove direct publication pushes to main.
+
+### Merge-readiness audit corrections — 2026-10-23
+
+- **Version:** 1.6; follow-up review of #143 before integration.
+- **Files:** scripts/audit_repository_state.py; tests/test_repository_audit.py.
+- **Changes:** Strict UTF-8 decoding rejects malformed trackers; task/action and status headers determine tracker scope rather than filename fragments. Research metric datasets are excluded. Source archival requires owner review.
+- **Verification:** Fixture regressions added for invalid bytes, news intake inclusion and research exclusion. Fresh native validation required on the updated head before merge.
+- **Limits:** No source datasets edited, archived or reconciled automatically.
+
+### CI repair reconciliation — 2026-10-23
+
+- **Version:** 1.5; proposed after data-quality review fixes.
+- **Files:** docs/ci-repair-reconciliation-2026-10-23.md; scoped audit/intake guidance and replacement security incident documents.
+- **Creation method:** Codex-assisted reconciliation of PRs #122/#123/#132/#134 against main 873590d24b0cf24c35dc4e5c47aa807295a39838.
+- **Verification:** Main source-tree equality, local unit tests and formatter checks; native validation recorded in the PR. Ruleset 25730785 verified through GitHub after saving.
+- **Limits:** Credential rotation, historical cleanup, complete security certification and live publication are not claimed. No research or canonical legislative text changed.
+
+### Repository setup review — 2026-10-22
+
+- **File:** [Repository setup and open PR triage](repository-setup-review-2026-10-22.md)
+- **Creation method:** Codex-assisted repository and GitHub Actions inspection.
+- **Verification:** Open PR metadata, selected setup-related diffs, and failed job logs inspected on 2026-10-22. Unit tests and configured hooks run locally; hosted results are recorded in the repair PR.
+- **Review status:** Proposed; no full review of unrelated research/feature PRs or formal security certification.
+
+### Python prerequisite alignment — 2026-10-22
+
+- **Files:** `docs/resources-index.md`, `docs/resources.csv`, `TCAP_Interactive_Dashboard_README.md`, both dashboard READMEs in `docs/tcap/`, and `Capstone/dashboard/README.md`.
+- **Update method:** Codex-assisted correction of remaining prerequisite references for PR #129 review comment 6.
+- **Verification:** Minimum versions checked against `pyproject.toml`, `setup.sh`, and the existing contribution and integration guides. Historical verification records retained.
+- **Review status:** Proposed for review in PR #129.
+
 ### Documentation Files
 
 #### 1. Integration Plan
@@ -462,3 +500,11 @@ ______________________________________________________________________
 **Last comprehensive audit:** 2025-12-02\
 **Next scheduled audit:** 2025-03-02\
 **Audit frequency:** Quarterly (every 3 months)
+
+## External repositories registry — 2026-10-23
+
+- **Version:** 1.0; proposed, awaiting human review.
+- **Files:** docs/external-repositories.md and docs/external-repositories.csv; companion additions to docs/resources-index.md and docs/resources.csv; this provenance entry.
+- **Creation method:** Codex-assisted curation requested by the project owner through the connected GitHub account.
+- **Verification:** Nine public repository metadata records, maintainer READMEs, default-branch head SHAs and pinned README links retrieved on 2026-10-23. Archived db-pluto replacement notice inspected. CSV schema and row counts checked; proposed Git diff inspected before PR delivery.
+- **Limits:** No upstream code executed, datasets reproduced, legal authority certified or complete agency coverage claimed. License metadata flagged where unresolved. Selection and application notes are generated analyst judgments. No merge or adoption approval implied.
