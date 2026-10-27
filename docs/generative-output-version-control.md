@@ -515,3 +515,11 @@ ______________________________________________________________________
 - AI-assisted recovery of public Council attachment 58 for Intro 905-A; source DOCX bytes preserved as base64 and derivative text in `policy-research/20261023/`.
 - Direct download returned HTTP 200; XML extraction and both rendered pages visually checked. SHA-256 and source URL recorded in source registry.
 - Verified source content; policy interpretation remains proposed. No private portfolio text included. No code changed; no runtime tests required.
+
+## PET/TCAP R1–R4 redline revision — 2026-10-27
+
+- **Version:** Revision 2; proposed, pending legal review. Responds to issue #158.
+- **Files:** policy-research/redlines/PET_TCAP_R1_R4_20261026.md; policy-research/daily-news/PET_TCAP_REDLINE_TRACKER_20261026.csv; this entry.
+- **Creation method:** AI-authored by Claude (claude-sonnet-5-5) via GitHub Actions at the project owner's request. The issue named Codex; this run was invoked with @claude instead.
+- **Verification:** R1 and R3 deletion text matched against NYC-Draft-Legislation.md; R2 and R4 are insertion-only. CSV parse and redline_note parity checks run after editing (see PR).
+- **Limits:** State-law re-verification (S8612A, A9370A, RPP 214/216, GBL 352-eeee/eeeee, PHFL, RPL 226-c/231-c) was not completed because web access was denied; the June 2026 status is an unverified snapshot. Canonical legislation and the original October 20 CSV unchanged. No enactment, legal validation or daily automation claimed.
