@@ -1,9 +1,13 @@
-source .venv/bin/activate
-python -m pytest tests/          # Run tests
-pre-commit run --all-files       # Run code quality checks
-python <script>                  # Execute any Python script# Housing Policy Research – Copilot Instructions
+# Housing Policy Research – Copilot Instructions
 
 Purpose: give AI agents the minimum project-specific context to ship safe, accurate changes fast. Keep instructions short and actionable.
+
+## Quick commands
+
+- `source .venv/bin/activate`
+- `python -m pytest tests/`
+- `pre-commit run --all-files`
+- `python <script>`
 
 ## Big Picture
 
@@ -46,5 +50,5 @@ Purpose: give AI agents the minimum project-specific context to ship safe, accur
 ## Version
 
 - Maintainer: Housing Policy Research team
-- Last updated: 2025-12-30
+- Last updated: 2026-11-03
 - Review cadence: Quarterly or as major changes occur
