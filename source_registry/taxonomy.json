@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "source_type": [
+    "Statute",
+    "Bill / Amendment",
+    "Regulation",
+    "Agency Rule / Guidance",
+    "Court Decision",
+    "Administrative Decision",
+    "Budget / Fiscal Note",
+    "Government Dataset",
+    "Audit / Oversight",
+    "Academic Research",
+    "NGO / Policy Report",
+    "News / Commentary",
+    "Testimony / Public Record"
+  ],
+  "jurisdiction": [
+    "NYC",
+    "NYS",
+    "Federal",
+    "Other Local",
+    "Comparative / International"
+  ],
+  "authority_level": [
+    "Binding Legal Authority",
+    "Official Nonbinding Guidance",
+    "Official Empirical / Fiscal Evidence",
+    "Independent Research",
+    "Context / Commentary"
+  ],
+  "verification_status": [
+    "UNREVIEWED",
+    "LOCATED",
+    "PRIMARY SOURCE CONFIRMED",
+    "CONTENT VERIFIED",
+    "SUPERSEDED",
+    "DISPUTED / CONFLICTING"
+  ],
+  "fiscal_relevance": [
+    "Direct Fiscal Estimate",
+    "Budget / Appropriation",
+    "Funding Mechanism",
+    "Cost Avoidance",
+    "Revenue / Savings",
+    "Indirect / Contextual",
+    "None"
+  ],
+  "research_theme": [
+    "Rental Subsidies",
+    "Administrative Failures",
+    "Tenant Ownership",
+    "COPA / TOPA",
+    "Cooperative Financing",
+    "Rent Stabilization",
+    "Housing Preservation",
+    "Civil Rights / Fair Housing",
+    "Due Process",
+    "Public Finance",
+    "Agency Accountability",
+    "Displacement Prevention",
+    "Housing Data / Evaluation"
+  ],
+  "policy_module": [
+    "TCAP",
+    "PET / PETF",
+    "COPA Implementation",
+    "Convent Transaction Study",
+    "FHIP Funding Contingency",
+    "HRA / HASA Reform",
+    "Tenant Acquisition Finance",
+    "Enforcement & Compliance",
+    "Fiscal ROI",
+    "Implementation Roadmap"
+  ]
+}

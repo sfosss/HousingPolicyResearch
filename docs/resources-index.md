@@ -468,3 +468,11 @@ See the [curated registry](external-repositories.md) and [filterable CSV](extern
 - Kyle Walker and contributors. (n.d.). *tidycensus* \[Source code\]. GitHub. Retrieved October 23, 2026, from [walkerke/tidycensus](https://github.com/walkerke/tidycensus). Retrieve ACS and decennial baselines for NYC geographies. Quality: Independent Census API client; Supporting; not legal authority. Not Census-endorsed; retain margins of error and survey vintage; avoid household inference from area averages.
 - JustFix. (n.d.). *nycha-scraper* \[Source code\]. GitHub. Retrieved October 23, 2026, from [JustFixNYC/nycha-scraper](https://github.com/JustFixNYC/nycha-scraper). Understand provenance of a historical NYCHA block-and-lot crosswalk. Quality: PDF extraction utility; Historical only; not legal authority. README targets August 27, 2018 guide; do not use as current NYCHA inventory or evidence of transfer eligibility.
 - BetaNYC. (n.d.). *New-York-City-Budget* \[Source code\]. GitHub. Retrieved October 23, 2026, from [BetaNYC/New-York-City-Budget](https://github.com/BetaNYC/New-York-City-Budget). Inspect structured Council designations and their provenance when assessing funding streams. Quality: Civic fiscal data extraction; Conditional; not legal authority. Use structured 2.0 sources only; retired PDF extracts have known errors. Designations are not expenditure actuals or proof of reusable HPD/HRA/NYCHA appropriations. Independently reconcile relied-on figures.
+
+
+## COPA amended fiscal impact statement — October 19, 2026
+
+New York City Council Finance Division. (2026, October 19). *Fiscal impact statement: Int. No. 905-A*.
+https://legistar.council.nyc.gov/View.ashx?M=F&ID=16076801&GUID=56B2C191-AD00-4018-8CC4-F8C0234B4964
+
+Primary Council estimate, hearing October 22; retrieved October 23 via direct HTTPS GET. DOCX bytes despite attachment-reader failure. Administrative expenditures: FY28 $128,000; annual FY29/full impact $170,000. Listed $115,500 and $55,000 components sum to $170,500; $500 discrepancy preserved. General Fund; no OMB estimate; not an acquisition appropriation or PET pilot score. Original SHA-256 `1bc3195cefffae3b634b6e4f2a08b8aff343a3dae8ed45f606f1a62786cdc7c6`; archive and extraction in `policy-research/20261023/`. Both rendered pages inspected.
