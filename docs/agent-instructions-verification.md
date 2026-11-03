@@ -39,9 +39,9 @@ All GitHub Copilot agent instructions and configurations have been verified and 
 All referenced documentation exists and is operational:
 
 - `/docs/STYLE-APA.md` - APA 7th edition citation standards (287 lines)
-- `/docs/resources-index.md` - Comprehensive catalog (424 lines, 21 resources)
-- `/docs/resources.csv` - Machine-readable database (22 rows)
-- `/docs/generative-output-version-control.md` - AI content tracking (420 lines)
+- `/docs/resources-index.md` - Comprehensive catalog (478 lines, 21 resources)
+- `/docs/resources.csv` - Machine-readable database (33 rows)
+- `/docs/generative-output-version-control.md` - AI content tracking (517 lines)
 - `/docs/environment-setup.md` - Environment configuration guide
 - `/docs/integration-plan.md` - API integration architecture
 - `/docs/project-roadmap.md` - Project planning and tasks
