@@ -26,7 +26,9 @@ When a new version of an action is released and you want to update:
    - For `github/codeql-action`: https://github.com/github/codeql-action/tags
 
 2. **Identify the commit SHA** for that tag
-   - Use the GitHub API: `https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}`
+   - Use the GitHub API:  
+     - Template: `https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}`  
+     - Example: `https://api.github.com/repos/actions/checkout/git/refs/tags/v4.3.1`
    - Or browse the repository tags page
 
 3. **Update the workflow file** with the new commit SHA
