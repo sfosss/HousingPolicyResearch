@@ -1,0 +1,55 @@
+# Virtual environments
+.venv/
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Node/npm (especially for raycast-extension build artifacts)
+node_modules/
+.npm
+package-lock.json
+dist/
+
+# Editors
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Logs and artifacts (keep placeholder files)
+logs/*
+!logs/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+
+# Exported assets and build outputs that shouldn't be committed
+TCAP_PET/exported-assets*/
+raycast-extension/node_modules/
+
+# Test and tooling outputs
+reports/preflight/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Local repository assessments and external-source manifests
+repository-assessment*.json
+repository-assessment*.md
+collaboration-sources.local.json
+
+# Misc
+*.log
+*.tmp
+*.zip
+
+# Local workspace (not versioned)
+workspace/
+*_BACKUP/
+

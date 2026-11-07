@@ -1,0 +1,16 @@
+{
+  "name": "housing-policy-raycast",
+  "version": "0.1.0",
+  "description": "Raycast extension for Housing Subsidy Reform policy workflow",
+  "scripts": {
+    "build": "raycast build",
+    "dev": "raycast develop",
+    "watch": "tsc -w -p ."
+  },
+  "dependencies": {
+    "@raycast/api": "^1.103.10"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}

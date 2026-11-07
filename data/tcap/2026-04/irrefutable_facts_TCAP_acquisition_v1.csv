@@ -1,0 +1,88 @@
+Date,Fact_ID,Category,Borough,Channel,Fact,Value,Source,Date_Verified,Status,Previous_Value,Version_Notes
+2026-04-05,AQ001,Whole_Bldg_Sales,Manhattan,Ch1,"DOF rolling sales: whole-building MF (C+D classes, 5+ units, >$100K) — total volume",$3979576045,"NYC DOF Open Data (usep-8jbt)",2026-04-05,Verified,,"374 transactions, 16,586 units"
+2026-04-05,AQ002,Whole_Bldg_Sales,Bronx,Ch1,"DOF rolling sales: whole-building MF (C+D classes, 5+ units, >$100K) — total volume",$3115942489,"NYC DOF Open Data (usep-8jbt)",2026-04-05,Verified,,"273 transactions, 10,080 units"
+2026-04-05,AQ003,Whole_Bldg_Sales,Brooklyn,Ch1,"DOF rolling sales: whole-building MF (C+D classes, 5+ units, >$100K) — total volume",$2241620124,"NYC DOF Open Data (usep-8jbt)",2026-04-05,Verified,,"447 transactions, 6,292 units"
+2026-04-05,AQ004,Whole_Bldg_Sales,Queens,Ch1,"DOF rolling sales: whole-building MF (C+D classes, 5+ units, >$100K) — total volume",$770378671,"NYC DOF Open Data (usep-8jbt)",2026-04-05,Verified,,"198 transactions, 3,954 units"
+2026-04-05,AQ005,Whole_Bldg_Sales,Staten_Island,Ch1,"DOF rolling sales: whole-building MF (C+D classes, 5+ units, >$100K) — total volume",$23892000,"NYC DOF Open Data (usep-8jbt)",2026-04-05,Verified,,"12 transactions, 136 units"
+2026-04-05,AQ006,Whole_Bldg_PPU,Manhattan,Ch1,"DOF all-MF whole-building per-unit price (total volume / total units)",$239936,"NYC DOF Open Data (computed: $3.98B / 16,586 units)",2026-04-05,Verified,,Includes all building types; RS buildings lower
+2026-04-05,AQ007,Whole_Bldg_PPU,Bronx,Ch1,"DOF all-MF whole-building per-unit price (total volume / total units)",$309121,"NYC DOF Open Data (computed: $3.12B / 10,080 units)",2026-04-05,Verified,,Inflated by new construction/luxury elevator; RS subset much lower
+2026-04-05,AQ008,Whole_Bldg_PPU,Brooklyn,Ch1,"DOF all-MF whole-building per-unit price (total volume / total units)",$356265,"NYC DOF Open Data (computed: $2.24B / 6,292 units)",2026-04-05,Verified,,
+2026-04-05,AQ009,Whole_Bldg_PPU,Queens,Ch1,"DOF all-MF whole-building per-unit price (total volume / total units)",$194835,"NYC DOF Open Data (computed: $770M / 3,954 units)",2026-04-05,Verified,,
+2026-04-05,AQ010,Whole_Bldg_PPU,Staten_Island,Ch1,"DOF all-MF whole-building per-unit price (total volume / total units)",$175676,"NYC DOF Open Data (computed: $23.9M / 136 units)",2026-04-05,Verified,,Very small sample (12 transactions)
+2026-04-05,AQ011,Whole_Bldg_PPU,Citywide,Ch1,"DOF all-MF whole-building per-unit price (total volume / total units)",$273467,"NYC DOF Open Data (computed: $10.13B / 37,048 units)",2026-04-05,Verified,,1304 total transactions
+2026-04-05,AQ012,RS_PPU,Bronx,Ch1,"100% rent-stabilized building per-unit sale price (2024)",$112023,"RGB 2025 Mortgage Survey Report",2026-04-05,Verified,,Direct from RGB; HIGH confidence
+2026-04-05,AQ013,RS_PPU,Manhattan,Ch1,"Rent-stabilized building per-unit sale price (2025)",$249000,"Ariel Property Advisors 2025 Annual Report",2026-04-05,Verified,,45% below 2019 pre-HSTPA levels
+2026-04-05,AQ014,RS_PPU,Citywide,Ch1,"100% rent-stabilized building per-unit sale price (2024)",$175225,"RGB 2025 Mortgage Survey Report",2026-04-05,Verified,,Citywide average; Bronx specifically $112,023
+2026-04-05,AQ015,RS_PPU,Brooklyn,Ch1,"Estimated RS building per-unit sale price",$190000,"Estimated from RGB citywide + HSTPA decline pattern (-37.1%)",2026-04-05,Estimated,,MEDIUM confidence; not directly published by RGB
+2026-04-05,AQ016,RS_PPU,Queens,Ch1,"Estimated RS building per-unit sale price",$145000,"Estimated from RGB citywide + HSTPA decline pattern (-60.4%)",2026-04-05,Estimated,,MEDIUM confidence; not directly published by RGB
+2026-04-05,AQ017,RS_PPU,Staten_Island,Ch1,"Estimated RS building per-unit sale price",$120000,"Estimated: limited data; proxy from Bronx/Queens",2026-04-05,Estimated,,LOW confidence; very limited transaction data
+2026-04-05,AQ018,Foreclosure,Citywide,Ch2,"First-time foreclosure filings (2025)",1588,"PropertyShark 2025 NYC Foreclosure Report",2026-04-05,Verified,,Up 8% YoY from 2024
+2026-04-05,AQ019,Foreclosure,Queens,Ch2,"Queens foreclosure filings (2025) — highest volume",587,"PropertyShark 2025 NYC Foreclosure Report",2026-04-05,Verified,,37% of citywide filings
+2026-04-05,AQ020,Foreclosure,Manhattan,Ch2,"Manhattan foreclosure filings (2025) — record since 2010",208,"PropertyShark 2025 NYC Foreclosure Report",2026-04-05,Verified,,+28% YoY
+2026-04-05,AQ021,Foreclosure,Brooklyn,Ch2,"Brooklyn foreclosure filings (2025)",460,"PropertyShark 2025 NYC Foreclosure Report",2026-04-05,Verified,,
+2026-04-05,AQ022,Foreclosure_Discount,Citywide,Ch2,"Documented foreclosure discount range for RS multifamily buildings","44%-59%","Bisnow (Inwood 44%); Crain's (55%); Real Deal (59% Harlem; 97% extreme)",2026-04-05,Verified,,Model uses conservative 40%
+2026-04-05,AQ023,Tax_Lien,Citywide,Ch2,"Tax lien trusts: total liens held",7270,"Rosenberg & Estis / NYC DOF (2025)",2026-04-05,Verified,,"Includes 1,355 multifamily parcels"
+2026-04-05,AQ024,Tax_Lien,Citywide,Ch2,"Tax lien trusts: multifamily parcels",1355,"Rosenberg & Estis / NYC DOF (2025)",2026-04-05,Verified,,
+2026-04-05,AQ025,Tax_Lien,Citywide,Ch2,"Tax lien sale discount (liens sold at)",0.72,"Rosenberg & Estis",2026-04-05,Verified,,72 cents on the dollar
+2026-04-05,AQ026,Penalty,Citywide,Ch3,"LL71 Class C daily penalty (>5 unit buildings)","$50-$125/day","NYC Admin Code §27-2115 (LL71 of 2023); HPD Penalties page",2026-04-05,Verified,,Per violation per day
+2026-04-05,AQ027,Penalty,Citywide,Ch3,"LL71 Class B daily penalty (>5 unit buildings)","$25-$125/day","NYC Admin Code §27-2115 (LL71 of 2023); HPD Penalties page",2026-04-05,Verified,,Per violation per day
+2026-04-05,AQ028,Penalty,Citywide,Ch3,"LL71 Heat/hot water initial violation penalty","$350-$1,250/day","NYC Admin Code §27-2115 (LL71 of 2023); HPD Penalties page",2026-04-05,Verified,,Per occurrence
+2026-04-05,AQ029,Penalty,Citywide,Ch3,"LL71 Heat/hot water repeat violation (same year)","$500-$1,500/day","NYC Admin Code §27-2115 (LL71 of 2023); HPD Penalties page",2026-04-05,Verified,,
+2026-04-05,AQ030,Violations,Citywide,Ch3,"Total HPD violations issued FY2024",895457,"City Limits (Oct 2024); +24% over FY2023",2026-04-05,Verified,,Class B/C surged 32%
+2026-04-05,AQ031,Violations,Bronx,Ch3,"Barry Singer: 620 E. 178th St. open violations",706,"NYC Public Advocate 2024 Worst Landlords; Crain's",2026-04-05,Verified,,"47 units; #1 worst landlord building"
+2026-04-05,AQ032,Violations,Citywide,Ch3,"Worst Landlords Watchlist: ~400 buildings avg 146 violations each","~400 buildings / 146 avg violations","NYC Public Advocate 2024-2025",2026-04-05,Verified,,4877 total units across top 100 landlords
+2026-04-05,AQ033,Collection,Citywide,Ch3,"ECB/DOF violation fine collection rate (Comptroller audit)","~4%","NYC Comptroller Audit (2008-2010)",2026-04-05,Verified,,"$202M DOB fines outstanding as of Oct 2008; DATED — current rate unknown"
+2026-04-05,AQ034,Enforcement_Cost,Citywide,Ch3,"HPD enforcement budget (CDBG allocation)","~$130M","NYC Council HPD Budget Analysis FY2025",2026-04-05,Estimated,,Approximate; enforcement portion of $1.57B total HPD budget
+2026-04-05,AQ035,Enforcement_Cost,Citywide,Ch3,"HPD annual inspection volume","660,000+","Mayor's Management Report FY2023-2024",2026-04-05,Verified,,
+2026-04-05,AQ036,Enforcement_Cost,Citywide,Ch3,"Estimated cost per inspection (budget/volume)","~$200","Derived: $130M / 660,000 inspections",2026-04-05,Estimated,,Rough estimate
+2026-04-05,AQ037,AEP,Citywide,Ch3,"AEP total fines imposed since Jan 2024","$27.3M","HPD AEP page",2026-04-05,Verified,,
+2026-04-05,AQ038,Settlement,Citywide,Ch3,"A&E Real Estate settlement: 4,000+ violations across 14 buildings","$12M","6sqft / NYC Public Advocate",2026-04-05,Verified,,Structure: monetary penalty + required repairs + compliance monitoring
+2026-04-05,AQ039,TPT,Citywide,Ch2,"Third Party Transfer program: buildings stabilized since inception","~520 buildings (~6,000 homes)","NYC Council / DOF",2026-04-05,Verified,,Program frozen since 2019; reauthorization proposed Jan 2025
+2026-04-05,AQ040,COPA,Citywide,Ch3,"COPA status: passed Council Dec 2025; vetoed by Mayor Adams; override failed Jan 2026",Vetoed,"Cole Schotz; NYC Council records",2026-04-05,Verified,,Efforts ongoing for reintroduction
+2026-04-05,AQ041,Shelter_Cost,Citywide,Ch3,"DHS shelter per diem (standard)","$136-$186/night","NYC Comptroller shelter cost analysis",2026-04-05,Verified,,Per person/family
+2026-04-05,AQ042,Shelter_Cost,Citywide,Ch3,"Hotel-based emergency shelter per diem","$332-$383/night","NYC Comptroller shelter cost analysis",2026-04-05,Verified,,
+2026-04-05,AQ043,Flagstar,Citywide,Ch2,"Flagstar Bank foreclosure: 5,100+ RS apartments heading to auction (expected 2026)","5,100+ units","Multifamily Dive",2026-04-05,Verified,,Chapter 11 auction
+2026-04-05,AQ044,A&E_Default,Citywide,Ch2,"A&E Real Estate: 31-property portfolio default; 3,500+ units; $506.3M loan","$506.3M","Multifamily Dive",2026-04-05,Verified,,Across 4 boroughs
+2026-04-05,AQ045,Neighborhood_Pillars,Citywide,Ch2,"HPD Neighborhood Pillars per-unit subsidy","Up to $380,000","HPD Neighborhood Pillars Term Sheet",2026-04-05,Verified,,Per-unit financing $110K-$180K
+2026-04-05,AQ046,Model_Output,Citywide,All,"Three-channel blended per-unit acquisition cost (weighted citywide)",$104889,"TCAP Acquisition Channels Model v1 (computed)",2026-04-05,Computed,,Mix: 50% market / 20% foreclosure / 30% penalty
+2026-04-05,AQ047,Model_Output,Citywide,All,"Three-channel total per-unit conversion cost (weighted citywide)",$212969,"TCAP Acquisition Channels Model v1 (computed)",2026-04-05,Computed,,Includes blended rehab + soft costs
+2026-04-05,AQ048,Model_Output,Citywide,All,"Three-channel total program investment (150 bldgs / 3,750 units)",$798632100,"TCAP Acquisition Channels Model v1 (computed)",2026-04-05,Computed,,vs v1 single-channel $953,125,000
+2026-04-05,AQ049,Model_Output,Citywide,All,"Three-channel weighted 10-year equity per HH",$74264,"TCAP Acquisition Channels Model v1 (computed)",2026-04-05,Computed,,vs v1 $86,555; lower due to smaller mortgages
+2026-04-05,AQ050,Model_Output,Citywide,All,"Three-channel break-even range","Years 23-27","TCAP Acquisition Channels Model v1 (computed)",2026-04-05,Computed,,vs v1 Years 18-19; extended by lower equity accumulation
+2026-04-05,AQ051,Market_Rate,Citywide,All,"Current NY 30-year fixed mortgage rate","6.58-6.73%","Bankrate April 2026; RGB MSR 2025",2026-04-05,Verified,,"Market rate 68% higher than model's 4.0% assumption"
+2026-04-05,AQ052,CDFI_Lending,Citywide,All,"NCB originated for NY cooperatives Q4 2025",$186000000,"NCB Press Release Jan 2026",2026-04-05,Verified,,"$1.4B total NCB originations in 2025; demonstrates CDFI cooperative lending capacity"
+2026-04-05,AQ053,NMTC,Citywide,All,"New Markets Tax Credit total investor credit","39% over 7 years","CDFI Fund; Tax Policy Center",2026-04-05,Verified,,"5% years 1-3 + 6% years 4-7; CDEs required to offer below-market terms"
+2026-04-05,AQ054,CLT_Precedent,Brooklyn,All,"East NY CLT subsidized acquisition of 20-unit RS building for co-op conversion","2/3 acquisition cost subsidized","Next City 2024",2026-04-05,Verified,,"Direct NYC precedent for CLT-cooperative model"
+2026-04-05,AQ055,CLT_Precedent,Manhattan,All,"East Harlem/El Barrio CLT acquired first 4 buildings from NYC","$1 each","NPQ; NYC CLT Initiative",2026-04-05,Verified,,"City-to-CLT transfer mechanism already exists"
+2026-04-05,AQ056,CLT_Funding,Citywide,All,"NYC City Council annual CLT investment (since 2019)",$7500000,"NYC Council; Next City",2026-04-05,Verified,,"Renewed annually; supports 15+ NYC CLTs"
+2026-04-05,AQ057,CLT_Benchmark,N/A,All,"Champlain Housing Trust portfolio: rentals + purchase + co-ops","2400 rental + 600 purchase + 115 cooperatives","Champlain Housing Trust; World Habitat Awards",2026-04-05,Verified,,"40+ years of operation; zero foreclosures in early period"
+2026-04-05,AQ058,CLT_Cost_Reduction,Citywide,All,"CLT ground lease cost reduction from market price","~50% when land separated","Homeward Bound; CHT case studies",2026-04-05,Verified,,"$350K market → $175K or less with CLT; conservative model uses 15-40% by borough"
+2026-04-05,AQ059,CLT_Model_Output,Citywide,All,"CLT-reduced weighted acquisition per unit",$77006,"Computed: borough land% × acquisition",2026-04-05,Computed,,"vs $104,889 without CLT (−26.6%)"
+2026-04-05,AQ060,CLT_Model_Output,Citywide,All,"CLT-reduced total program investment",$694072868,"Computed: CLT conversion × units",2026-04-05,Computed,,"vs $798.6M without CLT (−$104.6M, −13.1%)"
+2026-04-05,AQ061,Rate_Sensitivity,Citywide,All,"Subsidy-only equity range across rate scenarios (2.5%-6.73%)","$65,115 to $75,211","Computed: amortization model",2026-04-05,Computed,,"$10,096 spread (14.2%); rate impact moderate vs subsidy credit dominance"
+2026-04-05,AQ062,Combined_Model,Citywide,All,"Full stack equity: CDFI 3.5% + CLT + Member(B:100%) + Tax",$115396,"Computed: combined scenario model",2026-04-05,Computed,,"62.3% asset creation rate; Year 16 break-even"
+2026-04-05,AQ063,Combined_Model,Citywide,All,"Full stack program investment with CLT",$694072868,"Computed: CLT-reduced conversion × 3,750 units",2026-04-05,Computed,,"$104.6M less than current model; lower capital at risk"
+2026-04-05,AQ064,FHLB,Citywide,All,"FHLB-NY Homebuyer Dream Program grant","Up to $20,000/unit","FHLB-NY; improves CRA credit for participating banks",2026-04-05,Verified,,"Could offset cooperative down payment/reserve requirements"
+2026-04-05,AQ065,CRA,Citywide,All,"NYS has its own state-level Community Reinvestment Act","State + Federal CRA applies","NYS DFS",2026-04-05,Verified,,"Dual CRA obligation creates additional motivation for bank participation"
+
+CHANGES_REQUIRING_APPROVAL
+All 11 changes accepted by Seth Foss on 2026-04-05. Flagged for re-review after next fiscal analysis round.
+Date,Change_ID,Category,Fact_Changed,Previous_Value_in_Borough_v1,New_Three_Channel_Value,Status,Notes
+2026-04-05,ACQ-CHG001,Acquisition_Cost,"Blended per-unit acquisition (Bronx)",$100000,$79536,ACCEPTED_2026-04-05,"Three-channel blend reduces Bronx acquisition 20.5%. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG002,Acquisition_Cost,"Blended per-unit acquisition (weighted citywide)","$156,000 (est.)","$104,889",ACCEPTED_2026-04-05,"Reduces acquisition component ~33%. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG003,Conversion_Cost,"Total per-unit conversion (Bronx)",$199000,$187236,ACCEPTED_2026-04-05,"Lower acquisition partly offset by higher weighted rehab for Ch3 buildings. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG004,Conversion_Cost,"Total per-unit conversion (weighted citywide)",$254167,$212969,ACCEPTED_2026-04-05,"-16.2% from v1 Borough Model. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG005,Investment,"Total program investment (150 buildings)",$953125000,$798632100,ACCEPTED_2026-04-05,"-$154.5M (-16.2%); lower capital at risk. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG006,Equity,"10-year equity per HH (Bronx)",$75452,$69423,ACCEPTED_2026-04-05,"Smaller mortgage → less principal paydown (-8.0%). Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG007,Equity,"10-year equity per HH (weighted citywide)",$86555,$74264,ACCEPTED_2026-04-05,"-14.2%; trade-off for $154.5M lower capital requirement. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG008,Break_Even,"Break-even timeline","Years 18-19","Years 23-27",ACCEPTED_2026-04-05,"Extended by lower equity accumulation; higher total conversion costs relative to equity. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG009,Model_Structure,"Acquisition channels","1 (market only)","3 (market/foreclosure/penalty-leveraged)",ACCEPTED_2026-04-05,"Structural change to acquisition strategy. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG010,Assumption,"Foreclosure discount",N/A,"40% from RS market",ACCEPTED_2026-04-05,"Conservative end of documented 44-59% range. Re-review after next fiscal analysis."
+2026-04-05,ACQ-CHG011,Assumption,"Penalty-leverage discount",N/A,"70% from RS market",ACCEPTED_2026-04-05,"Based on penalty-to-value analysis; requires new administrative mechanism. Re-review after next fiscal analysis."
+
+COMMUNITY FINANCING CHANGES (Generation 5) — Pending approval
+Date,Change_ID,Category,Fact_Changed,Previous_Value,New_Value,Status,Notes
+2026-04-05,FIN-CHG001,Interest_Rate,"Mortgage rate assumption","4.0% flat","Range: 2.5-6.73% (5 scenarios); baseline shifts to 3.5% CDFI",PENDING,"Rate sensitivity shows $10,096 equity spread; monthly payment range $373-$611/unit"
+2026-04-05,FIN-CHG002,CLT_Structure,"Acquisition cost structure","Full acquisition in cooperative mortgage","CLT retains land (15-40% by borough); co-op mortgages building only",PENDING,"Removes $104.6M in land costs; reduces program investment 13.1% to $694.1M"
+2026-04-05,FIN-CHG003,Capital_Stack,"Financing mechanism","Single-source mortgage at 4.0%","7-layer blended capital stack: HPD(0%) + CDFI(3-4.5%) + NMTC(0-2%) + CLT + FHLB + CRA + TCAP Fund",PENDING,"Effective blended rate likely 2.0-3.5%; reflects actual NYC cooperative conversion practice"
+2026-04-05,FIN-CHG004,Equity_Policy,"Member payment equity allocation","Not modeled","Interp A: 20% to equity ($8,990/10yr) OR Interp B: 100% to equity ($44,951/10yr)",PENDING,"Policy design choice: Interp B produces $115,396 equity + Year 16 break-even; requires §26-1803 amendment"

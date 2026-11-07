@@ -1,0 +1,6 @@
+Date,Source_Publication,Source_URL,Headline,Summary,Category,Framework_Impact,Action_Required,Owner_Persona,Status,Version_Affected,Internal_Notes
+2025-12-26,City Hall Press Release,nyc.gov/press,HPD Announces Q1 2026 Budget Allocation,"Mayor allocates $500M to housing, $200M to rental subsidies",Fiscal,High,CFO Cost Model Refresh,CFO,New,v1.0,Verify allocation to existing subsidy programs
+2025-12-24,Crain's New York,crainsnewyork.com,Council Proposes Fair Housing Amendment,Council seeks to strengthen fair housing enforcement in rezonings,Legal,Medium,Attorney Review,Attorney,New,v1.0,Assess impact on tenant co-op governance
+2025-12-22,THE CITY,gothamist.com,Credit Union Consolidation Announced,Two NYC credit unions merge; asset base $2B,Market,Low,Monitor,CFO,New,v2.0_planning,Flag for sensitivity model update
+2025-12-20,NY State Budget Watch,assembly.ny.gov,HCR Proposes Tenant Protection Rules,State proposes new tenant screening standards,Legal,Medium,Attorney Review,Attorney,Reviewed,v1.0,Cross-check with equity transfer governance
+2025-12-18,Politico New York,politico.com,Mayoral Race: Housing Front-and-Center,Top candidates outline housing platforms,Political,Medium,Stakeholder Alert,Program Manager,Reviewed,v1.0,No immediate action; monitor campaign

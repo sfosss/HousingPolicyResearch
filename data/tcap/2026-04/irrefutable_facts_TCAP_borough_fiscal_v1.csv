@@ -1,0 +1,59 @@
+Date,Fact_ID,Category,Borough,Fact,Value,Source,Date_Verified,Status,Previous_Value,Version_Notes
+2026-04-05,BF001,Acquisition_Cost,Bronx,"Average per-unit price for multifamily buildings (1H 2025)",$111380,"Ariel Property Advisors 1H 2025 Bronx Multifamily Report",2026-04-05,Verified,,Direct from Ariel press release; 27% decline YoY
+2026-04-05,BF002,Acquisition_Cost,Bronx,"RS buildings comprised 76% of multifamily dollar volume and 74% of transactions (1H 2025)",76%,"Ariel Property Advisors 1H 2025 Bronx Report",2026-04-05,Verified,,
+2026-04-05,BF003,Acquisition_Cost,Bronx,"Related Companies 36-building portfolio (2021 units) sold to PH Realty Capital",$189000000,"Ariel Property Advisors 1H 2025 Bronx Report",2026-04-05,Verified,,"$93,517/unit — demonstrates TCAP-scale portfolio pricing"
+2026-04-05,BF004,Acquisition_Cost,Manhattan,"Free-market multifamily per-unit price (2025)",$635000,"Ariel Property Advisors / Crain's NY 2025 Annual Report",2026-04-05,Verified,,"Up 13% YoY; 12% below 2015 peak of $720,000"
+2026-04-05,BF005,Acquisition_Cost,Manhattan,"Rent-stabilized multifamily per-unit price (2025)",$249000,"Ariel Property Advisors 2025",2026-04-05,Verified,,"45% below 2019 (pre-HSTPA) levels"
+2026-04-05,BF006,Acquisition_Cost,Citywide,"Average per-unit price 100% stabilized buildings (2024)",$175225,"Ariel Property Advisors / Crain's NY",2026-04-05,Verified,,Citywide average; borough-specific breakdown not published
+2026-04-05,BF007,Acquisition_Cost,Citywide,"Q3 2025 average per-unit price all multifamily",$384000,"Matthews Real Estate Q3 2025 NYC Report",2026-04-05,Verified,,Includes all property types; RS buildings significantly lower
+2026-04-05,BF008,RS_Depreciation,Queens,"RS building value decline from pre-HSTPA levels",-60.4%,"Ariel Property Advisors; NYU Furman Center 2024",2026-04-05,Verified,,Steepest decline of any borough
+2026-04-05,BF009,RS_Depreciation,Bronx,"RS building value decline from pre-HSTPA levels",-58.5%,"Ariel Property Advisors 2024",2026-04-05,Verified,,
+2026-04-05,BF010,RS_Depreciation,Manhattan,"RS building value decline from pre-HSTPA levels",-47.4%,"Ariel Property Advisors 2024",2026-04-05,Verified,,
+2026-04-05,BF011,RS_Depreciation,Brooklyn,"RS building value decline from pre-HSTPA levels",-37.1%,"Ariel Property Advisors 2024",2026-04-05,Verified,,Smallest decline; reflects strong free-market demand spillover
+2026-04-05,BF012,Stabilized_Rent,Manhattan,"Median rent-stabilized rent (2023 NYCHVS)",$2167,"NYC Rent Guidelines Board 2025 Income & Affordability Study",2026-04-05,Verified,,Monthly figure
+2026-04-05,BF013,Stabilized_Rent,Brooklyn,"Median rent-stabilized rent (2023 NYCHVS)",$1579,"NYC Rent Guidelines Board 2025 Income & Affordability Study",2026-04-05,Verified,,Monthly figure
+2026-04-05,BF014,Stabilized_Rent,Queens,"Median rent-stabilized rent (2023 NYCHVS)",$1540,"NYC Rent Guidelines Board 2025 Income & Affordability Study",2026-04-05,Verified,,Monthly figure
+2026-04-05,BF015,Stabilized_Rent,Bronx,"Median rent-stabilized rent (2023 NYCHVS)",$1145,"NYC Rent Guidelines Board 2025 Income & Affordability Study",2026-04-05,Verified,,Monthly figure
+2026-04-05,BF016,Stabilized_Rent,Staten Island,"Median rent-stabilized rent (2023 NYCHVS)",$1039,"NYC Rent Guidelines Board 2025 Income & Affordability Study",2026-04-05,Verified,,Monthly figure; lowest borough
+2026-04-05,BF017,CityFHEPS,Citywide,"CityFHEPS 1-BR payment standard (effective April 1 2026)",$2734,"HRA DSS-8r April 2026",2026-04-05,Verified,,Citywide uniform rate; does NOT vary by borough
+2026-04-05,BF018,HUD_FMR,Citywide,"HUD FMR 1-BR FY2026 (effective Oct 1 2025)",$2655,"HUD User FMR Database FY2026",2026-04-05,Verified,,Metro-wide; does NOT vary by borough
+2026-04-05,BF019,RS_Stock,Bronx,"Rent-stabilized units as % of occupied rental stock",61%,"2023 NYC Housing and Vacancy Survey (NYCHVS)",2026-04-05,Verified,,Highest RS concentration of any borough
+2026-04-05,BF020,RS_Stock,Manhattan,"Rent-stabilized units as % of occupied rental stock",44%,"2023 NYCHVS",2026-04-05,Verified,,
+2026-04-05,BF021,RS_Stock,Brooklyn,"Rent-stabilized units as % of occupied rental stock",42%,"2023 NYCHVS",2026-04-05,Verified,,
+2026-04-05,BF022,RS_Stock,Queens,"Rent-stabilized units as % of occupied rental stock",41%,"2023 NYCHVS",2026-04-05,Verified,,
+2026-04-05,BF023,RS_Stock,Staten Island,"Rent-stabilized units as % of occupied rental stock",17%,"2023 NYCHVS",2026-04-05,Verified,,Lowest RS concentration
+2026-04-05,BF024,RS_Stock,Citywide,"Total rent-stabilized units (approx)",967000,"RGB 2025 Housing Supply Report; 2023 NYCHVS",2026-04-05,Verified,,Range 966000-1000000 depending on source
+2026-04-05,BF025,Voucher,Bronx,"Share of citywide CityFHEPS voucher holders",46%,"City Limits analysis of HRA data (2024)",2026-04-05,Verified,,Despite being 16% of NYC population
+2026-04-05,BF026,Voucher,Manhattan,"Share of citywide CityFHEPS voucher holders",<10%,"City Limits analysis of HRA data (2024)",2026-04-05,Verified,,Despite being 21% of NYC population
+2026-04-05,BF027,Poverty,Bronx,"Borough poverty rate (2024)",23%,"Robin Hood Annual Poverty Tracker 2024; Census ACS",2026-04-05,Verified,,Highest borough rate
+2026-04-05,BF028,Poverty,Citywide,"NYC overall poverty rate (2024)",26%,"Robin Hood Annual Poverty Tracker 2024",2026-04-05,Verified,,"2.2 million people; includes all poverty measures"
+2026-04-05,BF029,HDFC,Citywide,"Total HDFC limited-equity cooperative units (approx)",33000,"NYU Furman Center; NYHRC",2026-04-05,Verified,,Additional ~56000 HDFC rental units; ~1100-1200 buildings total
+2026-04-05,BF030,ANCP,Citywide,"ANCP projects financed: 25 projects involving 57 buildings (795 units) — only 16% converted to co-ops as of Feb 2025",16%,"NYC Comptroller ANCP Audit Report (Feb 2025)",2026-04-05,Verified,,"81 of 113 buildings still await conversion; 45 buildings (802 units) have no assigned developer"
+2026-04-05,BF031,ANCP,Manhattan,"ANCP 244 Elizabeth St conversion cost per unit",$205263,"HPD ANCP Project Details; 19 units at $3.9M",2026-04-05,Verified,,First completed ANCP project (June 2018)
+2026-04-05,BF032,Rehab_Benchmark,Citywide,"HPD ANCP city capital subsidy limit per unit",$700000,"HPD ANCP Term Sheet (current); 0% interest",2026-04-05,Verified,,"Increased from earlier $200,000 limit"
+2026-04-05,BF033,Rehab_Benchmark,Citywide,"HPD Participation Loan Program max per dwelling unit",$260000,"HPD Participation Loan Program Term Sheet",2026-04-05,Verified,,For comprehensive rehabilitation
+2026-04-05,BF034,Mortgage_Rate,Citywide,"Underlying co-op mortgage rate (March 2026)",5.29%,"Select Commercial (March 2026)",2026-04-05,Verified,,"High-tier; favorable range noted as high-2% to low-3% for strong properties"
+2026-04-05,BF035,Transaction_Volume,Citywide,"Total NYC multifamily transactions (2025)",1188,"Ariel Property Advisors / Crain's NY",2026-04-05,Verified,,Up 4% from 2024 (1142)
+2026-04-05,BF036,Transaction_Volume,Citywide,"Total NYC multifamily dollar volume (2025)",$8900000000,"Ariel Property Advisors / Crain's NY",2026-04-05,Verified,,Down 2% from $9.1B in 2024
+2026-04-05,BF037,Transaction_Volume,Bronx,"Bronx multifamily transactions (2025): 110 deals at $801M","$801M / 110 deals","Ariel Property Advisors",2026-04-05,Verified,,Up 21% in deals and 66% in volume YoY
+2026-04-05,BF038,Transaction_Volume,Brooklyn,"Brooklyn multifamily transactions (2025): 582 deals at $3.5B","$3.5B / 582 deals","Ariel Property Advisors / Crain's NY",2026-04-05,Verified,,Up 7% in deals; down 3% in volume YoY
+2026-04-05,BF039,Market_Rent,Manhattan,"Median market-rate 1-BR rent (Q3 2025-Q1 2026)",$4393,"StreetEasy / Skybriz",2026-04-05,Verified,,Range $4393-$5140 depending on source/period
+2026-04-05,BF040,Market_Rent,Bronx,"Median market-rate 1-BR rent",$3132,"StreetEasy / Skybriz Q3 2025",2026-04-05,Verified,,
+2026-04-05,BF041,Income,Citywide,"NYC median renter household income (2023)",$63698,"NYC Rent Guidelines Board 2025 Income & Affordability Study",2026-04-05,Verified,,
+2026-04-05,BF042,Income,Manhattan,"Manhattan median household income (2023 ACS)",$106403,"Census ACS 2023 1-year estimates",2026-04-05,Verified,,
+2026-04-05,BF043,Income_Growth,Brooklyn,"Brooklyn household income growth (2013-2023)",37.6%,"RGB 2025 Income & Affordability Study; Census ACS",2026-04-05,Verified,,Highest growth of any borough
+2026-04-05,BF044,Income_Growth,Staten Island,"Staten Island household income growth (2013-2023)",-6.7%,"RGB 2025 Income & Affordability Study; Census ACS",2026-04-05,Verified,,Only borough with negative income growth
+2026-04-05,BF045,Foreclosure,Manhattan,"Manhattan foreclosure first-time filings (2025)",208,"PropertyShark 2025 NYC Foreclosure Report",2026-04-05,Verified,,Record high since 2010; up 28% YoY
+2026-04-05,BF046,Foreclosure,Queens,"Queens foreclosure first-time filings (2025) — largest volume in city",587,"PropertyShark 2025 NYC Foreclosure Report",2026-04-05,Verified,,
+2026-04-05,BF047,NYCHA,Citywide,"Total NYCHA apartments across 5 boroughs",177565,"NYCHA Fact Sheet 2025",2026-04-05,Verified,,2410 buildings; 233 developments
+2026-04-05,BF048,ELI,Citywide,"Proportion of rent-burdened HH that are ELI (0-30% AMI)",55.6%,"ANHD 2025 AMI Cheat Sheet",2026-04-05,Verified,,Largest segment of rent-burdened population
+
+CHANGES_REQUIRING_APPROVAL
+All 6 changes accepted by Seth Foss on 2026-04-05. Flagged for re-review after next fiscal analysis round.
+Date,Fact_ID,Category,Fact_Changed,Previous_Value_in_v1_Fiscal,New_Borough_Value,Status,Notes
+2026-04-05,CHG001,Per_Unit_Cost,"TCAP per-unit conversion cost midpoint",$165000,"$199,000 (Bronx) to $364,000 (Manhattan); weighted avg $254,167",ACCEPTED_2026-04-05,"v3 used $65K acquisition; actual RS sale prices 71-283% higher. Total conversion cost 54% above v3. Re-review after next fiscal analysis."
+2026-04-05,CHG002,Equity_Per_HH,"TCAP 10-year member equity per household",$66582,"$75,452 (Bronx) to $107,276 (Manhattan); weighted avg $86,555",ACCEPTED_2026-04-05,"Higher acquisition → larger mortgages → more principal paydown → more equity. 30% above v3. Re-review after next fiscal analysis."
+2026-04-05,CHG003,Break_Even,"Break-even timeline (assets = investment with 2.5% appreciation)","Years 12-13","Years 18-19",ACCEPTED_2026-04-05,"v3 break-even could not be replicated even with v3's own inputs. Revised definition is transparent and conservative. Re-review after next fiscal analysis."
+2026-04-05,CHG004,Total_Investment,"Total 150-building conversion investment",$618750000,$953125000,ACCEPTED_2026-04-05,"54% increase driven by actual borough-level acquisition costs. Requires revised funding strategy. Re-review after next fiscal analysis."
+2026-04-05,CHG005,Total_Assets,"Total 10-year asset creation",$287872500,$445777359,ACCEPTED_2026-04-05,"55% increase; asset creation rate rises from 35.5% to 55.0% of subsidy. Re-review after next fiscal analysis."
+2026-04-05,CHG006,Building_Equity,"Building equity (10-year mortgage paydown for 150 buildings)",$38190000,$121196634,ACCEPTED_2026-04-05,"+217% — largest proportional change; direct result of higher mortgage principal. Re-review after next fiscal analysis."

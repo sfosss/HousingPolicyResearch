@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Housing Subsidy Reform | Seth Foss</title>
+  <meta name="description" content="Decision-ready deliverables for NYC implementation: PET + TCAP housing subsidy reform package." />
+
+  <style>
+    :root{
+      --bg0:#0b1020;
+      --bg1:#0f1730;
+      --card:#111c3a;
+      --card2:#0f1a36;
+      --text:#eef2ff;
+      --muted:#b9c2e8;
+      --muted2:#98a3cf;
+
+      --accent:#7c5cff;   /* violet */
+      --accent2:#22c55e;  /* green */
+      --accent3:#06b6d4;  /* cyan */
+      --warn:#f59e0b;     /* amber */
+      --ok:#22c55e;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(6,182,212,.25), transparent 60%),
+        radial-gradient(900px 700px at 50% 100%, rgba(34,197,94,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+
+    .wrap{max-width:980px;margin:0 auto;padding:36px 18px 60px}
+    .topbar{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-bottom:18px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--text);
+      text-decoration:none;
+      background:rgba(255,255,255,.04);
+      backdrop-filter: blur(8px);
+    }
+    .btn:hover{border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.06)}
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px 22px;
+    }
+    .kicker{
+      display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      background:rgba(255,255,255,.03);
+    }
+    h1{margin:6px 0 6px;font-size:34px;letter-spacing:-0.02em}
+    .sub{color:var(--muted);line-height:1.55;margin:0 0 14px;font-size:15px;max-width:78ch}
+
+    .bio{
+      margin-top:12px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .bio strong{color:var(--text)}
+    .bio p{margin:0;color:var(--muted);line-height:1.55}
+
+    .grid{display:grid;gap:14px;margin-top:18px}
+    @media (min-width: 860px){ .grid{grid-template-columns:1fr 1fr;} }
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(17,28,58,.72);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 16px;
+    }
+
+    .card h2{margin:0 0 6px;font-size:18px}
+    .card p{margin:0 0 12px;color:var(--muted);line-height:1.55;font-size:14px}
+
+    .links{display:flex;flex-wrap:wrap;gap:10px}
+    .link{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:12px;
+      border:1px solid var(--line);
+      text-decoration:none;color:var(--text);
+      background:rgba(255,255,255,.03);
+      font-weight:600;
+    }
+    .link:hover{border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.06)}
+    .tag{
+      font-size:12px;font-weight:700;
+      padding:4px 8px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+    }
+    .tag.ok{color:#d1fae5;border-color:rgba(34,197,94,.30); background:rgba(34,197,94,.12)}
+    .tag.warn{color:#ffedd5;border-color:rgba(245,158,11,.35); background:rgba(245,158,11,.12)}
+
+    .sectionTitle{
+      margin:22px 0 10px;
+      font-size:16px;
+      color:var(--text);
+      letter-spacing:.01em;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .small{color:var(--muted2);font-size:13px;margin:0}
+    footer{margin-top:26px;color:var(--muted2);font-size:13px}
+    footer a{color:var(--text)}
+      --panel:#111827;
+      --panel2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#60a5fa;
+      --accent2:#34d399;
+      --border:rgba(255,255,255,0.10);
+      --shadow: 0 12px 30px rgba(0,0,0,0.35);
+      --radius:16px;
+      --max: 980px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(96,165,250,0.15), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(52,211,153,0.12), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:32px 18px 60px;}
+    header{
+      display:flex; gap:16px; align-items:flex-start; justify-content:space-between;
+      margin-bottom:22px;
+    }
+    .brand{display:flex; flex-direction:column; gap:6px;}
+    .kicker{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
+    h1{margin:0; font-size:28px; letter-spacing:-0.02em;}
+    .sub{margin:0; color:var(--muted); max-width:72ch;}
+    .toplinks{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,0.03);
+      text-decoration:none;
+      transition:transform .1s ease, border-color .1s ease;
+      font-size:14px;
+    }
+    .pill:hover{transform:translateY(-1px); border-color:rgba(96,165,250,.55);}
+    main{display:flex; flex-direction:column; gap:16px;}
+    .panel{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .col-8{grid-column: span 8;}
+    .col-4{grid-column: span 4;}
+    @media (max-width: 900px){
+      .col-8,.col-4{grid-column: span 12;}
+      header{flex-direction:column;}
+      .toplinks{justify-content:flex-start;}
+    }
+    h2{margin:0 0 10px; font-size:16px; letter-spacing:.01em;}
+    .muted{color:var(--muted); font-size:14px;}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+    .tag{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(15, 23, 42, 0.6);
+      color: #cbd5e1;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width: 680px){ .cards{grid-template-columns: 1fr;} }
+    .card{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      background: rgba(17,24,39,0.55);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-height:120px;
+    }
+    .card h3{margin:0; font-size:15px;}
+    .card p{margin:0; color:var(--muted); font-size:13px;}
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:9px 10px;
+      border-radius:10px;
+      border:1px solid rgba(96,165,250,0.55);
+      background: rgba(96,165,250,0.10);
+      text-decoration:none;
+      font-size:13px;
+      transition:transform .1s ease, background .1s ease;
+    }
+    .btn:hover{transform:translateY(-1px); background: rgba(96,165,250,0.16);}
+    .btn.secondary{
+      border-color: rgba(52,211,153,0.55);
+      background: rgba(52,211,153,0.10);
+    }
+    .btn.secondary:hover{background: rgba(52,211,153,0.16);}
+    .callout{
+      border-left: 4px solid rgba(52,211,153,.75);
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(52,211,153,0.06);
+      color:#d1fae5;
+      font-size:13px;
+      margin-top:10px;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between;
+      opacity:0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="btn" href="https://www.linkedin.com/in/sethrfoss/" aria-label="LinkedIn">
+        <span>LinkedIn</span>
+      </a>
+      <!-- GitHub source button intentionally removed -->
+    </div>
+
+    <section class="hero">
+      <div class="kicker">
+        <span class="pill">NYC housing systems</span>
+        <span class="pill">implementation-first</span>
+        <span class="pill">fiscal discipline</span>
+        <span class="pill">compliance integrity</span>
+      </div>
+
+      <h1>Housing Subsidy Reform</h1>
+      <p class="sub">
+        A decision-ready package for NYC implementation using <strong>PET (Public Equity Transfer)</strong>—
+        and its acquisition pathway <strong>(TCAP)</strong>—to convert recurring emergency subsidy spend
+        into a controlled, performance-managed stabilization instrument. No ideology, no invented numbers:
+        mechanism, guardrails, and execution steps.
+      </p>
+
+      <div class="bio">
+        <p><strong>Seth Foss</strong> — NYC housing policy and implementation analyst with experience in tenant advocacy and agency-facing workflow design. Focus: subsidy governance, compliance design, and executable reforms that survive OMB scrutiny and real-world operations.</p>
+      </div>
+    </section>
+
+    <div class="sectionTitle">
+      <div>
+        <div style="font-weight:800;">Ready to Share</div>
+        <p class="small">These should open cleanly and are appropriate to drop into a transition-team intake form.</p>
+      </div>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Mayoral Transition Memo <span class="tag ok">READY</span></h2>
+        <p>Executive framing: problem, approach, fiscal upside, and the decision ask.</p>
+        <div class="links">
+          <a class="link" href="deliverables/Mayoral_Transition_Memo_PETF.pdf">Open PDF</a>
+          <a class="link" href="deliverables/Mayoral_Transition_Memo_PETF.docx">Open DOCX</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Policy Ops Add-Ons <span class="tag ok">READY</span></h2>
+        <p>Two transition-facing supplements: budget office one-pager + hostile Q&A.</p>
+        <div class="links">
+          <a class="link" href="deliverables/Budget_Office_One_Pager_PETF.md">Budget Office One-Pager (MD)</a>
+          <a class="link" href="deliverables/Hostile_QA_Talking_Points_PETF.md">Hostile Q&amp;A (MD)</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="sectionTitle">
+      <div>
+        <div style="font-weight:800;">In Progress / Missing Binaries</div>
+        <p class="small">These are the remaining "make it real" pieces you flagged as still needed.</p>
+      </div>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Mini Pitch Deck (10–14 slides) <span class="tag warn">NEEDS PPTX/PDF</span></h2>
+        <p>Transition-team deck: mechanism, feasibility, risk controls, and next steps.</p>
+        <div class="links">
+          <a class="link" href="deliverables/Mini_Pitch_Deck_PETF.pdf">Open PDF</a>
+          <a class="link" href="deliverables/Mini_Pitch_Deck_PETF.pptx">Open PPTX</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Works Cited (APA Master) <span class="tag warn">NEEDS PDF/MD</span></h2>
+        <p>Primary-source-first bibliography scaffold (budget, law, program rules, evaluations).</p>
+        <div class="links">
+          <a class="link" href="deliverables/Works_Cited_APA_Master.pdf">Open PDF</a>
+          <a class="link" href="deliverables/Works_Cited_APA_Master.md">Open MD</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Model Legal Document Set <span class="tag warn">NEEDS PDF/MD</span></h2>
+        <p>Draft enabling local law + rules/SOP + MOU + pilot authorization memo template.</p>
+        <div class="links">
+          <a class="link" href="deliverables/Model_Legal_Document_Set.pdf">Open PDF</a>
+          <a class="link" href="deliverables/Model_Legal_Document_Set.md">Open MD</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Contact: <a href="mailto:sfosss@icloud.com">sfosss@icloud.com</a></div>
+      <div style="margin-top:6px;">© 2026 Seth Foss · Last updated: 2026-01-01</div>
+    </footer>
+  </div>
+</body>
+</html>

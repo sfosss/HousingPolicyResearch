@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCAP Housing Subsidy Reform — Enhanced Workspace v2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #208091;
+            --primary-light: #2c9fb6;
+            --accent: #f39c12;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --bg-dark: #1a2332;
+            --bg-light: #f5f7fa;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --border: #bdc3c7;
+        }
+
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .workspace {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-header {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 6px 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-header:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* LEFT SIDEBAR - TASKS */
+        .sidebar-left {
+            width: 240px;
+            background: white;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            background: #fafbfc;
+        }
+
+        .task-section {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .task-section-title {
+            padding: 6px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(32, 128, 145, 0.05);
+        }
+
+        .task-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+            font-size: 11px;
+            line-height: 1.3;
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+        }
+
+        .task-item:hover {
+            background: var(--bg-light);
+        }
+
+        .task-item.active {
+            background: rgba(32, 128, 145, 0.1);
+            border-left-color: var(--primary);
+        }
+
+        .task-status {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .task-status.not-started { background: #95a5a6; }
+        .task-status.in-progress { background: var(--accent); }
+        .task-status.complete { background: var(--success); }
+
+        .task-name { flex: 1; }
+
+        /* CENTER - DOCUMENT EDITOR */
+        .editor-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            overflow: hidden;
+        }
+
+        .editor-toolbar {
+            background: #f8f9fa;
+            border-bottom: 1px solid var(--border);
+            padding: 10px 12px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .toolbar-group {
+            display: flex;
+            gap: 3px;
+            padding-right: 6px;
+            border-right: 1px solid var(--border);
+        }
+
+        .toolbar-group:last-child {
+            border-right: none;
+        }
+
+        .btn-toolbar {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 5px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-toolbar:hover {
+            background: var(--bg-light);
+            border-color: var(--primary);
+        }
+
+        .editor-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .editor-textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            resize: none;
+            padding: 0;
+            outline: none;
+            color: var(--text-dark);
+        }
+
+        .document-display {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            overflow-y: auto;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .document-display h1 {
+            font-size: 20px;
+            margin: 16px 0 10px 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 6px;
+        }
+
+        .document-display h2 {
+            font-size: 16px;
+            margin: 14px 0 8px 0;
+            color: var(--primary);
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 4px;
+        }
+
+        .document-display h3 {
+            font-size: 13px;
+            margin: 10px 0 6px 0;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .document-display p {
+            margin-bottom: 8px;
+        }
+
+        .document-display ul, .document-display ol {
+            margin-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .document-display li {
+            margin-bottom: 4px;
+        }
+
+        .document-display table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .document-display td, .document-display th {
+            border: 1px solid var(--border);
+            padding: 6px;
+            text-align: left;
+        }
+
+        .document-display th {
+            background: #f5f7fa;
+            font-weight: 600;
+        }
+
+        .appendix-section {
+            background: rgba(32, 128, 145, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 3px;
+        }
+
+        .appendix-section h3 {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .appendix-section h3:hover {
+            color: var(--primary);
+        }
+
+        .appendix-content {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .appendix-content.open {
+            display: block;
+        }
+
+        .toggle-icon {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .toggle-icon.open {
+            transform: rotate(90deg);
+        }
+
+        /* RIGHT SIDEBAR */
+        .sidebar-right {
+            width: 300px;
+            background: white;
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .panel {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .panel-title {
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .risk-card {
+            background: var(--bg-light);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--border);
+            font-size: 11px;
+        }
+
+        .risk-card.legal { border-left-color: var(--accent); }
+        .risk-card.fiscal { border-left-color: var(--warning); }
+        .risk-card.operational { border-left-color: var(--success); }
+
+        .risk-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .risk-score {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .financial-table {
+            font-size: 10px;
+            width: 100%;
+            margin: 8px 0;
+        }
+
+        .financial-table td {
+            padding: 3px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .financial-table td:first-child {
+            font-weight: 600;
+            width: 60%;
+        }
+
+        .financial-table td:last-child {
+            text-align: right;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .template-list {
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .template-item {
+            padding: 6px;
+            margin: 4px 0;
+            background: #f9f9f9;
+            border-radius: 2px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 4px;
+            padding: 0 12px 12px 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 6px 8px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+            min-width: 60px;
+        }
+
+        .btn-action:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-action.secondary {
+            background: var(--bg-light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-action.secondary:hover {
+            background: white;
+            border-color: var(--primary);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid var(--border);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 6px;
+        }
+
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: black;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #bdc3c7;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #95a5a6;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 2px;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.not-started {
+            background: #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .status-badge.in-progress {
+            background: #fff9e6;
+            color: var(--accent);
+        }
+
+        .status-badge.complete {
+            background: #e8f8f5;
+            color: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <div class="workspace">
+        <div class="header">
+            <h1>🏠 TCAP Workspace v2 — Enhanced Edition</h1>
+            <div class="header-controls">
+                <button class="btn-header" onclick="exportTasksCSV()">📥 Export CSV</button>
+                <button class="btn-header" onclick="syncToGitHub()">🔗 Sync GitHub</button>
+                <button class="btn-header" onclick="exportDocx()">📄 .docx</button>
+                <button class="btn-header" onclick="exportPdf()">📕 .pdf</button>
+                <button class="btn-header" onclick="generateReport()">📊 Report</button>
+                <button class="btn-header" onclick="toggleEditor()" id="edit-btn">✏️ Edit</button>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- LEFT: TASK LIST -->
+            <div class="sidebar-left">
+                <div class="sidebar-header">📋 TCAP Tasks</div>
+                <div id="task-list"></div>
+            </div>
+
+            <!-- CENTER: DOCUMENT EDITOR -->
+            <div class="editor-main">
+                <div class="editor-toolbar">
+                    <div class="toolbar-group">
+                        <button class="btn-toolbar" onclick="toggleAppendixSection('finance')" title="Financial Tables">💰 Finance</button>
+                        <button class="btn-toolbar" onclick="toggleAppendixSection('legal')" title="Legal Templates">⚖️ Legal</button>
+                        <button class="btn-toolbar" onclick="toggleAppendixSection('ta')" title="Technical Assistance">🎓 TA</button>
+                    </div>
+                    <div class="toolbar-group">
+                        <button class="btn-toolbar" onclick="saveDocument()">💾 Save</button>
+                    </div>
+                </div>
+                <div class="editor-content">
+                    <div id="doc-display" class="document-display"></div>
+                    <textarea id="doc-editor" class="editor-textarea hidden" placeholder="Edit policy text here..."></textarea>
+                </div>
+            </div>
+
+            <!-- RIGHT: RISK & TEMPLATES -->
+            <div class="sidebar-right">
+                <div class="panel">
+                    <div class="panel-title">⚡ Risk Radar</div>
+                    <div class="risk-card legal">
+                        <div class="risk-label">Legal</div>
+                        <div class="risk-score">6 / 60</div>
+                    </div>
+                    <div class="risk-card fiscal">
+                        <div class="risk-label">Fiscal</div>
+                        <div class="risk-score">18 / 60</div>
+                    </div>
+                    <div class="risk-card operational">
+                        <div class="risk-label">Operational</div>
+                        <div class="risk-score">3 / 60</div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">💰 Financial Summary</div>
+                    <table class="financial-table">
+                        <tr><td>Annual Cost (Status Quo)</td><td>$32,800</td></tr>
+                        <tr><td>Annual Cost (TCAP)</td><td>$26,200</td></tr>
+                        <tr><td>Annual Savings</td><td>$6,600</td></tr>
+                        <tr><td>Unit Conversion Cost</td><td>$43,000</td></tr>
+                        <tr><td>5-Year ROI Breakeven</td><td>Year 3.1</td></tr>
+                    </table>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">📋 Legal Templates</div>
+                    <div class="template-list">
+                        <div class="template-item">• Co-op Bylaws</div>
+                        <div class="template-item">• MOU Structure</div>
+                        <div class="template-item">• Acquisition Term Sheet</div>
+                        <div class="template-item">• Affordability Covenant</div>
+                        <div class="template-item">• TA Provider Contract</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="btn-action" onclick="updateTaskStatus('In Progress')">Start</button>
+                    <button class="btn-action secondary" onclick="downloadMaster()">Master Doc</button>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">📈 Progress</div>
+                    <table class="financial-table">
+                        <tr><td>Not Started</td><td id="count-not-started">19</td></tr>
+                        <tr><td>In Progress</td><td id="count-in-progress">1</td></tr>
+                        <tr><td>Complete</td><td id="count-complete">0</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for GitHub Sync -->
+    <div id="githubModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>🔗 GitHub Sync Configuration</h2>
+            <p>Enter your GitHub repository details:</p>
+            <input type="text" id="githubRepo" placeholder="owner/repo" style="width: 100%; padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+            <input type="text" id="githubBranch" placeholder="main" style="width: 100%; padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+            <input type="text" id="githubToken" placeholder="PAT token" type="password" style="width: 100%; padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+            <button onclick="performGitHubSync()" style="background: #208091; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 10px;">Sync Now</button>
+        </div>
+    </div>
+
+    <script>
+        const tasks = [
+            { id: 0, section: "Intake/Triage", name: "Set scope guardrails", status: "Not Started", owner: "Program Manager", due: "2025-09-20" },
+            { id: 1, section: "Intake/Triage", name: "Refine core research question into measurable KPIs", status: "Not Started", owner: "Policy Analyst", due: "2025-09-22" },
+            { id: 2, section: "QA", name: "Create fact-check rubric", status: "Not Started", owner: "Research Lead", due: "2025-09-23" },
+            { id: 3, section: "Research", name: "Map existing NYC/NYS/HUD subsidy programs", status: "Not Started", owner: "Policy Analyst", due: "2025-09-27" },
+            { id: 4, section: "Research", name: "Identify funding streams for tenant equity", status: "Not Started", owner: "Municipal CFO", due: "2025-10-01" },
+            { id: 5, section: "Research", name: "Assemble comparative models", status: "Not Started", owner: "Policy Analyst", due: "2025-10-05" },
+            { id: 6, section: "Drafting", name: "Draft v1: Problem Solution Governance Funding", status: "Not Started", owner: "Policy Analyst", due: "2025-10-08" },
+            { id: 7, section: "Drafting", name: "Equity impact analysis with disaggregated data", status: "Not Started", owner: "Data Analyst", due: "2025-10-11" },
+            { id: 8, section: "Drafting", name: "Legal feasibility crosswalk", status: "Not Started", owner: "Civil-Rights Attorney", due: "2025-10-11" },
+            { id: 9, section: "Decision", name: "List 3–5 policy mechanisms with pros/cons", status: "Not Started", owner: "Policy Analyst", due: "2025-10-13" },
+            { id: 10, section: "Decision", name: "Select credit-union partnership model", status: "Not Started", owner: "Municipal CFO", due: "2025-10-15" },
+        ];
+
+        let currentTaskId = null;
+        let isEditMode = false;
+
+        function init() {
+            renderTaskList();
+            loadMasterDocument();
+            updateProgressCounts();
+        }
+
+        function renderTaskList() {
+            const list = document.getElementById('task-list');
+            const sections = [...new Set(tasks.map(t => t.section))];
+            
+            let html = '';
+            sections.forEach(section => {
+                const sectionTasks = tasks.filter(t => t.section === section);
+                html += `<div class="task-section">
+                    <div class="task-section-title">${section}</div>`;
+                
+                sectionTasks.forEach(task => {
+                    const statusClass = task.status.toLowerCase().replace(' ', '-');
+                    html += `<div class="task-item ${currentTaskId === task.id ? 'active' : ''}" onclick="selectTask(${task.id})">
+                        <div class="task-status ${statusClass}"></div>
+                        <div class="task-name">${task.name}</div>
+                    </div>`;
+                });
+                
+                html += '</div>';
+            });
+            
+            list.innerHTML = html;
+        }
+
+        function selectTask(id) {
+            currentTaskId = id;
+            renderTaskList();
+        }
+
+        function loadMasterDocument() {
+            const masterText = `<h1>Housing Subsidy Reform Policy Proposal (TCAP)</h1>
+
+<h2>Core Research Question</h2>
+<p><em>How might New York City reconceptualize and structurally redesign its housing subsidy infrastructure to facilitate not only affordability but actual tenant ownership, thereby enabling sustainable intergenerational wealth accumulation within historically disenfranchised and racially marginalized communities?</em></p>
+
+<h2>1.1 Policy Framework</h2>
+<p>This proposal introduces the <strong>Tenant Co-op Acquisition Program (TCAP)</strong> as a policy vehicle to transition NYC's housing subsidy architecture from a rent-centered paradigm toward one rooted in collective tenant ownership and wealth equity.</p>
+
+<h3>Key Innovation: Subsidy Redirection</h3>
+<p>TCAP repurposes public subsidies—such as Section 8 Housing Choice Vouchers (HCV), CityFHEPS, and HASA—from rent payments to instruments that directly facilitate the acquisition and cooperative conversion of multifamily rental buildings into limited-equity housing cooperatives.</p>
+
+<h3>Property Selection Criteria</h3>
+<ul>
+<li>Distress levels and repeat code violations</li>
+<li>Appearance on NYC Public Advocate's Worst Landlords List</li>
+<li>Neighborhoods facing acute gentrification pressure</li>
+<li>Existing tenant organizing infrastructure</li>
+</ul>
+
+<h2>1.2 Strategic Approach</h2>
+<p>Under TCAP's operational structure, subsidies will initially retain their rent-support function before transitioning in phases to support equity acquisition, cooperative reserve contributions, and long-term capital improvements.</p>
+
+<h3>Governance Structure</h3>
+<p>Administrative oversight and program implementation will be managed by <strong>HPD</strong>, working in formal partnership with:</p>
+<ul>
+<li>NYS Homes and Community Renewal (HCR)</li>
+<li>Community development financial institutions (CDFIs)</li>
+<li>Credit unions</li>
+<li>Legal service providers</li>
+<li>Established tenant advocacy coalitions</li>
+</ul>
+
+<h2>Fiscal & Economic Viability</h2>
+<p>TCAP is explicitly designed to be fiscally self-sustaining over a five-year implementation horizon.</p>
+
+<h3>Comparative Cost Analysis</h3>
+<table>
+<tr><th>Category</th><th>Status Quo (Rental)</th><th>TCAP Model</th></tr>
+<tr><td>Annual Rental Subsidy/Unit</td><td>$21,600</td><td>$18,000 (phase-out yr 5)</td></tr>
+<tr><td>Shelter/Eviction Response</td><td>$7,400</td><td>$1,500</td></tr>
+<tr><td>Technical Assistance</td><td>N/A</td><td>$1,200</td></tr>
+<tr><td><strong>Total Annual Cost</strong></td><td><strong>$32,800</strong></td><td><strong>$26,200</strong></td></tr>
+</table>
+
+<h2>Unit-Level Cost Breakdown (Pilot)</h2>
+<table>
+<tr><th>Item</th><th>Amount (Per Unit)</th></tr>
+<tr><td>Down Payment via Redirected Subsidy</td><td>$20,000</td></tr>
+<tr><td>Repairs and Capital Reserve</td><td>$12,500</td></tr>
+<tr><td>Legal/Title Transfer Costs</td><td>$5,000</td></tr>
+<tr><td>Technical Assistance (Year 1–2)</td><td>$3,000</td></tr>
+<tr><td>Co-op Governance Training</td><td>$2,500</td></tr>
+<tr><td><strong>Total Cost Per Unit (One-Time)</strong></td><td><strong>$43,000</strong></td></tr>
+</table>
+
+<div class="appendix-section" id="appendix-finance">
+    <h3><span class="toggle-icon" id="finance-toggle">▶</span> Appendix A: Financial Tables & ROI Modeling</h3>
+    <div class="appendix-content">
+        <h4>A.1 Comparative Cost Analysis (Annual)</h4>
+        <table>
+            <tr><th>Metric</th><th>Status Quo</th><th>TCAP Model</th><th>Difference</th></tr>
+            <tr><td>Annual Subsidy/Unit</td><td>$21,600</td><td>$18,000</td><td>-$3,600</td></tr>
+            <tr><td>Shelter Response Cost</td><td>$7,400</td><td>$1,500</td><td>-$5,900</td></tr>
+            <tr><td>Legal Support</td><td>$2,000</td><td>$3,500</td><td>+$1,500</td></tr>
+            <tr><td>Admin Overhead</td><td>$1,800</td><td>$1,200</td><td>-$600</td></tr>
+            <tr><td><strong>Total/Unit/Year</strong></td><td><strong>$32,800</strong></td><td><strong>$26,200</strong></td><td><strong>-$6,600</strong></td></tr>
+        </table>
+
+        <h4>A.2 Return on Investment (ROI) Scenarios</h4>
+        <p><strong>Scenario A – 24-Unit Building (Bronx CD 6)</strong></p>
+        <ul>
+            <li>Conversion cost: $1.03M</li>
+            <li>Public savings over 5 years: $1.5M</li>
+            <li>Break-even: Year 3.4</li>
+        </ul>
+
+        <p><strong>Scenario B – 42-Unit Building (Brooklyn CD 33)</strong></p>
+        <ul>
+            <li>Conversion cost: $1.98M</li>
+            <li>Savings: $2.9M</li>
+            <li>Break-even: Year 2.9</li>
+        </ul>
+
+        <p><strong>Scenario C – 18-Unit Building (Upper Manhattan HDFC)</strong></p>
+        <ul>
+            <li>Conversion cost: $875K</li>
+            <li>Savings: $1.14M</li>
+            <li>Break-even: Year 3.1</li>
+        </ul>
+    </div>
+</div>
+
+<div class="appendix-section" id="appendix-legal">
+    <h3><span class="toggle-icon" id="legal-toggle">▶</span> Appendix B: Legal Texts & Draft Legislation</h3>
+    <div class="appendix-content">
+        <h4>B.1 Public Equity Transfer Framework (PETF)</h4>
+        <p><strong>Purpose:</strong> Codify the legal right to convert subsidy vouchers into cooperative equity instruments.</p>
+        <p><strong>Key Provisions:</strong></p>
+        <ul>
+            <li>Permit Section 8 HCV and local subsidy redirection into cooperative share purchases</li>
+            <li>Establish limited-equity cooperative legal classification under NYS Real Property Law</li>
+            <li>Create tenant first-refusal acquisition rights (COPA expansion)</li>
+            <li>Authorize HPD subsidy-backed acquisition financing</li>
+        </ul>
+
+        <h4>B.2 Model Co-op Bylaws</h4>
+        <p><strong>Article I – Name and Purpose</strong></p>
+        <p>The cooperative shall be a housing cooperative organized under Article V-A of the NYS Agriculture and Markets Law. Purpose: to provide affordable housing and foster democratic governance.</p>
+
+        <p><strong>Article II – Membership</strong></p>
+        <ul>
+            <li>Membership is limited to occupying shareholders</li>
+            <li>No absentee ownership permitted</li>
+            <li>Affordability covenant restricts resale to eligible households</li>
+        </ul>
+
+        <p><strong>Article III – Governance</strong></p>
+        <ul>
+            <li>Board of Directors elected by membership on annual basis</li>
+            <li>Minimum board size: 5 members; maximum: 11</li>
+            <li>One member, one vote (democratic principle)</li>
+        </ul>
+
+        <h4>B.3 Memorandum of Understanding (MOU) Template</h4>
+        <p><strong>Between:</strong> HPD, Tenant Association, Financial Intermediary</p>
+        <p><strong>Scope:</strong> Subsidy redirection, acquisition financing, governance support, compliance oversight</p>
+        <ul>
+            <li>1.1 HPD shall: Approve property, authorize subsidy deployment, oversee legal compliance</li>
+            <li>1.2 Tenant Association shall: Maintain affordability covenants, submit annual reports, ensure governance transparency</li>
+            <li>1.3 Financial Intermediary shall: Originate acquisition loans, provide TA, manage reserve accounts</li>
+        </ul>
+
+        <h4>B.4 Acquisition Financing Term Sheet</h4>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Loan Amount</td><td>Up to $43,000/unit</td></tr>
+            <tr><td>Term</td><td>20-25 years (amortized)</td></tr>
+            <tr><td>Interest Rate</td><td>2-3% (below-market, city-backed)</td></tr>
+            <tr><td>Security</td><td>First lien on cooperative shares; affordability covenant</td></tr>
+            <tr><td>Conditions Precedent</td><td>Legal incorporation, board governance training, tenant vote (66%+)</td></tr>
+        </table>
+
+        <h4>B.5 Affordability Covenant Agreement</h4>
+        <ul>
+            <li><strong>Duration:</strong> 30 years (runs with the property)</li>
+            <li><strong>Eligible Occupants:</strong> Households up to 80% Area Median Income (AMI)</li>
+            <li><strong>Resale Restrictions:</strong> Share buyback formula tied to income-adjusted residual receipts model</li>
+            <li><strong>Default Clause:</strong> If covenant broken, HPD retains right of first refusal to acquire building</li>
+        </ul>
+    </div>
+</div>
+
+<div class="appendix-section" id="appendix-ta">
+    <h3><span class="toggle-icon" id="ta-toggle">▶</span> Appendix C: Technical Assistance Toolkit</h3>
+    <div class="appendix-content">
+        <h4>C.1 TCAP Orientation Curriculum</h4>
+        <p><strong>Module 1: Cooperative Basics (4 hours)</strong></p>
+        <ul>
+            <li>History and principles of cooperative housing</li>
+            <li>How limited-equity co-ops work (governance, finance, affordability)</li>
+            <li>Rights and responsibilities of members</li>
+            <li>Legal incorporation overview</li>
+        </ul>
+
+        <p><strong>Module 2: Tenant Organizing & Leadership (6 hours)</strong></p>
+        <ul>
+            <li>Building and maintaining tenant associations</li>
+            <li>Decision-making processes and facilitation</li>
+            <li>Conflict mediation and grievance procedures</li>
+            <li>Ongoing capacity building</li>
+        </ul>
+
+        <h4>C.2 Financial Literacy & Governance Training</h4>
+        <p><strong>Unit 1: Co-op Finance Fundamentals</strong></p>
+        <ul>
+            <li>Understanding proprietary lease and shares</li>
+            <li>How monthly carrying charges work</li>
+            <li>Capital reserve funds and special assessments</li>
+            <li>Reading financial statements and budgets</li>
+        </ul>
+
+        <p><strong>Unit 2: Board Governance & Compliance</strong></p>
+        <ul>
+            <li>Board roles and responsibilities</li>
+            <li>Meeting procedures (Roberts Rules)</li>
+            <li>Fiduciary duties and legal compliance</li>
+            <li>Affordable housing covenant requirements</li>
+        </ul>
+
+        <h4>C.3 Grievance Mediation Procedures</h4>
+        <p><strong>Level 1: Informal Resolution</strong> (Within 14 days)</p>
+        <ul>
+            <li>Direct communication between parties</li>
+            <li>Documentation in writing</li>
+        </ul>
+
+        <p><strong>Level 2: Internal Grievance Panel</strong> (Within 30 days)</p>
+        <ul>
+            <li>Submission to co-op board</li>
+            <li>Neutral board review</li>
+            <li>Documented decision with rationale</li>
+        </ul>
+
+        <p><strong>Level 3: External Mediation</strong> (If unresolved)</p>
+        <ul>
+            <li>Engagement of HPD-approved mediator</li>
+            <li>Binding or non-binding resolution</li>
+        </ul>
+
+        <h4>C.4 Approved Intermediary Provider List (AIPL)</h4>
+        <p>Organizations approved to deliver technical assistance, legal services, and governance training:</p>
+        <ul>
+            <li>ABC Community Housing Partners – Governance & TA</li>
+            <li>XYZ Legal Services – Legal Counsel & Compliance</li>
+            <li>123 CDFI Network – Acquisition Finance & Underwriting</li>
+            <li>Community Wealth Collective – Tenant Organizing</li>
+        </ul>
+    </div>
+</div>
+
+<div class="appendix-section" id="appendix-advocacy">
+    <h3><span class="toggle-icon" id="advocacy-toggle">▶</span> Appendix D: Organizational Advocacy Toolkit</h3>
+    <div class="appendix-content">
+        <p><strong>Complete resource guide for community organizations, tenant associations, and housing advocates implementing TCAP at grassroots level.</strong></p>
+        
+        <h4>D.1 Tenant Organizing Tools</h4>
+        <ul>
+            <li><strong>Building Power:</strong> 5-step tenant association formation process with scripts and templates</li>
+            <li><strong>Know Your Rights:</strong> Legal protections under TCAP, anti-retaliation provisions, tenant remedies</li>
+            <li><strong>Meeting Facilitation:</strong> Inclusive meeting practices, roles, sample agendas, conflict resolution</li>
+            <li><strong>Outreach Strategies:</strong> Multi-channel communication plans, sample flyers, social media guidance</li>
+        </ul>
+
+        <h4>D.2 Educational Resources for Tenants</h4>
+        <ul>
+            <li><strong>TCAP 101:</strong> What TCAP is, how it works, eligibility, costs, timeline</li>
+            <li><strong>Cooperative Housing Fundamentals:</strong> Co-op basics, governance, rights/responsibilities, financial literacy</li>
+            <li><strong>Multilingual Fact Sheets:</strong> Key concepts in community languages with cultural context</li>
+        </ul>
+
+        <h4>D.3 Advocacy Campaign Tools</h4>
+        <ul>
+            <li><strong>Policy Brief Template:</strong> Framework for crafting persuasive policy arguments</li>
+            <li><strong>Legislative Testimony Guide:</strong> How to testify before City Council and public hearings</li>
+            <li><strong>Media Strategy:</strong> Press releases, op-eds, media outreach tactics</li>
+            <li><strong>Coalition Building:</strong> Identifying strategic partners, MOUs, funder engagement</li>
+            <li><strong>City Council Engagement:</strong> Mapping representatives, developing relationships, lobbying strategies</li>
+        </ul>
+
+        <h4>D.4 Partnership Development</h4>
+        <ul>
+            <li><strong>Strategic Partner Identification:</strong> CDFIs, legal services, health providers, workforce development</li>
+            <li><strong>Cross-Sector Collaboration Models:</strong> Housing + Health, Housing + Education, Housing + Economic Development</li>
+            <li><strong>Grant Proposal Framework:</strong> Developing fundable TCAP organizing initiatives</li>
+            <li><strong>Academic Partnerships:</strong> Research collaboration, student internships, evidence-building</li>
+        </ul>
+
+        <h4>D.5 Implementation Support</h4>
+        <ul>
+            <li><strong>Step-by-Step Conversion Roadmap:</strong> Detailed phases from pre-organization through first year</li>
+            <li><strong>Financial Planning Tools:</strong> Budgeting, carrying charge estimates, affordability analysis</li>
+            <li><strong>Legal Checklist:</strong> Documents needed, timelines, compliance requirements</li>
+            <li><strong>Property Assessment Guide:</strong> Evaluating suitability for TCAP conversion</li>
+            <li><strong>TA Provider Directory:</strong> Vetted organizations available for support</li>
+        </ul>
+
+        <h4>D.6 Community Resource Partnerships</h4>
+        <ul>
+            <li><strong>Wraparound Services:</strong> Connecting tenants to health, mental health, legal aid resources</li>
+            <li><strong>Workforce Development Linkages:</strong> Property management, skilled trades, cooperative careers</li>
+            <li><strong>Long-Term Sustainability Planning:</strong> Succession planning, leadership development, capital planning</li>
+        </ul>
+
+        <p><em>Full Advocacy Toolkit is available as separate downloadable module (60+ pages).</em></p>
+    </div>
+</div>
+
+<div class="appendix-section" id="appendix-agency">
+    <h3><span class="toggle-icon" id="agency-toggle">▶</span> Appendix E: Agency Implementation Guide</h3>
+    <div class="appendix-content">
+        <p><strong>Comprehensive operational manual for Department of Housing Preservation and Development (HPD) staff managing TCAP program implementation.</strong></p>
+        
+        <h4>E.1 Program Overview & Mission</h4>
+        <ul>
+            <li><strong>Program Purpose:</strong> Transform housing subsidies from rent payments into equity-building instruments</li>
+            <li><strong>Primary Goals:</strong> Convert 2,000+ units to cooperative ownership by 2035, reduce shelter utilization by 15%, close homeownership gaps</li>
+            <li><strong>Guiding Principles:</strong> Tenant empowerment, voluntary participation, racial equity, long-term affordability, democratic governance</li>
+            <li><strong>Target Population:</strong> Section 8, CityFHEPS, HASA recipients; households ≤80% AMI; prioritize chronic violation buildings</li>
+        </ul>
+
+        <h4>E.2 Legal & Regulatory Framework</h4>
+        <ul>
+            <li><strong>Authorizing Legislation:</strong> Local Law for Public Equity Transfer Framework, NYC Admin Code amendments</li>
+            <li><strong>Cooperative Formation:</strong> Articles of incorporation, offering plan approval, bylaw compliance</li>
+            <li><strong>Subsidy Administration:</strong> HUD Housing Quality Standards, rent reasonableness, recertifications</li>
+            <li><strong>Affordability Covenants:</strong> 30-year deed restrictions, resale price formulas, income eligibility</li>
+            <li><strong>Fair Housing Compliance:</strong> Fair Housing Act, NYC Human Rights Law, language access (Local Law 30)</li>
+        </ul>
+
+        <h4>E.3 Organizational Structure</h4>
+        <ul>
+            <li><strong>TCAP Task Force:</strong> 11 members including HPD Commissioner (Chair), tenants, CDFIs, legal services, co-op advocates, labor</li>
+            <li><strong>HPD TCAP Unit Staffing:</strong> 14 FTE including Director, Analysts, Specialists, Financial Underwriters, Compliance Officers, Data Manager, Coordinator</li>
+            <li><strong>Partner Agencies:</strong> DSS (subsidy admin), NYCHA (public housing), HCR (rent regulation), Law Dept (legal review), DOF (taxes), DOB (compliance)</li>
+        </ul>
+
+        <h4>E.4 Operational Procedures</h4>
+        <ul>
+            <li><strong>Property Identification:</strong> Data-driven identification using violation records, worst landlords list, subsidy concentration, community board referrals</li>
+            <li><strong>Eligibility Criteria:</strong> 40%+ subsidy recipients, documented violations, financial feasibility, no prohibitive regulatory agreements</li>
+            <li><strong>Tenant Association Certification:</strong> 6-month process including governance review, financial capacity assessment, legal compliance verification</li>
+            <li><strong>Subsidy Conversion Processing:</strong> 80-day interagency review with phased allocation (Years 1-2: 50/50 equity/charges; Year 5+: 75/25)</li>
+            <li><strong>Acquisition Financing:</strong> Loan products at below-market rates (1-4%), up to 95% LTV, 30-year terms with interest-only periods</li>
+            <li><strong>Title Transfer:</strong> Complete due diligence, cooperative formation, affordability covenant recording, post-closing oversight</li>
+        </ul>
+
+        <h4>E.5 Post-Acquisition Oversight & Compliance</h4>
+        <ul>
+            <li><strong>Compliance Monitoring:</strong> Annual financial audits, governance review, affordability verification, physical inspections (biennial)</li>
+            <li><strong>Performance Scoring:</strong> 100-point system (40 pts financial, 30 pts governance, 20 pts physical, 10 pts tenant satisfaction)</li>
+            <li><strong>Intervention Levels:</strong> Excellent (90-100): minimal oversight; Satisfactory (75-89): standard; Needs Improvement (60-74): enhanced TA; At Risk (<60): emergency intervention</li>
+            <li><strong>Enforcement Actions:</strong> Corrective action plans, enhanced monitoring, temporary oversight, last-resort receivership</li>
+        </ul>
+
+        <h4>E.6 Document Templates & Forms</h4>
+        <ul>
+            <li><strong>Form TCAP-100:</strong> Tenant Association Certification Application</li>
+            <li><strong>Form TCAP-200:</strong> Subsidy Conversion Request with allocation projections</li>
+            <li><strong>MOU Template:</strong> Interagency agreements between HPD, Tenant Association, Financial Intermediary</li>
+            <li><strong>Affordability Covenant:</strong> 30-year deed restriction template with resale price formulas</li>
+            <li><strong>Compliance Reporting:</strong> Annual financial reporting, governance documentation, affidavits</li>
+        </ul>
+
+        <h4>E.7 Underwriting & Risk Assessment</h4>
+        <ul>
+            <li><strong>Debt Coverage Ratio:</strong> Minimum 1.15x (NOI ÷ Annual Debt Service)</li>
+            <li><strong>Loan-to-Value:</strong> Maximum 95%</li>
+            <li><strong>Operating Expense Ratio:</strong> Maximum 60%</li>
+            <li><strong>Reserve Requirements:</strong> $5,000/unit minimum; $100/unit/month ongoing contribution</li>
+            <li><strong>Risk Matrices:</strong> Financial health, governance capacity, physical condition, tenant satisfaction scoring</li>
+        </ul>
+
+        <h4>E.8 Lender Partnerships & Financing</h4>
+        <ul>
+            <li><strong>CDFI Partners:</strong> Nonprofit Finance Fund, LISC, Enterprise Community Partners, Low Income Investment Fund</li>
+            <li><strong>Credit Union Partners:</strong> Amalgamated Bank, Lower East Side People's FCU, Bethex FCU</li>
+            <li><strong>Agreement Terms:</strong> HPD loan guarantees (up to 25%), below-market rates, streamlined underwriting, TA coordination</li>
+            <li><strong>Tenant Opportunity Fund Capitalization:</strong> $20M city appropriation + $10M federal + $5M philanthropic = $35M initial</li>
+        </ul>
+
+        <p><em>Complete Agency Implementation Guide is 40+ pages with detailed procedures, underwriting standards, training curricula, and quality control protocols.</em></p>
+    </div>
+</div>
+
+<div class="appendix-section" id="appendix-legislation">
+    <h3><span class="toggle-icon" id="legislation-toggle">▶</span> Appendix F: Draft Legislation Package</h3>
+    <div class="appendix-content">
+        <p><strong>Comprehensive legislative package for NYC Council introduction establishing legal framework for TCAP.</strong></p>
+        
+        <h4>F.1 Local Law A: Public Equity Transfer Framework (PETF)</h4>
+        <ul>
+            <li><strong>Short Title:</strong> Establishes right to convert housing subsidies into cooperative equity instruments</li>
+            <li><strong>Key Provisions:</strong>
+                <ul>
+                    <li>Defines "convertible public housing equity instruments" (Section 8, CityFHEPS, HASA, etc.)</li>
+                    <li>Establishes "eligible properties" criteria (40%+ subsidies, violations, financial feasibility)</li>
+                    <li>Authorizes HPD to permit subsidy redirection with zero reduction in assistance value</li>
+                    <li>Mandates 5-year phase-in: Years 1-2 (50/50 equity/carrying); Year 5+ (75/25)</li>
+                    <li>Establishes Tenant Opportunity Fund for acquisition financing, technical assistance, reserve seeding</li>
+                    <li>Requires 30-year affordability covenants with resale price restrictions</li>
+                    <li>Mandates annual compliance reporting and enforcement mechanisms</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>F.2 Local Law B: Subsidized Limited-Equity Cooperative Classification</h4>
+        <ul>
+            <li><strong>Creates:</strong> New "subsidized limited-equity cooperative" housing classification under NYC Administrative Code</li>
+            <li><strong>Registration Requirement:</strong> Within 90 days of acquisition; annual renewal</li>
+            <li><strong>Regulatory Oversight:</strong> Annual audits, governance compliance, affordability covenant enforcement, periodic inspections</li>
+            <li><strong>Tax Treatment:</strong> Real property tax exemptions, continued LIHTC eligibility, other tax benefits</li>
+            <li><strong>Conversion Exemptions:</strong> Relieved from Article 5 (General Business Law) conversion requirements IF tenant-initiated, fully disclosed, non-purchasing tenants retain rights</li>
+        </ul>
+
+        <h4>F.3 Local Law C: Tenant Opportunity to Purchase Rights Expansion</h4>
+        <ul>
+            <li><strong>90-Day Notice Requirement:</strong> Owners must notify all tenants, tenant associations, HPD before marketing property</li>
+            <li><strong>Response Period:</strong> Tenants have 90 days to organize, express intent, secure financing (extendable 60 days)</li>
+            <li><strong>Matching Rights:</strong> If third-party offer received, tenant association can match within 30 days</li>
+            <li><strong>Exclusive Negotiation:</strong> Owner must negotiate exclusively with tenant association during response period</li>
+            <li><strong>Financing Support:</strong> Priority access to Tenant Opportunity Fund, expedited underwriting, legal representation</li>
+            <li><strong>Foreclosure Protections:</strong> Tenants have notice and intervention rights in foreclosure and tax lien sales</li>
+            <li><strong>Enforcement:</strong> Penalties of $10,000+ per violation, rescission of sales, reimbursement for relocation costs</li>
+        </ul>
+
+        <h4>F.4 Local Law D: TCAP Implementation & Oversight</h4>
+        <ul>
+            <li><strong>Creates:</strong> TCAP Task Force (11 members) with quarterly meetings and annual public engagement</li>
+            <li><strong>Task Force Duties:</strong> Develop procedures, certify TA providers, monitor performance, recommend scaling strategies</li>
+            <li><strong>Pilot Phase:</strong> Minimum 5 sites (multi-borough) with rigorous evaluation over 5 years</li>
+            <li><strong>Tenant Opportunity Fund:</strong> Multi-source capitalization (city, federal, philanthropic)</li>
+            <li><strong>Annual Reporting:</strong> To Mayor & Council with metrics on properties identified, associations certified, acquisitions completed, financial performance, fiscal impact, tenant outcomes</li>
+            <li><strong>Rulemaking Authority:</strong> Detailed rules on applications, underwriting, affordability covenants, TA qualifications, compliance, penalties</li>
+        </ul>
+
+        <h4>F.5 Legislative Support Materials</h4>
+        <ul>
+            <li><strong>Fiscal Impact Statement:</strong> Budget projections for 5-year pilot, ongoing costs, projected savings from reduced shelter utilization</li>
+            <li><strong>Legislative Memo:</strong> Detailed rationale, findings, statutory authority, implementation timeline</li>
+            <li><strong>Bill Summary:</strong> Plain-language overview of each local law's purpose and key provisions</li>
+            <li><strong>Q&A Document:</strong> Answers to anticipated questions from Council members and community</li>
+        </ul>
+
+        <p><em>Complete Draft Legislation Package includes full statutory language, technical amendments, definitions, procedural requirements, rulemaking authority.</em></p>
+    </div>
+</div>
+
+<h2>Next Steps (Immediate)</h2>
+<ul>
+<li>Draft and formally adopt standardized legal templates for cooperative formation</li>
+<li>Execute memoranda of understanding (MOUs) among HPD, NYCHA, HCR, and legal aid partners</li>
+<li>Develop and submit comprehensive waiver request to HUD for HCV deployment in cooperative equity acquisition</li>
+<li>Identify and secure five initial pilot properties with readiness assessments</li>
+<li>Initiate citywide communications campaign and stakeholder briefings</li>
+</ul>
+
+<h2>Evaluation Framework</h2>
+<p>TCAP will be evaluated against four primary metrics:</p>
+<ul>
+<li><strong>Housing Stability Index:</strong> Reduction in eviction rates, rent burden, and turnover</li>
+<li><strong>Subsidy Conversion Efficiency:</strong> Fiscal differential between rental support and ownership investment</li>
+<li><strong>Ownership Equity Accrual:</strong> Share value, capital reserves, and unit improvements over time</li>
+<li><strong>Governance and Capacity Metrics:</strong> Tenant board participation, co-op compliance, training engagement</li>
+</ul>`;
+
+            document.getElementById('doc-display').innerHTML = masterText;
+        }
+
+        function toggleAppendixSection(type) {
+            const content = document.getElementById(`appendix-${type}`);
+            if (!content) return;
+            
+            const contentDiv = content.querySelector('.appendix-content');
+            const toggle = content.querySelector('.toggle-icon');
+            
+            contentDiv.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        function toggleEditor() {
+            isEditMode = !isEditMode;
+            document.getElementById('doc-display').classList.toggle('hidden', isEditMode);
+            document.getElementById('doc-editor').classList.toggle('hidden', !isEditMode);
+            document.getElementById('edit-btn').textContent = isEditMode ? '👁️ View' : '✏️ Edit';
+            
+            if (isEditMode) {
+                document.getElementById('doc-editor').value = document.getElementById('doc-display').innerText;
+            }
+        }
+
+        function saveDocument() {
+            alert('✅ Document saved locally. Ready to export or sync.');
+        }
+
+        function updateTaskStatus(status) {
+            if (currentTaskId === null) {
+                alert('Please select a task first.');
+                return;
+            }
+            const task = tasks.find(t => t.id === currentTaskId);
+            task.status = status;
+            selectTask(currentTaskId);
+            updateProgressCounts();
+            alert(`✅ Task updated: "${task.name.substring(0, 40)}..." → ${status}`);
+        }
+
+        function updateProgressCounts() {
+            const notStarted = tasks.filter(t => t.status === 'Not Started').length;
+            const inProgress = tasks.filter(t => t.status === 'In Progress').length;
+            const complete = tasks.filter(t => t.status === 'Complete').length;
+            document.getElementById('count-not-started').textContent = notStarted;
+            document.getElementById('count-in-progress').textContent = inProgress;
+            document.getElementById('count-complete').textContent = complete;
+        }
+
+        function generateReport() {
+            const notStarted = tasks.filter(t => t.status === 'Not Started').length;
+            const inProgress = tasks.filter(t => t.status === 'In Progress').length;
+            const complete = tasks.filter(t => t.status === 'Complete').length;
+            const progress = Math.round((complete / tasks.length) * 100);
+            alert(`📊 TCAP Status Report\n\n✅ Total Tasks: ${tasks.length}\nNot Started: ${notStarted}\nIn Progress: ${inProgress}\nComplete: ${complete}\n\n📈 Progress: ${progress}%`);
+        }
+
+        function exportTasksCSV() {
+            let csv = 'Task_ID,Section,Task_Name,Status,Owner,Due_Date\n';
+            tasks.forEach(task => {
+                csv += `${task.id},"${task.section}","${task.name}","${task.status}","${task.owner}","${task.due}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `TCAP_Tasks_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            alert('✅ CSV exported successfully. Ready to sync to GitHub via GitHub Actions.');
+        }
+
+        function syncToGitHub() {
+            document.getElementById('githubModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('githubModal').style.display = 'none';
+        }
+
+        function performGitHubSync() {
+            const repo = document.getElementById('githubRepo').value;
+            const branch = document.getElementById('githubBranch').value;
+            const token = document.getElementById('githubToken').value;
+            
+            if (!repo || !branch || !token) {
+                alert('⚠️ Please fill in all fields.');
+                return;
+            }
+            
+            alert(`✅ GitHub Sync Initiated\n\nRepo: ${repo}\nBranch: ${branch}\n\nIn production, this would:\n1. Export current CSV\n2. Create/update GitHub PR\n3. Trigger GitHub Actions workflow\n4. Update TCAP_Tasks.csv in repo`);
+            closeModal();
+        }
+
+        function exportDocx() {
+            const docContent = document.getElementById('doc-display').innerText;
+            const docTitle = 'TCAP_Housing_Subsidy_Reform';
+            
+            // Create a simple Word document (Note: full .docx export requires a library like docx-js)
+            const htmlContent = `
+                <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <style>
+                            body { font-family: Calibri, sans-serif; margin: 1in; line-height: 1.5; }
+                            h1 { color: #208091; border-bottom: 2px solid #208091; padding-bottom: 10px; }
+                            h2 { color: #208091; margin-top: 20px; }
+                            table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                            td, th { border: 1px solid #ccc; padding: 8px; text-align: left; }
+                            th { background-color: #f5f7fa; font-weight: bold; }
+                        </style>
+                    </head>
+                    <body>
+                        ${document.getElementById('doc-display').innerHTML}
+                    </body>
+                </html>
+            `;
+            
+            const blob = new Blob([htmlContent], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${docTitle}_${new Date().toISOString().split('T')[0]}.docx`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            alert('✅ .docx file exported. (Note: Full formatting requires docx.js library in production)');
+        }
+
+        function exportPdf() {
+            const element = document.getElementById('doc-display');
+            const opt = {
+                margin: 10,
+                filename: `TCAP_Housing_Subsidy_Reform_${new Date().toISOString().split('T')[0]}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+            html2pdf().set(opt).from(element).save();
+            alert('✅ PDF export initiated. Check your downloads folder.');
+        }
+
+        function downloadMaster() {
+            alert('📥 Master Document Download\n\nFull master document (96KB) available:\n\n• Housing_Subsidy_Reform_MASTER_vFINAL_20250603.docx\n\nIncludes:\n- Complete policy framework\n- All appendices (Financial, Legal, TA)\n- Evaluation templates\n- Implementation timeline');
+        }
+
+        window.addEventListener('load', init);
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('githubModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

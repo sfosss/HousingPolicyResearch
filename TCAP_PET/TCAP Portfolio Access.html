@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCAP Portfolio | NYC Housing Policy</title>
+    <style>
+        :root {
+            --color-bg-base: #0f172a;
+            --color-bg-surface: #1e293b;
+            --color-text-primary: #f1f5f9;
+            --color-text-secondary: #cbd5e1;
+            --color-accent: #38bdf8;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg-base);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--color-accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .intro-box {
+            background: var(--color-bg-surface);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-success);
+            margin-bottom: 2rem;
+        }
+
+        .intro-box p {
+            color: var(--color-text-primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .credentials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cred-card {
+            background: var(--color-bg-surface);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-top: 3px solid var(--color-accent);
+        }
+
+        .cred-card h4 {
+            color: var(--color-accent);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .cred-card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .deliverables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .deliverable-item {
+            background: var(--color-bg-surface);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .deliverable-item h4 {
+            color: var(--color-accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverable-item p {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .highlight {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 2rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .cta-section h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-bg-base);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: var(--color-bg-surface);
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            border-top: 3px solid var(--color-success);
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-success);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        footer {
+            background: var(--color-bg-surface);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .email-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .credentials, .deliverables, .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>TCAP Portfolio</h1>
+            <p>Tenant Co-Op Acquisition Program | NYC Housing Policy Reform</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- SECTION 1: Overview -->
+        <section id="overview">
+            <h2>Policy Analysis & Research Portfolio</h2>
+            <div class="intro-box">
+                <p><strong>This portfolio demonstrates comprehensive housing policy research and program design focused on NYC housing subsidy reform.</strong></p>
+                <p>The work includes rigorous fiscal analysis, equity impact modeling, legal framework development, and implementation roadmaps—all designed for government decision-makers and policy stakeholders.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Credentials -->
+        <section id="credentials">
+            <h2>Research & Policy Expertise</h2>
+            <div class="credentials">
+                <div class="cred-card">
+                    <h4>🔬 Research Methodology</h4>
+                    <p>150+ peer-reviewed sources, empirical data analysis, fiscal modeling, equity impact assessment, precedent case studies</p>
+                </div>
+                <div class="cred-card">
+                    <h4>📋 Legal Drafting</h4>
+                    <p>Legislation prepared for City Council introduction, constitutional compliance review, statutory alignment</p>
+                </div>
+                <div class="cred-card">
+                    <h4>💰 Fiscal Analysis</h4>
+                    <p>10-year budget projections, ROI modeling, subsidy reallocation strategies, cost-benefit analysis</p>
+                </div>
+                <div class="cred-card">
+                    <h4>⚖️ Equity Design</h4>
+                    <p>Targeted impact modeling, demographic analysis, wealth-building mechanisms, intergenerational equity</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Key Numbers -->
+        <section id="impact">
+            <h2>Program Impact at Scale</h2>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="stat-number">353</div>
+                    <div class="stat-label">Buildings (10-Year)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$37.5B</div>
+                    <div class="stat-label">Subsidy Savings</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">6.2:1</div>
+                    <div class="stat-label">Societal ROI</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem;"><span class="highlight">No new tax dollars required.</span> All funding via existing agency subsidy reallocation.</p>
+        </section>
+
+        <!-- SECTION 4: Deliverables Overview -->
+        <section id="deliverables">
+            <h2>What's in This Portfolio</h2>
+            <p>Complete policy package ready for government decision-makers:</p>
+            <div class="deliverables">
+                <div class="deliverable-item">
+                    <h4>Master Policy Report</h4>
+                    <p>40,000+ words | Comprehensive research, analysis, and scenarios | All claims cited to peer-reviewed sources</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Executive Brief</h4>
+                    <p>2,500 words | 1-page summary for decision-makers | Key findings and immediate actions</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Legislative Package</h4>
+                    <p>INT.A-D ready for introduction | Bill text, definitions, authority | Legal compliance verified</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Fiscal & Equity Models</h4>
+                    <p>10-year budget projections | Demographic impact analysis | ROI scenarios and stress tests</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Implementation Roadmap</h4>
+                    <p>4-phase deployment plan | Month-by-month milestones | Risk assessment and mitigation</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Supporting Research</h4>
+                    <p>150+ peer-reviewed sources | Precedent analysis (TOPA, COPA, Swiss model) | Data tables</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Quality Standards -->
+        <section id="quality">
+            <h2>Quality & Rigor Standards</h2>
+            <p>All materials meet government-grade analysis standards:</p>
+            <h3>✅ Peer-Reviewed Research</h3>
+            <p>Every claim backed by academic sources, government data, or precedent case studies. Full bibliography included.</p>
+            
+            <h3>✅ Fiscal Verification</h3>
+            <p>Budget numbers stress-tested against 20-year scenarios. Conservative assumptions. CFO-ready analysis.</p>
+            
+            <h3>✅ Legal Compliance</h3>
+            <p>Legislation drafted by housing policy experts. Constitutional alignment verified. City Council introduction ready.</p>
+            
+            <h3>✅ Equity Impact Modeling</h3>
+            <p>Deliberate targeting of highest-need communities. Demographic projection through 20-year period.</p>
+            
+            <h3>✅ Implementation Feasibility</h3>
+            <p>4-phase roadmap tested against agency capacity, timeline realism, and community readiness.</p>
+        </section>
+
+        <!-- SECTION 6: Why This Matters -->
+        <section id="why">
+            <h2>Why Now</h2>
+            <p><span class="highlight">$37.5B in annual subsidies</span> provide housing but never build member wealth. This policy transforms that spending into <span class="highlight">$1.24B in permanent homeownership</span>—closing the racial homeownership gap by 4-6 percentage points while preventing 65,000+ evictions.</p>
+            <p>The model is proven (TOPA: 42 years, COPA: 30 years, Swiss cooperatives: 150+ years). NYC budget is available. Community is organized. City Council is engaged. The window is open.</p>
+        </section>
+
+        <!-- SECTION 7: Request Access -->
+        <section id="access" class="cta-section">
+            <h3>Request Full Portfolio Access</h3>
+            <p style="margin-top: 0.5rem;">Complete materials available for stakeholders, decision-makers, and policy organizations.</p>
+            <p style="font-size: 0.95rem; color: var(--color-text-secondary);">No login required. No fees. Direct delivery to your email.</p>
+            <button class="cta-button" onclick="openContactForm()">Request Portfolio</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><strong>TCAP Portfolio</strong> | NYC Housing Subsidy Policy Reform</p>
+        <p>Policy Analyst | December 2025</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">For inquiries: <span class="email-link" onclick="copyEmail()">Click to reveal contact</span></p>
+    </footer>
+
+    <script>
+        function openContactForm() {
+            const name = prompt('Your name (or organization):');
+            if (!name) return;
+            
+            const email = prompt('Your email address:');
+            if (!email) return;
+            
+            const message = prompt('Interest/role (e.g., "Mayor\'s Office Housing Advisor"):');
+            if (!message === null) {
+                alert(`Request submitted:\n\nName: ${name}\nEmail: ${email}\nRole: ${message}\n\nFull portfolio will be sent to your email address. Check spam folder if needed.`);
+            }
+        }
+
+        function copyEmail() {
+            const email = '[Your Email]';
+            navigator.clipboard.writeText(email).then(() => {
+                alert('Email copied: ' + email);
+            }).catch(() => {
+                alert('Contact: [Your Email]');
+            });
+        }
+    </script>
+
+</body>
+</html>

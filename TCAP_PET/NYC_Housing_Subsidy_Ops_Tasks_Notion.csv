@@ -1,0 +1,29 @@
+Task,Section,Owner Persona,Status,Due Date,Frequency,Trigger,Artifact,Notes
+"Set scope guardrails (NYC-only, agencies list, funding reuse)",Intake/Triage,Program Manager,Not Started,2025-09-20,One-time,Context Manager,Checklist,Adopt 'Public Equity Transfer Framework' term
+Refine core research question into measurable KPIs,Intake/Triage,Policy Analyst,Not Started,2025-09-22,One-time,Question Refinement,Docx,"Define ROI, equity, and feasibility metrics"
+"Create fact-check rubric for stats, laws, budgets",QA,Research Lead,Not Started,2025-09-23,One-time,Fact Check List,Template,"APA 7th, primary sources preferred"
+Map existing NYC/NYS/HUD subsidy programs,Research,Policy Analyst,Not Started,2025-09-27,One-time,Recipe,Table,"HPD, HRA, NYCHA, HUD"
+Identify funding streams for tenant equity and HOA reserves,Research,Municipal CFO,Not Started,2025-10-01,One-time,Alternative Approaches,Memo,Reuse existing streams before new capital
+"Assemble comparative models (e.g., Vienna)",Research,Policy Analyst,Not Started,2025-10-05,One-time,Recipe,Brief,Flag context differences
+"Draft v1: Problem, Solution, Governance, Funding",Drafting,Policy Analyst,Not Started,2025-10-08,One-time,Template,Docx,"Color rules: blue new, red strikethrough, green notes"
+Equity impact analysis with disaggregated data,Drafting,Data Analyst,Not Started,2025-10-11,One-time,Recipe,Appendix,"Center Black, Latino, excluded groups"
+"Legal feasibility crosswalk (Title IV/IX/ADA/504, procurement)",Drafting,Civil-rights Attorney,Not Started,2025-10-11,One-time,Persona,Appendix,Identify constraints/waivers
+List 3–5 policy mechanisms with pros/cons,Decision,Policy Analyst,Not Started,2025-10-13,One-time,Alternative Approaches,Decision Log,Select preferred path with rationale
+Select credit-union partnership model,Decision,Municipal CFO,Not Started,2025-10-15,One-time,Alternative Approaches,MOUs Draft,Outline underwriting and reserves
+Run Fact Check against all claims and stats,QA,Research Lead,Not Started,2025-10-17,One-time,Fact Check List,Checklist,Mark unresolved in green
+Resolve green flags or log as risks,QA,Program Manager,Not Started,2025-10-19,One-time,Context Manager,Risk Log,Carry forwards to next draft
+Export Notion-import CSV for tasks,Automation,Ops,In Progress,2025-09-18,One-time,Output Automater,CSV,This file
+Generate shell skeletons for APA checks and data pulls,Automation,Ops,Not Started,2025-09-29,One-time,Output Automater,Scripts,Scope narrowly
+Adopt file naming: MASTER_v[VERSION]_YYYYMMDD.docx,Version Control,Ops,Not Started,2025-09-19,One-time,Template,Process,Convert to black after approval
+Save Works Cited in separate APA master,Version Control,Research Lead,Not Started,2025-09-24,One-time,Template,Docx,Alphabetized with annotations
+Produce 1-pager summary,Deliverables,Policy Analyst,Not Started,2025-10-20,One-time,Template,Docx,Problem | Solution | ROI | Equity | CTA
+Produce 2-page briefing memo,Deliverables,Policy Analyst,Not Started,2025-10-21,One-time,Template,Docx,Options | Fiscal | Equity | Risks | Rec
+Build slide deck outline,Deliverables,Policy Analyst,Not Started,2025-10-22,One-time,Template,PPTX/Docx,Problem→Evidence→Proposal→Funding→Timeline→Risks→Ask
+"Appendices: cost model, legal templates, charts",Deliverables,Team,Not Started,2025-10-27,One-time,Recipe,Appendices,Link sources and methods
+Weeks 1–2: literature grid + agency map,Cadence,Research Lead,Not Started,2025-10-01,One-time,Recipe,Table,Prioritize primary sources
+Weeks 3–6: Draft v1 + Alternatives + QA,Cadence,Program Manager,Not Started,2025-10-29,One-time,Context Manager,Plan,Gated reviews
+Weeks 7–9: Interviews + cost model + revise,Cadence,Program Manager,Not Started,2025-11-19,One-time,Recipe,Plan,Record approvals
+Weeks 10–12: Finalize + approvals + publish,Cadence,Program Manager,Not Started,2025-12-10,One-time,Template,Packet,All deliverables exported
+Weekly source ingestion and APA audit,QA,Research Lead,Not Started,,Weekly,Fact Check List,Checklist,Flag derivative citations
+Stakeholder log updates,Engagement,Program Manager,Not Started,,Weekly,Context Manager,CRM,Capture commitments and risks
+Risk radar refresh,Risk,Program Manager,Not Started,,Weekly,Context Manager,Risk Log,"Operational, legal, fiscal, political"

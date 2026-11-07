@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Housing Subsidy Reform | Seth Foss</title>
+  <meta name="description" content="Submit-ready transition deliverables for NYC implementation: PET + TCAP." />
+  <style>
+    :root{
+      --bg0:#070b18;
+      --bg1:#0b1230;
+      --card:#0f1a3f;
+      --text:#f3f5ff;
+      --muted:#c2c9ef;
+      --muted2:#9aa6df;
+
+      --accent:#8b5cf6;   /* violet */
+      --accent2:#22c55e;  /* green */
+      --accent3:#06b6d4;  /* cyan */
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 18px 44px rgba(0,0,0,.38);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 10% 0%, rgba(139,92,246,.40), transparent 62%),
+        radial-gradient(900px 650px at 90% 10%, rgba(6,182,212,.28), transparent 62%),
+        radial-gradient(900px 700px at 50% 100%, rgba(34,197,94,.18), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+
+    .wrap{max-width:980px;margin:0 auto;padding:36px 18px 60px}
+    .topbar{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-bottom:18px}
+
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--text);
+      text-decoration:none;
+      background:rgba(255,255,255,.05);
+      backdrop-filter: blur(8px);
+    }
+    .btn:hover{border-color:rgba(255,255,255,.26); background:rgba(255,255,255,.08)}
+
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px 22px;
+    }
+
+    .kicker{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .pill{
+      font-size:12px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+    }
+
+    h1{margin:6px 0 6px;font-size:34px;letter-spacing:-0.02em}
+    .sub{color:var(--muted);line-height:1.55;margin:0 0 14px;font-size:15px;max-width:80ch}
+
+    .bio{
+      margin-top:12px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+    }
+    .bio p{margin:0;color:var(--muted);line-height:1.55}
+
+    .bioCard{
+      margin-top:16px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 16px;
+    }
+    .bioHeader{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:12px;
+    }
+    .bioName{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:-0.01em;
+    }
+    .bioRole{
+      font-size:13px;
+      color:var(--muted2);
+      font-weight:700;
+    }
+    .bioBody p{
+      margin:0 0 10px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .sectionTitle{
+      margin:22px 0 10px;
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+    }
+    .sectionTitle .h{font-weight:900;font-size:16px;letter-spacing:.01em}
+    .small{color:var(--muted2);font-size:13px;margin:0;line-height:1.45}
+
+    .grid{display:grid;gap:14px;margin-top:10px}
+    @media (min-width: 860px){ .grid{grid-template-columns:1fr 1fr;} }
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(15,26,63,.74);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 16px;
+    }
+    .card h2{margin:0 0 6px;font-size:18px}
+    .card p{margin:0 0 12px;color:var(--muted);line-height:1.55;font-size:14px}
+
+    .links{display:flex;flex-wrap:wrap;gap:10px}
+    .link{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:12px;
+      border:1px solid var(--line);
+      text-decoration:none;color:var(--text);
+      background:rgba(255,255,255,.04);
+      font-weight:700;
+    }
+    .link:hover{border-color:rgba(255,255,255,.26); background:rgba(255,255,255,.08)}
+
+    .tag{
+      font-size:12px;font-weight:900;
+      padding:4px 8px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+    }
+    .tag.ok{
+      color:#dcfce7;
+      border-color:rgba(34,197,94,.35);
+      background:rgba(34,197,94,.14);
+    }
+    .tag.dev{
+      color:#e0e7ff;
+      border-color:rgba(139,92,246,.35);
+      background:rgba(139,92,246,.14);
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .ctaRow{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .ctaPrimary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:14px;
+      font-weight:900;
+      text-decoration:none;
+      color:#ffffff;
+      background:linear-gradient(135deg, var(--accent), var(--accent3));
+      box-shadow:0 10px 28px rgba(124,92,255,.45);
+      border:1px solid rgba(255,255,255,.22);
+    }
+
+    .ctaPrimary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 34px rgba(124,92,255,.55);
+    }
+
+    .ctaSecondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:800;
+      text-decoration:none;
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+    }
+
+    .ctaSecondary:hover{
+      background:rgba(255,255,255,.10);
+      border-color:rgba(255,255,255,.28);
+    }
+
+    footer{margin-top:26px;color:var(--muted2);font-size:13px}
+    footer a{color:var(--text)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="btn" href="https://www.linkedin.com/in/sethrfoss/" aria-label="LinkedIn">LinkedIn</a>
+      <!-- GitHub button intentionally removed -->
+    </div>
+
+    <section class="hero">
+      <div class="kicker">
+        <span class="pill">NYC housing systems</span>
+        <span class="pill">implementation-first</span>
+        <span class="pill">fiscal discipline</span>
+        <span class="pill">compliance integrity</span>
+      </div>
+
+      <h1>Housing Subsidy Reform (PET + TCAP)</h1>
+      <p class="sub">
+        This portfolio presents an implementation-first housing subsidy reform proposal grounded in administrative feasibility,
+        program integrity, and public finance discipline. The core mechanism—<strong>PET (Public Equity Transfer)</strong>—
+        is paired with an acquisition pathway, <strong>TCAP</strong>, to reorient recurring subsidy expenditures toward
+        durable housing stability through controlled conversion, auditability, and measurable performance outcomes. The
+        approach is designed to withstand operational realities (eligibility, compliance, and interagency handoffs) while
+        preserving the core public purpose of subsidy programs: stability, risk reduction, and continuity of housing.
+      </p>
+
+      <div class="bioCard">
+        <div class="bioHeader">
+          <div class="bioName">Seth Foss</div>
+          <div class="bioRole">NYC Housing Policy · Program Operations · Tenant Rights</div>
+        </div>
+        <div class="bioBody">
+          <p>
+            I'm a New York City housing policy and implementation analyst with deep, on-the-ground tenant advocacy experience
+            and a focus on translating reform concepts into executable agency workflows. My work sits at the intersection of
+            subsidy governance, compliance design, and operational rollout—specifically: how eligibility rules, procurement and
+            fiscal controls, data-sharing constraints, and legal authority shape what can actually launch and scale inside City
+            government.
+          </p>
+          <p>
+            I've worked across housing advocacy and policy environments where the costs of administrative failure are not abstract:
+            rent arrears, instability, preventable displacement, and expensive reactive systems. This portfolio is built to support
+            decision-makers: clear mechanism, clear guardrails, and a practical path to a pilot that can be evaluated and governed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="sectionTitle">
+      <div>
+        <div class="h">Submit-Ready Deliverables</div>
+        <p class="small">Primary materials for immediate review. Additional documentation is available on request.</p>
+      </div>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Mayoral Transition Memo <span class="tag ok">READY</span></h2>
+        <p>Executive framing: problem, approach, fiscal rationale, and the decision ask.</p>
+        <div class="links">
+          <a class="link" href="deliverables/Mayoral_Transition_Memo_PETF.pdf">Open PDF</a>
+          <a class="link" href="deliverables/Mayoral_Transition_Memo_PETF.docx">Open DOCX</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Ops &amp; Comms Add-Ons <span class="tag ok">READY</span></h2>
+        <p>Budget-facing one-pager + hostile Q&amp;A (risk controls, objections, and responses).</p>
+        <div class="links">
+          <a class="link" href="deliverables/Budget_Office_One_Pager_PETF.md">Budget Office One-Pager (MD)</a>
+          <a class="link" href="deliverables/Hostile_QA_Talking_Points_PETF.md">Hostile Q&amp;A (MD)</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="sectionTitle" style="margin-top:18px;">
+      <div>
+        <div class="h">Available for Meeting Review</div>
+        <p class="small">
+          I can share the full technical report and draft legislative language in a working session to walk through mechanism,
+          legal authority, operational workflow, and risk controls.
+        </p>
+      </div>
+    </div>
+
+    <div class="ctaRow">
+      <a
+        class="ctaPrimary"
+        href="mailto:sfosss@icloud.com?subject=Meeting%20Request%20%E2%80%94%20Housing%20Subsidy%20Reform%20(PET%20%2B%20TCAP)&body=Hello%20Seth%2C%0A%0AI%E2%80%99d%20like%20to%20schedule%20a%20meeting%20to%20review%20your%20housing%20subsidy%20reform%20proposal%2C%20including%20the%20full%20report%20and%20draft%20legislation.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0ABest%2C"
+      >
+        Schedule a Meeting Review
+      </a>
+
+      <a class="ctaSecondary" href="assets/Seth_Foss.vcf" download>
+        Add to Contacts (vCard)
+      </a>
+    </div>
+
+    <footer>
+      <div>Contact: <a href="mailto:sfosss@icloud.com">sfosss@icloud.com</a></div>
+      <div style="margin-top:6px;">© 2026 Seth Foss · Last updated: 2026-01-01</div>
+    </footer>
+  </div>
+</body>
+</html>
