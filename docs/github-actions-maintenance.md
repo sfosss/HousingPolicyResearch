@@ -64,7 +64,7 @@ If you have the GitHub CLI installed:
 
 ```bash
 # Get the commit SHA for a specific tag
-gh api /repos/actions/checkout/git/refs/tags/v4
+gh api /repos/actions/checkout/git/refs/tags/v4.3.1
 
 # List recent tags
 gh api /repos/actions/checkout/tags
