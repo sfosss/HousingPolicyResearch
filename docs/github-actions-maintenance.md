@@ -10,11 +10,12 @@ This repository requires all GitHub Actions to be pinned to **full-length commit
 
 Last updated: 2025-12-10
 
-| Action | Version Tag | Commit SHA | Notes |
-|--------|-------------|------------|-------|
-| actions/checkout | v4.3.1 | `34e114876b0b11c390a56381ad16ebd13914f8d5` | Latest stable v4 release |
-| github/codeql-action/init | v4 | `cf1bb45a277cb3c205638b2cd5c984db1c46a412` | CodeQL initialization |
-| github/codeql-action/analyze | v4 | `cf1bb45a277cb3c205638b2cd5c984db1c46a412` | CodeQL analysis |
+| Action | Workflow | Version Tag | Commit SHA | Notes |
+|--------|----------|-------------|------------|-------|
+| actions/checkout | codeql.yml | v4.3.1 | `34e114876b0b11c390a56381ad16ebd13914f8d5` | Latest stable v4 release |
+| actions/checkout | blank.yml | v4.3.1 | `34e114876b0b11c390a56381ad16ebd13914f8d5` | Synced with CodeQL workflow |
+| github/codeql-action/init | codeql.yml | v4 | `cf1bb45a277cb3c205638b2cd5c984db1c46a412` | CodeQL initialization |
+| github/codeql-action/analyze | codeql.yml | v4 | `cf1bb45a277cb3c205638b2cd5c984db1c46a412` | CodeQL analysis |
 
 ## How to Update Actions
 
