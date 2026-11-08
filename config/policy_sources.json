@@ -1,0 +1,27 @@
+{
+  "sources": [
+    {
+      "name": "New York State Senate RSS",
+      "url": "https://www.nysenate.gov/rss.xml",
+      "type": "feed",
+      "enabled": true,
+      "jurisdiction": "NY",
+      "agency": "New York State Senate",
+      "document_type": "Legislation/News",
+      "primary_source": true,
+      "max_items": 30
+    },
+    {
+      "name": "HUD Press Releases RSS",
+      "url": "https://www.hud.gov/rss/pressreleases.xml",
+      "type": "feed",
+      "enabled": true,
+      "jurisdiction": "Federal",
+      "agency": "HUD",
+      "document_type": "Agency Release",
+      "primary_source": true,
+      "max_items": 30
+    }
+  ],
+  "notes": "Keep automatic feeds limited to official sources. Add reporting and Perplexity Web results through intake/connectors/web using the documented packet schema. A failed feed is recorded in QA rather than silently ignored."
+}
