@@ -32,11 +32,6 @@ jobs:
   research-update:
     runs-on: ubuntu-latest
     env:
-      WEB_RESEARCH_JSON: ${{ inputs.web_packet || secrets.WEB_RESEARCH_JSON }}
-      MIDPAGE_RESEARCH_JSON: ${{ inputs.midpage_packet || secrets.MIDPAGE_RESEARCH_JSON }}
-      BOX_ACCESS_TOKEN: ${{ secrets.BOX_ACCESS_TOKEN }}
-      BOX_INBOX_FOLDER_ID: ${{ secrets.BOX_INBOX_FOLDER_ID }}
-      BOX_OUTPUT_FOLDER_ID: ${{ secrets.BOX_OUTPUT_FOLDER_ID }}
       OUTPUT_BRANCH: automation/adaptive-policy-loop/${{ github.ref_name }}
       STRICT_MODE: ${{ (github.event_name == 'workflow_dispatch' && inputs.strict && 'true') || (github.event_name == 'schedule' && vars.POLICY_LOOP_STRICT) || 'false' }}
     steps:
@@ -59,6 +54,12 @@ jobs:
           fi
       - name: Run adaptive intake, mapping, redlines, QA and exports
         id: research
+        env:
+          WEB_RESEARCH_JSON: ${{ inputs.web_packet || secrets.WEB_RESEARCH_JSON }}
+          MIDPAGE_RESEARCH_JSON: ${{ inputs.midpage_packet || secrets.MIDPAGE_RESEARCH_JSON }}
+          BOX_ACCESS_TOKEN: ${{ secrets.BOX_ACCESS_TOKEN }}
+          BOX_INBOX_FOLDER_ID: ${{ secrets.BOX_INBOX_FOLDER_ID }}
+          BOX_OUTPUT_FOLDER_ID: ${{ secrets.BOX_OUTPUT_FOLDER_ID }}
         run: |
           FLAGS=""
           if [ -n "$BOX_ACCESS_TOKEN" ] && [ -n "$BOX_INBOX_FOLDER_ID" ]; then FLAGS="$FLAGS --box-pull"; fi
