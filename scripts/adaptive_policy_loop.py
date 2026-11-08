@@ -315,9 +315,18 @@ def canonicalize_url(url: str) -> str:
         )
     )
     path = parts.path.rstrip("/") or "/"
-    return urlunsplit(
-        (parts.scheme.lower(), parts.netloc.lower(), path, query, "")
+    scheme = parts.scheme.lower()
+    host = parts.hostname.lower()
+    host = f"[{host}]" if ":" in host else host
+    port = parts.port
+    netloc = (
+        host
+        if port in (None, {"http": 80, "https": 443}[scheme])
+        else f"{host}:{port}"
     )
+    # Hash routers identify resources; ordinary document anchors do not.
+    fragment = parts.fragment if parts.fragment.startswith(("/", "!/")) else ""
+    return urlunsplit((scheme, netloc, path, query, fragment))
 
 
 def valid_source_url(url: str) -> bool:
@@ -588,18 +597,42 @@ def fetch_feed(source: dict[str, Any]) -> list[dict[str, Any]]:
                 if node is not None:
                     if name == "link" and node.attrib.get("href"):
                         return node.attrib["href"]
-                    if node.text:
-                        return node.text
+                    value = " ".join(node.itertext())
+                    if value.strip():
+                        return value
             return ""
+
+        links = entry.findall("link") + entry.findall("{*}link")
+        alternate = next(
+            (
+                node
+                for node in links
+                if node.attrib.get("href")
+                and node.attrib.get("rel", "alternate") == "alternate"
+            ),
+            None,
+        )
+        link = (
+            alternate
+            if alternate is not None
+            else next(
+                (node for node in links if node.attrib.get("href")), None
+            )
+        )
 
         output.append(
             {
                 "source_name": source["name"],
                 "source_type": "official_feed",
-                "source_url": first(["link"]),
+                "source_url": (
+                    link.attrib["href"]
+                    if link is not None
+                    else first(["link"])
+                ),
                 "headline": first(["title"]),
                 "summary": first(["description", "summary", "content"]),
                 "date_published": first(["pubDate", "published", "updated"]),
+                "source_updated_at": first(["updated"]),
                 "jurisdiction": source.get("jurisdiction", "NYC"),
                 "agency": source.get("agency", ""),
                 "document_type": source.get("document_type", "Release"),
@@ -647,7 +680,9 @@ def box_pull() -> tuple[list[dict[str, Any]], list[str]]:
         "BOX_INBOX_FOLDER_ID", ""
     )
     if not token or not folder_id:
-        return [], []
+        return [], [
+            "Box pull requested: access token and inbox folder ID required"
+        ]
     headers = {"Authorization": f"Bearer {token}"}
     errors, items, offset = [], [], 0
     while True:
@@ -726,8 +761,11 @@ def matches_term(text: str, term: str) -> bool:
 
 def in_scope(item: dict[str, Any]) -> bool:
     jurisdiction = clean_text(item.get("jurisdiction", "")).lower()
-    text = " ".join(
-        str(item.get(field, "")) for field in ("headline", "summary")
+    text = clean_text(
+        " ".join(
+            str(item.get(field, ""))
+            for field in ("headline", "title", "summary", "abstract")
+        )
     ).lower()
     allowed = jurisdiction in {
         "nyc",
@@ -766,7 +804,7 @@ def normalize(item: dict[str, Any], today: str) -> Record | None:
         str(item.get("date_published") or item.get("published_at") or "")
     )
     summary = clean_text(item.get("summary") or item.get("abstract"), 3000)
-    content_hash = digest(headline.lower(), summary.lower(), canonical)
+    content_hash = digest(headline.lower(), summary.lower())
     event_id = digest(canonical, headline.lower(), published)[:20]
     return Record(
         event_id=event_id,
@@ -831,7 +869,7 @@ def score_and_map(record: Record, rules: list[dict[str, Any]]) -> Record:
                 matches_term(text, x)
                 for x in (
                     "enacted",
-                    "effective",
+                    "effective date",
                     "final rule",
                     "court held",
                     "signed",
@@ -923,6 +961,13 @@ def read_tracker() -> list[dict[str, str]]:
             raise ValueError(
                 "Tracker contains malformed rows or empty event IDs"
             )
+        ids = [row["event_id"] for row in rows]
+        if len(ids) != len(set(ids)):
+            raise ValueError("Tracker contains duplicate event IDs")
+        for row in rows:
+            for field, value in row.items():
+                if value.startswith("'") and value[1:].lstrip()[:1] in "=+-@":
+                    row[field] = value[1:]
         return rows
 
 
@@ -944,7 +989,18 @@ def write_csv(
                 handle, fieldnames=fields, extrasaction="ignore"
             )
             writer.writeheader()
-            writer.writerows(rows)
+            writer.writerows(
+                {
+                    field: (
+                        "'" + value
+                        if isinstance(value, str)
+                        and value.lstrip()[:1] in "=+-@"
+                        else value
+                    )
+                    for field, value in row.items()
+                }
+                for row in rows
+            )
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)
@@ -958,11 +1014,17 @@ def upsert(
     incoming: list[Record],
     errors: list[str] | None = None,
 ) -> tuple[list[dict[str, str]], int]:
-    by_id = {
-        row.get("event_id", ""): sanitize_row(row)
-        for row in existing
-        if row.get("event_id")
-    }
+    by_id = {}
+    for stored in existing:
+        key = stored.get("event_id", "")
+        if key in by_id:
+            raise ValueError("Tracker contains duplicate event IDs")
+        if key:
+            row = sanitize_row(stored)
+            row["content_hash"] = digest(
+                row.get("headline", "").lower(), row.get("summary", "").lower()
+            )
+            by_id[key] = row
     by_url = {
         url: key
         for key, row in by_id.items()
@@ -1026,27 +1088,46 @@ def upsert(
                     not old_version or new_version > old_version
                 ):
                     previous["source_updated_at"] = new_version
-                if (
+                promotion = (
                     record.primary_source == "true"
                     and previous.get("primary_source") != "true"
-                ):
-                    # Prefer official provenance for unchanged evidence.
+                )
+                metadata_changed = any(
+                    previous.get(field) != row[field]
+                    for field in ("document_type", "agency", "jurisdiction")
+                )
+                newer = bool(
+                    new_version
+                    and (not old_version or new_version > old_version)
+                )
+                if promotion or (metadata_changed and newer):
                     was_critical = previous.get("importance") == "Critical"
-                    for field in (
+                    fields = (
                         "source_name",
                         "source_type",
                         "source_url",
                         "primary_source",
+                        "document_type",
+                        "agency",
+                        "jurisdiction",
+                        "policy",
+                        "target_document",
+                        "section",
+                        "paragraph",
+                        "impact_area",
+                        "legal_pathway",
+                        "fiscal_roi_effect",
                         "importance",
                         "importance_score",
-                    ):
+                        "proposed_redline",
+                    )
+                    for field in fields:
                         previous[field] = row[field]
-                    if record.importance == "Critical" and (
-                        not was_critical or not critical_resolved(previous)
-                    ):
+                    if record.importance == "Critical" and not was_critical:
                         previous["review_status"] = "Needs Counsel Review"
                         previous["reviewer"] = ""
                         previous["disposition_notes"] = ""
+                        previous["date_ingested"] = record.date_ingested
         if record.canonical_url:
             by_url[record.canonical_url] = key
         if record.content_hash:
@@ -1280,7 +1361,9 @@ def box_upload(paths: list[Path]) -> list[str]:
         "BOX_OUTPUT_FOLDER_ID", ""
     )
     if not token or not folder_id:
-        return []
+        return [
+            "Box push requested: access token and output folder ID required"
+        ]
     errors = []
     headers = {"Authorization": f"Bearer {token}"}
     for path in paths:

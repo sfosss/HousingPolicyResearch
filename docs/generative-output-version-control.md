@@ -15,6 +15,13 @@ This document tracks all generative AI outputs (ChatGPT, Codex, and other AI too
 
 ## Inventory of Generative Outputs
 
+### Adaptive policy loop documentation — 2026-11-08
+
+- **Files:** `policy-research/README.md` (created 2026-10-16; updated 2026-10-16) and `policy-research/PR125_REVIEW_FOLLOW_UPS.md` (created 2026-10-16; updated 2026-10-16 and 2026-11-08).
+- **Creation method:** Codex-assisted implementation and review documentation.
+- **Verification:** Repository paths, code behavior, and local tests checked during PR review. This entry records authorship and review status; the PR remains proposed for human review.
+- **Limits:** Live feeds, Box synchronization, GitHub issue publication, and legal or fiscal conclusions have not been independently certified by this documentation review.
+
 ### Remaining action modernization — 2026-10-23
 
 - **Version:** 1.0; proposed after the CI reconciliation.

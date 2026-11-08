@@ -36,6 +36,8 @@ jobs:
       STRICT_MODE: ${{ (github.event_name == 'workflow_dispatch' && inputs.strict && 'true') || (github.event_name == 'schedule' && vars.POLICY_LOOP_STRICT) || 'false' }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
@@ -50,7 +52,13 @@ jobs:
           OPEN=$(gh pr list --state open --head "$OUTPUT_BRANCH" --base "$GITHUB_REF_NAME" --json number --jq 'length')
           if [ "$OPEN" != "0" ]; then
             git fetch origin "$OUTPUT_BRANCH"
-            git restore --source=FETCH_HEAD --worktree -- datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv indexes/POLICY_SOURCE_INDEX.csv indexes/POLICY_SOURCE_INDEX.md ':(glob)policy-research/[0-9]*/**' exports-for-chatgpt
+            BASE=$(git merge-base HEAD FETCH_HEAD)
+            PATHS=(datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv indexes/POLICY_SOURCE_INDEX.csv indexes/POLICY_SOURCE_INDEX.md ':(glob)policy-research/[0-9]*/**' ':(glob)exports-for-chatgpt/policy-update-*.json')
+            if ! git diff --quiet "$BASE" HEAD -- "${PATHS[@]}"; then
+              echo 'Base research artifacts changed while the automation PR was open; reconcile the branches before rerunning.' >&2
+              exit 1
+            fi
+            git restore --source=FETCH_HEAD --worktree -- "${PATHS[@]}"
           fi
       - name: Run adaptive intake, mapping, redlines, QA and exports
         id: research
@@ -76,18 +84,18 @@ jobs:
           fi
           exit "$STATUS"
       - name: Open a review issue for Critical items
-        if: ${{ !cancelled() && (steps.research.outcome == 'success' || steps.research.outcome == 'failure') }}
+        if: ${{ !cancelled() && steps.research.outputs.artifacts_ready == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           TODAY=$(date -u +%Y%m%d)
           ALERT="policy-research/$TODAY/CRITICAL_ALERT.md"
           TITLE="Critical PETF/TCAP policy review"
-          if [ -f "$ALERT" ] && grep -q '^-' "$ALERT"; then
+          if [ -f "$ALERT" ]; then
             EXISTING=$(gh issue list --state open --search "\"$TITLE\" in:title" --json number,title --jq '.[] | select(.title == "Critical PETF/TCAP policy review") | .number' | head -1)
             if [ -n "$EXISTING" ]; then
               gh issue edit "$EXISTING" --body-file "$ALERT"
-            else
+            elif grep -q '^-' "$ALERT"; then
               gh issue create --title "$TITLE" --body-file "$ALERT" --label "policy-review" || gh issue create --title "$TITLE" --body-file "$ALERT"
             fi
           fi

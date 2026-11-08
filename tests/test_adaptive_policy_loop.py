@@ -83,6 +83,129 @@ def test_canonicalize_url_removes_tracking_and_fragment():
     assert module.canonicalize_url(url) == "https://example.com/report?a=1&b=2"
 
 
+def test_canonical_url_keeps_router_identity_and_removes_default_ports():
+    assert (
+        module.canonicalize_url("https://example.com:443/report")
+        == "https://example.com/report"
+    )
+    assert (
+        module.canonicalize_url("http://example.com:80/report")
+        == "http://example.com/report"
+    )
+    first = module.canonicalize_url("https://example.com/#/opinion?id=12")
+    second = module.canonicalize_url("https://example.com/#/opinion?id=13")
+    assert first != second
+
+
+def test_scope_cleans_markup_and_accepts_field_aliases(item):
+    item.pop("headline")
+    item.pop("summary")
+    item["title"] = "NYCHA modernization"
+    item["abstract"] = "New York <em>City</em> public housing"
+    assert module.in_scope(item)
+
+
+def test_cross_url_evidence_uses_one_identity(item):
+    first = module.normalize(item, TODAY)
+    item["source_url"] = "https://example.org/same-evidence"
+    second = module.normalize(item, TODAY)
+    assert first.content_hash == second.content_hash
+    rows, added = module.upsert([], [first, second])
+    assert len(rows) == added == 1
+
+
+def test_atom_alternate_xhtml_and_updated(monkeypatch):
+    xml = b"""<feed xmlns="http://www.w3.org/2005/Atom"><entry>
+    <title>NYC housing update</title>
+    <link rel="self" href="https://example.com/api"/>
+    <link rel="alternate" href="https://example.com/article"/>
+    <published>2026-10-16T09:00:00Z</published>
+    <updated>2026-10-17T10:00:00Z</updated>
+    <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">NYCHA public housing modernization final rule</div></content>
+    </entry></feed>"""
+    monkeypatch.setattr(
+        module.requests,
+        "get",
+        lambda *a, **k: Mock(content=xml, raise_for_status=lambda: None),
+    )
+    [entry] = module.fetch_feed(
+        {"url": "https://example.com/feed", "name": "Example"}
+    )
+    assert entry["source_url"] == "https://example.com/article"
+    assert "modernization final rule" in entry["summary"]
+    assert (
+        module.normalize(entry, TODAY).source_updated_at
+        == "2026-10-17T10:00:00+00:00"
+    )
+
+
+def test_duplicate_tracker_ids_preserve_file(sandbox, record):
+    row = asdict(record)
+    module.write_csv(module.TRACKER, [row, row], module.FIELDS)
+    original = module.TRACKER.read_bytes()
+    with pytest.raises(ValueError, match="duplicate event IDs"):
+        module.read_tracker()
+    assert module.TRACKER.read_bytes() == original
+
+
+def test_csv_formula_escaping_round_trips(sandbox, record):
+    row = asdict(record)
+    row["headline"] = "=SUM(1,2)"
+    module.write_csv(module.TRACKER, [row], module.FIELDS)
+    assert "'=SUM(1,2)" in module.TRACKER.read_text()
+    assert module.read_tracker()[0]["headline"] == "=SUM(1,2)"
+
+
+def test_promotion_and_newer_classification_reopen_today(record):
+    secondary = replace(
+        record,
+        primary_source="false",
+        importance="High",
+        date_ingested="2026-10-16",
+    )
+    rows, _ = module.upsert([], [secondary])
+    rows[0].update(review_status="Accepted", reviewer="Counsel")
+    promoted = replace(record, date_ingested="2026-10-17")
+    rows, _ = module.upsert(rows, [promoted])
+    assert rows[0]["date_ingested"] == "2026-10-17"
+    assert rows[0]["review_status"] == "Needs Counsel Review"
+
+
+def test_newer_document_type_reclassifies_existing_primary(record):
+    old = replace(
+        record,
+        document_type="Report",
+        importance="High",
+        importance_score="75",
+    )
+    rows, _ = module.upsert([], [old])
+    rows[0].update(review_status="Accepted", reviewer="Counsel")
+    incoming = replace(
+        record,
+        date_ingested="2026-10-17",
+        source_updated_at="2026-10-17T12:00:00Z",
+    )
+    rows, added = module.upsert(rows, [incoming])
+    assert added == 0
+    assert rows[0]["importance"] == "Critical"
+    assert rows[0]["review_status"] == "Needs Counsel Review"
+    assert rows[0]["date_ingested"] == "2026-10-17"
+
+
+def test_cost_effective_is_not_a_status_signal(item):
+    item["headline"] = "NYCHA cost-effective utility weatherization plan"
+    item["summary"] = "An ordinary utility proposal"
+    item["document_type"] = "Report"
+    rules = json.loads(module.POLICY_MAP.read_text())["rules"]
+    scored = module.score_and_map(module.normalize(item, TODAY), rules)
+    assert scored.importance != "Critical"
+
+
+def test_requested_box_sync_requires_configuration(sandbox):
+    assert module.box_pull()[1]
+    assert module.box_upload([])
+
+
 def test_stable_normalization_and_required_review_gate(record):
     assert record.policy == "PETF Master Bill"
     marker = "[PROPOSED—HUMAN REVIEW REQUIRED]"
@@ -438,7 +561,7 @@ def test_workflow_passes_strict_flag_from_environment(strict):
     alert = next(
         s for s in job["steps"] if "Critical items" in s.get("name", "")
     )
-    assert "steps.research.outcome == 'failure'" in alert["if"]
+    assert "steps.research.outputs.artifacts_ready == 'true'" in alert["if"]
 
 
 @pytest.mark.parametrize("field", ["source_url", "url"])
@@ -947,11 +1070,13 @@ def test_alerts_update_one_persistent_issue_across_days(tmp_path):
       if [ "$1" = "issue" ] && [ "$2" = "list" ]; then echo 123; fi
     }
     """
-    for day in ("20261016", "20261017"):
+    for day in ("20261016", "20261017", "20261018"):
         dated = tmp_path / "policy-research" / day
         dated.mkdir(parents=True)
         (dated / "CRITICAL_ALERT.md").write_text(
             "# Alerts\n- unresolved event\n"
+            if day != "20261018"
+            else "# Alerts\n\nAll Critical items resolved.\n"
         )
         subprocess.run(
             ["bash", "-e", "-c", stub + step["run"]],
@@ -964,7 +1089,7 @@ def test_alerts_update_one_persistent_issue_across_days(tmp_path):
             check=True,
         )
     calls = log.read_text()
-    assert calls.count("issue edit 123 --body-file") == 2
+    assert calls.count("issue edit 123 --body-file") == 3
     assert "issue create" not in calls
     assert "Critical PETF/TCAP policy review" in calls
 
@@ -977,6 +1102,10 @@ def test_restoring_pending_pr_keeps_reviewed_ledger(tmp_path):
     )
     assert "--state open" in restore["run"]
     assert '--head "$OUTPUT_BRANCH"' in restore["run"]
+    assert "git merge-base HEAD FETCH_HEAD" in restore["run"]
+    assert 'git diff --quiet "$BASE" HEAD' in restore["run"]
+    assert "exports-for-chatgpt/policy-update-*.json" in restore["run"]
+    assert "' exports-for-chatgpt" not in restore["run"]
     paths = [
         "datasets/NYC_Housing_Subsidy_Policy_News_LIVE.csv",
         "indexes/POLICY_SOURCE_INDEX.csv",
